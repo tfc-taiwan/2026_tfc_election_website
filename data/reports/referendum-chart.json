@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "isMock": true,
+  "slug": "referendum-chart",
+  "kind": "report",
+  "category": "公投議題",
+  "title": "「九成民眾都同意」？看懂圖表背後沒有說的事",
+  "finding": "本例數字來自虛構的自願回覆樣本，不能推論為全體民意。",
+  "tags": [
+    "部分錯誤",
+    "數據判讀"
+  ],
+  "published": "2026-08-30",
+  "updated": "2026-08-30",
+  "reportId": "DEMO-20260830-07",
+  "reporter": "示範查核小組",
+  "editor": "示範編輯",
+  "image": {
+    "src": "/images/chart.svg",
+    "alt": "數據判讀主題的報刊風格示意插圖，非事件照片"
+  },
+  "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+  "summaryPoints": [
+    "虛構社群圖卡引用一份示範問卷，卻沒有呈現收集方式與樣本範圍。圖卡上的數字不是實際民調。",
+    "本例的百分比只描述示範問卷的回覆者，不等於全體民眾。",
+    "問句順序、選項與收集方式都會影響如何理解結果。缺少這些資訊時應保留判斷。"
+  ],
+  "summaryClose": "本例數字來自虛構的自願回覆樣本，不能推論為全體民意。",
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "paragraphs": [
+      "虛構社群圖卡引用一份示範問卷，卻沒有呈現收集方式與樣本範圍。圖卡上的數字不是實際民調。",
+      "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "先確認分母",
+      "paragraphs": [
+        "本例的百分比只描述示範問卷的回覆者，不等於全體民眾。"
+      ]
+    },
+    {
+      "id": "check-2",
+      "title": "檢視問句與抽樣",
+      "paragraphs": [
+        "問句順序、選項與收集方式都會影響如何理解結果。缺少這些資訊時應保留判斷。"
+      ]
+    },
+    {
+      "id": "check-3",
+      "title": "避免過度推論",
+      "paragraphs": [
+        "精確的百分比不代表可以推論到其他群體。結論的範圍應與資料來源一致。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "示範素材說明",
+      "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+    }
+  ],
+  "relatedSlugs": [
+    "referendum-notice",
+    "referendum-context"
+  ],
+  "verdict": "部分錯誤",
+  "seo": {
+    "title": "「九成民眾都同意」？看懂圖表背後沒有說的事｜台灣事實查核中心",
+    "description": "【示範資料】百分比之外，還有哪些數字必須一起看？",
+    "image": {
+      "src": "/images/og/referendum-chart.png",
+      "alt": "「九成民眾都同意」？看懂圖表背後沒有說的事（示意圖，非真實查核事件）",
+      "width": 1200,
+      "height": 630,
+      "type": "image/png"
+    },
+    "noindex": false,
+    "authorType": "Organization"
+  }
+}

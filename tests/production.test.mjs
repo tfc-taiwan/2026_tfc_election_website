@@ -1,0 +1,103 @@
+import { test, before, after } from 'node:test';
+import assert from 'node:assert/strict';
+import { cp, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { spawn } from 'node:child_process';
+import { once } from 'node:events';
+
+let child, temp, base;
+const source = JSON.parse(await readFile('data/listings.json', 'utf8'));
+const article = JSON.parse(await readFile('data/reports/ai-voice.json', 'utf8'));
+before(async () => {
+  temp = await mkdtemp(join(tmpdir(), 'tfc-seo-test-'));
+  await cp('data', join(temp, 'data'), { recursive: true });
+  child = spawn(process.execPath, ['server.mjs'], { env: { ...process.env, PORT: '0', HOST: '127.0.0.1', DATA_DIR: join(temp, 'data'), SITE_URL: 'https://election.example.org' }, stdio: ['ignore', 'pipe', 'pipe'] });
+  base = await new Promise((resolve, reject) => {
+    let output = '';
+    const timer = setTimeout(() => reject(new Error('Production server startup timed out')), 15000);
+    child.once('error', error => { clearTimeout(timer); reject(error); });
+    child.once('exit', code => { clearTimeout(timer); reject(new Error(`Server exited: ${code}`)); });
+    child.stdout.on('data', chunk => {
+      output += chunk.toString();
+      const url = output.match(/http:\/\/127\.0\.0\.1:\d+/)?.[0];
+      if (url) { clearTimeout(timer); resolve(url); }
+    });
+  });
+});
+after(async () => {
+  if (child && child.exitCode === null) { child.kill('SIGTERM'); await once(child, 'exit'); }
+  if (temp) await rm(temp, { recursive: true, force: true });
+});
+
+test('built static pages contain body content and unique head metadata', async () => {
+  for (const path of ['index.html', 'reports/index.html', ...source.stories.map(story => `reports/${story.slug}/index.html`)]) {
+    const html = await readFile(join('dist', path), 'utf8');
+    assert.equal((html.match(/<title data-seo>/g) || []).length, 1);
+    assert.equal((html.match(/rel="canonical"/g) || []).length, 1);
+    assert.ok(html.includes('name="robots" content="noindex, nofollow"'));
+    assert.ok(html.includes('type="application/ld+json"'));
+    assert.ok(!html.includes('<!--app-html-->'));
+    assert.match(html, /<h1[^>]*>.+?<\/h1>/);
+    if (path !== 'index.html' && path !== 'reports/index.html') assert.match(html, /<article class="report-page">[\s\S]+?id="verification"/);
+  }
+});
+
+test('production SSR uses canonical origin and returns real 404, asset and HEAD responses', async () => {
+  const response = await fetch(base + '/reports/ai-voice');
+  const html = await response.text();
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow');
+  assert.ok(html.includes('href="https://election.example.org/reports/ai-voice"'));
+  assert.ok(html.includes('class="report-page"'));
+  const head = await fetch(base + '/reports/ai-voice', { method: 'HEAD' });
+  assert.equal(head.status, 200); assert.equal(await head.text(), '');
+  for (const path of ['/reports/missing', '/missing', '/data/reports/missing.json', '/images/missing.png', '/.server/template.html']) {
+    const missing = await fetch(base + path); assert.equal(missing.status, 404); assert.match(missing.headers.get('x-robots-tag'), /noindex/);
+  }
+  const png = await fetch(base + '/images/og/ai-voice.png');
+  assert.equal(png.headers.get('content-type'), 'image/png');
+  const bytes = Buffer.from(await png.arrayBuffer()); assert.equal(bytes.readUInt32BE(16), 1200);
+  const redirect = await fetch(base + '/reports/ai-voice/', { redirect: 'manual' });
+  assert.equal(redirect.status, 308); assert.equal(redirect.headers.get('location'), '/reports/ai-voice');
+});
+
+test('changing JSON updates initial HTML and runtime JSON without rebuilding JavaScript', async () => {
+  const edited = structuredClone(article);
+  edited.title = '伺服器即時讀取 JSON 的測試標題';
+  edited.seo.title = '更新後的 SEO 標題';
+  edited.seo.description = '更新後的 SEO 摘要';
+  await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(edited));
+  const html = await (await fetch(base + '/reports/ai-voice')).text();
+  assert.ok(html.includes(`<title data-seo>${edited.seo.title}</title>`));
+  assert.ok(html.includes(`<h1>${edited.title}</h1>`));
+  assert.ok(html.includes(`name="description" content="${edited.seo.description}"`));
+  assert.equal((await (await fetch(base + '/data/reports/ai-voice.json')).json()).title, edited.title);
+  await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(article));
+});
+
+test('publishing configuration indexes real content only, including sitemap and search noindex', async () => {
+  const live = structuredClone(source); live.isMock = false;
+  const real = structuredClone(article); real.isMock = false;
+  await writeFile(join(temp, 'data/listings.json'), JSON.stringify(live));
+  await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(real));
+  const html = await (await fetch(base + '/reports/ai-voice')).text();
+  assert.ok(html.includes('content="index, follow, max-image-preview:large"'));
+  const xml = await (await fetch(base + '/sitemap.xml')).text();
+  assert.equal((xml.match(/<loc>/g) || []).length, 3);
+  assert.ok(xml.includes('https://election.example.org/reports/ai-voice'));
+  assert.ok(!xml.includes('ballot-paper'));
+  assert.ok((await (await fetch(base + '/robots.txt')).text()).includes('Sitemap: https://election.example.org/sitemap.xml'));
+  const search = await fetch(base + '/reports?q=音檔');
+  assert.equal(search.headers.get('x-robots-tag'), 'noindex, follow');
+  await writeFile(join(temp, 'data/listings.json'), JSON.stringify(source));
+  await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(article));
+});
+
+test('broken editorial JSON returns a non-indexable 503, then recovers after correction', async () => {
+  await writeFile(join(temp, 'data/reports/ai-voice.json'), '{broken');
+  const broken = await fetch(base + '/reports/ai-voice');
+  assert.equal(broken.status, 503); assert.match(broken.headers.get('x-robots-tag'), /noindex/);
+  await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(article));
+  assert.equal((await fetch(base + '/reports/ai-voice')).status, 200);
+});

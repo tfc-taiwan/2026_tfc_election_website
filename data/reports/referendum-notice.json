@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "isMock": true,
+  "slug": "referendum-notice",
+  "kind": "report",
+  "category": "公投議題",
+  "title": "網傳「公投通知已經公告」？先比對原始文件",
+  "finding": "範例截圖缺少文件來源，不能據此判定任何公投的實際辦理狀態。",
+  "tags": [
+    "事實釐清",
+    "公告查證"
+  ],
+  "published": "2026-09-03",
+  "updated": "2026-09-03",
+  "reportId": "DEMO-20260903-06",
+  "reporter": "示範查核小組",
+  "editor": "示範編輯",
+  "image": {
+    "src": "/images/document.svg",
+    "alt": "公告查證主題的報刊風格示意插圖，非事件照片"
+  },
+  "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+  "summaryPoints": [
+    "示範圖片模仿公告格式，但沒有發文單位與原文連結。本頁沒有指涉任何實際公投案。",
+    "完整文件才能提供發布日期、修訂紀錄與適用範圍。截圖不能取代原始文件。",
+    "本例提供兩份日期不同的虛構文件，示範舊版內容可能漏掉後續更新。"
+  ],
+  "summaryClose": "範例截圖缺少文件來源，不能據此判定任何公投的實際辦理狀態。",
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "paragraphs": [
+      "示範圖片模仿公告格式，但沒有發文單位與原文連結。本頁沒有指涉任何實際公投案。",
+      "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "從截圖回到原文",
+      "paragraphs": [
+        "完整文件才能提供發布日期、修訂紀錄與適用範圍。截圖不能取代原始文件。"
+      ]
+    },
+    {
+      "id": "check-2",
+      "title": "核對文件版本",
+      "paragraphs": [
+        "本例提供兩份日期不同的虛構文件，示範舊版內容可能漏掉後續更新。"
+      ]
+    },
+    {
+      "id": "check-3",
+      "title": "確認適用對象",
+      "paragraphs": [
+        "不同種類投票的規則不能直接類推。本示範不提供任何實際投票資格判定。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "示範素材說明",
+      "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+    }
+  ],
+  "relatedSlugs": [
+    "referendum-chart",
+    "referendum-context"
+  ],
+  "verdict": "事實釐清",
+  "seo": {
+    "title": "網傳「公投通知已經公告」？先比對原始文件｜台灣事實查核中心",
+    "description": "【示範資料】一張沒有出處的公告截圖，如何一步步確認？",
+    "image": {
+      "src": "/images/og/referendum-notice.png",
+      "alt": "網傳「公投通知已經公告」？先比對原始文件（示意圖，非真實查核事件）",
+      "width": 1200,
+      "height": 630,
+      "type": "image/png"
+    },
+    "noindex": false,
+    "authorType": "Organization"
+  }
+}

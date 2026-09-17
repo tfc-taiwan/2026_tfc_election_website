@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "isMock": true,
+  "slug": "ai-tools",
+  "kind": "guide",
+  "category": "地方選舉",
+  "title": "如何使用 AI 工具輔助查證",
+  "finding": "工具的輸出是待查證的線索，原始資料與獨立證據仍是判斷核心。",
+  "tags": [
+    "查核學堂"
+  ],
+  "published": "2026-08-18",
+  "updated": "2026-08-18",
+  "reportId": "DEMO-20260818-12",
+  "reporter": "示範查核小組",
+  "editor": "示範編輯",
+  "image": {
+    "src": "/images/audio.svg",
+    "alt": "查核學堂主題的報刊風格示意插圖，非事件照片"
+  },
+  "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+  "summaryPoints": [
+    "這份入門教學使用示範素材，協助讀者理解工具輔助查證的工作流程。",
+    "優先取得最早、品質最好的版本，避免轉傳壓縮造成額外干擾。",
+    "閱讀工具的適用範圍，不要把分數當作對素材真偽的保證。"
+  ],
+  "summaryClose": "工具的輸出是待查證的線索，原始資料與獨立證據仍是判斷核心。",
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "paragraphs": [
+      "這份入門教學使用示範素材，協助讀者理解工具輔助查證的工作流程。",
+      "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "準備原始素材",
+      "paragraphs": [
+        "優先取得最早、品質最好的版本，避免轉傳壓縮造成額外干擾。"
+      ]
+    },
+    {
+      "id": "check-2",
+      "title": "理解工具的限制",
+      "paragraphs": [
+        "閱讀工具的適用範圍，不要把分數當作對素材真偽的保證。"
+      ]
+    },
+    {
+      "id": "check-3",
+      "title": "記錄查證過程",
+      "paragraphs": [
+        "保存使用的版本、日期與結果，並清楚交代目前無法確認的事項。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "示範素材說明",
+      "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+    }
+  ],
+  "relatedSlugs": [
+    "ai-voice",
+    "ballot-paper",
+    "early-voting"
+  ],
+  "seo": {
+    "title": "如何使用 AI 工具輔助查證｜台灣事實查核中心",
+    "description": "【示範資料】認識 AI 檢測的用途與限制，建立有證據的查證習慣。",
+    "image": {
+      "src": "/images/og/ai-tools.png",
+      "alt": "如何使用 AI 工具輔助查證（示意圖，非真實查核事件）",
+      "width": 1200,
+      "height": 630,
+      "type": "image/png"
+    },
+    "noindex": false,
+    "authorType": "Organization"
+  }
+}
