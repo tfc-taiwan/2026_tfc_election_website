@@ -7,3 +7,6 @@ dist/
 test-results/
 playwright-report/
 .DS_Store
+generated/
+/data-backup-*/
+/.data-stage-*/

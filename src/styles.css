@@ -253,6 +253,15 @@ section[id] { scroll-margin-top: 24px; }
 .article-section figure .illustration { aspect-ratio: 2.8; }
 .check-section { margin-top: 28px; }
 .check-section h3 { font-size: 18px; line-height: 1.7; }
+.article-content { overflow-wrap: anywhere; }
+.article-content :is(p, li, h3, h4) { white-space: pre-wrap; }
+.article-content :is(h3, h4) { margin-top: 22px; }
+.article-content :is(ul, ol) { padding-left: 24px; margin-block: 16px; }
+.article-content li { font-size: 15px; line-height: 2; margin-block: 8px; }
+.article-content a { text-decoration: underline; text-underline-offset: 3px; }
+.article-content figure { margin-block: 22px; }
+.article-content figure > img { display: block; max-width: 100%; height: auto; margin-inline: auto; }
+.article-summary .article-content p { font-size: 14px; line-height: 2; margin-top: 12px; }
 .article-sources ul { padding-left: 20px; margin: 0; }
 .article-sources li { margin-bottom: 14px; font-size: 14px; }
 .article-sources p { font-size: 13px; margin-top: 5px; }

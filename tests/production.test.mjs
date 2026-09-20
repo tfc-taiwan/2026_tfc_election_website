@@ -5,6 +5,8 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
+import { convertEditorialTemplate } from '../scripts/editorial-template.ts';
+import { sampleMarkdown, sampleMetadata, sampleTitle } from './fixtures/editorial-sample.ts';
 
 let child, temp, base;
 const source = JSON.parse(await readFile('data/listings.json', 'utf8'));
@@ -74,6 +76,27 @@ test('changing JSON updates initial HTML and runtime JSON without rebuilding Jav
   assert.ok(html.includes(`name="description" content="${edited.seo.description}"`));
   assert.equal((await (await fetch(base + '/data/reports/ai-voice.json')).json()).title, edited.title);
   await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(article));
+});
+
+test('converted newsroom template renders rich content and supplements in initial HTML', async () => {
+  const { report } = await convertEditorialTemplate(sampleMarkdown, source, sampleMetadata);
+  await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(report));
+  try {
+    const response = await fetch(base + '/reports/ai-voice');
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    const markup = html.slice(html.indexOf('<article class="report-page">'), html.indexOf('</article>'));
+    assert.ok(markup.includes(`<h1>${sampleTitle}</h1>`));
+    assert.ok(markup.includes('<strong>虛構素材</strong>'));
+    assert.ok(markup.includes('href="https://example.org/evidence"'));
+    assert.ok(markup.includes('<em>圖片原始比例</em>'));
+    assert.ok(markup.includes('id="supplementary"'));
+    assert.ok(markup.includes('<figcaption>圖一：範本原有的占位圖片，僅供測試。</figcaption>'));
+    assert.ok(markup.indexOf(report.background.paragraphs[0]) < markup.indexOf('<figcaption>圖一'));
+    assert.ok(markup.indexOf('<figcaption>圖一') < markup.indexOf(report.background.paragraphs[1]));
+    assert.equal(markup.includes('Canva'), false);
+    assert.equal(markup.includes('若格式跑掉'), false);
+  } finally { await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(article)); }
 });
 
 test('publishing configuration indexes real content only, including sitemap and search noindex', async () => {

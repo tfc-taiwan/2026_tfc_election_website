@@ -1,0 +1,2 @@
+# Google Docs Markdown fixtures preserve significant trailing-space line breaks.
+tests/fixtures/*.md whitespace=-blank-at-eol

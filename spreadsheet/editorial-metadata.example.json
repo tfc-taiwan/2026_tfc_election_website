@@ -1,0 +1,37 @@
+{
+  "文章.md": {
+    "slug": "ai-voice",
+    "reportId": "DEMO-20260901-01",
+    "updated": "2026-09-01",
+    "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+    "seo": {
+      "title": "網傳「某候選人私下賄選錄音檔流出」？查核結果為變造｜台灣事實查核中心",
+      "description": "【示範資料】一段聲音，足以代表真相嗎？從原始檔案、完整脈絡與交叉比對，檢視可疑的選舉音訊。",
+      "image": {
+        "src": "/images/og/ai-voice.png",
+        "alt": "網傳「某候選人私下賄選錄音檔流出」？查核結果為變造（示意圖，非真實查核事件）",
+        "width": 1200,
+        "height": 630,
+        "type": "image/png"
+      },
+      "noindex": false,
+      "authorType": "Organization"
+    },
+    "finding": "示範情境中的音檔是事先製作的合成素材，無法作為任何候選人發言的證據。",
+    "tags": [
+      "錯誤",
+      "AI 識別"
+    ],
+    "relatedSlugs": [
+      "ballot-paper",
+      "early-voting",
+      "election-message"
+    ],
+    "sources": [
+      {
+        "label": "示範素材說明",
+        "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { Link, NavLink, Route, Routes, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { DataError, daysUntil, getListings, getReport, searchStories, type Info, type Listings, type Report, type Story } from './data';
+import { DataError, daysUntil, getListings, getReport, searchStories, type ContentBlock, type Info, type Listings, type Report, type Story } from './data';
 import { buildSeo, originFor, syncSeoHead, type PageStatus } from './seo';
 import type { RenderState } from './render-state';
 
@@ -143,6 +143,36 @@ function ShareTools({ report, data }: { report: Report; data: Listings }) {
   return <div className="share-group"><span>分享：</span><a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`} target="_blank" rel="noopener noreferrer" aria-label="分享到 Facebook（開啟新視窗）">Facebook</a><a href={`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener noreferrer" aria-label="分享到 LINE（開啟新視窗）">LINE</a><button className="icon-button" aria-label="複製文章連結" onClick={copy}><Icon name="copy" size={17} /></button><button className="icon-button" aria-label="列印報告" onClick={() => window.print()}><Icon name="print" size={18} /></button><span className="share-status" role="status">{message}</span>{manualCopy && <input aria-label="文章網址" readOnly value={url} onFocus={event => event.target.select()} />}</div>;
 }
 
+function InlineContent({ content }: { content: Extract<ContentBlock, { type: 'paragraph' }>['content'] }) {
+  return <>{content.map((run, index) => {
+    let text: ReactNode = run.text;
+    if (run.bold) text = <strong>{text}</strong>;
+    if (run.italic) text = <em>{text}</em>;
+    if (run.href) text = <a href={run.href} target="_blank" rel="noopener noreferrer">{text}</a>;
+    return <React.Fragment key={index}>{text}</React.Fragment>;
+  })}</>;
+}
+
+function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
+  return <div className="article-content">{blocks.map((block, index) => {
+    if (block.type === 'paragraph') return <p key={index}><InlineContent content={block.content} /></p>;
+    if (block.type === 'heading') {
+      const Heading = block.level === 3 ? 'h3' : 'h4';
+      return <Heading key={index}><InlineContent content={block.content} /></Heading>;
+    }
+    if (block.type === 'list') {
+      const List = block.ordered ? 'ol' : 'ul';
+      return <List key={index}>{block.items.map((item, i) => <li key={i}><InlineContent content={item} /></li>)}</List>;
+    }
+    return <figure key={index}><img src={block.image.src} alt={block.image.alt} loading="lazy" decoding="async" />{block.caption && <figcaption>{block.caption}</figcaption>}</figure>;
+  })}</div>;
+}
+
+function SectionContent({ section }: { section: Report['background'] }) {
+  if (section.blocks) return <ContentBlocks blocks={section.blocks} />;
+  return <>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{section.image && <figure><Illustration image={section.image} /><figcaption>{section.caption}</figcaption></figure>}</>;
+}
+
 function ArticleBody({ report, data }: { report: Report; data: Listings }) {
   const related = report.relatedSlugs.flatMap(slug => data.stories.find(story => story.slug === slug) ?? []);
   const kind = report.kind === 'report' ? '查核報告' : report.kind === 'analysis' ? '資訊操弄解析' : '查核學堂';
@@ -152,12 +182,13 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
     <h1>{report.title}</h1><p className="article-finding">{report.finding}</p>
     <div className="article-meta"><span><strong>發佈：</strong><time dateTime={report.published}>{report.published}</time></span><span><strong>更新：</strong><time dateTime={report.updated}>{report.updated}</time></span><span><strong>報告編號：</strong>{report.reportId}</span><span><strong>查核記者：</strong>{report.reporter}</span><span><strong>責任編輯：</strong>{report.editor}</span></div>
     {report.isMock && <p className="article-mock-note"><span className="tag neutral">MOCK DATA</span> 本文為虛構示範，不代表真實事件或查核結論。</p>}
-    <div className="article-toolbar"><nav aria-label="文章目錄"><span>內容：</span><a href="#background">背景</a><a href="#verification">{report.kind === 'report' ? '查核' : '解析'}</a><a href="#sources">資料來源</a></nav><ShareTools report={report} data={data} /></div>
+    <div className="article-toolbar"><nav aria-label="文章目錄"><span>內容：</span><a href="#background">背景</a><a href="#verification">{report.kind === 'report' ? '查核' : '解析'}</a>{!!report.supplementarySections?.length && <a href="#supplementary">補充資料</a>}{report.sources.length > 0 && <a href="#sources">資料來源</a>}</nav><ShareTools report={report} data={data} /></div>
     <figure className="article-cover"><Illustration image={report.image} eager /><figcaption>{report.imageCaption}</figcaption></figure>
-    <section className="article-summary" aria-labelledby="summary-heading"><h2 id="summary-heading">{report.kind === 'report' ? '查核摘要' : '重點摘要'}</h2><ol>{report.summaryPoints.map(point => <li key={point}>{point}</li>)}</ol><p>{report.summaryClose}</p></section>
-    <section className="article-section" id="background"><h2>{report.background.title}</h2>{report.background.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{report.background.image && <figure><Illustration image={report.background.image} /><figcaption>{report.background.caption}</figcaption></figure>}</section>
-    <section className="article-section" id="verification"><h2>{report.kind === 'report' ? '查核' : '深入解析'}</h2>{report.checkSections.map(section => <section className="check-section" key={section.id} id={section.id}><h3>{section.title}</h3>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{section.image && <figure><Illustration image={section.image} /><figcaption>{section.caption}</figcaption></figure>}</section>)}</section>
-    <section className="article-section article-sources" id="sources"><h2>資料來源與說明</h2><ul>{report.sources.map(source => <li key={source.label}><strong>{source.href ? <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label} ↗</a> : source.label}</strong><p>{source.note}</p></li>)}</ul></section>
+    <section className="article-summary" aria-labelledby="summary-heading"><h2 id="summary-heading">{report.kind === 'report' ? '查核摘要' : '重點摘要'}</h2>{report.summaryBlocks ? <ContentBlocks blocks={report.summaryBlocks} /> : <ol>{report.summaryPoints.map(point => <li key={point}>{point}</li>)}</ol>}{report.summaryClose && <p>{report.summaryClose}</p>}</section>
+    <section className="article-section" id="background"><h2>{report.background.title}</h2><SectionContent section={report.background} /></section>
+    <section className="article-section" id="verification"><h2>{report.kind === 'report' ? '查核' : '深入解析'}</h2>{report.checkSections.map(section => <section className="check-section" key={section.id} id={section.id}><h3>{section.title}</h3><SectionContent section={section} /></section>)}</section>
+    {!!report.supplementarySections?.length && <section className="article-section" id="supplementary"><h2>補充資料</h2>{report.supplementarySections.map(section => <section className="check-section" key={section.id} id={section.id}><h3>{section.title}</h3><SectionContent section={section} /></section>)}</section>}
+    {report.sources.length > 0 && <section className="article-section article-sources" id="sources"><h2>資料來源與說明</h2><ul>{report.sources.map(source => <li key={source.label}><strong>{source.href ? <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label} ↗</a> : source.label}</strong><p>{source.note}</p></li>)}</ul></section>}
     {report.kind === 'report' && <aside className="verdict-legend" aria-label="查核結果說明"><p>查核結果說明：</p><ul>{['錯誤', '部分錯誤', '事實釐清', '正確'].map((label, index) => <li key={label}><span className={`legend-dot verdict-${index}`} />{label}</li>)}</ul></aside>}
     {related.length > 0 && <section className="related-reports"><h2>相關查核報告</h2><div className="related-grid">{related.map(story => <StoryCard key={story.slug} story={story} compact />)}</div></section>}
     <Link className="back-link" to="/reports">← 返回完整報告列表</Link>

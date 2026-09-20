@@ -41,15 +41,24 @@ export const listingsSchema = z.object({
   }),
 });
 
-const section = z.object({ id: slug, title: text, paragraphs: z.array(text).min(1), image: image.optional(), caption: text.optional() });
+const inline = z.object({ text, href: z.url().refine(value => value.startsWith('https://')).optional(), bold: z.boolean().optional(), italic: z.boolean().optional() });
+export const contentBlockSchema = z.discriminatedUnion('type', [
+  z.object({ type: z.literal('paragraph'), content: z.array(inline).min(1) }),
+  z.object({ type: z.literal('heading'), level: z.union([z.literal(3), z.literal(4)]), content: z.array(inline).min(1) }),
+  z.object({ type: z.literal('list'), ordered: z.boolean(), items: z.array(z.array(inline).min(1)).min(1) }),
+  z.object({ type: z.literal('image'), image, caption: text.optional() }),
+]);
+export type ContentBlock = z.infer<typeof contentBlockSchema>;
+const section = z.object({ id: slug, title: text, paragraphs: z.array(text).min(1), image: image.optional(), caption: text.optional(), blocks: z.array(contentBlockSchema).min(1).optional() });
 export const reportSchema = z.object({
   version: z.literal(1), isMock: z.boolean(), slug,
   seo: pageSeo.extend({ authorType: z.enum(['Person', 'Organization']) }),
   kind: z.enum(['report', 'analysis', 'guide']), category, title: text, finding: text,
   verdict: status.optional(), tags: z.array(text),
   published: date, updated: date, reportId: text, reporter: text, editor: text,
-  image, imageCaption: text, summaryPoints: z.array(text).min(1), summaryClose: text,
+  image, imageCaption: text, summaryPoints: z.array(text).min(1), summaryClose: z.string(), summaryBlocks: z.array(contentBlockSchema).min(1).optional(),
   background: section, checkSections: z.array(section).min(1),
+  supplementarySections: z.array(section).optional(),
   sources: z.array(z.object({ label: text, note: text, href: z.url().refine(value => value.startsWith('https://')).optional() })), relatedSlugs: z.array(slug),
 });
 

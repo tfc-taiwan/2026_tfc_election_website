@@ -34,6 +34,8 @@ npm run test:production  # 先 build，再驗證正式伺服器、即時 JSON、
 
 ## 資料維護
 
+可透過 Google Sheets 管理首頁與列表，透過 Google Docs 編輯每篇文章，下載 Excel 與 Markdown 後，使用本機 converter 產生 JSON，不需要 Apps Script 或 GCP OAuth。已有 13 篇連結文件及完整 mockdata；詳見 [試算表與 Docs 操作說明](spreadsheet/README.md)。
+
 所有首頁列表集中在 **`data/listings.json`**；文章內容存於 **`data/reports/<slug>.json`**，一篇一檔。伺服器直接從 JSON 產生正文與 metadata，瀏覽器接手互動後也透過 `fetch('/data/...')` 重新確認資料；編輯內容不寫在 React 元件裡。
 
 ```text
@@ -79,7 +81,7 @@ server.mjs                  # 正式伺服器，讀取 JSON、提供靜態資源
 
 1. 複製 `data/reports/ai-voice.json` 為新檔案，例如 `new-report.json`。
 2. 將 `slug` 改為 `new-report`，修改標題、日期、作者、結論、摘要、背景與查核段落。Slug 僅使用小寫英文字母、數字及連字號。
-3. 在 `listings.json` 的 `stories` 新增對應摘要，`slug`、標題、分類、日期與文章檔一致。
+3. 在 `listings.json` 的 `stories` 新增對應摘要，`slug`、分類與日期須與文章檔一致。列表標題可使用精簡版；記者上稿範本會核對「首頁標題直述句」與列表一致，並將「內文標題」作為文章標題。
 4. 將 slug 加到適合的區塊（如 `sections.reports.slugs`），即可在首頁顯示。
 5. `relatedSlugs` 控制相關報告；`sources` 可填入 `label`、`note` 及選填的 HTTPS `href`。
 6. 圖片使用 `{ "src": "/images/example.jpg", "alt": "圖片描述" }` 或 HTTPS 圖片網址。

@@ -13,7 +13,10 @@
     "generate:og": "node scripts/generate-og.mjs",
     "generate:pages": "npm run generate:og && node scripts/prerender.mjs",
     "test:production": "node --test tests/production.test.mjs",
-    "test:e2e:production": "PLAYWRIGHT_TARGET=production playwright test"
+    "test:e2e:production": "PLAYWRIGHT_TARGET=production playwright test",
+    "data:import": "node --experimental-strip-types scripts/convert-spreadsheet.ts",
+    "data:reports": "node --experimental-strip-types scripts/convert-reports.ts",
+    "sheets:rows": "node --experimental-strip-types scripts/export-sheet-rows.ts"
   },
   "dependencies": {
     "@fontsource/noto-serif-tc": "^5.2.7",
@@ -29,6 +32,10 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "mdast-util-from-markdown": "^2.0.3",
+    "mdast-util-gfm": "^3.1.0",
+    "micromark-extension-gfm": "^3.0.0",
+    "read-excel-file": "^9.3.10",
     "sharp": "^0.35.4",
     "typescript": "^5.9.0",
     "vite": "^7.1.0"
