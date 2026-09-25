@@ -85,10 +85,27 @@ function Illustration({ image, className = '', eager = false }: { image: Story['
   </div>;
 }
 
+const VERDICTS = ['錯誤', '部分錯誤', '事實釐清', '正確'] as const;
+/** Presentation only: maps a verdict label to its colour class (verdict-0 … verdict-3). */
+function verdictClass(verdict?: string): string {
+  const index = VERDICTS.indexOf(verdict as (typeof VERDICTS)[number]);
+  return index < 0 ? '' : `verdict-${index}`;
+}
+
 function StoryCard({ story, compact = false }: { story: Story; compact?: boolean }) {
+  const verdict = story.kind === 'report' ? story.verdict : undefined;
   return <Link className={`story-card ${compact ? 'compact' : ''}`} to={`/reports/${story.slug}`}>
     <Illustration image={story.image} />
-    <div className="story-card-body"><div className="story-meta"><time dateTime={story.date}>{story.date}</time>{story.kind !== 'report' && <span className={`tag ${story.tone}`}>{story.tag}</span>}</div><h3>{story.title}</h3>{!compact && <p>{story.description}</p>}<span className="card-read">閱讀{story.kind === 'report' ? '報告' : '全文'} <span aria-hidden="true">↗</span></span></div>
+    <div className="story-card-body">
+      <div className="story-meta">
+        {verdict && <><span className={`verdict-dot ${verdictClass(verdict)}`} aria-hidden="true" /><span className="verdict-label">{verdict}</span></>}
+        {story.kind !== 'report' && <span className={`tag ${story.tone}`}>{story.tag}</span>}
+        <time dateTime={story.date}>{story.date}</time>
+      </div>
+      <h3>{story.title}</h3>
+      {!compact && <p>{story.description}</p>}
+      <span className="card-read">閱讀{story.kind === 'report' ? '報告' : '全文'} <span aria-hidden="true">↗</span></span>
+    </div>
   </Link>;
 }
 
@@ -122,12 +139,13 @@ function loadYouTubeApi(): Promise<YouTubeApi> {
   return youtubeApiPromise;
 }
 
-function YouTubeShorts({ items }: { items: { title: string; url: string }[] }) {
+function YouTubeShorts({ items, heading }: { items: { title: string; url: string }[]; heading: ReactNode }) {
   const frames = useRef(new Map<string, HTMLIFrameElement>());
   const players = useRef(new Map<string, YouTubePlayer>());
   const activePlayer = useRef<YouTubePlayer | null>(null);
   const [revealed, setRevealed] = useState<Set<string>>(() => new Set());
   const itemKey = items.map(item => item.url).join('|');
+  const row = useScrollRow(itemKey);
   useEffect(() => {
     let disposed = false;
     loadYouTubeApi().then(api => {
@@ -161,7 +179,9 @@ function YouTubeShorts({ items }: { items: { title: string; url: string }[] }) {
     activePlayer.current = player;
     player.playVideo();
   }
-  return <div className="shorts-grid">{items.map(item => {
+  return <>
+    <div className="section-heading no-bar">{heading}<ScrollControls row={row} label="60 秒短影音" /></div>
+    <div ref={row.ref} className="shorts-grid scroll-track" tabIndex={0} aria-label="60 秒短影音，可左右捲動" onKeyDown={row.onKeyDown}>{items.map(item => {
     const id = youtubeVideoId(item.url);
     if (!id) return null;
     const showPreview = !revealed.has(item.url);
@@ -170,18 +190,20 @@ function YouTubeShorts({ items }: { items: { title: string; url: string }[] }) {
         <iframe ref={frame => { if (frame) frames.current.set(item.url, frame); else frames.current.delete(item.url); }} src={`https://www.youtube-nocookie.com/embed/${id}?enablejsapi=1&rel=0&playsinline=1`} title={item.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
         {showPreview && <button className="short-preview" type="button" aria-label={`播放：${item.title}`} onClick={() => play(item.url)}>
           <img src={`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`} alt="" onError={event => { const fallback = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`; if (event.currentTarget.src !== fallback) event.currentTarget.src = fallback; }} />
-          <span className="short-preview-play" aria-hidden="true">▶</span>
+          <span className="short-preview-play" aria-hidden="true"><Icon name="play" size={24} /></span>
+          <span className="short-preview-title" aria-hidden="true">{item.title}</span>
         </button>}
       </div>
-      <a className="short-card-copy" href={item.url} target="_blank" rel="noopener noreferrer"><strong>{item.title}</strong><span>在 YouTube 開啟 ↗</span></a>
+      <a className="short-card-copy" href={item.url} target="_blank" rel="noopener noreferrer"><strong className={showPreview ? 'sr-only' : undefined}>{item.title}</strong><span>在 YouTube 開啟 ↗<span className="sr-only">（開啟新視窗）</span></span></a>
     </article>;
-  })}</div>;
+  })}</div>
+  </>;
 }
 
-function Carousel({ stories, label }: { stories: Story[]; label: string }) {
+type ScrollRow = { ref: React.RefObject<HTMLDivElement | null>; edges: { start: boolean; end: boolean }; scroll: (direction: number) => void; onKeyDown: (event: React.KeyboardEvent) => void };
+function useScrollRow(contentKey: string): ScrollRow {
   const ref = useRef<HTMLDivElement>(null);
   const [edges, setEdges] = useState({ start: true, end: true });
-  const contentKey = stories.map(story => story.slug).join(',');
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -192,13 +214,27 @@ function Carousel({ stories, label }: { stories: Story[]; label: string }) {
     return () => { observer.disconnect(); el.removeEventListener('scroll', measure); };
   }, [contentKey]);
   function scroll(direction: number) { const el = ref.current; if (el) el.scrollBy({ left: direction * el.clientWidth * .85, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' }); }
-  return <div className="carousel" role="region" aria-label={label}>
-    <div ref={ref} className="carousel-track" tabIndex={0} aria-label={`${label}，可左右捲動`} onKeyDown={event => { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); scroll(event.key === 'ArrowRight' ? 1 : -1); } }}>{stories.map(story => <StoryCard key={story.slug} story={story} />)}</div>
-    <div className="carousel-controls"><span>{String(stories.length).padStart(2, '0')} 篇精選</span><div><button className="icon-button" disabled={edges.start} aria-label={`${label}：上一組`} onClick={() => scroll(-1)}><Icon name="left" size={17} /></button><button className="icon-button" disabled={edges.end} aria-label={`${label}：下一組`} onClick={() => scroll(1)}><Icon name="right" size={17} /></button></div></div>
+  function onKeyDown(event: React.KeyboardEvent) { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); scroll(event.key === 'ArrowRight' ? 1 : -1); } }
+  return { ref, edges, scroll, onKeyDown };
+}
+
+function ScrollControls({ row, label, count }: { row: ScrollRow; label: string; count?: number }) {
+  return <div className="scroll-controls">
+    {count !== undefined && <span>{String(count).padStart(2, '0')} 篇精選</span>}
+    <div><button className="icon-button round-button" disabled={row.edges.start} aria-label={`${label}：上一組`} onClick={() => row.scroll(-1)}><Icon name="left" size={18} /></button><button className="icon-button round-button" disabled={row.edges.end} aria-label={`${label}：下一組`} onClick={() => row.scroll(1)}><Icon name="right" size={18} /></button></div>
   </div>;
 }
 
-function InfographicGallery({ data, stories }: { data: Listings; stories: Story[] }) {
+function Carousel({ stories, label, heading, footer }: { stories: Story[]; label: string; heading: ReactNode; footer?: ReactNode }) {
+  const row = useScrollRow(stories.map(story => story.slug).join(','));
+  return <div className="carousel" role="region" aria-label={label}>
+    <div className="section-heading">{heading}<ScrollControls row={row} label={label} count={stories.length} /></div>
+    <div ref={row.ref} className="carousel-track" tabIndex={0} aria-label={`${label}，可左右捲動`} onKeyDown={row.onKeyDown}>{stories.map(story => <StoryCard key={story.slug} story={story} />)}</div>
+    {footer && <div className="carousel-footer">{footer}</div>}
+  </div>;
+}
+
+function InfographicGallery({ data, stories, heading }: { data: Listings; stories: Story[]; heading: ReactNode }) {
   const section = data.sections.infographics!;
   const [active, setActive] = useState<string | null>(null);
   const [index, setIndex] = useState(0);
@@ -207,6 +243,7 @@ function InfographicGallery({ data, stories }: { data: Listings; stories: Story[
   const [shareStatus, setShareStatus] = useState('');
   const selected = section.items?.find(item => item.slug === active);
   const cards = selected?.cards ?? [];
+  const row = useScrollRow(stories.map(story => story.slug).join(','));
   useEffect(() => {
     const element = dialog.current;
     if (active && !element?.open) element?.showModal();
@@ -223,13 +260,14 @@ function InfographicGallery({ data, stories }: { data: Listings; stories: Story[
     } catch (error) { if (!(error instanceof DOMException && error.name === 'AbortError')) setShareStatus('無法自動分享，請開啟圖卡專頁複製網址'); }
   }
   return <>
-    <div className="infographic-grid">{stories.map(story => {
+    <div className="section-heading no-bar">{heading}<ScrollControls row={row} label="圖卡懶人包" /></div>
+    <div ref={row.ref} className="infographic-grid scroll-track" tabIndex={0} aria-label="圖卡懶人包，可左右捲動" onKeyDown={row.onKeyDown}>{stories.map(story => {
       const item = section.items?.find(value => value.slug === story.slug);
       return <div className="infographic-card" key={story.slug}>
         <button type="button" className="infographic-open" aria-label={`查看圖卡：${story.title}`} onClick={event => { if (!item) return; trigger.current = event.currentTarget; setIndex(0); setActive(story.slug); }}>
           <Illustration image={item?.cards[0]?.image ?? story.image} />
-          <span className="infographic-count"><Icon name="document" size={13} /> {item?.cards.length ?? 1}</span>
-          <span className="infographic-hover">點擊查看大圖</span>
+          <span className="infographic-count"><Icon name="copy" size={13} /> {item?.cards.length ?? 1}</span>
+          <span className="infographic-hover" aria-hidden="true"><span>點擊查看大圖</span></span>
         </button>
         <span className="infographic-copy"><small>{story.tag}</small><strong>{story.title}</strong>{!item && <Link to={`/reports/${story.slug}`}>閱讀完整內容 ↗</Link>}</span>
       </div>;
@@ -285,14 +323,30 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
       <div className="hero-intro"><div className="hero-kicker"><span>{hero.kicker}</span><small>2026 ELECTIONS</small></div><h1 id="hero-title">{hero.title.map(line => <span key={line}>{line}</span>)}</h1><p>{hero.description}</p><div className="countdown"><div><span>VOTING DAY</span><time dateTime={hero.electionDate}>{hero.electionDate.replaceAll('-', '.')}</time></div><p>距離投票日還有 <strong>{daysUntil(hero.electionDate, today)}</strong> 天</p>{data.isMock && <small>示範日期</small>}</div></div>
       <div className="election-facts"><h2>本次選舉基本事實</h2><ol>{hero.facts.map((fact, index) => <li key={fact.title}><span className="fact-number">{index + 1}</span><div><h3>{fact.title}</h3><p>{fact.description}</p></div></li>)}</ol></div>
     </section>
-    {sections.reports.categories.map((category, index) => <section className={`reports-section section-padding report-group report-group-${index}`} id={index === 0 ? 'latest' : 'referendum'} aria-labelledby={`report-group-${index}-title`} key={category}><div className="section-heading"><h2 id={`report-group-${index}-title`}>{category}查核報告</h2><Link className="section-more" to={`/reports?category=${encodeURIComponent(category)}`}>查看全部<span aria-hidden="true"> ↗</span></Link></div><Carousel stories={homeReports.filter(story => story.category === category)} label={`${category}查核報告`} /></section>)}
-    <section className="analysis-section section-padding" id="analysis" aria-labelledby="analysis-title"><div className="center-heading"><h2 id="analysis-title">{sections.analyses.title}</h2><p>{sections.analyses.description}</p></div><Carousel stories={pick(sections.analyses.slugs)} label="資訊操弄解析" /></section>
-    {!!sections.shorts?.items.length && <section className="shorts-section section-padding" id="shorts" aria-labelledby="shorts-title"><div className="section-heading"><div><h2 id="shorts-title">{sections.shorts.title}</h2><p>{sections.shorts.description}</p></div><span className="shorts-label">VIDEO FACT-CHECKING / SHORT FORM</span></div><YouTubeShorts items={sections.shorts.items} /></section>}
-    {!!sections.infographics?.slugs.length && <section className="infographics-section section-padding" id="infographics" aria-labelledby="infographics-title"><div className="section-heading"><div><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p></div></div><InfographicGallery data={data} stories={pick(sections.infographics.slugs)} /></section>}
-    <section className="rumors-section section-padding" id="rumors"><div><h2>{sections.rumors.title}</h2><h3 className="rumor-subtitle">常見操弄敘事</h3><div className="rumor-grid">{sections.rumors.items.map(item => <button key={item.id} className="rumor-button" onClick={() => openScript(item.scriptId)} aria-label={`${item.label}：閱讀常見劇本`}><span className="rumor-badge"><Icon name={item.id === 'money' ? 'coin' : item.id === 'rumor' ? 'eye' : item.id === 'policy' ? 'document' : item.id === 'foreign' ? 'globe' : 'check'} size={24} /></span><span>{item.label}</span></button>)}</div></div><div className="scripts"><h2>{sections.scripts.title}</h2>{sections.scripts.items.map(item => <div className={`accordion ${script === item.id ? 'is-open' : ''}`} key={item.id}><h3><button id={`script-toggle-${item.id}`} aria-expanded={script === item.id} aria-controls={`script-${item.id}`} onClick={() => setScript(script === item.id ? null : item.id)}>{item.question}<Icon name="down" size={16} /></button></h3><div id={`script-${item.id}`} role="region" aria-labelledby={`script-toggle-${item.id}`} hidden={script !== item.id}><p>{item.answer}</p></div></div>)}</div></section>
-    <section className="process-section section-padding surface" id="process"><div className="center-heading"><h2>{sections.process.title}</h2></div><div className="process-grid">{sections.process.items.map(item => <div className="process-card" key={item.id}><span className={`process-icon ${item.tone}`}><Icon name={item.icon} size={23} /></span><h3>{item.title}</h3><p>{item.description}</p><button className="text-button" onClick={() => onInfo(item)}>了解更多 <span aria-hidden="true">→</span><span className="sr-only">：{item.title}</span></button></div>)}</div></section>
-    <section className="learning-section section-padding" id="learning"><div className="center-heading"><h2>{sections.learning.title}</h2></div><div className="learning-grid">{sections.learning.items.map(item => { const story = stories.find(s => s.slug === item.slug); return story && <div key={item.slug} className="learning-item"><Link to={`/reports/${item.slug}`} className="learning-art" tabIndex={-1} aria-hidden="true"><Illustration image={story.image} /></Link><div><span className="learning-topic">{item.badge}</span><h3>{story.title}</h3><p>{story.description}</p><Link to={`/reports/${item.slug}`}>閱讀教學指南 <span aria-hidden="true">→</span><span className="sr-only">：{story.title}</span></Link></div></div>; })}</div></section>
-    <section className="activities-section section-padding" id="activities"><h2>{sections.activities.title}</h2><div>{sections.activities.items.map(item => <div className="activity" key={item.id}><span className={`activity-date ink-${item.tone}`}>{item.dateLabel}</span><div className="activity-content"><span className="tag neutral">{item.tag}</span><h3>{item.title}</h3><p>{item.description}</p></div><button className="button primary" onClick={() => onInfo(item)}>{item.cta}<span className="sr-only">：{item.title}</span><span aria-hidden="true">↗</span></button></div>)}</div></section>
+    {sections.reports.categories.map((category, index) => <section className={`reports-section section-padding report-group report-group-${index}`} id={index === 0 ? 'latest' : 'referendum'} aria-labelledby={`report-group-${index}-title`} key={category}>
+      <Carousel stories={homeReports.filter(story => story.category === category)} label={`${category}查核報告`}
+        heading={<h2 id={`report-group-${index}-title`}>{category}查核報告</h2>}
+        footer={<Link className="pill-button section-more" to={`/reports?category=${encodeURIComponent(category)}`}>查看全部<span className="sr-only">{category}查核報告</span><Icon name="arrow" size={16} /></Link>} />
+    </section>)}
+    <section className="analysis-section section-padding" id="analysis" aria-labelledby="analysis-title">
+      <Carousel stories={pick(sections.analyses.slugs)} label="資訊操弄解析" heading={<div><h2 id="analysis-title">{sections.analyses.title}</h2><p>{sections.analyses.description}</p></div>} />
+    </section>
+    {!!sections.shorts?.items.length && <section className="shorts-section section-padding" id="shorts" aria-labelledby="shorts-title">
+      <YouTubeShorts items={sections.shorts.items} heading={<div><h2 id="shorts-title">{sections.shorts.title}</h2><p>{sections.shorts.description}</p><span className="shorts-label">VIDEO FACT-CHECKING / SHORT FORM</span></div>} />
+    </section>}
+    {!!sections.infographics?.slugs.length && <section className="infographics-section section-padding grid-texture" id="infographics" aria-labelledby="infographics-title">
+      <InfographicGallery data={data} stories={pick(sections.infographics.slugs)} heading={<div><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p></div>} />
+    </section>}
+    <section className="rumors-section section-padding" id="rumors" aria-labelledby="rumors-title">
+      <h2 id="rumors-title">{sections.rumors.title}</h2>
+      <div className="rumors-layout">
+        <div className="rumors-narratives"><h3 className="rumor-subtitle">常見操弄敘事</h3><div className="rumor-grid">{sections.rumors.items.map(item => <button key={item.id} className="rumor-button" onClick={() => openScript(item.scriptId)} aria-label={`${item.label}：閱讀常見劇本`}><span className="rumor-badge"><Icon name={item.id === 'vote' ? 'document' : item.id === 'money' ? 'coin' : item.id === 'rumor' ? 'eye' : item.id === 'policy' ? 'edit' : item.id === 'unfair' ? 'scale' : item.id === 'foreign' ? 'globe' : 'check'} size={30} /></span><span>{item.label}</span></button>)}</div></div>
+        <div className="scripts"><h3 className="rumor-subtitle">{sections.scripts.title}</h3>{sections.scripts.items.map(item => <div className={`accordion ${script === item.id ? 'is-open' : ''}`} key={item.id}><h4><button id={`script-toggle-${item.id}`} aria-expanded={script === item.id} aria-controls={`script-${item.id}`} onClick={() => setScript(script === item.id ? null : item.id)}>{item.question}<Icon name="caret" size={18} /></button></h4><div id={`script-${item.id}`} role="region" aria-labelledby={`script-toggle-${item.id}`} hidden={script !== item.id}><p>{item.answer}</p></div></div>)}</div>
+      </div>
+    </section>
+    <section className="process-section section-padding" id="process" aria-labelledby="process-title"><div className="center-heading"><h2 id="process-title">{sections.process.title}</h2></div><div className="process-grid">{sections.process.items.map(item => <div className="process-card" key={item.id}><span className={`process-icon ${item.tone}`}><Icon name={item.icon} size={30} /></span><h3>{item.title}</h3><p>{item.description}</p><button className="text-button" onClick={() => onInfo(item)}>了解更多 <span aria-hidden="true">→</span><span className="sr-only">：{item.title}</span></button></div>)}</div></section>
+    <section className="learning-section section-padding" id="learning" aria-labelledby="learning-title"><div className="center-heading"><h2 id="learning-title">{sections.learning.title}</h2></div><div className="learning-grid">{sections.learning.items.map(item => { const story = stories.find(s => s.slug === item.slug); return story && <div key={item.slug} className="learning-item"><Link to={`/reports/${item.slug}`} className="learning-art" tabIndex={-1} aria-hidden="true"><Illustration image={story.image} /></Link><div><span className="learning-topic">{item.badge}</span><h3>{story.title}</h3><p>{story.description}</p><Link to={`/reports/${item.slug}`}>閱讀教學指南<Icon name="arrow" size={16} /><span className="sr-only">：{story.title}</span></Link></div></div>; })}</div></section>
+    <section className="activities-section section-padding" id="activities" aria-labelledby="activities-title"><div className="activities-inner"><h2 id="activities-title">{sections.activities.title}</h2><div className="activity-list">{sections.activities.items.map(item => <div className="activity" key={item.id}><span className={`activity-date ink-${item.tone}`}>{item.dateLabel}</span><div className="activity-content"><span className="tag neutral">{item.tag}</span><h3>{item.title}</h3><p>{item.description}</p></div><button className="button primary" onClick={() => onInfo(item)}>{item.cta}<span className="sr-only">：{item.title}</span><span aria-hidden="true">↗</span></button></div>)}</div></div></section>
   </>;
 }
 
