@@ -93,7 +93,7 @@ function verdictClass(verdict?: string): string {
 }
 
 function StoryCard({ story, compact = false, hidden = false }: { story: Story; compact?: boolean; hidden?: boolean }) {
-  const verdict = story.kind === 'report' ? story.verdict : undefined;
+  const verdict = story.kind === 'report' && !compact ? story.verdict : undefined;
   return <Link className={`story-card ${compact ? 'compact' : ''}`} to={`/reports/${story.slug}`} hidden={hidden || undefined}>
     <Illustration image={story.image} />
     <div className="story-card-body">
@@ -104,7 +104,7 @@ function StoryCard({ story, compact = false, hidden = false }: { story: Story; c
       </div>
       <h3>{story.title}</h3>
       {!compact && <p>{story.description}</p>}
-      <span className="card-read">閱讀{story.kind === 'report' ? '報告' : '全文'} <span aria-hidden="true">↗</span></span>
+      {!compact && <span className="card-read">閱讀{story.kind === 'report' ? '報告' : '全文'} <span aria-hidden="true">↗</span></span>}
     </div>
   </Link>;
 }
@@ -383,7 +383,7 @@ function ShareTools({ report, data }: { report: Report; data: Listings }) {
   const [manualCopy, setManualCopy] = useState(false);
   const url = siteRootFor(data, context) + `/reports/${report.slug}`;
   async function copy() { try { await navigator.clipboard.writeText(url); setMessage('已複製文章連結'); } catch { setManualCopy(true); setMessage('請選取下方連結複製'); } }
-  return <div className="share-group"><span>分享：</span><a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`} target="_blank" rel="noopener noreferrer" aria-label="分享到 Facebook（開啟新視窗）">Facebook</a><a href={`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener noreferrer" aria-label="分享到 LINE（開啟新視窗）">LINE</a><button className="icon-button" aria-label="複製文章連結" onClick={copy}><Icon name="copy" size={17} /></button><button className="icon-button" aria-label="列印報告" onClick={() => window.print()}><Icon name="print" size={18} /></button><span className="share-status" role="status">{message}</span>{manualCopy && <input aria-label="文章網址" readOnly value={url} onFocus={event => event.target.select()} />}</div>;
+  return <div className="share-group"><span>分享：</span><a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`} target="_blank" rel="noopener noreferrer" aria-label="分享到 Facebook（開啟新視窗）">Facebook</a><a href={`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener noreferrer" aria-label="分享到 LINE（開啟新視窗）">LINE</a><button className="icon-button" aria-label="複製文章連結" onClick={copy}><Icon name="copy" size={17} /></button><button className="share-text-button" type="button" aria-label="列印報告" onClick={() => window.print()}>列印</button><span className="share-status" role="status">{message}</span>{manualCopy && <input aria-label="文章網址" readOnly value={url} onFocus={event => event.target.select()} />}</div>;
 }
 
 function InlineContent({ content }: { content: Extract<ContentBlock, { type: 'paragraph' }>['content'] }) {
@@ -433,7 +433,7 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
     {!!report.supplementarySections?.length && <section className="article-section" id="supplementary"><h2>補充資料</h2>{report.supplementarySections.map(section => <section className="check-section" key={section.id} id={section.id}><h3>{section.title}</h3><SectionContent section={section} /></section>)}</section>}
     {report.sources.length > 0 && <section className="article-section article-sources" id="sources"><h2>資料來源與說明</h2><ul>{report.sources.map(source => <li key={source.label}><strong>{source.href ? <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label} ↗</a> : source.label}</strong><p>{source.note}</p></li>)}</ul></section>}
     {report.kind === 'report' && <aside className="verdict-legend" aria-label="查核結果說明"><p>查核結果說明：</p><ul>{['錯誤', '部分錯誤', '事實釐清', '正確'].map((label, index) => <li key={label}><span className={`legend-dot verdict-${index}`} />{label}</li>)}</ul></aside>}
-    {related.length > 0 && <section className="related-reports"><h2>相關查核報告</h2><div className="related-grid">{related.map(story => <StoryCard key={story.slug} story={story} compact />)}</div></section>}
+    {related.length > 0 && <section className="related-reports"><h2>{report.kind === 'report' ? '相關查核報告' : '延伸閱讀'}</h2><div className="related-grid">{related.map(story => <StoryCard key={story.slug} story={story} compact />)}</div></section>}
     <Link className="back-link" to="/reports">← 返回完整報告列表</Link>
   </article>;
 }

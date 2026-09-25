@@ -213,10 +213,9 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 .compact .story-card-body { padding: 20px; }
 .compact { background: var(--brand-paper); }
 .compact .illustration { aspect-ratio: auto; height: 140px; }
-.compact h3 { margin: 0; font-size: 15px; line-height: 1.45; }
+.compact h3 { margin: 0; font-size: 14.5px; line-height: 1.4; }
 .compact .story-meta { margin-bottom: 8px; }
-.compact .story-meta time { margin-left: 0; color: var(--ink-60); font-weight: 700; }
-.compact .card-read { font-size: 12px; }
+.compact .story-meta time { margin-left: 0; color: var(--ink-60); font-size: 12px; font-weight: 700; }
 
 /* Illustration frame */
 .illustration { position: relative; overflow: hidden; background: #e2e8f0; }
@@ -611,7 +610,8 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 /* ------------------------------------------------------------------ */
 /* 9. Report & article pages (design-reference/report.html, article.html) */
 /* ------------------------------------------------------------------ */
-.report-page { max-width: calc(896px + 2 * var(--page-gutter)); margin: 0 auto; padding: clamp(48px, 6vw, 64px) var(--page-gutter) 80px; overflow-wrap: break-word; }
+/* design: max-w-4xl (896px) including px-6 → 848px text column */
+.report-page { max-width: 896px; margin: 0 auto; padding: 64px 24px 80px; overflow-wrap: break-word; }
 .article-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
 .report-page > h1 { margin-bottom: 16px; font-size: clamp(26px, 3.2vw, 36px); line-height: 1.3; }
 .article-finding { margin-bottom: 32px; color: var(--brand-blue); font-family: var(--font-serif); font-size: clamp(17px, 1.7vw, 19px); font-weight: 700; line-height: 1.7; }
@@ -626,14 +626,14 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 .article-toolbar nav a { padding-block: 6px; color: var(--brand-deepblue); }
 .article-toolbar nav a:hover { color: var(--brand-gold-ink); }
 .share-group { position: relative; gap: 4px; }
-.share-group > a { padding: 6px 12px; border-radius: var(--radius-sm); color: var(--brand-deepblue); transition: background-color .2s; }
-.share-group > a:hover { background: var(--blue-05); color: var(--brand-deepblue); }
+.share-group > a, .share-text-button { padding: 6px 12px; border: 0; background: transparent; font: inherit; font-weight: 700; cursor: pointer; border-radius: var(--radius-sm); color: var(--brand-deepblue); transition: background-color .2s; }
+.share-group > a:hover, .share-text-button:hover { background: var(--blue-05); color: var(--brand-deepblue); }
 .share-group .icon-button { width: 36px; height: 36px; color: var(--brand-deepblue); }
 .share-status { color: var(--brand-green); font-size: 12px; }
 .share-status:empty { display: none; }
 .share-group input { width: 100%; min-width: 0; padding: 6px 10px; border: 1px solid var(--ink-20); border-radius: var(--radius-sm); }
 .article-cover { margin-bottom: 32px; }
-.article-cover .illustration { aspect-ratio: 9 / 5; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+.article-cover .illustration { aspect-ratio: 2 / 1; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
 .article-summary { margin: 32px 0 48px; padding: clamp(24px, 3vw, 32px); background: var(--brand-white); border: 1px solid var(--ink-10); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
 .article-summary h2 { margin-bottom: 16px; color: var(--brand-blue); font-family: var(--font-sans); font-size: 14px; font-weight: 700; letter-spacing: .08em; }
 .article-summary ol { margin: 0; padding-left: 24px; }
@@ -671,6 +671,7 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 
 @media (max-width: 800px) { .related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 700px) {
+  .report-page { padding: 48px 16px 64px; }
   .article-meta { gap: 8px 16px; font-size: 13px; }
   .article-toolbar nav, .share-group { width: 100%; }
   .article-section p, .article-summary li, .article-content li { font-size: 17px; }
