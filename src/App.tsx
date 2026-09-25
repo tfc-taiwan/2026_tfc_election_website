@@ -92,9 +92,9 @@ function verdictClass(verdict?: string): string {
   return index < 0 ? '' : `verdict-${index}`;
 }
 
-function StoryCard({ story, compact = false }: { story: Story; compact?: boolean }) {
+function StoryCard({ story, compact = false, hidden = false }: { story: Story; compact?: boolean; hidden?: boolean }) {
   const verdict = story.kind === 'report' ? story.verdict : undefined;
-  return <Link className={`story-card ${compact ? 'compact' : ''}`} to={`/reports/${story.slug}`}>
+  return <Link className={`story-card ${compact ? 'compact' : ''}`} to={`/reports/${story.slug}`} hidden={hidden || undefined}>
     <Illustration image={story.image} />
     <div className="story-card-body">
       <div className="story-meta">
@@ -350,15 +350,31 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
   </>;
 }
 
+/** Cards beyond this count stay in the HTML (for no-JS readers and crawlers) but are hidden until「載入更多」. */
+const LISTING_PAGE_SIZE = 12;
+
 function ListingsPage({ data }: { data: Listings }) {
   const [params, setParams] = useSearchParams();
   const query = params.get('q') ?? '';
   const category = ['地方選舉', '公投議題'].includes(params.get('category') ?? '') ? params.get('category')! : '全部';
   const [draft, setDraft] = useState(query);
+  const [visible, setVisible] = useState(LISTING_PAGE_SIZE);
   useEffect(() => setDraft(query), [query]);
+  useEffect(() => setVisible(LISTING_PAGE_SIZE), [query, category]);
   const stories = searchStories(query ? data.stories : data.stories.filter(story => story.kind === 'report'), query, category);
   function update(key: string, value: string) { const next = new URLSearchParams(params); if (value && value !== '全部') next.set(key, value); else next.delete(key); setParams(next); }
-  return <section className="listing-page section-padding"><PageSeo data={data} /><nav className="breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><span>{query ? '搜尋結果' : '查核報告'}</span></nav><span className="eyebrow">THE FACTCHECK INDEX</span><h1>{query ? '尋找資訊的真實脈絡' : '選舉查核報告'}</h1><p className="listing-intro">彙整台灣事實查核中心針對 2026 地方選舉與公投議題發布的查核報告，隨最新查證進度持續更新。</p><form className="search-form listing-search" role="search" action="https://tfc-taiwan.org.tw/" method="get"><input name="s" type="search" value={draft} onChange={event => setDraft(event.target.value)} aria-label="搜尋台灣事實查核中心" placeholder="搜尋原網站內容" /><button className="icon-button" type="submit" aria-label="送出搜尋"><Icon name="search" /></button></form><div className="listing-filters"><div className="segmented" role="group" aria-label="篩選報告分類">{['全部', ...data.sections.reports.categories].map(value => <button key={value} aria-pressed={category === value} onClick={() => update('category', value)}>{value}</button>)}</div><p role="status">{query && <>「{query}」・</>}{stories.length} 篇內容</p></div>{stories.length ? <div className="listing-grid">{stories.map(story => <StoryCard story={story} key={story.slug} />)}</div> : <div className="empty-state"><Icon name="search" size={34} /><h2>沒有找到符合的內容</h2><p>試試較短的關鍵字，或切換其他分類。</p><button className="button secondary" onClick={() => setParams({})}>清除搜尋與篩選</button></div>}</section>;
+  return <section className="listing-page section-padding grid-texture"><PageSeo data={data} />
+    <nav className="breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><span>{query ? '搜尋結果' : '查核報告'}</span></nav>
+    <span className="eyebrow">THE FACTCHECK INDEX</span>
+    <h1>{query ? '尋找資訊的真實脈絡' : '選舉查核報告'}</h1>
+    <p className="listing-intro">彙整台灣事實查核中心針對 2026 地方選舉與公投議題發布的查核報告，隨最新查證進度持續更新。</p>
+    <form className="search-form listing-search" role="search" action="https://tfc-taiwan.org.tw/" method="get"><input name="s" type="search" value={draft} onChange={event => setDraft(event.target.value)} aria-label="搜尋台灣事實查核中心" placeholder="搜尋原網站內容" /><button className="icon-button" type="submit" aria-label="送出搜尋"><Icon name="search" /></button></form>
+    <div className="listing-filters"><div className="segmented" role="group" aria-label="篩選報告分類">{['全部', ...data.sections.reports.categories].map(value => <button key={value} aria-pressed={category === value} onClick={() => update('category', value)}>{value}</button>)}</div><p role="status">{query && <>「{query}」・</>}{stories.length} 篇內容</p></div>
+    {stories.length ? <>
+      <div className="listing-grid">{stories.map((story, index) => <StoryCard story={story} key={story.slug} hidden={index >= visible} />)}</div>
+      {stories.length > visible && <div className="listing-more"><button className="pill-button" type="button" onClick={() => setVisible(count => count + LISTING_PAGE_SIZE)}>載入更多報告<span className="sr-only">（尚有 {stories.length - visible} 篇）</span></button></div>}
+    </> : <div className="empty-state"><Icon name="search" size={34} /><h2>沒有找到符合的內容</h2><p>試試較短的關鍵字，或切換其他分類。</p><button className="button secondary" onClick={() => setParams({})}>清除搜尋與篩選</button></div>}
+  </section>;
 }
 
 function ShareTools({ report, data }: { report: Report; data: Listings }) {

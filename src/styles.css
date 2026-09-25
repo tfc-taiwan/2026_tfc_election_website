@@ -571,3 +571,32 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
   .activity-date { flex-basis: auto; }
   .activity .button { width: 100%; }
 }
+
+/* ------------------------------------------------------------------ */
+/* 8. Report listing (design-reference/reports.html)                   */
+/* ------------------------------------------------------------------ */
+.listing-page { padding-top: clamp(40px, 5vw, 64px); }
+.listing-page > h1 { margin-top: 8px; font-size: clamp(30px, 4vw, 44px); }
+.listing-page > h1::after { content: ''; display: block; width: 48px; height: 4px; margin-top: 12px; background: var(--brand-gold); }
+.listing-intro { max-width: 40em; margin-top: 20px; color: var(--ink-70); font-size: 16px; line-height: 1.8; }
+.listing-search { width: 520px; margin-top: 28px; }
+.listing-filters { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin: 32px 0 40px; }
+.listing-filters > p { color: var(--ink-60); font-size: 13px; overflow-wrap: anywhere; }
+.segmented { display: flex; flex-wrap: wrap; gap: 12px; }
+.segmented button { min-height: 40px; padding: 8px 20px; border: 1px solid var(--ink-10); border-radius: var(--radius-pill); background: var(--brand-white); color: var(--ink-70); font-size: 14px; font-weight: 700; transition: background-color .2s, color .2s, border-color .2s; }
+.segmented button:hover:not([aria-pressed='true']) { border-color: var(--brand-blue); color: var(--brand-blue); }
+.segmented button[aria-pressed='true'] { border-color: var(--brand-dark); background: var(--brand-dark); color: #fff; }
+.listing-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.listing-grid > .story-card[hidden] { display: none; }
+.listing-more { display: flex; justify-content: center; margin-top: 48px; }
+.empty-state { padding: 64px 16px; border: 1px solid var(--ink-10); border-radius: var(--radius-lg); background: var(--brand-white); text-align: center; }
+.empty-state > svg { margin: 0 auto 20px; color: var(--brand-blue); }
+.empty-state h2 { font-size: 24px; }
+.empty-state p { margin: 14px 0 24px; color: var(--ink-60); }
+
+@media (max-width: 1000px) { .listing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } }
+@media (max-width: 700px) {
+  .listing-grid { grid-template-columns: 1fr; }
+  .listing-search { width: 100%; }
+  .segmented button { padding-inline: 16px; }
+}
