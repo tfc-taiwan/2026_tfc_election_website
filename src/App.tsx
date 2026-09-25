@@ -19,7 +19,7 @@ function PageSeo({ data, report = null, status = 'ready' }: { data: Listings; re
   return null;
 }
 
-type IconName = 'search' | 'menu' | 'close' | 'left' | 'right' | 'down' | 'document' | 'calendar' | 'check' | 'globe' | 'copy' | 'print' | 'home' | 'coin' | 'eye';
+type IconName = 'search' | 'menu' | 'close' | 'left' | 'right' | 'down' | 'caret' | 'document' | 'calendar' | 'check' | 'globe' | 'copy' | 'print' | 'home' | 'coin' | 'eye' | 'edit' | 'scale' | 'bulb' | 'play' | 'arrow';
 function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
   const paths: Record<IconName, ReactNode> = {
     search: <><circle cx="10.5" cy="10.5" r="6.5" fill="currentColor" opacity=".12" /><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></>,
@@ -37,6 +37,12 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
     home: <><path d="m3 10 9-7 9 7v11H3V10Z M9 21v-7h6v7" /></>,
     coin: <><circle cx="12" cy="12" r="9" /><path d="M15 8c-1-1-5-1-6 1-2 3 6 2 6 5 0 3-5 3-7 1M12 5v14" /></>,
     eye: <><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z" /><circle cx="12" cy="12" r="3" /></>,
+    caret: <path d="M6 9h12l-6 7Z" fill="currentColor" stroke="none" />,
+    edit: <><path d="M11 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6" /><path d="M17.5 2.5a2.1 2.1 0 0 1 3 3L12 14l-4 1 1-4Z" /></>,
+    scale: <><path d="M12 3v18M7 21h10M5 7h14M12 5l-7 2M12 5l7 2" /><path d="m5 7-3 7a3 3 0 0 0 6 0Zm14 0-3 7a3 3 0 0 0 6 0Z" /></>,
+    bulb: <><path d="M9 18h6M10 21h4" /><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3Z" /></>,
+    play: <path d="M8 5.5v13l11-6.5Z" fill="currentColor" stroke="none" />,
+    arrow: <path d="M5 12h14m-6-6 6 6-6 6" />,
   };
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;
 }
@@ -64,10 +70,11 @@ function Header({ data, onInfo }: { data: Listings; onInfo: (info: Info) => void
       <nav id="main-nav" aria-label="主要導覽" className={`main-nav ${menu ? 'is-open' : ''}`} onKeyDown={event => { if (event.key === 'Escape') { setMenu(false); menuButton.current?.focus(); } }}>
         {data.navigation.map(item => <NavLink key={item.href} to={item.href} onClick={() => setMenu(false)}>{item.label}</NavLink>)}
       </nav>
+      <span className="header-divider" aria-hidden="true" />
       <div className="header-actions"><button className="donate-button" onClick={support}>捐款支持</button><a className="official-link" href="https://tfc-taiwan.org.tw/" target="_blank" rel="noopener noreferrer">回官網<span className="sr-only">（開啟新視窗）</span></a><button className="icon-button header-search-toggle" aria-label={searchOpen ? '關閉搜尋' : '前往搜尋'} aria-expanded={searchOpen} aria-controls="header-search" onClick={() => { setSearchOpen(!searchOpen); if (!searchOpen) requestAnimationFrame(() => input.current?.focus()); }}><Icon name={searchOpen ? 'close' : 'search'} size={19} /></button></div>
     </div>
     {searchOpen && <form id="header-search" className="search-form header-search page-padding" role="search" action="https://tfc-taiwan.org.tw/" method="get"><input ref={input} name="s" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="搜尋台灣事實查核中心…" aria-label="搜尋台灣事實查核中心" /><button className="icon-button" type="submit" aria-label="送出搜尋"><Icon name="search" size={18} /></button></form>}
-    <nav className="mobile-dock" aria-label="手機快速導覽"><Link to="/"><Icon name="home" /><span>首頁</span></Link><Link to="/#latest"><Icon name="check" /><span>選舉查核</span></Link><Link to="/#infographics"><Icon name="document" /><span>資訊圖解</span></Link><button ref={menuButton} aria-label={menu ? '關閉選單' : '開啟選單'} aria-expanded={menu} aria-controls="main-nav" onClick={() => setMenu(!menu)}><Icon name={menu ? 'close' : 'menu'} /><span>選單</span></button></nav>
+    <nav className="mobile-dock" aria-label="手機快速導覽"><Link to="/"><Icon name="home" /><span>首頁</span></Link><Link to="/#latest"><Icon name="check" /><span>選舉查核</span></Link><Link to="/#infographics"><Icon name="bulb" /><span>資訊圖解</span></Link><button ref={menuButton} aria-label={menu ? '關閉選單' : '開啟選單'} aria-expanded={menu} aria-controls="main-nav" onClick={() => setMenu(!menu)}><Icon name={menu ? 'close' : 'menu'} /><span>選單</span></button></nav>
   </header>;
 }
 
