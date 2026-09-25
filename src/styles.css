@@ -244,23 +244,25 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
    containing block for the fixed mobile menu and dock rendered inside it. */
 .site-header { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid var(--ink-10); }
 .site-header::before { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(252, 251, 249, .92); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
-.header-inner { display: flex; align-items: center; gap: 24px; min-height: var(--header-height); }
+.header-inner { display: flex; align-items: center; gap: 20px; min-height: var(--header-height); }
+.header-inner.page-padding { padding-inline: max(var(--page-gutter), calc((100% - 1440px) / 2 + 48px)); }
 .brand { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; color: var(--brand-dark); }
 .brand:hover { color: var(--brand-dark); }
 .brand-mark { width: 24px; height: 24px; flex-shrink: 0; border-radius: 2px; background: var(--brand-green); }
 .brand strong { display: block; font-family: var(--font-serif); font-size: clamp(18px, 1.7vw, 24px); font-weight: 900; letter-spacing: .04em; white-space: nowrap; }
 .brand small { display: none; }
-.main-nav { display: flex; align-items: center; justify-content: flex-end; flex: 1; gap: clamp(14px, 1.5vw, 22px); min-width: 0; }
+.main-nav { display: flex; align-items: center; justify-content: flex-end; flex: 1; gap: 20px; min-width: 0; }
 .main-nav a { padding: 8px 0; color: var(--brand-deepblue); font-size: 14px; font-weight: 700; white-space: nowrap; }
 .main-nav a:hover, .main-nav a[aria-current='page'][href$='/reports'] { color: var(--brand-gold-ink); }
-.header-divider { width: 1px; height: 16px; flex-shrink: 0; background: var(--ink-20); }
-.header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-.donate-button, .official-link { display: inline-flex; align-items: center; min-height: 30px; padding: 5px 10px; border: 0; border-radius: var(--radius-sm); font-size: 12px; font-weight: 700; white-space: nowrap; color: #fff; box-shadow: var(--shadow-sm); transition: background-color .2s; }
-.donate-button { background: var(--brand-orange-strong); }
-.donate-button:hover { background: #9a3412; }
+.header-divider { width: 1px; height: 16px; flex-shrink: 0; margin-inline: -4px; background: var(--ink-20); }
+.header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.donate-button, .official-link { display: inline-flex; align-items: center; padding: 4px 8px; border: 0; border-radius: var(--radius-sm); font-size: 12px; font-weight: 700; line-height: 16px; white-space: nowrap; color: #fff; transition: background-color .2s; }
+.donate-button { background: var(--brand-orange); }
+.donate-button:hover { background: #ea580c; }
 .official-link { background: var(--brand-blue); }
 .official-link:hover { background: var(--brand-deepblue); color: #fff; }
-.header-search-toggle { width: 38px; height: 38px; }
+.header-search-toggle { width: 32px; height: 32px; margin-left: 4px; color: var(--brand-deepblue); }
+.header-search-toggle:hover:not(:disabled) { background: transparent; color: var(--brand-gold-ink); }
 .header-search { width: min(640px, 100%); max-width: none; margin: 0 0 16px auto; padding: 0; }
 .header-search.page-padding { margin-inline: auto var(--content-inline); width: min(640px, calc(100% - 2 * var(--page-gutter))); }
 .demo-notice { display: flex; align-items: center; justify-content: flex-end; gap: 7px; padding-block: 6px; color: var(--ink-60); font-size: 11px; letter-spacing: .03em; border-bottom: 1px solid var(--ink-05); background: var(--brand-paper); }
@@ -404,29 +406,31 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 /* 7. Home page (design-reference/index.html)                          */
 /* ------------------------------------------------------------------ */
 /* Hero */
-.hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, .9fr); align-items: center; gap: clamp(40px, 6vw, 96px); padding-block: clamp(80px, 9vw, 112px); border-bottom: 1px solid var(--ink-10); }
-.hero-kicker { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
-.hero-kicker > span { display: inline-block; padding: 4px 12px; border-radius: 2px; background: var(--brand-green); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
-.hero-kicker small { color: var(--ink-40); font-size: 12px; font-weight: 700; letter-spacing: .2em; }
-.hero h1 { font-size: clamp(36px, 4.6vw, 60px); line-height: 1.2; }
+.hero { display: flex; align-items: flex-start; gap: 64px; padding-block: 112px; padding-inline: max(var(--page-gutter), calc((100% - 1152px) / 2)); border-bottom: 1px solid var(--ink-10); }
+.hero-intro { display: flex; flex-direction: column; gap: 24px; flex: 0 1 55%; min-width: 0; }
+.election-facts { flex: 0 1 45%; min-width: 0; padding-top: 8px; }
+.hero-kicker { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.hero-kicker > span { display: inline-block; padding: 4px 12px; border-radius: 2px; background: var(--brand-green); color: #fff; font-size: 12px; font-weight: 700; line-height: 16px; letter-spacing: .1em; text-transform: uppercase; }
+.hero-kicker small { color: rgba(74, 92, 104, .6); font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.hero h1 { font-size: 60px; line-height: 1.2; }
 .hero h1 span { display: block; }
 .hero h1 span + span { margin-top: 8px; color: var(--brand-blue); }
-.hero-intro > p { max-width: 36em; margin-top: 24px; color: var(--ink-70); font-size: 18px; font-weight: 500; line-height: 1.75; }
-.countdown { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 32px; padding: 24px; background: var(--brand-white); border: 1px solid var(--ink-10); border-radius: var(--radius-md); box-shadow: var(--shadow-card); }
-.countdown > div { display: grid; gap: 2px; padding-right: 24px; border-right: 1px solid var(--ink-10); }
-.countdown > div > span { color: var(--brand-gold-ink); font-size: 12px; font-weight: 700; letter-spacing: .16em; }
+.hero-intro > p { max-width: 36rem; color: var(--ink-70); font-size: 18px; font-weight: 500; line-height: 1.625; }
+.countdown { display: flex; align-self: flex-start; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 16px; padding: 24px; background: var(--brand-white); border: 1px solid var(--ink-10); border-radius: var(--radius-md); box-shadow: var(--shadow-card); }
+.countdown > div { display: grid; gap: 4px; padding-right: 24px; border-right: 1px solid var(--ink-10); }
+.countdown > div > span { color: var(--brand-gold); font-size: 12px; font-weight: 700; line-height: 16px; letter-spacing: .1em; }
 .countdown time { font-family: var(--font-serif); font-size: 18px; font-weight: 700; white-space: nowrap; }
-.countdown p { display: flex; align-items: baseline; gap: 8px; color: var(--ink-60); font-size: 14px; font-weight: 700; white-space: nowrap; }
-.countdown strong { font-family: var(--font-serif); font-size: 40px; font-weight: 900; line-height: 1; letter-spacing: -.04em; color: var(--brand-blue); font-variant-numeric: tabular-nums; }
+.countdown p { display: flex; align-items: baseline; gap: 8px; color: rgba(35, 24, 21, .5); font-size: 14px; font-weight: 700; white-space: nowrap; }
+.countdown strong { font-family: var(--font-serif); font-size: 36px; font-weight: 900; line-height: 40px; letter-spacing: -.05em; color: var(--brand-blue); font-variant-numeric: tabular-nums; }
 .countdown small { color: var(--ink-40); font-size: 11px; }
-.election-facts h2 { display: inline-block; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid var(--brand-gold); font-size: 20px; font-weight: 700; }
+.election-facts h2 { display: inline-block; margin-bottom: 28px; padding-bottom: 8px; border-bottom: 2px solid var(--brand-gold); font-size: 20px; font-weight: 700; }
 .election-facts ol { display: grid; gap: 20px; margin: 0; padding: 0; list-style: none; }
 .election-facts li { display: flex; align-items: flex-start; gap: 16px; padding: 20px; background: var(--brand-white); border: 1px solid var(--ink-10); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); transition: border-color .2s; }
 .election-facts li:hover { border-color: rgba(74, 92, 104, .3); }
-.fact-number { display: grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(223, 168, 55, .35); background: var(--brand-paper); color: var(--brand-gold-ink); font-size: 14px; font-weight: 700; transition: background-color .2s, color .2s; }
+.fact-number { display: grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(223, 168, 55, .3); background: var(--brand-paper); color: var(--brand-gold); font-size: 14px; font-weight: 700; transition: background-color .2s, color .2s; }
 .election-facts li:hover .fact-number { background: var(--brand-gold); color: var(--brand-dark); }
 .election-facts h3 { font-family: var(--font-sans); font-size: 16px; font-weight: 700; }
-.election-facts p { margin-top: 4px; color: var(--ink-60); font-size: 14px; line-height: 1.7; }
+.election-facts p { margin-top: 4px; color: var(--ink-60); font-size: 14px; line-height: 1.625; }
 
 /* Report rows */
 .reports-section, .analysis-section { border-bottom: 1px solid var(--ink-10); }
@@ -540,18 +544,22 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 .activity .button { flex-shrink: 0; padding-inline: 32px; }
 
 @media (max-width: 1180px) {
-  .hero { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .learning-item { grid-template-columns: 1fr; }
+}
+@media (max-width: 1023px) { .hero h1 { font-size: 48px; } }
+@media (max-width: 767px) {
+  .hero { flex-direction: column; gap: 64px; }
+  .hero-intro, .election-facts { flex-basis: auto; width: 100%; }
+  .election-facts { width: 100%; }
 }
 @media (max-width: 900px) {
   .rumors-layout { grid-template-columns: 1fr; }
   .learning-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 700px) {
-  .hero { padding-block: 64px; gap: 48px; }
-  .hero h1 { font-size: clamp(30px, 8.2vw, 40px); }
-  .hero-intro > p { font-size: 16px; }
+  .hero { padding-block: 80px; }
+  .hero h1 { font-size: 36px; }
   .countdown { display: grid; gap: 12px; padding: 20px 24px; }
   .countdown > div { padding: 0; border: 0; }
   .countdown strong { font-size: 36px; }
