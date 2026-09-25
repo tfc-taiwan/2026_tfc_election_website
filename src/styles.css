@@ -130,7 +130,6 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 .site-shell > main { flex: 1; }
 .page-padding { padding-inline: var(--content-inline); }
 .section-padding { padding: var(--section-block) var(--content-inline); }
-.surface { background: var(--color-surface); }
 .grid-texture {
   background-color: var(--brand-paper);
   background-image: linear-gradient(to right, rgba(35, 24, 21, .03) 1px, transparent 1px), linear-gradient(to bottom, rgba(35, 24, 21, .03) 1px, transparent 1px);
