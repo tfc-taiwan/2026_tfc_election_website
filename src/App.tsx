@@ -421,7 +421,7 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
   const kind = report.kind === 'report' ? '查核報告' : report.kind === 'analysis' ? '資訊操弄解析' : '查核學堂';
   return <article className="report-page">
     <nav className="breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><Link to={report.kind === 'report' ? '/reports' : report.kind === 'analysis' ? '/#analysis' : '/#learning'}>{kind}</Link><span aria-hidden="true">／</span><span>{report.category}</span></nav>
-    <div className="article-tags">{report.tags.map(tag => <span className={`tag ${tag === report.verdict ? 'magenta' : 'cyan'}`} key={tag}>{tag}</span>)}</div>
+    <div className="article-tags">{report.tags.map(tag => <span className={`tag ${tag === report.verdict ? `verdict-tag ${verdictClass(tag)}` : 'topic-tag'}`} key={tag}>{tag}</span>)}</div>
     <h1>{report.title}</h1><p className="article-finding">{report.finding}</p>
     <div className="article-meta"><span><strong>發佈：</strong><time dateTime={report.published}>{report.published}</time></span><span><strong>更新：</strong><time dateTime={report.updated}>{report.updated}</time></span><span><strong>報告編號：</strong>{report.reportId}</span><span><strong>查核記者：</strong>{report.reporter}</span><span><strong>責任編輯：</strong>{report.editor}</span></div>
     {report.isMock && <p className="article-mock-note"><span className="tag neutral">MOCK DATA</span> 本文為虛構示範，不代表真實事件或查核結論。</p>}
