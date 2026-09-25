@@ -8,6 +8,12 @@ import { daysUntil, listingsSchema, reportSchema, searchStories, youtubeVideoId 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const data = listingsSchema.parse(JSON.parse(readFileSync(resolve(root, 'data/listings.json'), 'utf8')));
 
+test('footer social links are unique HTTPS destinations', () => {
+  assert.deepEqual(data.site.socialLinks.map(item => item.label), ['Facebook', 'Instagram', 'Threads', 'YouTube', 'TikTok']);
+  assert.equal(new Set(data.site.socialLinks.map(item => item.url)).size, data.site.socialLinks.length);
+  for (const item of data.site.socialLinks) assert.match(item.url, /^https:\/\//);
+});
+
 test('all listing references resolve to unique, matching report files and local images', () => {
   const slugs = new Set(data.stories.map(story => story.slug));
   assert.equal(slugs.size, data.stories.length);

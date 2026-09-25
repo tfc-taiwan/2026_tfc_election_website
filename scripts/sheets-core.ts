@@ -25,6 +25,7 @@ export const SHEETS: Record<string, Field[]> = {
 const settingFields: Field[] = [
   f('version', '', 'number'), f('isMock', '', 'boolean'),
   ...['name', 'englishName', 'title', 'notice', 'footer'].map(k => f(`site.${k}`, '')),
+  f('site.socialLinks', '', 'socialLinks'),
   f('seo.siteUrl', '', 'nullable'), f('seo.language', ''), f('seo.locale', ''),
   f('hero.kicker', ''), f('hero.title', '', 'lines'), f('hero.description', ''), f('hero.electionDate', '', 'date'),
   ...['reports', 'analyses', 'rumors', 'scripts', 'process', 'learning', 'activities'].map(k => f(`sections.${k}.title`, '')),
@@ -41,6 +42,7 @@ function set(object: any, path: string, value: any) {
   target[parts.at(-1)!] = value;
 }
 function cellValue(value: any, field: Field): Cell {
+  if (field.type === 'socialLinks' && Array.isArray(value)) return value.map(item => `${item.label} | ${item.url}`).join('\n');
   if (Array.isArray(value)) return value.join(field.type === 'paragraphs' ? '\n\n' : '\n');
   return value ?? '';
 }
@@ -67,6 +69,15 @@ function parse(value: Cell | undefined, field: Field, at: string): any {
     return value;
   }
   if (typeof value !== 'string') return fail(`${at}：請填文字`);
+  if (field.type === 'socialLinks') {
+    const lines = value.replace(/\r\n/g, '\n').split('\n').map(line => line.trim()).filter(Boolean);
+    if (!lines.length) return fail(`${at}：至少填一筆社群連結`);
+    return lines.map((line, index) => {
+      const match = /^([^|]+?)\s*\|\s*(https:\/\/\S+)$/.exec(line);
+      if (!match) return fail(`${at}：第 ${index + 1} 行請填「名稱 | https://網址」`);
+      return { label: match[1].trim(), url: match[2] };
+    });
+  }
   if (field.type === 'lines' || field.type === 'paragraphs') {
     return value.replace(/\r\n/g, '\n').split(field.type === 'paragraphs' ? /\n\s*\n/ : '\n').map(v => v.trim()).filter(Boolean);
   }

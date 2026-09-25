@@ -264,13 +264,14 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 .header-search-toggle:hover:not(:disabled) { background: transparent; color: var(--brand-gold-ink); }
 .header-search { width: min(640px, 100%); max-width: none; margin: 0 0 16px auto; padding: 0; }
 .header-search.page-padding { margin-inline: auto var(--content-inline); width: min(640px, calc(100% - 2 * var(--page-gutter))); }
-.demo-notice { display: flex; align-items: center; justify-content: flex-end; gap: 7px; padding-block: 6px; color: var(--ink-60); font-size: 11px; letter-spacing: .03em; border-bottom: 1px solid var(--ink-05); background: var(--brand-paper); }
-.demo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--verdict-false); flex-shrink: 0; }
 .mobile-dock { display: none; }
 
 .site-footer { display: flex; flex-direction: column; align-items: center; gap: 12px; padding-block: 32px; background: var(--brand-dark); color: rgba(255, 255, 255, .6); font-family: var(--font-serif); font-size: 14px; letter-spacing: .04em; text-align: center; }
-.site-footer > a { color: var(--brand-gold); font-family: var(--font-sans); font-size: 13px; font-weight: 700; white-space: nowrap; }
-.site-footer > a:hover { color: #fff; }
+.footer-social { display: flex; flex-direction: column; align-items: center; gap: 8px; font-family: var(--font-sans); }
+.footer-social > span { color: rgba(255, 255, 255, .82); font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+.footer-social > div { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; }
+.footer-social a, .footer-home { color: var(--brand-gold); font-family: var(--font-sans); font-size: 13px; font-weight: 700; white-space: nowrap; }
+.footer-social a:hover, .footer-home:hover { color: #fff; }
 
 /* ------------------------------------------------------------------ */
 /* 5. Dialogs, lightbox, infographic page, states                      */
@@ -349,7 +350,6 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
   .official-link { display: none; }
   .header-actions { gap: 4px; }
   .header-search.page-padding { margin: 0 var(--page-gutter) 12px; width: calc(100% - 2 * var(--page-gutter)); }
-  .demo-notice { justify-content: flex-start; font-size: 10px; }
   .section-heading { margin-bottom: 28px; gap: 16px; }
   h2 { font-size: 28px; }
   .carousel-track > .story-card { flex-basis: min(300px, 78vw); }
@@ -376,7 +376,7 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 @media print {
   :root { background: #fff; color: #000; }
   body { font-size: 12pt; }
-  .header-actions, .header-divider, .main-nav, .mobile-dock, .search-form, .demo-notice, .article-toolbar, .related-reports, .back-link, .site-footer a, .skip-link, dialog { display: none !important; }
+  .header-actions, .header-divider, .main-nav, .mobile-dock, .search-form, .article-toolbar, .related-reports, .back-link, .site-footer a, .skip-link, dialog { display: none !important; }
   .site-shell { padding: 0; }
   .site-header { position: static; border: 0; }
   .site-header::before { display: none; }
@@ -585,7 +585,6 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 .listing-page > h1 { margin-top: 8px; font-size: clamp(30px, 4vw, 44px); }
 .listing-page > h1::after { content: ''; display: block; width: 48px; height: 4px; margin-top: 12px; background: var(--brand-gold); }
 .listing-intro { max-width: 40em; margin-top: 20px; color: var(--ink-70); font-size: 16px; line-height: 1.8; }
-.listing-search { width: 520px; margin-top: 28px; }
 .listing-filters { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin: 32px 0 40px; }
 .listing-filters > p { color: var(--ink-60); font-size: 13px; overflow-wrap: anywhere; }
 .segmented { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -603,7 +602,6 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 @media (max-width: 1000px) { .listing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } }
 @media (max-width: 700px) {
   .listing-grid { grid-template-columns: 1fr; }
-  .listing-search { width: 100%; }
   .segmented button { padding-inline: 16px; }
 }
 

@@ -6,7 +6,29 @@
     "englishName": "Taiwan FactCheck Center",
     "title": "2026 選舉工具箱",
     "notice": "示範網站・所有報告與活動皆為虛構資料",
-    "footer": "© 2026 台灣事實查核中心｜介面示範・非正式網站"
+    "footer": "© 2026 台灣事實查核中心｜介面示範・非正式網站",
+    "socialLinks": [
+      {
+        "label": "Facebook",
+        "url": "https://www.facebook.com/taiwantfc/"
+      },
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/taiwan_factcheckcenter/"
+      },
+      {
+        "label": "Threads",
+        "url": "https://www.threads.net/@taiwan_factcheckcenter"
+      },
+      {
+        "label": "YouTube",
+        "url": "https://www.youtube.com/channel/UCRrO7rwIR0n7P1K2Fc7CIXA"
+      },
+      {
+        "label": "TikTok",
+        "url": "https://www.tiktok.com/@taiwan_factcheckcenter"
+      }
+    ]
   },
   "navigation": [
     {

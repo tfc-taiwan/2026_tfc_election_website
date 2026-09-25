@@ -6,7 +6,11 @@ for (const width of [320, 390, 834, 1440]) {
     const errors: string[] = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.goto('/');
+    await expect(page.locator('.demo-notice')).toHaveCount(0);
     await expect(page.getByRole('heading', { level: 1 })).toContainText('台灣地方選舉');
+    const social = page.getByRole('navigation', { name: '社群媒體' });
+    await expect(social.getByRole('link')).toHaveCount(5);
+    await expect(social.getByRole('link', { name: /YouTube/ })).toHaveAttribute('href', 'https://www.youtube.com/channel/UCRrO7rwIR0n7P1K2Fc7CIXA');
     await page.evaluate(() => document.fonts.ready);
     await expect(page.locator('.story-card').first()).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -94,6 +98,7 @@ test('separate report sections, carousel, accordion, mobile navigation, and moda
 
 test('search results, filters, empty state, and browser history', async ({ page }) => {
   await page.goto('/reports?q=音檔');
+  await expect(page.locator('.listing-search')).toHaveCount(0);
   await expect(page.locator('.listing-grid .story-card').first()).toContainText('錄音檔');
   await page.getByRole('button', { name: '公投議題', exact: true }).click();
   await expect(page.getByRole('heading', { name: '沒有找到符合的內容' })).toBeVisible();
@@ -102,7 +107,8 @@ test('search results, filters, empty state, and browser history', async ({ page 
   await page.goBack();
   await expect(page.getByRole('heading', { name: '沒有找到符合的內容' })).toBeVisible();
   await page.goBack();
-  await expect(page.getByRole('searchbox', { name: '搜尋台灣事實查核中心' })).toHaveValue('音檔');
+  await expect(page).toHaveURL('/reports?q=%E9%9F%B3%E6%AA%94');
+  await expect(page.locator('.listing-grid .story-card').first()).toContainText('錄音檔');
 });
 
 test('search submits to the main TFC site and infographic cards open an accessible gallery', async ({ page }) => {

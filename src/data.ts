@@ -32,6 +32,7 @@ export function youtubeVideoId(value: string): string | null {
 }
 
 const youtubeUrl = z.url().refine(value => youtubeVideoId(value) !== null, '請填有效的 YouTube 影片或 Shorts 連結');
+const socialLink = z.object({ label: text, url: z.url().refine(value => value.startsWith('https://'), '社群連結必須使用 HTTPS') });
 const story = z.object({
   slug, kind: z.enum(['report', 'analysis', 'guide']), category, title: text,
   description: text, date, image, tag: text, tone, verdict: status.optional(),
@@ -44,7 +45,7 @@ export const listingsSchema = z.object({
     siteUrl: z.url().nullable(), language: text, locale: text,
     home: pageSeo, reports: pageSeo,
   }),
-  site: z.object({ name: text, englishName: text, title: text, notice: text, footer: text }),
+  site: z.object({ name: text, englishName: text, title: text, notice: text, footer: text, socialLinks: z.array(socialLink).min(1) }),
   navigation: z.array(z.object({ label: text, href: z.string().regex(/^\/(?:#[-a-z]+|reports)?$/) })),
   hero: z.object({ kicker: text, title: z.array(text).min(1), description: text, electionDate: date,
     facts: z.array(z.object({ title: text, description: text, tone })) }),
@@ -68,6 +69,11 @@ export const listingsSchema = z.object({
   const shortUrls = value.sections.shorts?.items.map(item => item.url) ?? [];
   if (new Set(shortUrls).size !== shortUrls.length) {
     ctx.addIssue({ code: 'custom', path: ['sections', 'shorts', 'items'], message: '首頁短影音連結不可重複' });
+  }
+  const socialLabels = value.site.socialLinks.map(item => item.label);
+  const socialUrls = value.site.socialLinks.map(item => item.url);
+  if (new Set(socialLabels).size !== socialLabels.length || new Set(socialUrls).size !== socialUrls.length) {
+    ctx.addIssue({ code: 'custom', path: ['site', 'socialLinks'], message: '社群名稱與連結不可重複' });
   }
   const gallery = value.sections.infographics;
   if (!gallery?.items) return;

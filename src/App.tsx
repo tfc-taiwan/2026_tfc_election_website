@@ -357,9 +357,7 @@ function ListingsPage({ data }: { data: Listings }) {
   const [params, setParams] = useSearchParams();
   const query = params.get('q') ?? '';
   const category = ['地方選舉', '公投議題'].includes(params.get('category') ?? '') ? params.get('category')! : '全部';
-  const [draft, setDraft] = useState(query);
   const [visible, setVisible] = useState(LISTING_PAGE_SIZE);
-  useEffect(() => setDraft(query), [query]);
   useEffect(() => setVisible(LISTING_PAGE_SIZE), [query, category]);
   const stories = searchStories(query ? data.stories : data.stories.filter(story => story.kind === 'report'), query, category);
   function update(key: string, value: string) { const next = new URLSearchParams(params); if (value && value !== '全部') next.set(key, value); else next.delete(key); setParams(next); }
@@ -368,7 +366,6 @@ function ListingsPage({ data }: { data: Listings }) {
     <span className="eyebrow">THE FACTCHECK INDEX</span>
     <h1>{query ? '尋找資訊的真實脈絡' : '選舉查核報告'}</h1>
     <p className="listing-intro">彙整台灣事實查核中心針對 2026 地方選舉與公投議題發布的查核報告，隨最新查證進度持續更新。</p>
-    <form className="search-form listing-search" role="search" action="https://tfc-taiwan.org.tw/" method="get"><input name="s" type="search" value={draft} onChange={event => setDraft(event.target.value)} aria-label="搜尋台灣事實查核中心" placeholder="搜尋原網站內容" /><button className="icon-button" type="submit" aria-label="送出搜尋"><Icon name="search" /></button></form>
     <div className="listing-filters"><div className="segmented" role="group" aria-label="篩選報告分類">{['全部', ...data.sections.reports.categories].map(value => <button key={value} aria-pressed={category === value} onClick={() => update('category', value)}>{value}</button>)}</div><p role="status">{query && <>「{query}」・</>}{stories.length} 篇內容</p></div>
     {stories.length ? <>
       <div className="listing-grid">{stories.map((story, index) => <StoryCard story={story} key={story.slug} hidden={index >= visible} />)}</div>
@@ -493,5 +490,5 @@ export default function App({ initial }: { initial?: RenderState }) {
   useEffect(() => { const controller = new AbortController(); setError(null); getListings(controller.signal).then(value => { if (!controller.signal.aborted) setData(value); }).catch(error => { if (!controller.signal.aborted) setError(error); }); return () => controller.abort(); }, [attempt]);
   if (error) return <>{data && <PageSeo data={data} status="error" />}<ErrorPage error={error} onRetry={() => setAttempt(attempt + 1)} /></>;
   if (!data) return <Loading />;
-  return <RenderContext.Provider value={initial ?? { context: { siteUrl: null, previewOrigin: window.location.origin }, now: new Date().toISOString(), report: null, status: 200 }}><div className="site-shell"><RouteEffects /><Header data={data} onInfo={setInfo} />{data.isMock && <div className="demo-notice page-padding"><span className="demo-dot" />{data.site.notice}</div>}<main id="main-content" tabIndex={-1}><Routes><Route path="/" element={<HomePage data={data} onInfo={setInfo} />} /><Route path="/reports" element={<ListingsPage data={data} />} /><Route path="/reports/:slug" element={<ReportPage key={location.pathname} data={data} />} /><Route path="/infographics/:slug/:number" element={<InfographicPage data={data} />} /><Route path="*" element={<><PageSeo data={data} status="not-found" /><ErrorPage /></>} /></Routes></main><footer className="site-footer page-padding"><span>{data.site.footer}</span><Link to="/">回到首頁 ↑</Link></footer><InfoDialog info={info} close={() => setInfo(null)} /></div></RenderContext.Provider>;
+  return <RenderContext.Provider value={initial ?? { context: { siteUrl: null, previewOrigin: window.location.origin }, now: new Date().toISOString(), report: null, status: 200 }}><div className="site-shell"><RouteEffects /><Header data={data} onInfo={setInfo} /><main id="main-content" tabIndex={-1}><Routes><Route path="/" element={<HomePage data={data} onInfo={setInfo} />} /><Route path="/reports" element={<ListingsPage data={data} />} /><Route path="/reports/:slug" element={<ReportPage key={location.pathname} data={data} />} /><Route path="/infographics/:slug/:number" element={<InfographicPage data={data} />} /><Route path="*" element={<><PageSeo data={data} status="not-found" /><ErrorPage /></>} /></Routes></main><footer className="site-footer page-padding"><span>{data.site.footer}</span><nav className="footer-social" aria-label="社群媒體"><span>追蹤我們</span><div>{data.site.socialLinks.map(item => <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer">{item.label}<span className="sr-only">（開啟新視窗）</span></a>)}</div></nav><Link className="footer-home" to="/">回到首頁 ↑</Link></footer><InfoDialog info={info} close={() => setInfo(null)} /></div></RenderContext.Provider>;
 }

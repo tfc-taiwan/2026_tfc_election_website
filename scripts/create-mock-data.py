@@ -85,7 +85,7 @@ for s in stories:
     write(p,report)
 
 listings=dict(version=1,isMock=True,
- site=dict(name='台灣事實查核中心',englishName='Taiwan FactCheck Center',title='2026 選舉工具箱',notice='示範網站・所有報告與活動皆為虛構資料',footer='© 2026 台灣事實查核中心｜介面示範・非正式網站'),
+ site=dict(name='台灣事實查核中心',englishName='Taiwan FactCheck Center',title='2026 選舉工具箱',notice='示範網站・所有報告與活動皆為虛構資料',footer='© 2026 台灣事實查核中心｜介面示範・非正式網站',socialLinks=[dict(label=label,url=url) for label,url in [('Facebook','https://www.facebook.com/taiwantfc/'),('Instagram','https://www.instagram.com/taiwan_factcheckcenter/'),('Threads','https://www.threads.net/@taiwan_factcheckcenter'),('YouTube','https://www.youtube.com/channel/UCRrO7rwIR0n7P1K2Fc7CIXA'),('TikTok','https://www.tiktok.com/@taiwan_factcheckcenter')]]),
  navigation=[dict(label=l,href=h) for l,h in [('最新消息','/#activities'),('查核報告','/reports'),('謠言風向球','/#rumors'),('議題觀察室','/#analysis'),('重點專區','/#process'),('全民查核學堂','/#learning'),('關於本專區','/#about')]],
  hero=dict(kicker='2026 選舉工具箱',title=['台灣地方選舉 & 公投','事實查核與資訊專區'],description='在眾聲喧嘩之中，讓事實成為判斷的起點。從即時查核、資訊操弄解析到投票知識，陪你看懂訊息，做出知情的選擇。',electionDate='2026-11-28',facts=[dict(title=t,description=d,tone=c) for t,d,c in [('選舉日期與時間','示範投票日為 2026 年 11 月 28 日；實際日期與投票時間請以正式選務公告為準。','cyan'),('選舉項目與範圍','認識地方公職人員選舉，以及不同投票種類的適用範圍。','magenta'),('投票資格與準備','出發前，向選務機關確認投票資格、地點與應攜帶的文件。','cyan')]]),
  stories=stories,

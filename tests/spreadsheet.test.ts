@@ -22,6 +22,7 @@ test('spreadsheet rows round-trip the complete homepage without reading or embed
   assert.equal(book['首頁編排'][0][6], 'YouTube 連結');
   assert.equal(book['首頁編排'].find(row => row[0] === 'reports')?.[5], listings.sections.reports.items[0].title);
   assert.equal(book['首頁編排'].find(row => row[0] === 'shorts')?.[6], listings.sections.shorts?.items[0].url);
+  assert.match(String(book['網站設定'].find(row => row[0] === 'site.socialLinks')?.[1]), /^Facebook \| https:\/\//);
   assert.equal(JSON.stringify(book).includes(reports[0].summaryPoints[0]), false);
   const reversed = Object.fromEntries(Object.entries(book).map(([name, rows]) => [name, rows.map(row => row.slice().reverse())]));
   assert.deepEqual(convertWorkbook(reversed), listings);
@@ -56,6 +57,7 @@ test('invalid spreadsheet cells and broken references fail before export', () =>
     [b => { b['首頁編排'].find(r => r[0] === 'shorts')![6] = ''; }, /須填 YouTube 連結/],
     [b => { b['首頁編排'].find(r => r[0] === 'shorts')![6] = 'https://example.com/video'; }, /YouTube/],
     [b => { b['網站設定'].find(r => r[0] === 'isMock')![1] = 'maybe'; }, /TRUE 或 FALSE/],
+    [b => { b['網站設定'].find(r => r[0] === 'site.socialLinks')![1] = 'Facebook https://example.com'; }, /名稱 \| https:\/\/網址/],
     [b => { b['文章列表'][1][6] = '2026-02-30'; }, /Invalid ISO date/],
     [b => { b['文章列表'][0][1] = 'slugg'; }, /缺少或重複/],
     [b => { b['文章列表'][1][2] = 'typo'; }, /僅接受/],
