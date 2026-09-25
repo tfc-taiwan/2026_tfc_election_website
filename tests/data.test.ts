@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { daysUntil, listingsSchema, reportSchema, searchStories } from '../src/data.ts';
+import { daysUntil, listingsSchema, reportSchema, searchStories, youtubeVideoId } from '../src/data.ts';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const data = listingsSchema.parse(JSON.parse(readFileSync(resolve(root, 'data/listings.json'), 'utf8')));
@@ -32,11 +32,22 @@ test('all listing references resolve to unique, matching report files and local 
       assert.notEqual(related, story.slug);
     }
   }
-  for (const slug of [...data.sections.reports.slugs, ...data.sections.analyses.slugs, ...data.sections.learning.items.map(item => item.slug)]) {
+  for (const slug of [...data.sections.reports.items.map(item => item.slug), ...data.sections.analyses.slugs, ...data.sections.learning.items.map(item => item.slug)]) {
     assert.ok(slugs.has(slug), `Missing home section story: ${slug}`);
   }
   for (const item of data.sections.rumors.items) assert.ok(data.sections.scripts.items.some(script => script.id === item.scriptId));
+  for (const group of data.sections.infographics?.items ?? []) {
+    assert.ok(slugs.has(group.slug));
+    for (const card of group.cards) if (card.image.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${card.image.src}`)), `Missing gallery asset: ${card.image.src}`);
+  }
   for (const category of data.sections.reports.categories) assert.ok(data.stories.some(story => story.kind === 'report' && story.category === category));
+});
+
+test('YouTube watch, short and youtu.be links resolve to embed ids', () => {
+  assert.equal(youtubeVideoId('https://www.youtube.com/watch?v=63hT8oS83Vo'), '63hT8oS83Vo');
+  assert.equal(youtubeVideoId('https://www.youtube.com/shorts/63hT8oS83Vo'), '63hT8oS83Vo');
+  assert.equal(youtubeVideoId('https://youtu.be/63hT8oS83Vo'), '63hT8oS83Vo');
+  assert.equal(youtubeVideoId('https://example.com/watch?v=63hT8oS83Vo'), null);
 });
 
 test('countdown uses Taipei calendar days and never becomes negative', () => {

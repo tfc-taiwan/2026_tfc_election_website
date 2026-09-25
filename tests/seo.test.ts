@@ -42,6 +42,23 @@ test('mock mode remains noindex even with a public origin, and does not advertis
   assert.ok(!robotsTxt(data, context).includes('Sitemap:'));
 });
 
+test('each infographic card has its own page metadata and share image', async () => {
+  const seo = buildSeo(data, '/infographics/ai-tools/2?utm_source=share', null, context);
+  assert.equal(seo.canonical, `${context.siteUrl}/infographics/ai-tools/2`);
+  assert.match(seo.title, /圖卡 2\/3/);
+  assert.match(get(seo, 'description') ?? '', /觀察影像或聲音的來源與脈絡/);
+  assert.equal(get(seo, 'og:image'), `${context.siteUrl}/images/og/cards/ai-tools-2.png`);
+  assert.equal(get(seo, 'og:url'), seo.canonical);
+  assert.equal(get(seo, 'robots'), 'noindex, nofollow');
+  assert.ok(seo.graph.some(item => item['@type'] === 'ImageObject'));
+  const image = await sharp(readFileSync('public/images/og/cards/ai-tools-2.png')).metadata();
+  assert.equal(image.width, 1200);
+  assert.equal(image.height, 630);
+  const missing = buildSeo(data, '/infographics/ai-tools/99', null, context, 'not-found');
+  assert.equal(missing.canonical, undefined);
+  assert.equal(missing.graph.length, 0);
+});
+
 test('public content is indexable; search, errors, individual mock/noindex content are excluded', () => {
   const live = structuredClone(data); live.isMock = false;
   const articles = structuredClone(reports); articles.forEach(article => article.isMock = false);
@@ -67,6 +84,7 @@ test('public content is indexable; search, errors, individual mock/noindex conte
   assert.ok(xml.includes(`<lastmod>${first.updated}</lastmod>`));
   assert.ok(!xml.includes(`/reports/${articles[1].slug}`));
   assert.ok(!xml.includes(`/reports/${articles[2].slug}`));
+  assert.ok(xml.includes(`${context.siteUrl}/infographics/ai-tools/1`));
   assert.ok(robotsTxt(live, context).includes(`Sitemap: ${context.siteUrl}/sitemap.xml`));
   assert.match(buildSeo(live, '/', null, { ...context, siteUrl: null }).robots, /^noindex/);
 });

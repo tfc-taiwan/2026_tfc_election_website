@@ -10,32 +10,28 @@
   },
   "navigation": [
     {
-      "label": "最新消息",
+      "label": "地方選舉",
+      "href": "/#latest"
+    },
+    {
+      "label": "公投議題",
+      "href": "/#referendum"
+    },
+    {
+      "label": "資訊圖解",
+      "href": "/#infographics"
+    },
+    {
+      "label": "防禦指南",
+      "href": "/#learning"
+    },
+    {
+      "label": "TFC 工作動態",
       "href": "/#activities"
     },
     {
       "label": "查核報告",
       "href": "/reports"
-    },
-    {
-      "label": "謠言風向球",
-      "href": "/#rumors"
-    },
-    {
-      "label": "議題觀察室",
-      "href": "/#analysis"
-    },
-    {
-      "label": "重點專區",
-      "href": "/#process"
-    },
-    {
-      "label": "全民查核學堂",
-      "href": "/#learning"
-    },
-    {
-      "label": "關於本專區",
-      "href": "/#about"
     }
   ],
   "hero": {
@@ -263,15 +259,32 @@
         "地方選舉",
         "公投議題"
       ],
-      "slugs": [
-        "ai-voice",
-        "ballot-paper",
-        "early-voting",
-        "election-message",
-        "polling-video",
-        "referendum-notice",
-        "referendum-chart",
-        "referendum-context"
+      "items": [
+        {
+          "slug": "ai-voice",
+          "title": "網傳候選人賄選錄音？實為變造"
+        },
+        {
+          "slug": "ballot-paper"
+        },
+        {
+          "slug": "early-voting"
+        },
+        {
+          "slug": "election-message"
+        },
+        {
+          "slug": "polling-video"
+        },
+        {
+          "slug": "referendum-notice"
+        },
+        {
+          "slug": "referendum-chart"
+        },
+        {
+          "slug": "referendum-context"
+        }
       ]
     },
     "analyses": {
@@ -281,6 +294,116 @@
         "coordinated-sharing",
         "deepfake-guide",
         "short-video"
+      ]
+    },
+    "shorts": {
+      "title": "60 秒短影音闢謠",
+      "description": "直接觀看台灣事實查核中心的 YouTube 影片，快速掌握查證方法與資訊判讀重點。",
+      "items": [
+        {
+          "title": "一分鐘掌握：先查來源，再判讀內容",
+          "url": "https://www.youtube.com/watch?v=GoRukYrdkdE"
+        },
+        {
+          "title": "事實查核必修課：辨識資訊真偽",
+          "url": "https://www.youtube.com/watch?v=63hT8oS83Vo"
+        },
+        {
+          "title": "查核中心如何維持獨立與透明",
+          "url": "https://www.youtube.com/watch?v=vGsTY_ct1eI"
+        }
+      ]
+    },
+    "infographics": {
+      "title": "圖卡懶人包",
+      "description": "視覺化知識，點擊圖卡開啟大圖瀏覽。以下內容為虛構示範。",
+      "slugs": [
+        "ai-tools",
+        "osint-basics",
+        "ballot-paper"
+      ],
+      "items": [
+        {
+          "slug": "ai-tools",
+          "title": "AI 查證入門",
+          "cards": [
+            {
+              "image": {
+                "src": "/images/cards/ai-tools-1.svg",
+                "alt": "AI 查證入門第 1 張示意圖，虛構示範素材"
+              },
+              "caption": "先找到原始訊息與發布時間"
+            },
+            {
+              "image": {
+                "src": "/images/cards/ai-tools-2.svg",
+                "alt": "AI 查證入門第 2 張示意圖，虛構示範素材"
+              },
+              "caption": "觀察影像或聲音的來源與脈絡"
+            },
+            {
+              "image": {
+                "src": "/images/cards/ai-tools-3.svg",
+                "alt": "AI 查證入門第 3 張示意圖，虛構示範素材"
+              },
+              "caption": "向可信來源交叉確認"
+            }
+          ]
+        },
+        {
+          "slug": "osint-basics",
+          "title": "開源查證步驟",
+          "cards": [
+            {
+              "image": {
+                "src": "/images/cards/osint-basics-1.svg",
+                "alt": "開源查證步驟第 1 張示意圖，虛構示範素材"
+              },
+              "caption": "記錄原文、圖片與連結"
+            },
+            {
+              "image": {
+                "src": "/images/cards/osint-basics-2.svg",
+                "alt": "開源查證步驟第 2 張示意圖，虛構示範素材"
+              },
+              "caption": "以圖搜尋與檢查時間地點"
+            },
+            {
+              "image": {
+                "src": "/images/cards/osint-basics-3.svg",
+                "alt": "開源查證步驟第 3 張示意圖，虛構示範素材"
+              },
+              "caption": "比對官方文件與完整報告"
+            }
+          ]
+        },
+        {
+          "slug": "ballot-paper",
+          "title": "選務資訊查證",
+          "cards": [
+            {
+              "image": {
+                "src": "/images/cards/ballot-paper-1.svg",
+                "alt": "選務資訊查證第 1 張示意圖，虛構示範素材"
+              },
+              "caption": "辨識沒有來源的投票傳言"
+            },
+            {
+              "image": {
+                "src": "/images/cards/ballot-paper-2.svg",
+                "alt": "選務資訊查證第 2 張示意圖，虛構示範素材"
+              },
+              "caption": "查詢選務機關正式公告"
+            },
+            {
+              "image": {
+                "src": "/images/cards/ballot-paper-3.svg",
+                "alt": "選務資訊查證第 3 張示意圖，虛構示範素材"
+              },
+              "caption": "不要轉傳未經確認的說法"
+            }
+          ]
+        }
       ]
     },
     "rumors": {

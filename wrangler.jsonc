@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "tfc-election2026",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-09-22",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "tfc-taiwan.org.tw/election2026", "zone_name": "tfc-taiwan.org.tw" },
+    { "pattern": "tfc-taiwan.org.tw/election2026/*", "zone_name": "tfc-taiwan.org.tw" }
+  ],
+  "assets": {
+    "directory": "./worker-assets",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "not_found_handling": "404-page"
+  }
+}

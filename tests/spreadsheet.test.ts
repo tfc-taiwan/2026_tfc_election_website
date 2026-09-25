@@ -13,7 +13,15 @@ const reports: Report[] = await Promise.all(listings.stories.map(async s => JSON
 test('spreadsheet rows round-trip the complete homepage without reading or embedding report text', () => {
   const book = toWorkbookRows(listings);
   assert.deepEqual(convertWorkbook(book), listings);
-  assert.equal(Object.keys(book).length, 9);
+  assert.equal(Object.keys(book).length, 10);
+  assert.equal(book['首頁編排'].filter(row => row[0] === 'shorts').length, 3);
+  assert.equal(book['首頁編排'].filter(row => row[0] === 'infographics').length, 3);
+  assert.equal(book['首頁編排'][0][4], '圖卡組名');
+  assert.equal(book['首頁編排'].find(row => row[0] === 'infographics')?.[4], listings.sections.infographics?.items?.[0].title);
+  assert.equal(book['首頁編排'][0][5], '首頁標題');
+  assert.equal(book['首頁編排'][0][6], 'YouTube 連結');
+  assert.equal(book['首頁編排'].find(row => row[0] === 'reports')?.[5], listings.sections.reports.items[0].title);
+  assert.equal(book['首頁編排'].find(row => row[0] === 'shorts')?.[6], listings.sections.shorts?.items[0].url);
   assert.equal(JSON.stringify(book).includes(reports[0].summaryPoints[0]), false);
   const reversed = Object.fromEntries(Object.entries(book).map(([name, rows]) => [name, rows.map(row => row.slice().reverse())]));
   assert.deepEqual(convertWorkbook(reversed), listings);
@@ -35,9 +43,18 @@ test('sheet edits, blank rows, boolean strings and date serials convert predicta
 
 test('invalid spreadsheet cells and broken references fail before export', () => {
   const cases: [(b: ReturnType<typeof toWorkbookRows>) => void, RegExp][] = [
+    [b => { delete b['圖卡內容']; }, /缺少工作表「圖卡內容」/],
+    [b => { b['圖卡內容'] = [b['圖卡內容'][0]]; }, /至少需要每組一張圖片/],
+    [b => { b['圖卡內容'][2][1] = b['圖卡內容'][1][1]; }, /圖卡 slug 與順序不可重複/],
+    [b => { b['圖卡內容'][1][0] = 'missing'; }, /不在首頁 infographics 編排/],
     [b => { b['文章列表'][2][1] = b['文章列表'][1][1]; }, /slug不可重複/],
     [b => { b['文章列表'][1][1] = '../../bad'; }, /找不到文章|Invalid string/],
     [b => { b['首頁編排'][1][2] = 'missing'; }, /找不到文章/],
+    [b => { b['首頁編排'].find(r => r[0] === 'shorts')![2] = 'short-video'; }, /不使用 slug/],
+    [b => { b['首頁編排'].find(r => r[0] === 'infographics')![4] = ''; }, /須填圖卡組名/],
+    [b => { b['首頁編排'].find(r => r[0] === 'shorts')![5] = ''; }, /須填首頁標題/],
+    [b => { b['首頁編排'].find(r => r[0] === 'shorts')![6] = ''; }, /須填 YouTube 連結/],
+    [b => { b['首頁編排'].find(r => r[0] === 'shorts')![6] = 'https://example.com/video'; }, /YouTube/],
     [b => { b['網站設定'].find(r => r[0] === 'isMock')![1] = 'maybe'; }, /TRUE 或 FALSE/],
     [b => { b['文章列表'][1][6] = '2026-02-30'; }, /Invalid ISO date/],
     [b => { b['文章列表'][0][1] = 'slugg'; }, /缺少或重複/],
@@ -61,19 +78,26 @@ test('Docs editor links stay out of public listings', () => {
   assert.deepEqual(convertWorkbook(toWorkbookRows(listings, links)), listings);
 });
 
-test('CLI preserves existing output on validation failure and never alters reports', async () => {
+test('CLI exports report title overrides and YouTube shorts, then preserves output on validation failure', async () => {
   const dir = await mkdtemp(join(tmpdir(), 'tfc-converter-'));
   try {
     const source = join(dir, 'rows.json'), target = join(dir, 'data/listings.json');
     await mkdir(join(dir, 'data/reports'), { recursive: true });
     await writeFile(target, 'keep-original'); await writeFile(join(dir, 'data/reports/sentinel.json'), 'untouched');
+    const validBook = toWorkbookRows(listings);
+    await writeFile(source, JSON.stringify(validBook));
+    const valid = spawnSync(process.execPath, ['scripts/convert-spreadsheet.ts', source, '--out', target], { encoding: 'utf8' });
+    assert.equal(valid.status, 0, valid.stderr);
+    const converted = listingsSchema.parse(JSON.parse(await readFile(target, 'utf8')));
+    assert.deepEqual(converted.sections.reports.items, listings.sections.reports.items);
+    assert.deepEqual(converted.sections.shorts?.items, listings.sections.shorts?.items);
     const book = toWorkbookRows(listings); book['文章列表'][1][6] = 'not-a-date';
-    await writeFile(source, JSON.stringify(book));
+    await writeFile(target, 'keep-original'); await writeFile(source, JSON.stringify(book));
     const invalid = spawnSync(process.execPath, ['scripts/convert-spreadsheet.ts', source, '--out', target], { encoding: 'utf8' });
     assert.equal(invalid.status, 1); assert.match(invalid.stderr, /日期/); assert.equal(await readFile(target, 'utf8'), 'keep-original');
     await writeFile(source, JSON.stringify(toWorkbookRows(listings)));
-    const valid = spawnSync(process.execPath, ['scripts/convert-spreadsheet.ts', source, '--out', target], { encoding: 'utf8' });
-    assert.equal(valid.status, 0, valid.stderr); assert.deepEqual(JSON.parse(await readFile(target, 'utf8')), listings);
+    const recovered = spawnSync(process.execPath, ['scripts/convert-spreadsheet.ts', source, '--out', target], { encoding: 'utf8' });
+    assert.equal(recovered.status, 0, recovered.stderr); assert.deepEqual(JSON.parse(await readFile(target, 'utf8')), listings);
     assert.equal(await readFile(join(dir, 'data/reports/sentinel.json'), 'utf8'), 'untouched');
   } finally { await rm(dir, { recursive: true, force: true }); }
 });

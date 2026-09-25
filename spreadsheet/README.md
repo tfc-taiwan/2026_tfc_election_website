@@ -31,7 +31,7 @@ npm run data:import -- ~/Downloads/listings.xlsx --reports ~/Downloads/reports -
 
 ```sh
 npm run data:import -- ~/Downloads/listings.xlsx --reports ~/Downloads/reports --out-dir data --replace
-npm run build
+npm run build:worker
 ```
 
 若輸出目錄含有 `listings.json`、`reports/` 以外的項目，程式會拒絕替換。下載、轉換與建置都不會自行 commit、push 或部署網站。
@@ -83,12 +83,15 @@ npm run data:reports -- ~/Downloads/文章.md --listings generated/listings.json
 | 首頁小卡 | 選舉資訊小卡 |
 | 文章列表 | 列表標題、摘要、封面、分類、日期與 Google Docs 連結 |
 | 網頁SEO | 首頁 `home` 與列表 `reports` 的 SEO |
-| 首頁編排 | 各區塊文章的 slug 與順序 |
+| 首頁編排 | 各區塊內容與順序；`reports` 可填首頁標題，`shorts` 填標題與 YouTube 連結，`infographics` 填圖卡組名 |
+| 圖卡內容 | `infographics` 每組圖卡的逐張圖片路徑、替代文字與說明 |
 | 謠言分類 | 謠言類型與對應劇本 |
 | 常見劇本 | 問答內容 |
 | 資訊卡 | 選舉流程與工作動態 |
 
-第一列欄名及網站設定的鍵不可改名或刪除。欄位順序可調整，全空列會略過。「順序」為同區塊內不重複的正整數。`report`、`analysis`、`guide` 分別對應查核報告、解析及查核學堂。多段文字以空白行分隔，主視覺標題及分類清單每項一行。
+第一列欄名及既有網站設定的鍵不可改名或刪除。欄位順序可調整，全空列會略過。「順序」為同區塊內不重複的正整數。`report`、`analysis`、`guide` 分別對應查核報告、解析及查核學堂。多段文字以空白行分隔，主視覺標題及分類清單每項一行。
+
+新版首頁的「地方選舉查核報告」與「公投議題查核報告」仍共用 `首頁編排` 的 `reports` 列，網站依 `文章列表` 的「主題」自動分區；`analyses` 仍只放 `analysis` 文章。`reports` 每列可填「首頁標題」；有值時首頁採用這個標題，留白時沿用文章列表標題，文章頁標題不受影響。`shorts` 不使用 `slug`，每列必填「首頁標題」與有效的 YouTube 影片或 Shorts 連結，首頁預設顯示 YouTube 預覽縮圖，點擊後才顯示並播放隱私增強播放器；播放器會監聽 YouTube 的播放狀態，第二支開始播放時，前一支會收到 `stopVideo()` 並停止。`infographics` 的組別在 `首頁編排` 設定，必填「圖卡組名」；逐張圖卡由「圖卡內容」工作表提供：一列一張，填 `slug`、組內「順序」、「圖片路徑」、「圖片替代文字」、「圖卡說明」。轉換器依 `slug` 分組、依「順序」排列，形成 `items[] → cards[]` 兩層陣列；每組至少一張。圖片放入網站 `public/images/`，點擊首頁預覽即開啟 lightbox。若首頁有 `infographics` 編排卻缺少「圖卡內容」工作表或沒有圖卡，轉換會停止並提示，不會輸出遺失圖卡的 JSON。
 
 ## 記者上稿範本
 
@@ -133,7 +136,7 @@ npm run data:reports -- ~/Downloads/文章.md --metadata ~/Downloads/report-meta
 
 ```sh
 npm run data:reports -- ~/Downloads/文章.md --metadata ~/Downloads/report-metadata.json --out data/reports --assets-dir public/images
-npm run build
+npm run build:worker
 ```
 
 整份試算表與全部文章一併匯入：

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('initial HTTP responses include complete metadata and article content without JavaScript', async ({ request, browser }) => {
-  for (const path of ['/', '/reports', '/reports/ai-voice', '/reports/ballot-paper']) {
+  for (const path of ['/', '/reports', '/reports/ai-voice', '/reports/ballot-paper', '/infographics/ai-tools/2']) {
     const response = await request.get(path);
     expect(response.status()).toBe(200);
     const html = await response.text();
@@ -17,6 +17,7 @@ test('initial HTTP responses include complete metadata and article content witho
     await page.goto(new URL(path, response.url()).href);
     await expect(page.locator('h1')).toBeVisible();
     if (path.startsWith('/reports/')) await expect(page.locator('#verification')).toContainText('查核');
+    if (path.startsWith('/infographics/')) await expect(page.locator('.infographic-viewer figcaption')).toContainText('觀察影像或聲音的來源與脈絡');
     await context.close();
   }
 });
@@ -36,8 +37,7 @@ test('SPA navigation keeps a single correct metadata set and clears article data
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /ballot-paper\.png$/);
   await page.goBack();
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /ai-voice\.png$/);
-  await page.getByRole('searchbox', { name: '搜尋查核報告', exact: true }).fill('音檔');
-  await page.getByRole('button', { name: '送出搜尋' }).click();
+  await page.goto('/reports?q=音檔');
   await expect(page).toHaveTitle(/搜尋與篩選結果/);
   await expect(page.locator('meta[property="article:published_time"]')).toHaveCount(0);
   await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(0);
@@ -60,5 +60,9 @@ test('crawler assets, share PNGs and actual error HTTP statuses are available', 
   expect(image.headers()['content-type']).toContain('image/png');
   expect((await image.body()).readUInt32BE(16)).toBe(1200);
   for (const path of ['/reports/missing', '/missing']) expect((await request.get(path)).status()).toBe(404);
+  for (const path of ['/infographics/ai-tools/0', '/infographics/ai-tools/99']) expect((await request.get(path)).status()).toBe(404);
+  const cardImage = await request.get('/images/og/cards/ai-tools-2.png');
+  expect(cardImage.headers()['content-type']).toContain('image/png');
+  expect((await cardImage.body()).readUInt32BE(16)).toBe(1200);
   expect((await request.get('/reports?q=音檔')).headers()['x-robots-tag']).toContain('noindex');
 });

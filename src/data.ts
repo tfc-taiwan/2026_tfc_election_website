@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { publicPath } from './paths.ts';
 
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
 const text = z.string().min(1);
@@ -13,6 +14,24 @@ const shareImage = image.extend({
 const pageSeo = z.object({ title: text, description: text, image: shareImage, noindex: z.boolean().default(false) });
 const status = z.enum(['錯誤', '部分錯誤', '事實釐清', '正確']);
 const category = z.enum(['地方選舉', '公投議題']);
+const youtubeId = /^[A-Za-z0-9_-]{11}$/;
+
+export function youtubeVideoId(value: string): string | null {
+  try {
+    const url = new URL(value);
+    const host = url.hostname.toLowerCase().replace(/^www\./, '');
+    let id = '';
+    if (host === 'youtu.be') id = url.pathname.slice(1).split('/')[0] ?? '';
+    if (host === 'youtube.com' || host === 'm.youtube.com') {
+      id = url.pathname === '/watch' ? url.searchParams.get('v') ?? '' : /^\/(?:shorts|embed)\/([^/]+)/.exec(url.pathname)?.[1] ?? '';
+    }
+    return youtubeId.test(id) ? id : null;
+  } catch {
+    return null;
+  }
+}
+
+const youtubeUrl = z.url().refine(value => youtubeVideoId(value) !== null, '請填有效的 YouTube 影片或 Shorts 連結');
 const story = z.object({
   slug, kind: z.enum(['report', 'analysis', 'guide']), category, title: text,
   description: text, date, image, tag: text, tone, verdict: status.optional(),
@@ -31,14 +50,32 @@ export const listingsSchema = z.object({
     facts: z.array(z.object({ title: text, description: text, tone })) }),
   stories: z.array(story).min(1),
   sections: z.object({
-    reports: z.object({ title: text, categories: z.array(category).min(1), slugs: z.array(slug) }),
+    reports: z.object({ title: text, categories: z.array(category).min(1), items: z.array(z.object({ slug, title: text.optional() })) }),
     analyses: z.object({ title: text, description: text, slugs: z.array(slug) }),
+    shorts: z.object({ title: text, description: text, items: z.array(z.object({ title: text, url: youtubeUrl })).min(1) }).optional(),
+    infographics: z.object({ title: text, description: text, slugs: z.array(slug), items: z.array(z.object({ slug, title: text, cards: z.array(z.object({ image, caption: text })).min(1) })).optional() }).optional(),
     rumors: z.object({ title: text, items: z.array(z.object({ id: slug, badge: text, label: text, tone, scriptId: slug })) }),
     scripts: z.object({ title: text, items: z.array(z.object({ id: slug, question: text, answer: text })) }),
     process: z.object({ title: text, items: z.array(info.extend({ icon: z.enum(['document', 'calendar', 'check', 'globe']), tone })) }),
     learning: z.object({ title: text, items: z.array(z.object({ slug, badge: text })) }),
     activities: z.object({ title: text, items: z.array(info.extend({ dateLabel: text, tag: text, cta: text, tone })) }),
   }),
+}).superRefine((value, ctx) => {
+  const reportSlugs = value.sections.reports.items.map(item => item.slug);
+  if (new Set(reportSlugs).size !== reportSlugs.length) {
+    ctx.addIssue({ code: 'custom', path: ['sections', 'reports', 'items'], message: '首頁查核報告不可重複' });
+  }
+  const shortUrls = value.sections.shorts?.items.map(item => item.url) ?? [];
+  if (new Set(shortUrls).size !== shortUrls.length) {
+    ctx.addIssue({ code: 'custom', path: ['sections', 'shorts', 'items'], message: '首頁短影音連結不可重複' });
+  }
+  const gallery = value.sections.infographics;
+  if (!gallery?.items) return;
+  const expected = gallery.slugs;
+  const actual = gallery.items.map(item => item.slug);
+  if (new Set(actual).size !== actual.length || actual.length !== expected.length || actual.some((item, index) => item !== expected[index])) {
+    ctx.addIssue({ code: 'custom', path: ['sections', 'infographics', 'items'], message: '圖卡組別必須與 infographics.slugs 完全一致且順序相同' });
+  }
 });
 
 const inline = z.object({ text, href: z.url().refine(value => value.startsWith('https://')).optional(), bold: z.boolean().optional(), italic: z.boolean().optional() });
@@ -82,10 +119,10 @@ async function fetchData<T>(path: string, schema: z.ZodType<T>, signal?: AbortSi
   return result.data;
 }
 
-export function getListings(signal?: AbortSignal) { return fetchData('/data/listings.json', listingsSchema, signal); }
+export function getListings(signal?: AbortSignal) { return fetchData(publicPath('/data/listings.json'), listingsSchema, signal); }
 export async function getReport(id: string, signal?: AbortSignal) {
   if (!slug.safeParse(id).success) throw new DataError('找不到這篇內容', 404);
-  const report = await fetchData(`/data/reports/${id}.json`, reportSchema, signal);
+  const report = await fetchData(publicPath(`/data/reports/${id}.json`), reportSchema, signal);
   if (report.slug !== id) throw new DataError('內容識別碼不一致');
   return report;
 }

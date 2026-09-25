@@ -9,7 +9,9 @@ const dataDir = fileURLToPath(new URL('./data', import.meta.url));
 export default defineConfig(({ mode, isSsrBuild }) => {
   const env = loadEnv(mode, process.cwd(), 'SITE_');
   const siteUrl = process.env.SITE_URL || env.SITE_URL || null;
+  const base = process.env.PUBLIC_BASE_PATH || '/';
   return {
+  base,
   plugins: [react(), {
     name: 'render-json-pages',
     configureServer(server) {

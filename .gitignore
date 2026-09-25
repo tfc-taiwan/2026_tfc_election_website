@@ -1,5 +1,7 @@
 node_modules/
 dist/
+worker-assets/
+.wrangler/
 .server/
 .env
 .env.local

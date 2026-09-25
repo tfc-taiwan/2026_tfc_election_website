@@ -15,7 +15,8 @@ export const SHEETS: Record<string, Field[]> = {
   '首頁小卡': [order, f('title', '標題'), f('description', '說明', 'text', undefined, 560), tone],
   '文章列表': [order, ...common, f('description', '列表摘要', 'text', undefined, 400), f('date', '刊登日期', 'date'), f('tag', '卡片標籤'), tone, f('verdict', '查核結果', 'optional', ['錯誤', '部分錯誤', '事實釐清', '正確']), ...imageFields, f('docUrl', 'Google Docs 連結', 'optional', undefined, 400)],
   '網頁SEO': [f('page', '頁面', 'text', ['home', 'reports'], 180), f('title', 'SEO 標題', 'text', undefined, 400), f('description', 'SEO 描述', 'text', undefined, 500), ...imageFields, f('image.width', '圖片寬度', 'number'), f('image.height', '圖片高度', 'number'), f('image.type', '圖片格式', 'text', ['image/png', 'image/jpeg', 'image/webp']), f('noindex', '不開放索引', 'boolean')],
-  '首頁編排': [f('section', '區塊', 'text', ['reports', 'analyses', 'learning']), order, slug, f('badge', '英文標籤', 'optional')],
+  '首頁編排': [f('section', '區塊', 'text', ['reports', 'analyses', 'shorts', 'infographics', 'learning']), order, f('slug', 'slug', 'optional', undefined, 180), f('badge', '英文標籤', 'optional'), f('galleryTitle', '圖卡組名', 'optional'), f('homeTitle', '首頁標題', 'optional', undefined, 350), f('youtubeUrl', 'YouTube 連結', 'optional', undefined, 420)],
+  '圖卡內容': [slug, order, f('image.src', '圖片路徑'), f('image.alt', '圖片替代文字'), f('caption', '圖卡說明', 'text', undefined, 400)],
   '謠言分類': [order, f('id', '分類代碼'), f('badge', '英文標籤'), f('label', '分類名稱'), tone, f('scriptId', '對應劇本')],
   '常見劇本': [order, f('id', '劇本代碼'), f('question', '問題', 'text', undefined, 420), f('answer', '解答', 'text', undefined, 680)],
   '資訊卡': [f('section', '區塊', 'text', ['process', 'activities']), order, f('id', '卡片代碼'), f('title', '標題', 'text', undefined, 350), f('description', '說明', 'text', undefined, 400), tone, f('icon', '圖示', 'optional', ['document', 'calendar', 'check', 'globe']), f('dateLabel', '日期標籤', 'optional'), f('tag', '標籤', 'optional'), f('cta', '按鈕文字', 'optional'), f('content', '內文', 'paragraphs', undefined, 680)],
@@ -29,6 +30,7 @@ const settingFields: Field[] = [
   ...['reports', 'analyses', 'rumors', 'scripts', 'process', 'learning', 'activities'].map(k => f(`sections.${k}.title`, '')),
   f('sections.reports.categories', '', 'lines'), f('sections.analyses.description', ''),
 ];
+const optionalSettingFields = [f('sections.shorts.title', ''), f('sections.shorts.description', ''), f('sections.infographics.title', ''), f('sections.infographics.description', '')];
 
 const fail = (message: string): never => { throw new Error(message); };
 const has = (value: unknown) => value !== null && value !== undefined && value !== '';
@@ -104,13 +106,17 @@ function validate<T>(schema: { safeParse: (v: unknown) => any }, value: unknown,
 }
 
 export function convertWorkbook(book: WorkbookRows): Listings {
-  const tables = Object.fromEntries(Object.keys(SHEETS).map(name => [name, readRows(book, name)]));
+  const tables = Object.fromEntries(Object.keys(SHEETS).map(name => [name, name === '圖卡內容' && !book[name] ? [] : readRows(book, name)]));
   const settings = tables['網站設定']; unique(settings.map(row => row.key), '網站設定鍵');
-  if (settings.some(row => !settingFields.some(field => field.key === row.key))) fail('網站設定包含不認得的設定鍵');
+  if (settings.some(row => ![...settingFields, ...optionalSettingFields].some(field => field.key === row.key))) fail('網站設定包含不認得的設定鍵');
   const listings: any = {};
   for (const field of settingFields) {
     const row = settings.find(row => row.key === field.key) ?? fail(`網站設定缺少 ${field.key}`);
     set(listings, field.key, parse(row.value, field, `網站設定第 ${row._row} 列 ${field.key}`));
+  }
+  for (const field of optionalSettingFields) {
+    const row = settings.find(row => row.key === field.key);
+    if (row) set(listings, field.key, parse(row.value, field, `網站設定第 ${row._row} 列 ${field.key}`));
   }
   if (listings.seo.siteUrl) {
     const origin = listings.seo.siteUrl;
@@ -129,17 +135,49 @@ export function convertWorkbook(book: WorkbookRows): Listings {
   };
   listings.seo.home = seo('home'); listings.seo.reports = seo('reports');
   listings.stories = articles.map(row => clean(row, ['slug', 'kind', 'category', 'title', 'description', 'date', 'image', 'tag', 'tone', 'verdict']));
-  for (const section of ['reports', 'analyses', 'learning']) {
+  for (const section of ['reports', 'analyses', 'shorts', 'infographics', 'learning']) {
     const items = ordered(tables['首頁編排'].filter(row => row.section === section), `首頁 ${section}`);
-    unique(items.map(row => row.slug), `首頁 ${section} 文章`);
-    for (const item of items) {
-      reference(item.slug, `首頁編排第 ${item._row} 列`);
-      const expected = { reports: 'report', analyses: 'analysis', learning: 'guide' }[section];
-      if (articles.find(row => row.slug === item.slug)?.kind !== expected) fail(`首頁編排第 ${item._row} 列：${section} 僅接受 ${expected}`);
-      if (section !== 'learning' && item.badge) fail(`首頁編排第 ${item._row} 列：英文標籤僅供 learning 使用`);
+    if ((section === 'shorts' || section === 'infographics') && !listings.sections[section]) {
+      if (items.length) fail(`首頁 ${section} 有文章，但網站設定缺少標題與說明`);
+      continue;
     }
-    if (section === 'learning') listings.sections.learning.items = items.map(row => clean(row, ['slug', 'badge']));
+    for (const item of items) {
+      if (section === 'shorts') {
+        if (item.slug) fail(`首頁編排第 ${item._row} 列：shorts 請填 YouTube 連結，不使用 slug`);
+        if (!item.homeTitle) fail(`首頁編排第 ${item._row} 列：shorts 須填首頁標題`);
+        if (!item.youtubeUrl) fail(`首頁編排第 ${item._row} 列：shorts 須填 YouTube 連結`);
+      } else {
+        if (!item.slug) fail(`首頁編排第 ${item._row} 列：${section} 須填 slug`);
+        reference(item.slug, `首頁編排第 ${item._row} 列`);
+      }
+    }
+    unique(items.map(row => section === 'shorts' ? row.youtubeUrl : row.slug), `首頁 ${section} 項目`);
+    for (const item of items) {
+      const expected = { reports: 'report', analyses: 'analysis', learning: 'guide' }[section];
+      if (expected && articles.find(row => row.slug === item.slug)?.kind !== expected) fail(`首頁編排第 ${item._row} 列：${section} 僅接受 ${expected}`);
+      if (section !== 'learning' && item.badge) fail(`首頁編排第 ${item._row} 列：英文標籤僅供 learning 使用`);
+      if (section === 'infographics' && !item.galleryTitle) fail(`首頁編排第 ${item._row} 列：infographics 須填圖卡組名`);
+      if (section !== 'infographics' && item.galleryTitle) fail(`首頁編排第 ${item._row} 列：圖卡組名僅供 infographics 使用`);
+      if (section !== 'reports' && section !== 'shorts' && item.homeTitle) fail(`首頁編排第 ${item._row} 列：首頁標題僅供 reports 與 shorts 使用`);
+      if (section !== 'shorts' && item.youtubeUrl) fail(`首頁編排第 ${item._row} 列：YouTube 連結僅供 shorts 使用`);
+    }
+    if (section === 'reports') listings.sections.reports.items = items.map(row => ({ slug: row.slug, ...(row.homeTitle ? { title: row.homeTitle } : {}) }));
+    else if (section === 'shorts') listings.sections.shorts.items = items.map(row => ({ title: row.homeTitle, url: row.youtubeUrl }));
+    else if (section === 'learning') listings.sections.learning.items = items.map(row => clean(row, ['slug', 'badge']));
     else listings.sections[section].slugs = items.map(row => row.slug);
+  }
+  if (listings.sections.infographics?.slugs.length && !book['圖卡內容']) fail('首頁有 infographics 編排時，缺少工作表「圖卡內容」；請先更新試算表再匯入');
+  if (listings.sections.infographics?.slugs.length && !tables['圖卡內容'].length) fail('首頁有 infographics 編排時，「圖卡內容」至少需要每組一張圖片');
+  if (tables['圖卡內容'].length) {
+    const gallerySlugs = listings.sections.infographics?.slugs ?? [];
+    unique(tables['圖卡內容'].map(row => `${row.slug}:${row.order}`), '圖卡 slug 與順序');
+    for (const row of tables['圖卡內容']) if (!gallerySlugs.includes(row.slug)) fail(`圖卡內容第 ${row._row} 列：${row.slug} 不在首頁 infographics 編排`);
+    listings.sections.infographics.items = gallerySlugs.flatMap((slug: string) => {
+      const cards = ordered(tables['圖卡內容'].filter(row => row.slug === slug), `圖卡 ${slug}`).map(row => clean(row, ['image', 'caption']));
+      const title = tables['首頁編排'].find(row => row.section === 'infographics' && row.slug === slug)?.galleryTitle;
+      return cards.length ? [{ slug, title, cards }] : [];
+    });
+    if (listings.sections.infographics.items.length !== gallerySlugs.length) fail('每一組圖卡至少需要一張圖片');
   }
   listings.sections.rumors.items = ordered(tables['謠言分類'], '謠言分類').map(row => clean(row, ['id', 'badge', 'label', 'tone', 'scriptId']));
   listings.sections.scripts.items = ordered(tables['常見劇本'], '常見劇本').map(row => clean(row, ['id', 'question', 'answer']));
@@ -158,12 +196,16 @@ export function convertWorkbook(book: WorkbookRows): Listings {
 
 export function toWorkbookRows(listings: Listings, docUrls: Record<string, string> = {}): WorkbookRows {
   const objects: Record<string, any[]> = Object.fromEntries(Object.keys(SHEETS).map(name => [name, []]));
-  objects['網站設定'] = settingFields.map(field => ({ key: field.key, value: cellValue(get(listings, field.key), field) }));
+  objects['網站設定'] = [...settingFields, ...optionalSettingFields.filter(field => get(listings, field.key) !== undefined)].map(field => ({ key: field.key, value: cellValue(get(listings, field.key), field) }));
   objects['導覽'] = listings.navigation.map((row, i) => ({ order: i + 1, ...row }));
   objects['首頁小卡'] = listings.hero.facts.map((row, i) => ({ order: i + 1, ...row }));
   objects['網頁SEO'] = [{ page: 'home', ...listings.seo.home }, { page: 'reports', ...listings.seo.reports }];
   objects['文章列表'] = listings.stories.map((story, i) => ({ order: i + 1, ...story, docUrl: docUrls[story.slug] }));
-  for (const section of ['reports', 'analyses'] as const) objects['首頁編排'].push(...listings.sections[section].slugs.map((slug, i) => ({ section, order: i + 1, slug })));
+  objects['首頁編排'].push(...listings.sections.reports.items.map((item, i) => ({ section: 'reports', order: i + 1, slug: item.slug, homeTitle: item.title })));
+  objects['首頁編排'].push(...listings.sections.analyses.slugs.map((slug, i) => ({ section: 'analyses', order: i + 1, slug })));
+  objects['首頁編排'].push(...(listings.sections.shorts?.items ?? []).map((item, i) => ({ section: 'shorts', order: i + 1, homeTitle: item.title, youtubeUrl: item.url })));
+  objects['首頁編排'].push(...(listings.sections.infographics?.slugs ?? []).map((slug, i) => ({ section: 'infographics', order: i + 1, slug, galleryTitle: listings.sections.infographics?.items?.find(item => item.slug === slug)?.title })));
+  objects['圖卡內容'] = listings.sections.infographics?.items?.flatMap(group => group.cards.map((card, i) => ({ slug: group.slug, order: i + 1, ...card }))) ?? [];
   objects['首頁編排'].push(...listings.sections.learning.items.map((row, i) => ({ section: 'learning', order: i + 1, ...row })));
   objects['謠言分類'] = listings.sections.rumors.items.map((row, i) => ({ order: i + 1, ...row }));
   objects['常見劇本'] = listings.sections.scripts.items.map((row, i) => ({ order: i + 1, ...row }));

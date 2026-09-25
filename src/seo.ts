@@ -1,4 +1,6 @@
 import type { Listings, Report } from './data.ts';
+import { basePath, localPath, publicPath } from './paths.ts';
+import { infographicPath, resolveInfographic } from './infographics.ts';
 
 export type SeoContext = { siteUrl: string | null; previewOrigin: string };
 export type PageStatus = 'ready' | 'loading' | 'not-found' | 'error';
@@ -25,22 +27,34 @@ export function originFor(data: Listings, context: SeoContext): string {
   return normalizeSiteUrl(context.siteUrl ?? data.seo.siteUrl) ?? normalizeSiteUrl(context.previewOrigin)!;
 }
 
+export function siteRootFor(data: Listings, context: SeoContext): string {
+  return originFor(data, context) + basePath;
+}
+
 export function buildSeo(data: Listings, location: string, report: Report | null, context: SeoContext, status: PageStatus = 'ready'): SeoResult {
   const origin = originFor(data, context);
   const url = new URL(location, origin);
-  const path = url.pathname.replace(/\/+$/, '') || '/';
+  const rawPath = url.pathname.replace(/\/+$/, '') || '/';
+  // React Router strips basename from useLocation(); SSR receives the full public path.
+  const path = rawPath === '/' || rawPath === '/reports' || rawPath.startsWith('/reports/') || rawPath.startsWith('/infographics/') ? rawPath : localPath(rawPath) ?? '/not-found';
   const isListing = path === '/reports';
   const isArticle = path.startsWith('/reports/');
+  const infographic = resolveInfographic(data, path);
   const isQuery = isListing && (url.searchParams.has('q') || url.searchParams.has('category'));
-  const missing = status === 'not-found' || (!['/', '/reports'].includes(path) && !isArticle);
-  const page = report?.seo ?? (isListing ? data.seo.reports : data.seo.home);
+  const missing = status === 'not-found' || (!['/', '/reports'].includes(path) && !isArticle && !infographic);
+  const page = infographic ? {
+    title: `${infographic.story.title}｜圖卡 ${infographic.number}/${infographic.group.cards.length}｜${data.site.name}`,
+    description: `${infographic.card.caption}。${infographic.story.description}`,
+    image: { src: `/images/og/cards/${infographic.group.slug}-${infographic.number}.png`, alt: infographic.card.image.alt, width: 1200, height: 630, type: 'image/png' },
+    noindex: data.seo.home.noindex,
+  } : report?.seo ?? (isListing ? data.seo.reports : data.seo.home);
   const title = missing ? `找不到頁面｜${data.site.name}` : status === 'error' ? `資料暫時無法載入｜${data.site.name}` : isQuery ? `搜尋與篩選結果｜${data.site.name}` : status === 'loading' ? `載入內容中｜${data.site.name}` : page.title;
   const description = missing ? '找不到這個頁面，請回到首頁或查核報告列表。' : status === 'error' ? '資料暫時無法載入，請稍後重試。' : page.description;
   const ready = status === 'ready' && !missing && (!isArticle || !!report);
   const index = ready && canIndexSite(data, context) && !page.noindex && !report?.isMock && !isQuery;
   const robots = index ? 'index, follow, max-image-preview:large' : data.isMock || report?.isMock || !canIndexSite(data, context) ? 'noindex, nofollow' : 'noindex, follow';
-  const canonical = ready ? `${origin}${isListing ? '/reports' : path}` : undefined;
-  const imageUrl = new URL(page.image.src, origin).href;
+  const canonical = ready ? `${origin}${publicPath(isListing ? '/reports' : path)}` : undefined;
+  const imageUrl = new URL(publicPath(page.image.src), origin).href;
   const tags: MetaTag[] = [
     { name: 'description', content: description }, { name: 'robots', content: robots },
     { property: 'og:title', content: title }, { property: 'og:description', content: description },
@@ -60,18 +74,21 @@ export function buildSeo(data: Listings, location: string, report: Report | null
   }
   const graph: Record<string, unknown>[] = [];
   if (canonical && ready && !isQuery) {
-    const publisher = { '@id': `${origin}/#publisher` };
-    const website = { '@id': `${origin}/#website` };
-    graph.push({ '@type': 'Organization', ...publisher, name: data.site.name, alternateName: data.site.englishName, url: `${origin}/` });
-    graph.push({ '@type': 'WebSite', ...website, name: data.site.title, url: `${origin}/`, inLanguage: data.seo.language, publisher });
-    graph.push({ '@type': isListing ? 'CollectionPage' : 'WebPage', '@id': `${canonical}#webpage`, url: canonical, name: title, description, inLanguage: data.seo.language, isPartOf: website });
-    if (isListing || report) {
-      const items = [{ '@type': 'ListItem', position: 1, name: '首頁', item: `${origin}/` },
-        { '@type': 'ListItem', position: 2, name: report?.kind === 'analysis' ? '資訊操弄解析' : report?.kind === 'guide' ? '查核學堂' : '查核報告', item: report?.kind === 'analysis' ? `${origin}/#analysis` : report?.kind === 'guide' ? `${origin}/#learning` : `${origin}/reports` }];
+    const siteRoot = `${siteRootFor(data, context)}/`;
+    const publisher = { '@id': `${siteRoot}#publisher` };
+    const website = { '@id': `${siteRoot}#website` };
+    graph.push({ '@type': 'Organization', ...publisher, name: data.site.name, alternateName: data.site.englishName, url: siteRoot });
+    graph.push({ '@type': 'WebSite', ...website, name: data.site.title, url: siteRoot, inLanguage: data.seo.language, publisher });
+    graph.push({ '@type': isListing ? 'CollectionPage' : 'WebPage', '@id': `${canonical}#webpage`, url: canonical, name: title, description, inLanguage: data.seo.language, isPartOf: website, ...(infographic ? { primaryImageOfPage: { '@id': `${canonical}#image` } } : {}) });
+    if (isListing || report || infographic) {
+      const items = [{ '@type': 'ListItem', position: 1, name: '首頁', item: siteRoot },
+        { '@type': 'ListItem', position: 2, name: infographic ? '圖卡懶人包' : report?.kind === 'analysis' ? '資訊操弄解析' : report?.kind === 'guide' ? '查核學堂' : '查核報告', item: infographic ? `${siteRoot}#infographics` : report?.kind === 'analysis' ? `${siteRoot}#analysis` : report?.kind === 'guide' ? `${siteRoot}#learning` : `${siteRootFor(data, context)}/reports` }];
       if (report) items.push({ '@type': 'ListItem', position: 3, name: report.title, item: canonical });
+      if (infographic) items.push({ '@type': 'ListItem', position: 3, name: `${infographic.story.title} 圖卡 ${infographic.number}`, item: canonical });
       graph.push({ '@type': 'BreadcrumbList', '@id': `${canonical}#breadcrumbs`, itemListElement: items });
     }
-    if (isListing) graph.push({ '@type': 'ItemList', itemListElement: data.stories.filter(story => story.kind === 'report').map((story, index) => ({ '@type': 'ListItem', position: index + 1, name: story.title, url: `${origin}/reports/${story.slug}` })) });
+    if (infographic) graph.push({ '@type': 'ImageObject', '@id': `${canonical}#image`, contentUrl: new URL(publicPath(infographic.card.image.src), origin).href, thumbnailUrl: imageUrl, caption: infographic.card.caption, name: `${infographic.story.title} 圖卡 ${infographic.number}` });
+    if (isListing) graph.push({ '@type': 'ItemList', itemListElement: data.stories.filter(story => story.kind === 'report').map((story, index) => ({ '@type': 'ListItem', position: index + 1, name: story.title, url: `${siteRootFor(data, context)}/reports/${story.slug}` })) });
     if (report) graph.push({
       '@type': report.kind === 'guide' ? 'Article' : 'NewsArticle', '@id': `${canonical}#article`,
       headline: report.title, description, url: canonical, mainEntityOfPage: { '@id': `${canonical}#webpage` },
@@ -114,10 +131,14 @@ export function sitemapXml(data: Listings, reports: Report[], context: SeoContex
     if (!data.seo.home.noindex) entries.push({ path: '/' });
     if (!data.seo.reports.noindex) entries.push({ path: '/reports' });
     reports.filter(report => !report.isMock && !report.seo.noindex).forEach(report => entries.push({ path: `/reports/${report.slug}`, lastmod: report.updated }));
+    if (!data.seo.home.noindex) (data.sections.infographics?.items ?? []).forEach(group => {
+      const report = reports.find(item => item.slug === group.slug);
+      if (report && !report.isMock && !report.seo.noindex) group.cards.forEach((_, index) => entries.push({ path: infographicPath(group.slug, index + 1), lastmod: report.updated }));
+    });
   }
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.map(entry => `  <url><loc>${escapeHtml(origin + entry.path)}</loc>${entry.lastmod ? `<lastmod>${entry.lastmod}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.map(entry => `  <url><loc>${escapeHtml(origin + publicPath(entry.path))}</loc>${entry.lastmod ? `<lastmod>${entry.lastmod}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
 }
 export function robotsTxt(data: Listings, context: SeoContext): string {
   // Crawlers must be allowed to read the HTML noindex directive, even in mock mode.
-  return `User-agent: *\nAllow: /\n${canIndexSite(data, context) ? `Sitemap: ${originFor(data, context)}/sitemap.xml\n` : '# Preview/mock mode: pages carry noindex; sitemap is intentionally empty.\n'}`;
+  return `User-agent: *\nAllow: /\n${canIndexSite(data, context) ? `Sitemap: ${siteRootFor(data, context)}/sitemap.xml\n` : '# Preview/mock mode: pages carry noindex; sitemap is intentionally empty.\n'}`;
 }
