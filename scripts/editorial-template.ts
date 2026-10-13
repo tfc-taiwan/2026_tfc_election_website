@@ -10,7 +10,7 @@ import { reportSchema, type ContentBlock, type Listings, type Report } from '../
 export type ImageAsset = { path: string; bytes: Buffer };
 export const editorialMetadataSchema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
-  reportId: z.string().min(1), updated: z.iso.date(), imageCaption: z.string().min(1),
+  reportId: z.string().min(1), updated: z.iso.date().nullable(), imageCaption: z.string().min(1),
   seo: reportSchema.shape.seo,
   finding: z.string().min(1).optional(), summaryClose: z.string().optional(),
   tags: z.array(z.string().min(1)).optional(), relatedSlugs: z.array(z.string()).optional(),
@@ -33,7 +33,7 @@ function runs(nodes: PhrasingContent[], definitions: Map<string, Definition>, st
     if (node.type === 'strong' || node.type === 'emphasis') return runs(node.children, definitions, { ...style, [node.type === 'strong' ? 'bold' : 'italic']: true });
     if (node.type === 'link' || node.type === 'linkReference') {
       const href = node.type === 'link' ? node.url : definitions.get(node.identifier.toLowerCase())?.url;
-      if (!href?.startsWith('https://')) throw new Error('內文連結必須是 HTTPS 網址，且參照必須有定義');
+      if (!href || !/^https?:\/\//.test(href)) throw new Error('內文連結必須是 HTTP 或 HTTPS 網址，且參照必須有定義');
       return runs(node.children, definitions, { ...style, href });
     }
     throw new Error(`不支援文章內的 ${node.type}，請勿使用註腳、HTML 或刪除線；圖片請獨立成段`);
@@ -92,6 +92,45 @@ function assertFilled(text: string, label: string) {
   if (!text || /若格式跑掉|查核點：標題內容|^下個標題$|網傳影片「」/.test(text)) throw new Error(`${label} 尚未填寫，不能把空白範本當成文章匯出`);
 }
 
+/** Import a heading-led guide without inventing newsroom template fields. */
+export async function convertGuideMarkdown(markdown: string, listings: Listings, inputMetadata: unknown) {
+  const meta = editorialMetadataSchema.parse(inputMetadata);
+  const story = listings.stories.find(story => story.slug === meta.slug);
+  if (!story || story.kind !== 'guide') throw new Error('指南必須對應列表內的 guide 文章');
+  const nodes = tree(markdown).children;
+  const title = nodes[0];
+  if (title?.type !== 'heading' || title.depth !== 1 || textOf(title) !== story.title) throw new Error('指南標題與列表不一致');
+  const definitions = new Map<string, Definition>();
+  for (const node of nodes) if (node.type === 'definition') definitions.set(node.identifier.toLowerCase(), node);
+  const intro: RootContent[] = [];
+  const pieces: { title: string; nodes: RootContent[] }[] = [];
+  for (const node of nodes.slice(1)) {
+    if (node.type === 'definition') continue;
+    if (node.type === 'heading' && node.depth === 3) pieces.push({ title: textOf(node), nodes: [] });
+    else (pieces.length ? pieces.at(-1)!.nodes : intro).push(node);
+  }
+  const assets = new Map<string, ImageAsset>();
+  const introBlocks = await blocks(intro, definitions, assets);
+  const introText = paragraphTexts(introBlocks);
+  if (!introText.length || !pieces.length) throw new Error('指南需要導言與至少一個標題 3 段落');
+  const checkSections = await Promise.all(pieces.map(async (piece, i) => {
+    const content = await blocks(piece.nodes, definitions, assets);
+    const paragraphs = paragraphTexts(content);
+    if (!paragraphs.length) throw new Error(`指南段落 ${piece.title} 缺少內文`);
+    return { id: `check-${i + 1}`, title: piece.title, paragraphs, blocks: content };
+  }));
+  const report = reportSchema.parse({
+    version: 1, isMock: listings.isMock, slug: story.slug, kind: story.kind, category: story.category,
+    title: story.title, finding: story.description, tags: meta.tags ?? [story.tag],
+    published: story.date, updated: meta.updated, reportId: meta.reportId,
+    reporter: '未提供', editor: '未提供', image: story.image, imageCaption: meta.imageCaption, seo: meta.seo,
+    summaryPoints: [story.description], summaryClose: '',
+    background: { id: 'background', title: '背景', paragraphs: introText, blocks: introBlocks },
+    checkSections, sources: meta.sources ?? [], relatedSlugs: meta.relatedSlugs ?? [],
+  });
+  return { report, assets: [...assets.values()] };
+}
+
 export async function convertEditorialTemplate(markdown: string, listings: Listings, inputMetadata: unknown): Promise<{ report: Report; assets: ImageAsset[] }> {
   const nodes = tree(markdown).children;
   const starts = nodes.flatMap((n, i) => textOf(n) === '###內容起###' ? [i] : []);
@@ -111,10 +150,10 @@ export async function convertEditorialTemplate(markdown: string, listings: Listi
   const lineDraft = titleArea.findIndex(node => textOf(node) === '（舊版）LINE首圖標題');
   const titleNode = titleArea.slice(0, lineDraft < 0 ? undefined : lineDraft).find(node => (node.type === 'paragraph' || node.type === 'heading') && textOf(node));
   if (headlineLabel < 0 || titleLabel <= headlineLabel || !headline || !titleNode) throw new Error('範本缺少「首頁標題直述句：」、標題 1 或「內文標題」正文');
-  const homeTitle = textOf(headline), title = textOf(titleNode);
+  const homeTitle = textOf(headline), title = titleArea.slice(0, lineDraft < 0 ? undefined : lineDraft).map(textOf).filter(Boolean).join('\n');
   assertFilled(homeTitle, '首頁標題'); assertFilled(title, '內文標題');
-  if (homeTitle !== story.title) throw new Error(`${meta.slug} 的首頁標題與文章列表不一致`);
-  const byline = after.map(textOf).find(text => /^（記者[：:]/.test(text));
+  if (homeTitle.replace(/\s+/g, ' ').trim() !== story.title.replace(/\s+/g, ' ').trim()) throw new Error(`${meta.slug} 的首頁標題與文章列表不一致`);
+  const byline = after.map(textOf).flatMap(text => text.split('\n').map(line => line.trim())).find(text => /^（記者[：:]/.test(text));
   const credits = byline && /^（記者[：:]\s*(.*?)\s*[；;]\s*責任編輯[：:]\s*(.*?)\s*）$/.exec(byline);
   if (!credits?.[1] || !credits[2]) throw new Error('請在「內容迄」之後填寫（記者：姓名；責任編輯：姓名）');
   const definitions = new Map<string, Definition>();
@@ -164,7 +203,7 @@ export async function convertEditorialTemplate(markdown: string, listings: Listi
     supplementarySections: await sections(groups.get('補充資料') ?? [], 'supplement', '補充資料'),
     sources: meta.sources ?? [], relatedSlugs: meta.relatedSlugs ?? [],
   };
-  if (report.updated < report.published) throw new Error('更新日期不能早於刊登日期');
+  if (report.updated && report.published && report.updated < report.published) throw new Error('更新日期不能早於刊登日期');
   if (new Set(report.relatedSlugs).size !== report.relatedSlugs.length || report.relatedSlugs.some(slug => slug === report.slug || !listings.stories.some(story => story.slug === slug))) throw new Error('相關文章 slug 重複或不存在');
   return { report: reportSchema.parse(report), assets: [...assets.values()] };
 }

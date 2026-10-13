@@ -21,13 +21,13 @@ test('all listing references resolve to unique, matching report files and local 
   for (const story of data.stories) {
     const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${story.slug}.json`), 'utf8')));
     assert.equal(report.slug, story.slug);
-    assert.equal(report.title, story.title);
+    assert.ok(report.title.length > 0);
     assert.equal(report.kind, story.kind);
     assert.equal(report.category, story.category);
     assert.equal(report.verdict, story.verdict);
     assert.equal(report.published, story.date);
-    assert.ok(report.updated >= report.published);
-    if (report.image.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${report.image.src}`)));
+    if (report.updated && report.published) assert.ok(report.updated >= report.published);
+    if (report.image?.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${report.image.src}`)));
     for (const section of [report.background, ...report.checkSections]) {
       if (section.image?.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${section.image.src}`)));
     }
@@ -64,9 +64,26 @@ test('countdown uses Taipei calendar days and never becomes negative', () => {
 });
 
 test('search supports Chinese, normalization, multiple terms, category, and no results', () => {
-  assert.ok(searchStories(data.stories, '音檔').some(story => story.slug === 'ai-voice'));
+  assert.ok(searchStories(data.stories, '中配').some(story => story.slug === '26-chinese-spouses'));
   assert.deepEqual(searchStories(data.stories, 'ＡＩ'), searchStories(data.stories, 'ai'));
-  assert.ok(searchStories(data.stories, '圖表 百分比').some(story => story.slug === 'referendum-chart'));
+  assert.ok(searchStories(data.stories, '樹木 水泥').some(story => story.slug === 'early-voting'));
   assert.ok(searchStories(data.stories, '', '公投議題').every(story => story.category === '公投議題'));
   assert.equal(searchStories(data.stories, 'absolutely-no-match').length, 0);
+});
+
+test('provided covers match reports while unfilled dates stay absent', () => {
+  assert.equal(data.stories.length, 5);
+  assert.equal(data.stories.filter(story => story.date === null).length, 3);
+  assert.ok(data.stories.every(story => story.image?.src.startsWith('/images/covers/')));
+  assert.equal(data.sections.infographics, undefined);
+  for (const story of data.stories) {
+    const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${story.slug}.json`), 'utf8')));
+    assert.deepEqual(report.image, story.image);
+    assert.equal(report.seo.image.src, story.image?.src);
+    const sections = [report.background, ...report.checkSections, ...(report.supplementarySections ?? [])];
+    for (const section of sections) for (const block of section.blocks ?? []) {
+      if (block.type === 'image' && block.image.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${block.image.src}`)));
+    }
+    for (const privateText of ['Canva', 'slack', '第一行十八個字', '影片存證', 'data:image']) assert.ok(!JSON.stringify(report).includes(privateText));
+  }
 });

@@ -68,8 +68,9 @@ export function buildSeo(data: Listings, location: string, report: Report | null
   ];
   if (canonical) tags.push({ property: 'og:url', content: canonical });
   if (report && ready) {
-    tags.push({ name: 'author', content: report.reporter }, { property: 'article:published_time', content: report.published },
-      { property: 'article:modified_time', content: report.updated }, { property: 'article:section', content: report.category });
+    tags.push({ name: 'author', content: report.reporter }, { property: 'article:section', content: report.category });
+    if (report.published) tags.push({ property: 'article:published_time', content: report.published });
+    if (report.updated) tags.push({ property: 'article:modified_time', content: report.updated });
     report.tags.forEach(tag => tags.push({ property: 'article:tag', content: tag }));
   }
   const graph: Record<string, unknown>[] = [];
@@ -92,7 +93,7 @@ export function buildSeo(data: Listings, location: string, report: Report | null
     if (report) graph.push({
       '@type': report.kind === 'guide' ? 'Article' : 'NewsArticle', '@id': `${canonical}#article`,
       headline: report.title, description, url: canonical, mainEntityOfPage: { '@id': `${canonical}#webpage` },
-      datePublished: report.published, dateModified: report.updated, inLanguage: data.seo.language,
+      ...(report.published ? { datePublished: report.published } : {}), ...(report.updated ? { dateModified: report.updated } : {}), inLanguage: data.seo.language,
       author: { '@type': report.seo.authorType, name: report.reporter }, publisher,
       image: { '@type': 'ImageObject', url: imageUrl, width: page.image.width, height: page.image.height, caption: page.image.alt },
       articleSection: report.category, keywords: report.tags.join(', '), isAccessibleForFree: true,
@@ -130,10 +131,10 @@ export function sitemapXml(data: Listings, reports: Report[], context: SeoContex
   if (canIndexSite(data, context)) {
     if (!data.seo.home.noindex) entries.push({ path: '/' });
     if (!data.seo.reports.noindex) entries.push({ path: '/reports' });
-    reports.filter(report => !report.isMock && !report.seo.noindex).forEach(report => entries.push({ path: `/reports/${report.slug}`, lastmod: report.updated }));
+    reports.filter(report => !report.isMock && !report.seo.noindex).forEach(report => entries.push({ path: `/reports/${report.slug}`, lastmod: report.updated ?? undefined }));
     if (!data.seo.home.noindex) (data.sections.infographics?.items ?? []).forEach(group => {
       const report = reports.find(item => item.slug === group.slug);
-      if (report && !report.isMock && !report.seo.noindex) group.cards.forEach((_, index) => entries.push({ path: infographicPath(group.slug, index + 1), lastmod: report.updated }));
+      if (report && !report.isMock && !report.seo.noindex) group.cards.forEach((_, index) => entries.push({ path: infographicPath(group.slug, index + 1), lastmod: report.updated ?? undefined }));
     });
   }
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.map(entry => `  <url><loc>${escapeHtml(origin + publicPath(entry.path))}</loc>${entry.lastmod ? `<lastmod>${entry.lastmod}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;

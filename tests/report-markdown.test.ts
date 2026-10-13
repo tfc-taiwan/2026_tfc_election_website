@@ -9,9 +9,10 @@ import { convertReport, reportToParagraphs, toWorkbookRows } from '../scripts/sh
 import { paragraphsFromMarkdown, reportSlug } from '../scripts/report-markdown.ts';
 import { readMarkdownReports } from '../scripts/convert-reports.ts';
 
-const listings = listingsSchema.parse(JSON.parse(await readFile(new URL('../data/listings.json', import.meta.url), 'utf8')));
+const demo = JSON.parse(await readFile(new URL('./fixtures/demo-data.json', import.meta.url), 'utf8'));
+const listings = listingsSchema.parse(demo.listings);
 const fixture = await readFile(new URL('./fixtures/google-docs-ai-voice.md', import.meta.url), 'utf8');
-const reports: Report[] = await Promise.all(listings.stories.map(async story => JSON.parse(await readFile(new URL(`../data/reports/${story.slug}.json`, import.meta.url), 'utf8'))));
+const reports: Report[] = listings.stories.map(story => demo.reports[story.slug]);
 const markdown = (report: Report) => reportToParagraphs(report).map(p => `${p.heading === 'TITLE' || p.heading === 'HEADING_1' ? '# ' : p.heading === 'HEADING_2' ? '## ' : ''}${p.text.replaceAll('[', '\\[').replaceAll(']', '\\]')}`).join('\n\n');
 const cli = (...args: string[]) => spawnSync(process.execPath, ['scripts/convert-spreadsheet.ts', ...args], { encoding: 'utf8' });
 
@@ -89,9 +90,11 @@ test('single report CLI changes only its validated output and supports check', a
   try {
     const input = join(dir, '文章.md'), output = join(dir, 'reports');
     await writeFile(input, fixture);
-    const run = (...args: string[]) => spawnSync(process.execPath, ['scripts/convert-reports.ts', input, '--out', output, ...args], { encoding: 'utf8' });
+    const listingPath = join(dir, 'listings.json');
+    await writeFile(listingPath, JSON.stringify(listings));
+    const run = (...args: string[]) => spawnSync(process.execPath, ['scripts/convert-reports.ts', input, '--listings', listingPath, '--out', output, ...args], { encoding: 'utf8' });
     assert.equal(run('--check').status, 0);
-    assert.deepEqual(await readdir(dir), ['文章.md']);
+    assert.deepEqual((await readdir(dir)).sort(), ['listings.json', '文章.md']);
     const result = run(); assert.equal(result.status, 0, result.stderr);
     assert.deepEqual(JSON.parse(await readFile(join(output, 'ai-voice.json'), 'utf8')), reports[0]);
     await writeFile(input, fixture.replace('slug: ai-voice', 'slug: ballot-paper'));

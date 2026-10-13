@@ -10,7 +10,7 @@ import { sampleMarkdown, sampleMetadata, sampleTitle } from './fixtures/editoria
 
 let child, temp, base;
 const source = JSON.parse(await readFile('data/listings.json', 'utf8'));
-const article = JSON.parse(await readFile('data/reports/ai-voice.json', 'utf8'));
+const article = JSON.parse(await readFile('data/reports/26-chinese-spouses.json', 'utf8'));
 before(async () => {
   temp = await mkdtemp(join(tmpdir(), 'tfc-seo-test-'));
   await cp('data', join(temp, 'data'), { recursive: true });
@@ -40,28 +40,28 @@ test('built static pages contain body content and unique head metadata', async (
     assert.ok(html.includes('name="robots" content="noindex, nofollow"'));
     assert.ok(html.includes('type="application/ld+json"'));
     assert.ok(!html.includes('<!--app-html-->'));
-    assert.match(html, /<h1[^>]*>.+?<\/h1>/);
+    assert.match(html, /<h1[^>]*>[\s\S]+?<\/h1>/);
     if (path !== 'index.html' && path !== 'reports/index.html') assert.match(html, /<article class="report-page">[\s\S]+?id="verification"/);
   }
 });
 
 test('production SSR uses canonical origin and returns real 404, asset and HEAD responses', async () => {
-  const response = await fetch(base + '/reports/ai-voice');
+  const response = await fetch(base + '/reports/26-chinese-spouses');
   const html = await response.text();
   assert.equal(response.status, 200);
   assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow');
-  assert.ok(html.includes('href="https://election.example.org/reports/ai-voice"'));
+  assert.ok(html.includes('href="https://election.example.org/reports/26-chinese-spouses"'));
   assert.ok(html.includes('class="report-page"'));
-  const head = await fetch(base + '/reports/ai-voice', { method: 'HEAD' });
+  const head = await fetch(base + '/reports/26-chinese-spouses', { method: 'HEAD' });
   assert.equal(head.status, 200); assert.equal(await head.text(), '');
   for (const path of ['/reports/missing', '/missing', '/data/reports/missing.json', '/images/missing.png', '/.server/template.html']) {
     const missing = await fetch(base + path); assert.equal(missing.status, 404); assert.match(missing.headers.get('x-robots-tag'), /noindex/);
   }
-  const png = await fetch(base + '/images/og/ai-voice.png');
+  const png = await fetch(base + '/images/og/home.png');
   assert.equal(png.headers.get('content-type'), 'image/png');
   const bytes = Buffer.from(await png.arrayBuffer()); assert.equal(bytes.readUInt32BE(16), 1200);
-  const redirect = await fetch(base + '/reports/ai-voice/', { redirect: 'manual' });
-  assert.equal(redirect.status, 308); assert.equal(redirect.headers.get('location'), '/reports/ai-voice');
+  const redirect = await fetch(base + '/reports/26-chinese-spouses/', { redirect: 'manual' });
+  assert.equal(redirect.status, 308); assert.equal(redirect.headers.get('location'), '/reports/26-chinese-spouses');
 });
 
 test('changing JSON updates initial HTML and runtime JSON without rebuilding JavaScript', async () => {
@@ -69,20 +69,22 @@ test('changing JSON updates initial HTML and runtime JSON without rebuilding Jav
   edited.title = '伺服器即時讀取 JSON 的測試標題';
   edited.seo.title = '更新後的 SEO 標題';
   edited.seo.description = '更新後的 SEO 摘要';
-  await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(edited));
-  const html = await (await fetch(base + '/reports/ai-voice')).text();
+  await writeFile(join(temp, 'data/reports/26-chinese-spouses.json'), JSON.stringify(edited));
+  const html = await (await fetch(base + '/reports/26-chinese-spouses')).text();
   assert.ok(html.includes(`<title data-seo>${edited.seo.title}</title>`));
   assert.ok(html.includes(`<h1>${edited.title}</h1>`));
   assert.ok(html.includes(`name="description" content="${edited.seo.description}"`));
-  assert.equal((await (await fetch(base + '/data/reports/ai-voice.json')).json()).title, edited.title);
-  await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(article));
+  assert.equal((await (await fetch(base + '/data/reports/26-chinese-spouses.json')).json()).title, edited.title);
+  await writeFile(join(temp, 'data/reports/26-chinese-spouses.json'), JSON.stringify(article));
 });
 
 test('converted newsroom template renders rich content and supplements in initial HTML', async () => {
-  const { report } = await convertEditorialTemplate(sampleMarkdown, source, sampleMetadata);
-  await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(report));
+  const demo = JSON.parse(await readFile('tests/fixtures/demo-data.json', 'utf8'));
+  const { report } = await convertEditorialTemplate(sampleMarkdown, demo.listings, sampleMetadata);
+  report.slug = article.slug;
+  await writeFile(join(temp, 'data/reports/26-chinese-spouses.json'), JSON.stringify(report));
   try {
-    const response = await fetch(base + '/reports/ai-voice');
+    const response = await fetch(base + '/reports/26-chinese-spouses');
     assert.equal(response.status, 200);
     const html = await response.text();
     const markup = html.slice(html.indexOf('<article class="report-page">'), html.indexOf('</article>'));
@@ -96,31 +98,31 @@ test('converted newsroom template renders rich content and supplements in initia
     assert.ok(markup.indexOf('<figcaption>圖一') < markup.indexOf(report.background.paragraphs[1]));
     assert.equal(markup.includes('Canva'), false);
     assert.equal(markup.includes('若格式跑掉'), false);
-  } finally { await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(article)); }
+  } finally { await writeFile(join(temp, 'data/reports/26-chinese-spouses.json'), JSON.stringify(article)); }
 });
 
 test('publishing configuration indexes real content only, including sitemap and search noindex', async () => {
   const live = structuredClone(source); live.isMock = false;
-  const real = structuredClone(article); real.isMock = false;
+  const real = structuredClone(article); real.isMock = false; real.seo.noindex = false;
   await writeFile(join(temp, 'data/listings.json'), JSON.stringify(live));
-  await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(real));
-  const html = await (await fetch(base + '/reports/ai-voice')).text();
+  await writeFile(join(temp, 'data/reports/26-chinese-spouses.json'), JSON.stringify(real));
+  const html = await (await fetch(base + '/reports/26-chinese-spouses')).text();
   assert.ok(html.includes('content="index, follow, max-image-preview:large"'));
   const xml = await (await fetch(base + '/sitemap.xml')).text();
   assert.equal((xml.match(/<loc>/g) || []).length, 3);
-  assert.ok(xml.includes('https://election.example.org/reports/ai-voice'));
+  assert.ok(xml.includes('https://election.example.org/reports/26-chinese-spouses'));
   assert.ok(!xml.includes('ballot-paper'));
   assert.ok((await (await fetch(base + '/robots.txt')).text()).includes('Sitemap: https://election.example.org/sitemap.xml'));
   const search = await fetch(base + '/reports?q=音檔');
   assert.equal(search.headers.get('x-robots-tag'), 'noindex, follow');
   await writeFile(join(temp, 'data/listings.json'), JSON.stringify(source));
-  await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(article));
+  await writeFile(join(temp, 'data/reports/26-chinese-spouses.json'), JSON.stringify(article));
 });
 
 test('broken editorial JSON returns a non-indexable 503, then recovers after correction', async () => {
-  await writeFile(join(temp, 'data/reports/ai-voice.json'), '{broken');
-  const broken = await fetch(base + '/reports/ai-voice');
+  await writeFile(join(temp, 'data/reports/26-chinese-spouses.json'), '{broken');
+  const broken = await fetch(base + '/reports/26-chinese-spouses');
   assert.equal(broken.status, 503); assert.match(broken.headers.get('x-robots-tag'), /noindex/);
-  await writeFile(join(temp, 'data/reports/ai-voice.json'), JSON.stringify(article));
-  assert.equal((await fetch(base + '/reports/ai-voice')).status, 200);
+  await writeFile(join(temp, 'data/reports/26-chinese-spouses.json'), JSON.stringify(article));
+  assert.equal((await fetch(base + '/reports/26-chinese-spouses')).status, 200);
 });

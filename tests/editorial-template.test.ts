@@ -11,7 +11,8 @@ import { readReportBundle } from '../scripts/convert-reports.ts';
 import { toWorkbookRows } from '../scripts/sheets-core.ts';
 import { editorialTemplate, sampleMarkdown, sampleMetadata, sampleReport, sampleTitle } from './fixtures/editorial-sample.ts';
 
-const listings = listingsSchema.parse(JSON.parse(await readFile(new URL('../data/listings.json', import.meta.url), 'utf8')));
+const demo = JSON.parse(await readFile(new URL('./fixtures/demo-data.json', import.meta.url), 'utf8'));
+const listings = listingsSchema.parse(demo.listings);
 
 test('actual newsroom template maps headings, byline, ordered rich content and embedded images to valid report JSON', async () => {
   assert.equal(isEditorialTemplate(editorialTemplate), true);
@@ -71,10 +72,12 @@ test('single report CLI checks without writes, extracts images, and rejects inva
   try {
     const source = join(dir, '記者上稿.md'), meta = join(dir, 'metadata.json'), output = join(dir, 'reports'), images = join(dir, 'images');
     await writeFile(source, sampleMarkdown);
+    const listingPath = join(dir, 'listings.json');
+    await writeFile(listingPath, JSON.stringify(listings));
     await writeFile(meta, JSON.stringify({ '記者上稿.md': sampleMetadata }));
-    const run = (...args: string[]) => spawnSync(process.execPath, ['scripts/convert-reports.ts', source, '--metadata', meta, '--out', output, '--assets-dir', images, ...args], { encoding: 'utf8' });
+    const run = (...args: string[]) => spawnSync(process.execPath, ['scripts/convert-reports.ts', source, '--listings', listingPath, '--metadata', meta, '--out', output, '--assets-dir', images, ...args], { encoding: 'utf8' });
     const check = run('--check'); assert.equal(check.status, 0, check.stderr);
-    assert.deepEqual((await readdir(dir)).sort(), ['metadata.json', '記者上稿.md']);
+    assert.deepEqual((await readdir(dir)).sort(), ['listings.json', 'metadata.json', '記者上稿.md']);
     const converted = run(); assert.equal(converted.status, 0, converted.stderr);
     const reportText = await readFile(join(output, 'ai-voice.json'), 'utf8');
     assert.equal(JSON.parse(reportText).title, sampleTitle);
@@ -96,7 +99,7 @@ test('batch import accepts both document formats and keeps duplicate/completenes
     await assert.rejects(readReportBundle(docs, listings, true, meta), /缺少文章/);
     const { reportToParagraphs } = await import('../scripts/sheets-core.ts');
     for (const story of listings.stories.slice(1)) {
-      const report = JSON.parse(await readFile(new URL(`../data/reports/${story.slug}.json`, import.meta.url), 'utf8'));
+      const report = demo.reports[story.slug];
       const markdown = reportToParagraphs(report).map(p => `${p.heading === 'TITLE' || p.heading === 'HEADING_1' ? '# ' : p.heading === 'HEADING_2' ? '## ' : ''}${p.text.replaceAll('[', '\\[').replaceAll(']', '\\]')}`).join('\n\n');
       await writeFile(join(docs, `${story.slug}.md`), markdown);
     }
@@ -109,4 +112,16 @@ test('batch import accepts both document formats and keeps duplicate/completenes
     await writeFile(join(docs, 'duplicate.md'), oldMarkdown);
     await assert.rejects(readReportBundle(docs, listings, true, meta), /slug 重複/);
   } finally { await rm(dir, { recursive: true, force: true }); }
+});
+
+test('newsroom titles preserve a subtitle, tolerate spacing, and keep missing dates explicit', async () => {
+  const source = structuredClone(listings);
+  source.stories[0].date = null;
+  source.stories[0].image = null;
+  const markdown = sampleMarkdown.replace(`![][image1]**${sampleTitle}**`, `![][image1]**${sampleTitle}**\n\n**完整副標題**`);
+  const { report } = await convertEditorialTemplate(markdown, source, { ...sampleMetadata, updated: null });
+  assert.equal(report.title, sampleTitle + '\n完整副標題');
+  assert.equal(report.published, null);
+  assert.equal(report.updated, null);
+  assert.equal(report.image, null);
 });

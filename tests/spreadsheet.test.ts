@@ -7,8 +7,9 @@ import { spawnSync } from 'node:child_process';
 import { convertWorkbook, toWorkbookRows, convertReport, reportToParagraphs } from '../scripts/sheets-core.ts';
 import { listingsSchema, type Report } from '../src/data.ts';
 
-const listings = listingsSchema.parse(JSON.parse(await readFile(new URL('../data/listings.json', import.meta.url), 'utf8')));
-const reports: Report[] = await Promise.all(listings.stories.map(async s => JSON.parse(await readFile(new URL(`../data/reports/${s.slug}.json`, import.meta.url), 'utf8'))));
+const demo = JSON.parse(await readFile(new URL('./fixtures/demo-data.json', import.meta.url), 'utf8'));
+const listings = listingsSchema.parse(demo.listings);
+const reports: Report[] = listings.stories.map(story => demo.reports[story.slug]);
 
 test('spreadsheet rows round-trip the complete homepage without reading or embedding report text', () => {
   const book = toWorkbookRows(listings);
@@ -31,7 +32,7 @@ test('spreadsheet rows round-trip the complete homepage without reading or embed
 test('sheet edits, blank rows, boolean strings and date serials convert predictably', () => {
   const book = toWorkbookRows(listings);
   book['文章列表'][1][4] = '新的列表標題';
-  book['文章列表'][1][6] = (Date.parse(listings.stories[0].date) - Date.UTC(1899, 11, 30)) / 86400000;
+  book['文章列表'][1][6] = (Date.parse(listings.stories[0].date!) - Date.UTC(1899, 11, 30)) / 86400000;
   book['文章列表'].push([]);
   book['网站設定'] = []; // Extra user worksheets do not affect conversion.
   book['網站設定'].find(row => row[0] === 'isMock')![1] = 'TRUE';

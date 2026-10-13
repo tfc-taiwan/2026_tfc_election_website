@@ -3,7 +3,7 @@ import type { Report } from '../../src/data.ts';
 
 // Real Google Docs Markdown export, downloaded 2026-09-20; fill a local copy only.
 export const editorialTemplate = await readFile(new URL('./editorial-template.md', import.meta.url), 'utf8');
-export const sampleReport: Report = JSON.parse(await readFile(new URL('../../data/reports/ai-voice.json', import.meta.url), 'utf8'));
+export const sampleReport: Report = JSON.parse(await readFile(new URL('./demo-data.json', import.meta.url), 'utf8')).reports['ai-voice'];
 export const sampleMetadata = {
   slug: sampleReport.slug, reportId: sampleReport.reportId, updated: sampleReport.updated,
   imageCaption: sampleReport.imageCaption, seo: sampleReport.seo, finding: sampleReport.finding,

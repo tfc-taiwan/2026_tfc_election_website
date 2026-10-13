@@ -1,0 +1,1745 @@
+{
+  "listings": {
+    "version": 1,
+    "isMock": true,
+    "site": {
+      "name": "台灣事實查核中心",
+      "englishName": "Taiwan FactCheck Center",
+      "title": "2026 選舉工具箱",
+      "notice": "示範網站・所有報告與活動皆為虛構資料",
+      "footer": "© 2026 台灣事實查核中心｜介面示範・非正式網站",
+      "socialLinks": [
+        {
+          "label": "Facebook",
+          "url": "https://www.facebook.com/taiwantfc/"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/taiwan_factcheckcenter/"
+        },
+        {
+          "label": "Threads",
+          "url": "https://www.threads.net/@taiwan_factcheckcenter"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/channel/UCRrO7rwIR0n7P1K2Fc7CIXA"
+        },
+        {
+          "label": "TikTok",
+          "url": "https://www.tiktok.com/@taiwan_factcheckcenter"
+        }
+      ]
+    },
+    "navigation": [
+      {
+        "label": "地方選舉",
+        "href": "/#latest"
+      },
+      {
+        "label": "公投議題",
+        "href": "/#referendum"
+      },
+      {
+        "label": "資訊圖解",
+        "href": "/#infographics"
+      },
+      {
+        "label": "防禦指南",
+        "href": "/#learning"
+      },
+      {
+        "label": "TFC 工作動態",
+        "href": "/#activities"
+      },
+      {
+        "label": "查核報告",
+        "href": "/reports"
+      }
+    ],
+    "hero": {
+      "kicker": "2026 選舉工具箱",
+      "title": [
+        "台灣地方選舉 & 公投",
+        "事實查核與資訊專區"
+      ],
+      "description": "在眾聲喧嘩之中，讓事實成為判斷的起點。從即時查核、資訊操弄解析到投票知識，陪你看懂訊息，做出知情的選擇。",
+      "electionDate": "2026-11-28",
+      "facts": [
+        {
+          "title": "選舉日期與時間",
+          "description": "示範投票日為 2026 年 11 月 28 日；實際日期與投票時間請以正式選務公告為準。",
+          "tone": "cyan"
+        },
+        {
+          "title": "選舉項目與範圍",
+          "description": "認識地方公職人員選舉，以及不同投票種類的適用範圍。",
+          "tone": "magenta"
+        },
+        {
+          "title": "投票資格與準備",
+          "description": "出發前，向選務機關確認投票資格、地點與應攜帶的文件。",
+          "tone": "cyan"
+        }
+      ]
+    },
+    "stories": [
+      {
+        "slug": "ai-voice",
+        "kind": "report",
+        "category": "地方選舉",
+        "title": "網傳「某候選人私下賄選錄音檔流出」？查核結果為變造",
+        "description": "一段聲音，足以代表真相嗎？從原始檔案、完整脈絡與交叉比對，檢視可疑的選舉音訊。",
+        "date": "2026-09-01",
+        "image": {
+          "src": "/images/audio.svg",
+          "alt": "AI 識別主題的報刊風格示意插圖，非事件照片"
+        },
+        "tag": "AI 識別",
+        "tone": "cyan",
+        "verdict": "錯誤"
+      },
+      {
+        "slug": "ballot-paper",
+        "kind": "report",
+        "category": "地方選舉",
+        "title": "圖文流傳「新選票設計會透光，作票更容易」？錯誤訊息",
+        "description": "照片的明暗與對比，可能改變我們的判讀。一起拆解這則影像查核示範。",
+        "date": "2026-08-28",
+        "image": {
+          "src": "/images/ballot.svg",
+          "alt": "影像查核主題的報刊風格示意插圖，非事件照片"
+        },
+        "tag": "影像查核",
+        "tone": "magenta",
+        "verdict": "錯誤"
+      },
+      {
+        "slug": "early-voting",
+        "kind": "report",
+        "category": "地方選舉",
+        "title": "社群瘋傳「提前去投票所可以多領票」？查核這則傳言",
+        "description": "收到投票小撇步，先別急著分享。辨識缺少來源的選務訊息。",
+        "date": "2026-08-25",
+        "image": {
+          "src": "/images/ballot.svg",
+          "alt": "投票資訊主題的報刊風格示意插圖，非事件照片"
+        },
+        "tag": "投票資訊",
+        "tone": "cyan",
+        "verdict": "錯誤"
+      },
+      {
+        "slug": "election-message",
+        "kind": "report",
+        "category": "地方選舉",
+        "title": "簡訊自稱「選委會」要求輸入個資？先確認連結來源",
+        "description": "假冒官方的訊息看起來很熟悉。從網址、要求的資料與查證管道找線索。",
+        "date": "2026-08-15",
+        "image": {
+          "src": "/images/phone.svg",
+          "alt": "數位安全主題的報刊風格示意插圖，非事件照片"
+        },
+        "tag": "數位安全",
+        "tone": "magenta",
+        "verdict": "事實釐清"
+      },
+      {
+        "slug": "polling-video",
+        "kind": "report",
+        "category": "地方選舉",
+        "title": "「這是今年投票所的畫面」？舊影片換上新說明",
+        "description": "畫面沒有被修改，也可能傳遞錯誤脈絡。查核影片的時間與地點。",
+        "date": "2026-08-12",
+        "image": {
+          "src": "/images/network.svg",
+          "alt": "脈絡查核主題的報刊風格示意插圖，非事件照片"
+        },
+        "tag": "脈絡查核",
+        "tone": "cyan",
+        "verdict": "部分錯誤"
+      },
+      {
+        "slug": "referendum-notice",
+        "kind": "report",
+        "category": "公投議題",
+        "title": "網傳「公投通知已經公告」？先比對原始文件",
+        "description": "一張沒有出處的公告截圖，如何一步步確認？",
+        "date": "2026-09-03",
+        "image": {
+          "src": "/images/document.svg",
+          "alt": "公告查證主題的報刊風格示意插圖，非事件照片"
+        },
+        "tag": "公告查證",
+        "tone": "cyan",
+        "verdict": "事實釐清"
+      },
+      {
+        "slug": "referendum-chart",
+        "kind": "report",
+        "category": "公投議題",
+        "title": "「九成民眾都同意」？看懂圖表背後沒有說的事",
+        "description": "百分比之外，還有哪些數字必須一起看？",
+        "date": "2026-08-30",
+        "image": {
+          "src": "/images/chart.svg",
+          "alt": "數據判讀主題的報刊風格示意插圖，非事件照片"
+        },
+        "tag": "數據判讀",
+        "tone": "magenta",
+        "verdict": "部分錯誤"
+      },
+      {
+        "slug": "referendum-context",
+        "kind": "report",
+        "category": "公投議題",
+        "title": "一張圖就能說完公投提案？把被省略的脈絡找回來",
+        "description": "閱讀提案內容，也要閱讀限制、範圍與完整說明。",
+        "date": "2026-08-22",
+        "image": {
+          "src": "/images/document.svg",
+          "alt": "政策判讀主題的報刊風格示意插圖，非事件照片"
+        },
+        "tag": "政策判讀",
+        "tone": "cyan",
+        "verdict": "事實釐清"
+      },
+      {
+        "slug": "coordinated-sharing",
+        "kind": "analysis",
+        "category": "地方選舉",
+        "title": "社群帳號如何利用「民生議題」帶動選舉風向？",
+        "description": "從發文時間、重複文案到轉貼路徑，認識資訊擴散的觀察方法。",
+        "date": "2026-09-02",
+        "image": {
+          "src": "/images/network.svg",
+          "alt": "手法解析主題的報刊風格示意插圖，非事件照片"
+        },
+        "tag": "手法解析",
+        "tone": "cyan"
+      },
+      {
+        "slug": "deepfake-guide",
+        "kind": "analysis",
+        "category": "地方選舉",
+        "title": "Deepfake 語音越來越逼真，我們該如何防範？",
+        "description": "面對聽起來很像的聲音，先查出處，再談判讀。",
+        "date": "2026-08-29",
+        "image": {
+          "src": "/images/audio.svg",
+          "alt": "AI 識別主題的報刊風格示意插圖，非事件照片"
+        },
+        "tag": "AI 識別",
+        "tone": "magenta"
+      },
+      {
+        "slug": "short-video",
+        "kind": "analysis",
+        "category": "地方選舉",
+        "title": "短影音如何讓資訊脫離脈絡？從十五秒片段開始查",
+        "description": "鏡頭前後發生了什麼？把完整發言放回時間軸。",
+        "date": "2026-08-20",
+        "image": {
+          "src": "/images/phone.svg",
+          "alt": "趨勢觀察主題的報刊風格示意插圖，非事件照片"
+        },
+        "tag": "趨勢觀察",
+        "tone": "cyan"
+      },
+      {
+        "slug": "ai-tools",
+        "kind": "guide",
+        "category": "地方選舉",
+        "title": "如何使用 AI 工具輔助查證",
+        "description": "認識 AI 檢測的用途與限制，建立有證據的查證習慣。",
+        "date": "2026-08-18",
+        "image": {
+          "src": "/images/audio.svg",
+          "alt": "查核學堂主題的報刊風格示意插圖，非事件照片"
+        },
+        "tag": "查核學堂",
+        "tone": "cyan"
+      },
+      {
+        "slug": "osint-basics",
+        "kind": "guide",
+        "category": "地方選舉",
+        "title": "OSINT 開源情報基本功",
+        "description": "從公開來源、以圖搜圖到網頁紀錄，找回訊息的最初脈絡。",
+        "date": "2026-08-10",
+        "image": {
+          "src": "/images/network.svg",
+          "alt": "查核學堂主題的報刊風格示意插圖，非事件照片"
+        },
+        "tag": "查核學堂",
+        "tone": "magenta"
+      }
+    ],
+    "sections": {
+      "reports": {
+        "title": "即時查核報告",
+        "categories": [
+          "地方選舉",
+          "公投議題"
+        ],
+        "items": [
+          {
+            "slug": "ai-voice",
+            "title": "網傳候選人賄選錄音？實為變造"
+          },
+          {
+            "slug": "ballot-paper"
+          },
+          {
+            "slug": "early-voting"
+          },
+          {
+            "slug": "election-message"
+          },
+          {
+            "slug": "polling-video"
+          },
+          {
+            "slug": "referendum-notice"
+          },
+          {
+            "slug": "referendum-chart"
+          },
+          {
+            "slug": "referendum-context"
+          }
+        ]
+      },
+      "analyses": {
+        "title": "資訊操弄解析",
+        "description": "不只查核單一事件，更深入理解資訊如何被剪輯、包裝與傳播，建立長期的資訊判讀力。",
+        "slugs": [
+          "coordinated-sharing",
+          "deepfake-guide",
+          "short-video"
+        ]
+      },
+      "shorts": {
+        "title": "60 秒短影音闢謠",
+        "description": "直接觀看台灣事實查核中心的 YouTube 影片，快速掌握查證方法與資訊判讀重點。",
+        "items": [
+          {
+            "title": "一分鐘掌握：先查來源，再判讀內容",
+            "url": "https://www.youtube.com/watch?v=GoRukYrdkdE"
+          },
+          {
+            "title": "事實查核必修課：辨識資訊真偽",
+            "url": "https://www.youtube.com/watch?v=63hT8oS83Vo"
+          },
+          {
+            "title": "查核中心如何維持獨立與透明",
+            "url": "https://www.youtube.com/watch?v=vGsTY_ct1eI"
+          }
+        ]
+      },
+      "infographics": {
+        "title": "圖卡懶人包",
+        "description": "視覺化知識，點擊圖卡開啟大圖瀏覽。以下內容為虛構示範。",
+        "slugs": [
+          "ai-tools",
+          "osint-basics",
+          "ballot-paper"
+        ],
+        "items": [
+          {
+            "slug": "ai-tools",
+            "title": "AI 查證入門",
+            "cards": [
+              {
+                "image": {
+                  "src": "/images/cards/ai-tools-1.svg",
+                  "alt": "AI 查證入門第 1 張示意圖，虛構示範素材"
+                },
+                "caption": "先找到原始訊息與發布時間"
+              },
+              {
+                "image": {
+                  "src": "/images/cards/ai-tools-2.svg",
+                  "alt": "AI 查證入門第 2 張示意圖，虛構示範素材"
+                },
+                "caption": "觀察影像或聲音的來源與脈絡"
+              },
+              {
+                "image": {
+                  "src": "/images/cards/ai-tools-3.svg",
+                  "alt": "AI 查證入門第 3 張示意圖，虛構示範素材"
+                },
+                "caption": "向可信來源交叉確認"
+              }
+            ]
+          },
+          {
+            "slug": "osint-basics",
+            "title": "開源查證步驟",
+            "cards": [
+              {
+                "image": {
+                  "src": "/images/cards/osint-basics-1.svg",
+                  "alt": "開源查證步驟第 1 張示意圖，虛構示範素材"
+                },
+                "caption": "記錄原文、圖片與連結"
+              },
+              {
+                "image": {
+                  "src": "/images/cards/osint-basics-2.svg",
+                  "alt": "開源查證步驟第 2 張示意圖，虛構示範素材"
+                },
+                "caption": "以圖搜尋與檢查時間地點"
+              },
+              {
+                "image": {
+                  "src": "/images/cards/osint-basics-3.svg",
+                  "alt": "開源查證步驟第 3 張示意圖，虛構示範素材"
+                },
+                "caption": "比對官方文件與完整報告"
+              }
+            ]
+          },
+          {
+            "slug": "ballot-paper",
+            "title": "選務資訊查證",
+            "cards": [
+              {
+                "image": {
+                  "src": "/images/cards/ballot-paper-1.svg",
+                  "alt": "選務資訊查證第 1 張示意圖，虛構示範素材"
+                },
+                "caption": "辨識沒有來源的投票傳言"
+              },
+              {
+                "image": {
+                  "src": "/images/cards/ballot-paper-2.svg",
+                  "alt": "選務資訊查證第 2 張示意圖，虛構示範素材"
+                },
+                "caption": "查詢選務機關正式公告"
+              },
+              {
+                "image": {
+                  "src": "/images/cards/ballot-paper-3.svg",
+                  "alt": "選務資訊查證第 3 張示意圖，虛構示範素材"
+                },
+                "caption": "不要轉傳未經確認的說法"
+              }
+            ]
+          }
+        ]
+      },
+      "rumors": {
+        "title": "常見選舉謠言與劇本",
+        "items": [
+          {
+            "id": "vote",
+            "badge": "Vote",
+            "label": "作票疑雲",
+            "tone": "cyan",
+            "scriptId": "ballot-box"
+          },
+          {
+            "id": "money",
+            "badge": "Money",
+            "label": "買票賄選",
+            "tone": "magenta",
+            "scriptId": "audio-rumor"
+          },
+          {
+            "id": "rumor",
+            "badge": "Rumor",
+            "label": "私德抹黑",
+            "tone": "cyan",
+            "scriptId": "audio-rumor"
+          },
+          {
+            "id": "policy",
+            "badge": "Policy",
+            "label": "政策造假",
+            "tone": "magenta",
+            "scriptId": "invisible-ink"
+          },
+          {
+            "id": "unfair",
+            "badge": "Unfair",
+            "label": "選務不公",
+            "tone": "cyan",
+            "scriptId": "ballot-box"
+          },
+          {
+            "id": "foreign",
+            "badge": "Foreign",
+            "label": "外部勢力",
+            "tone": "magenta",
+            "scriptId": "counting-system"
+          }
+        ]
+      },
+      "scripts": {
+        "title": "破解常見劇本",
+        "items": [
+          {
+            "id": "ballot-box",
+            "question": "劇本一：紙製票匭容易藏票、作票？",
+            "answer": "不要只由容器材質推論選務是否可靠。查核這類說法時，應核對現行查驗程序、公開監督方式，以及傳言提出的具體證據。本段是查證方法的示範，並非對個別選務事件的結論。"
+          },
+          {
+            "id": "invisible-ink",
+            "question": "劇本二：選票上會沾隱形墨水？",
+            "answer": "先找出傳言所指的原始影像與選票來源，釐清是否有可驗證的檢測或紀錄。網友轉述與看不清楚的照片，都不能單獨證明選票受到處理。"
+          },
+          {
+            "id": "counting-system",
+            "question": "劇本三：駭客能直接改掉開票結果？",
+            "answer": "區分現場開票、結果彙整與對外顯示等不同流程，再查核傳言究竟指向哪一環節。單一網頁顯示異常，不足以推論整個選舉結果遭到更改。"
+          },
+          {
+            "id": "audio-rumor",
+            "question": "延伸劇本：有錄音就一定有真相？",
+            "answer": "聲音相似不代表身分已經確認。先核對來源與完整脈絡，也要檢查是否存在剪輯、配音或合成的可能。相關示範可參考本專區的音訊查核報告。"
+          }
+        ]
+      },
+      "process": {
+        "title": "選舉怎麼運作？",
+        "items": [
+          {
+            "id": "prepare",
+            "title": "選前準備",
+            "description": "關於選票與投票通知單的那些事",
+            "icon": "document",
+            "tone": "cyan",
+            "content": [
+              "先確認投票地點、應備文件與實際投票時間，減少當天的慌亂。",
+              "本區是內容結構示範；正式上線時可補入經確認的選務資訊與官方來源。"
+            ]
+          },
+          {
+            "id": "voting",
+            "title": "選中投票",
+            "description": "一次看懂投開票所的流程與監督",
+            "icon": "calendar",
+            "tone": "magenta",
+            "content": [
+              "將身分確認、領票、圈選與投票等步驟逐一閱讀，遇到疑問時詢問現場選務人員。",
+              "實際程序與注意事項應以各選務機關當次公告為準。"
+            ]
+          },
+          {
+            "id": "counting",
+            "title": "選後開票",
+            "description": "認識計票與查驗機制",
+            "icon": "check",
+            "tone": "cyan",
+            "content": [
+              "區分現場開票、結果彙整與公告的不同階段，對照原始紀錄。",
+              "本示範不對任何實際選舉結果提出判斷。"
+            ]
+          },
+          {
+            "id": "resources",
+            "title": "可信資源",
+            "description": "尋找官方公告與有依據的查核",
+            "icon": "globe",
+            "tone": "magenta",
+            "content": [
+              "優先尋找發布機關的完整公告，並核對日期、適用範圍與更新版本。",
+              "查核文章應清楚交代引用來源、推論過程與尚待確認的限制。"
+            ]
+          }
+        ]
+      },
+      "learning": {
+        "title": "全民查核學堂：資訊怎麼查？",
+        "items": [
+          {
+            "slug": "ai-tools",
+            "badge": "AI Tools"
+          },
+          {
+            "slug": "osint-basics",
+            "badge": "OSINT"
+          }
+        ]
+      },
+      "activities": {
+        "title": "查核中心工作動態",
+        "items": [
+          {
+            "id": "workshop",
+            "dateLabel": "10/12",
+            "tag": "線上講座",
+            "title": "看懂選舉假訊息：資訊判讀工作坊",
+            "description": "從日常訊息出發，練習找來源、看證據、讀脈絡。",
+            "cta": "查看活動",
+            "tone": "cyan",
+            "content": [
+              "這是一場虛構的示範活動，沒有開放報名。",
+              "預計內容包含圖片來源查找、音訊查核觀念與小組練習；正式活動資訊可在這份 JSON 中替換。"
+            ]
+          },
+          {
+            "id": "weekly",
+            "dateLabel": "10/25",
+            "tag": "議題觀察",
+            "title": "【解析 2026】一起觀察選舉資訊的變化",
+            "description": "跟著查核記者，理解傳言如何被包裝與擴散。",
+            "cta": "查看活動",
+            "tone": "magenta",
+            "content": [
+              "這是示範用的議題觀察活動，日期與內容均為虛構。",
+              "未來可在此提供正式活動時間、講者與報名資訊。"
+            ]
+          },
+          {
+            "id": "community",
+            "dateLabel": "EVERY DAY",
+            "tag": "一起參與",
+            "title": "把查證多做一步，把分享慢下一秒",
+            "description": "從自己做起，讓有來源的資訊回到日常對話。",
+            "cta": "查看活動",
+            "tone": "cyan",
+            "content": [
+              "收到可疑訊息時，先保存原文、確認出處與時間，再決定是否分享。",
+              "本示範網站不接收個人資料或疑似謠言投稿。"
+            ]
+          }
+        ]
+      }
+    },
+    "seo": {
+      "siteUrl": null,
+      "language": "zh-Hant",
+      "locale": "zh_TW",
+      "home": {
+        "title": "2026 選舉工具箱｜台灣事實查核中心",
+        "description": "【示範網站】2026 地方選舉與公投資訊專區：閱讀查核報告、理解資訊操弄、學習查證方法。本站內容皆為虛構示範資料。",
+        "image": {
+          "src": "/images/og/home.png",
+          "alt": "2026 選舉工具箱：查核報告、資訊判讀與查核學堂示範網站",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false
+      },
+      "reports": {
+        "title": "查核報告列表｜2026 選舉工具箱",
+        "description": "【示範網站】瀏覽地方選舉與公投議題的示範查核報告，依分類探索音訊、圖片、數據與選務訊息的查證過程。",
+        "image": {
+          "src": "/images/og/home.png",
+          "alt": "2026 選舉工具箱查核報告列表",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false
+      }
+    }
+  },
+  "reports": {
+    "ballot-paper": {
+      "version": 1,
+      "isMock": true,
+      "slug": "ballot-paper",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "圖文流傳「新選票設計會透光，作票更容易」？錯誤訊息",
+      "finding": "本例照片經過調整，無法用來推論真實選票的材質或選務程序。",
+      "tags": [
+        "錯誤",
+        "影像查核"
+      ],
+      "published": "2026-08-28",
+      "updated": "2026-08-28",
+      "reportId": "DEMO-20260828-02",
+      "reporter": "示範查核小組",
+      "editor": "示範編輯",
+      "image": {
+        "src": "/images/ballot.svg",
+        "alt": "影像查核主題的報刊風格示意插圖，非事件照片"
+      },
+      "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+      "summaryPoints": [
+        "虛構貼文將一張強光照射紙張的照片標示為「新選票」。圖片是為本網站製作的示意素材，並非官方選票。",
+        "示範圖片拍攝的是一般紙張，沒有可驗證的選票來源。不能只憑貼文標題認定圖中的物件。",
+        "在這份測試案例中，影像的曝光與對比刻意提高。視覺效果並不能證明紙張材質已經改變。"
+      ],
+      "summaryClose": "本例照片經過調整，無法用來推論真實選票的材質或選務程序。",
+      "background": {
+        "id": "background",
+        "title": "背景",
+        "paragraphs": [
+          "虛構貼文將一張強光照射紙張的照片標示為「新選票」。圖片是為本網站製作的示意素材，並非官方選票。",
+          "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+        ]
+      },
+      "checkSections": [
+        {
+          "id": "check-1",
+          "title": "確認圖片中的物件",
+          "paragraphs": [
+            "示範圖片拍攝的是一般紙張，沒有可驗證的選票來源。不能只憑貼文標題認定圖中的物件。"
+          ]
+        },
+        {
+          "id": "check-2",
+          "title": "比較處理前後的影像",
+          "paragraphs": [
+            "在這份測試案例中，影像的曝光與對比刻意提高。視覺效果並不能證明紙張材質已經改變。"
+          ]
+        },
+        {
+          "id": "check-3",
+          "title": "分開檢查影像與推論",
+          "paragraphs": [
+            "即使照片本身真實，照片是否足以支持「作票更容易」仍是另一個需要證據的問題。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "示範素材說明",
+          "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+        }
+      ],
+      "relatedSlugs": [
+        "ai-voice",
+        "early-voting",
+        "election-message"
+      ],
+      "verdict": "錯誤",
+      "seo": {
+        "title": "圖文流傳「新選票設計會透光，作票更容易」？錯誤訊息｜台灣事實查核中心",
+        "description": "【示範資料】照片的明暗與對比，可能改變我們的判讀。一起拆解這則影像查核示範。",
+        "image": {
+          "src": "/images/og/ballot-paper.png",
+          "alt": "圖文流傳「新選票設計會透光，作票更容易」？錯誤訊息（示意圖，非真實查核事件）",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false,
+        "authorType": "Organization"
+      }
+    },
+    "referendum-context": {
+      "version": 1,
+      "isMock": true,
+      "slug": "referendum-context",
+      "kind": "report",
+      "category": "公投議題",
+      "title": "一張圖就能說完公投提案？把被省略的脈絡找回來",
+      "finding": "示範摘要省略了適用條件，讀者應回到完整提案文字核對。",
+      "tags": [
+        "事實釐清",
+        "政策判讀"
+      ],
+      "published": "2026-08-22",
+      "updated": "2026-08-22",
+      "reportId": "DEMO-20260822-08",
+      "reporter": "示範查核小組",
+      "editor": "示範編輯",
+      "image": {
+        "src": "/images/document.svg",
+        "alt": "政策判讀主題的報刊風格示意插圖，非事件照片"
+      },
+      "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+      "summaryPoints": [
+        "本例以虛構政策提案展示「只摘一句話」可能產生的理解落差，沒有對應真實提案。",
+        "先保存原始版本與日期，以免把不同階段的草稿當成同一文件。",
+        "在示範文件中，段落後半部列有適用條件，圖卡卻沒有呈現。"
+      ],
+      "summaryClose": "示範摘要省略了適用條件，讀者應回到完整提案文字核對。",
+      "background": {
+        "id": "background",
+        "title": "背景",
+        "paragraphs": [
+          "本例以虛構政策提案展示「只摘一句話」可能產生的理解落差，沒有對應真實提案。",
+          "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+        ]
+      },
+      "checkSections": [
+        {
+          "id": "check-1",
+          "title": "取得完整文字",
+          "paragraphs": [
+            "先保存原始版本與日期，以免把不同階段的草稿當成同一文件。"
+          ]
+        },
+        {
+          "id": "check-2",
+          "title": "標記被省略的條件",
+          "paragraphs": [
+            "在示範文件中，段落後半部列有適用條件，圖卡卻沒有呈現。"
+          ]
+        },
+        {
+          "id": "check-3",
+          "title": "區分主張與事實",
+          "paragraphs": [
+            "支持或反對的價值判斷與可核對的事實是不同問題，可以分開討論。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "示範素材說明",
+          "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+        }
+      ],
+      "relatedSlugs": [
+        "referendum-notice",
+        "referendum-chart"
+      ],
+      "verdict": "事實釐清",
+      "seo": {
+        "title": "一張圖就能說完公投提案？把被省略的脈絡找回來｜台灣事實查核中心",
+        "description": "【示範資料】閱讀提案內容，也要閱讀限制、範圍與完整說明。",
+        "image": {
+          "src": "/images/og/referendum-context.png",
+          "alt": "一張圖就能說完公投提案？把被省略的脈絡找回來（示意圖，非真實查核事件）",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false,
+        "authorType": "Organization"
+      }
+    },
+    "election-message": {
+      "version": 1,
+      "isMock": true,
+      "slug": "election-message",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "簡訊自稱「選委會」要求輸入個資？先確認連結來源",
+      "finding": "範例連結指向虛構表單；網站名稱與機關標誌並不能證明訊息來源。",
+      "tags": [
+        "事實釐清",
+        "數位安全"
+      ],
+      "published": "2026-08-15",
+      "updated": "2026-08-15",
+      "reportId": "DEMO-20260815-04",
+      "reporter": "示範查核小組",
+      "editor": "示範編輯",
+      "image": {
+        "src": "/images/phone.svg",
+        "alt": "數位安全主題的報刊風格示意插圖，非事件照片"
+      },
+      "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+      "summaryPoints": [
+        "本例以虛構簡訊呈現常見的緊急催促手法，要求讀者點擊連結並填寫敏感資料。沒有任何真實簡訊或受害者。",
+        "範例訊息的顯示名稱可自行設定，無法證明傳送者身分。",
+        "這則範例同時使用急迫期限與資料填寫要求，應先停止操作，從獨立管道核實。"
+      ],
+      "summaryClose": "範例連結指向虛構表單；網站名稱與機關標誌並不能證明訊息來源。",
+      "background": {
+        "id": "background",
+        "title": "背景",
+        "paragraphs": [
+          "本例以虛構簡訊呈現常見的緊急催促手法，要求讀者點擊連結並填寫敏感資料。沒有任何真實簡訊或受害者。",
+          "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+        ]
+      },
+      "checkSections": [
+        {
+          "id": "check-1",
+          "title": "不要只看顯示名稱",
+          "paragraphs": [
+            "範例訊息的顯示名稱可自行設定，無法證明傳送者身分。"
+          ]
+        },
+        {
+          "id": "check-2",
+          "title": "檢查訊息要求的動作",
+          "paragraphs": [
+            "這則範例同時使用急迫期限與資料填寫要求，應先停止操作，從獨立管道核實。"
+          ]
+        },
+        {
+          "id": "check-3",
+          "title": "自行尋找可信管道",
+          "paragraphs": [
+            "不要使用可疑訊息內提供的聯絡方式作為唯一驗證來源；請自行查找機關的正式聯絡管道。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "示範素材說明",
+          "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+        }
+      ],
+      "relatedSlugs": [
+        "ai-voice",
+        "ballot-paper",
+        "early-voting"
+      ],
+      "verdict": "事實釐清",
+      "seo": {
+        "title": "簡訊自稱「選委會」要求輸入個資？先確認連結來源｜台灣事實查核中心",
+        "description": "【示範資料】假冒官方的訊息看起來很熟悉。從網址、要求的資料與查證管道找線索。",
+        "image": {
+          "src": "/images/og/election-message.png",
+          "alt": "簡訊自稱「選委會」要求輸入個資？先確認連結來源（示意圖，非真實查核事件）",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false,
+        "authorType": "Organization"
+      }
+    },
+    "osint-basics": {
+      "version": 1,
+      "isMock": true,
+      "slug": "osint-basics",
+      "kind": "guide",
+      "category": "地方選舉",
+      "title": "OSINT 開源情報基本功",
+      "finding": "多個獨立來源的交叉核對，有助於辨別訊息是否完整、是否適用於當下。",
+      "tags": [
+        "查核學堂"
+      ],
+      "published": "2026-08-10",
+      "updated": "2026-08-10",
+      "reportId": "DEMO-20260810-13",
+      "reporter": "示範查核小組",
+      "editor": "示範編輯",
+      "image": {
+        "src": "/images/network.svg",
+        "alt": "查核學堂主題的報刊風格示意插圖，非事件照片"
+      },
+      "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+      "summaryPoints": [
+        "這份教學用虛構的圖片與網頁紀錄介紹基本查證步驟，不涉及個人資料調查。",
+        "將人名以外的關鍵句、地點或公開事件名稱組合查詢，尋找原始發布者。",
+        "以圖搜圖可以協助找到舊版本，但搜尋不到並不代表圖片首次出現。"
+      ],
+      "summaryClose": "多個獨立來源的交叉核對，有助於辨別訊息是否完整、是否適用於當下。",
+      "background": {
+        "id": "background",
+        "title": "背景",
+        "paragraphs": [
+          "這份教學用虛構的圖片與網頁紀錄介紹基本查證步驟，不涉及個人資料調查。",
+          "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+        ]
+      },
+      "checkSections": [
+        {
+          "id": "check-1",
+          "title": "用關鍵字找原文",
+          "paragraphs": [
+            "將人名以外的關鍵句、地點或公開事件名稱組合查詢，尋找原始發布者。"
+          ]
+        },
+        {
+          "id": "check-2",
+          "title": "比較圖片版本",
+          "paragraphs": [
+            "以圖搜圖可以協助找到舊版本，但搜尋不到並不代表圖片首次出現。"
+          ]
+        },
+        {
+          "id": "check-3",
+          "title": "善用公開網頁紀錄",
+          "paragraphs": [
+            "比對不同時間的頁面內容，並記錄網站可能缺頁、漏存等限制。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "示範素材說明",
+          "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+        }
+      ],
+      "relatedSlugs": [
+        "ai-voice",
+        "ballot-paper",
+        "early-voting"
+      ],
+      "seo": {
+        "title": "OSINT 開源情報基本功｜台灣事實查核中心",
+        "description": "【示範資料】從公開來源、以圖搜圖到網頁紀錄，找回訊息的最初脈絡。",
+        "image": {
+          "src": "/images/og/osint-basics.png",
+          "alt": "OSINT 開源情報基本功（示意圖，非真實查核事件）",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false,
+        "authorType": "Organization"
+      }
+    },
+    "referendum-notice": {
+      "version": 1,
+      "isMock": true,
+      "slug": "referendum-notice",
+      "kind": "report",
+      "category": "公投議題",
+      "title": "網傳「公投通知已經公告」？先比對原始文件",
+      "finding": "範例截圖缺少文件來源，不能據此判定任何公投的實際辦理狀態。",
+      "tags": [
+        "事實釐清",
+        "公告查證"
+      ],
+      "published": "2026-09-03",
+      "updated": "2026-09-03",
+      "reportId": "DEMO-20260903-06",
+      "reporter": "示範查核小組",
+      "editor": "示範編輯",
+      "image": {
+        "src": "/images/document.svg",
+        "alt": "公告查證主題的報刊風格示意插圖，非事件照片"
+      },
+      "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+      "summaryPoints": [
+        "示範圖片模仿公告格式，但沒有發文單位與原文連結。本頁沒有指涉任何實際公投案。",
+        "完整文件才能提供發布日期、修訂紀錄與適用範圍。截圖不能取代原始文件。",
+        "本例提供兩份日期不同的虛構文件，示範舊版內容可能漏掉後續更新。"
+      ],
+      "summaryClose": "範例截圖缺少文件來源，不能據此判定任何公投的實際辦理狀態。",
+      "background": {
+        "id": "background",
+        "title": "背景",
+        "paragraphs": [
+          "示範圖片模仿公告格式，但沒有發文單位與原文連結。本頁沒有指涉任何實際公投案。",
+          "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+        ]
+      },
+      "checkSections": [
+        {
+          "id": "check-1",
+          "title": "從截圖回到原文",
+          "paragraphs": [
+            "完整文件才能提供發布日期、修訂紀錄與適用範圍。截圖不能取代原始文件。"
+          ]
+        },
+        {
+          "id": "check-2",
+          "title": "核對文件版本",
+          "paragraphs": [
+            "本例提供兩份日期不同的虛構文件，示範舊版內容可能漏掉後續更新。"
+          ]
+        },
+        {
+          "id": "check-3",
+          "title": "確認適用對象",
+          "paragraphs": [
+            "不同種類投票的規則不能直接類推。本示範不提供任何實際投票資格判定。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "示範素材說明",
+          "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+        }
+      ],
+      "relatedSlugs": [
+        "referendum-chart",
+        "referendum-context"
+      ],
+      "verdict": "事實釐清",
+      "seo": {
+        "title": "網傳「公投通知已經公告」？先比對原始文件｜台灣事實查核中心",
+        "description": "【示範資料】一張沒有出處的公告截圖，如何一步步確認？",
+        "image": {
+          "src": "/images/og/referendum-notice.png",
+          "alt": "網傳「公投通知已經公告」？先比對原始文件（示意圖，非真實查核事件）",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false,
+        "authorType": "Organization"
+      }
+    },
+    "ai-tools": {
+      "version": 1,
+      "isMock": true,
+      "slug": "ai-tools",
+      "kind": "guide",
+      "category": "地方選舉",
+      "title": "如何使用 AI 工具輔助查證",
+      "finding": "工具的輸出是待查證的線索，原始資料與獨立證據仍是判斷核心。",
+      "tags": [
+        "查核學堂"
+      ],
+      "published": "2026-08-18",
+      "updated": "2026-08-18",
+      "reportId": "DEMO-20260818-12",
+      "reporter": "示範查核小組",
+      "editor": "示範編輯",
+      "image": {
+        "src": "/images/audio.svg",
+        "alt": "查核學堂主題的報刊風格示意插圖，非事件照片"
+      },
+      "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+      "summaryPoints": [
+        "這份入門教學使用示範素材，協助讀者理解工具輔助查證的工作流程。",
+        "優先取得最早、品質最好的版本，避免轉傳壓縮造成額外干擾。",
+        "閱讀工具的適用範圍，不要把分數當作對素材真偽的保證。"
+      ],
+      "summaryClose": "工具的輸出是待查證的線索，原始資料與獨立證據仍是判斷核心。",
+      "background": {
+        "id": "background",
+        "title": "背景",
+        "paragraphs": [
+          "這份入門教學使用示範素材，協助讀者理解工具輔助查證的工作流程。",
+          "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+        ]
+      },
+      "checkSections": [
+        {
+          "id": "check-1",
+          "title": "準備原始素材",
+          "paragraphs": [
+            "優先取得最早、品質最好的版本，避免轉傳壓縮造成額外干擾。"
+          ]
+        },
+        {
+          "id": "check-2",
+          "title": "理解工具的限制",
+          "paragraphs": [
+            "閱讀工具的適用範圍，不要把分數當作對素材真偽的保證。"
+          ]
+        },
+        {
+          "id": "check-3",
+          "title": "記錄查證過程",
+          "paragraphs": [
+            "保存使用的版本、日期與結果，並清楚交代目前無法確認的事項。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "示範素材說明",
+          "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+        }
+      ],
+      "relatedSlugs": [
+        "ai-voice",
+        "ballot-paper",
+        "early-voting"
+      ],
+      "seo": {
+        "title": "如何使用 AI 工具輔助查證｜台灣事實查核中心",
+        "description": "【示範資料】認識 AI 檢測的用途與限制，建立有證據的查證習慣。",
+        "image": {
+          "src": "/images/og/ai-tools.png",
+          "alt": "如何使用 AI 工具輔助查證（示意圖，非真實查核事件）",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false,
+        "authorType": "Organization"
+      }
+    },
+    "early-voting": {
+      "version": 1,
+      "isMock": true,
+      "slug": "early-voting",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "社群瘋傳「提前去投票所可以多領票」？查核這則傳言",
+      "finding": "本示範訊息捏造了不存在的通知文件，傳言所引用的資料不能成立。",
+      "tags": [
+        "錯誤",
+        "投票資訊"
+      ],
+      "published": "2026-08-25",
+      "updated": "2026-08-25",
+      "reportId": "DEMO-20260825-03",
+      "reporter": "示範查核小組",
+      "editor": "示範編輯",
+      "image": {
+        "src": "/images/ballot.svg",
+        "alt": "投票資訊主題的報刊風格示意插圖，非事件照片"
+      },
+      "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+      "summaryPoints": [
+        "示範群組訊息聲稱「越早到場，就有額外選票」，卻沒有附上公告原文或可查詢的通知編號。",
+        "範例訊息只引用「朋友聽說」，沒有可供核對的原始資料。這是需要停下來查證的訊號。",
+        "本例預設的文件資料集中，沒有貼文所聲稱的通知。真實投票規則應以選務機關公告為準。"
+      ],
+      "summaryClose": "本示範訊息捏造了不存在的通知文件，傳言所引用的資料不能成立。",
+      "background": {
+        "id": "background",
+        "title": "背景",
+        "paragraphs": [
+          "示範群組訊息聲稱「越早到場，就有額外選票」，卻沒有附上公告原文或可查詢的通知編號。",
+          "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+        ]
+      },
+      "checkSections": [
+        {
+          "id": "check-1",
+          "title": "追查消息依據",
+          "paragraphs": [
+            "範例訊息只引用「朋友聽說」，沒有可供核對的原始資料。這是需要停下來查證的訊號。"
+          ]
+        },
+        {
+          "id": "check-2",
+          "title": "核對公告出處",
+          "paragraphs": [
+            "本例預設的文件資料集中，沒有貼文所聲稱的通知。真實投票規則應以選務機關公告為準。"
+          ]
+        },
+        {
+          "id": "check-3",
+          "title": "保留原文再查證",
+          "paragraphs": [
+            "保留訊息文字與收到的時間，有助於比對傳言版本；避免把未查證的小技巧傳給更多人。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "示範素材說明",
+          "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+        }
+      ],
+      "relatedSlugs": [
+        "ai-voice",
+        "ballot-paper",
+        "election-message"
+      ],
+      "verdict": "錯誤",
+      "seo": {
+        "title": "社群瘋傳「提前去投票所可以多領票」？查核這則傳言｜台灣事實查核中心",
+        "description": "【示範資料】收到投票小撇步，先別急著分享。辨識缺少來源的選務訊息。",
+        "image": {
+          "src": "/images/og/early-voting.png",
+          "alt": "社群瘋傳「提前去投票所可以多領票」？查核這則傳言（示意圖，非真實查核事件）",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false,
+        "authorType": "Organization"
+      }
+    },
+    "referendum-chart": {
+      "version": 1,
+      "isMock": true,
+      "slug": "referendum-chart",
+      "kind": "report",
+      "category": "公投議題",
+      "title": "「九成民眾都同意」？看懂圖表背後沒有說的事",
+      "finding": "本例數字來自虛構的自願回覆樣本，不能推論為全體民意。",
+      "tags": [
+        "部分錯誤",
+        "數據判讀"
+      ],
+      "published": "2026-08-30",
+      "updated": "2026-08-30",
+      "reportId": "DEMO-20260830-07",
+      "reporter": "示範查核小組",
+      "editor": "示範編輯",
+      "image": {
+        "src": "/images/chart.svg",
+        "alt": "數據判讀主題的報刊風格示意插圖，非事件照片"
+      },
+      "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+      "summaryPoints": [
+        "虛構社群圖卡引用一份示範問卷，卻沒有呈現收集方式與樣本範圍。圖卡上的數字不是實際民調。",
+        "本例的百分比只描述示範問卷的回覆者，不等於全體民眾。",
+        "問句順序、選項與收集方式都會影響如何理解結果。缺少這些資訊時應保留判斷。"
+      ],
+      "summaryClose": "本例數字來自虛構的自願回覆樣本，不能推論為全體民意。",
+      "background": {
+        "id": "background",
+        "title": "背景",
+        "paragraphs": [
+          "虛構社群圖卡引用一份示範問卷，卻沒有呈現收集方式與樣本範圍。圖卡上的數字不是實際民調。",
+          "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+        ]
+      },
+      "checkSections": [
+        {
+          "id": "check-1",
+          "title": "先確認分母",
+          "paragraphs": [
+            "本例的百分比只描述示範問卷的回覆者，不等於全體民眾。"
+          ]
+        },
+        {
+          "id": "check-2",
+          "title": "檢視問句與抽樣",
+          "paragraphs": [
+            "問句順序、選項與收集方式都會影響如何理解結果。缺少這些資訊時應保留判斷。"
+          ]
+        },
+        {
+          "id": "check-3",
+          "title": "避免過度推論",
+          "paragraphs": [
+            "精確的百分比不代表可以推論到其他群體。結論的範圍應與資料來源一致。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "示範素材說明",
+          "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+        }
+      ],
+      "relatedSlugs": [
+        "referendum-notice",
+        "referendum-context"
+      ],
+      "verdict": "部分錯誤",
+      "seo": {
+        "title": "「九成民眾都同意」？看懂圖表背後沒有說的事｜台灣事實查核中心",
+        "description": "【示範資料】百分比之外，還有哪些數字必須一起看？",
+        "image": {
+          "src": "/images/og/referendum-chart.png",
+          "alt": "「九成民眾都同意」？看懂圖表背後沒有說的事（示意圖，非真實查核事件）",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false,
+        "authorType": "Organization"
+      }
+    },
+    "deepfake-guide": {
+      "version": 1,
+      "isMock": true,
+      "slug": "deepfake-guide",
+      "kind": "analysis",
+      "category": "地方選舉",
+      "title": "Deepfake 語音越來越逼真，我們該如何防範？",
+      "finding": "查證來源、聯絡本人與比對完整脈絡，比單靠耳朵辨認更有幫助。",
+      "tags": [
+        "AI 識別"
+      ],
+      "published": "2026-08-29",
+      "updated": "2026-08-29",
+      "reportId": "DEMO-20260829-10",
+      "reporter": "示範查核小組",
+      "editor": "示範編輯",
+      "image": {
+        "src": "/images/audio.svg",
+        "alt": "AI 識別主題的報刊風格示意插圖，非事件照片"
+      },
+      "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+      "summaryPoints": [
+        "本篇以虛構音訊情境整理查證步驟，不提供可取代專業鑑定的判斷公式。",
+        "遇到要求立即行動的音訊，先保存原始訊息，不必急著做決定。",
+        "從原本就信任的聯絡方式確認身分，避免只使用訊息內提供的新聯絡資料。"
+      ],
+      "summaryClose": "查證來源、聯絡本人與比對完整脈絡，比單靠耳朵辨認更有幫助。",
+      "background": {
+        "id": "background",
+        "title": "背景",
+        "paragraphs": [
+          "本篇以虛構音訊情境整理查證步驟，不提供可取代專業鑑定的判斷公式。",
+          "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+        ]
+      },
+      "checkSections": [
+        {
+          "id": "check-1",
+          "title": "先暫停轉傳",
+          "paragraphs": [
+            "遇到要求立即行動的音訊，先保存原始訊息，不必急著做決定。"
+          ]
+        },
+        {
+          "id": "check-2",
+          "title": "透過既有管道核實",
+          "paragraphs": [
+            "從原本就信任的聯絡方式確認身分，避免只使用訊息內提供的新聯絡資料。"
+          ]
+        },
+        {
+          "id": "check-3",
+          "title": "保留不確定性",
+          "paragraphs": [
+            "找不到來源，不代表一定為假；也不代表已經證實。清楚表達仍待查證的部分。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "示範素材說明",
+          "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+        }
+      ],
+      "relatedSlugs": [
+        "ai-voice",
+        "ballot-paper",
+        "early-voting"
+      ],
+      "seo": {
+        "title": "Deepfake 語音越來越逼真，我們該如何防範？｜台灣事實查核中心",
+        "description": "【示範資料】面對聽起來很像的聲音，先查出處，再談判讀。",
+        "image": {
+          "src": "/images/og/deepfake-guide.png",
+          "alt": "Deepfake 語音越來越逼真，我們該如何防範？（示意圖，非真實查核事件）",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false,
+        "authorType": "Organization"
+      }
+    },
+    "short-video": {
+      "version": 1,
+      "isMock": true,
+      "slug": "short-video",
+      "kind": "analysis",
+      "category": "地方選舉",
+      "title": "短影音如何讓資訊脫離脈絡？從十五秒片段開始查",
+      "finding": "短片的片段、字幕與旁白需要分別核對，完整影片能補足遺漏的脈絡。",
+      "tags": [
+        "趨勢觀察"
+      ],
+      "published": "2026-08-20",
+      "updated": "2026-08-20",
+      "reportId": "DEMO-20260820-11",
+      "reporter": "示範查核小組",
+      "editor": "示範編輯",
+      "image": {
+        "src": "/images/phone.svg",
+        "alt": "趨勢觀察主題的報刊風格示意插圖，非事件照片"
+      },
+      "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+      "summaryPoints": [
+        "本篇以一份剪輯示範素材，展示剪去前後文可能帶來的差異。",
+        "記下片段中的關鍵字與可辨認畫面，作為尋找原始影片的線索。",
+        "字幕與旁白是另外加入的資訊，不能假設它們與原始發言完全一致。"
+      ],
+      "summaryClose": "短片的片段、字幕與旁白需要分別核對，完整影片能補足遺漏的脈絡。",
+      "background": {
+        "id": "background",
+        "title": "背景",
+        "paragraphs": [
+          "本篇以一份剪輯示範素材，展示剪去前後文可能帶來的差異。",
+          "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+        ]
+      },
+      "checkSections": [
+        {
+          "id": "check-1",
+          "title": "尋找完整版本",
+          "paragraphs": [
+            "記下片段中的關鍵字與可辨認畫面，作為尋找原始影片的線索。"
+          ]
+        },
+        {
+          "id": "check-2",
+          "title": "核對字幕",
+          "paragraphs": [
+            "字幕與旁白是另外加入的資訊，不能假設它們與原始發言完全一致。"
+          ]
+        },
+        {
+          "id": "check-3",
+          "title": "重建時間順序",
+          "paragraphs": [
+            "把片段放回完整時間軸，檢查被省略的提問、條件與回答。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "示範素材說明",
+          "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+        }
+      ],
+      "relatedSlugs": [
+        "ai-voice",
+        "ballot-paper",
+        "early-voting"
+      ],
+      "seo": {
+        "title": "短影音如何讓資訊脫離脈絡？從十五秒片段開始查｜台灣事實查核中心",
+        "description": "【示範資料】鏡頭前後發生了什麼？把完整發言放回時間軸。",
+        "image": {
+          "src": "/images/og/short-video.png",
+          "alt": "短影音如何讓資訊脫離脈絡？從十五秒片段開始查（示意圖，非真實查核事件）",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false,
+        "authorType": "Organization"
+      }
+    },
+    "polling-video": {
+      "version": 1,
+      "isMock": true,
+      "slug": "polling-video",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "「這是今年投票所的畫面」？舊影片換上新說明",
+      "finding": "本例使用舊素材搭配新的時間標籤，畫面與文字描述並不一致。",
+      "tags": [
+        "部分錯誤",
+        "脈絡查核"
+      ],
+      "published": "2026-08-12",
+      "updated": "2026-08-12",
+      "reportId": "DEMO-20260812-05",
+      "reporter": "示範查核小組",
+      "editor": "示範編輯",
+      "image": {
+        "src": "/images/network.svg",
+        "alt": "脈絡查核主題的報刊風格示意插圖，非事件照片"
+      },
+      "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+      "summaryPoints": [
+        "示範貼文將素材庫中的舊影片寫成當年度選舉現場。本例所有場景及發佈紀錄均為虛構。",
+        "先選取可辨認場景的畫面，保留畫面中可核對的文字與時間資訊。",
+        "本例素材庫的時間紀錄早於貼文聲稱的時間，說明兩者並非同一事件。"
+      ],
+      "summaryClose": "本例使用舊素材搭配新的時間標籤，畫面與文字描述並不一致。",
+      "background": {
+        "id": "background",
+        "title": "背景",
+        "paragraphs": [
+          "示範貼文將素材庫中的舊影片寫成當年度選舉現場。本例所有場景及發佈紀錄均為虛構。",
+          "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+        ]
+      },
+      "checkSections": [
+        {
+          "id": "check-1",
+          "title": "抽取關鍵畫面",
+          "paragraphs": [
+            "先選取可辨認場景的畫面，保留畫面中可核對的文字與時間資訊。"
+          ]
+        },
+        {
+          "id": "check-2",
+          "title": "確認最早的版本",
+          "paragraphs": [
+            "本例素材庫的時間紀錄早於貼文聲稱的時間，說明兩者並非同一事件。"
+          ]
+        },
+        {
+          "id": "check-3",
+          "title": "文字也需要查核",
+          "paragraphs": [
+            "影片可能未經剪輯，但搭配的說明仍可能改變讀者理解。影像與文案要分別檢視。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "示範素材說明",
+          "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+        }
+      ],
+      "relatedSlugs": [
+        "ai-voice",
+        "ballot-paper",
+        "early-voting"
+      ],
+      "verdict": "部分錯誤",
+      "seo": {
+        "title": "「這是今年投票所的畫面」？舊影片換上新說明｜台灣事實查核中心",
+        "description": "【示範資料】畫面沒有被修改，也可能傳遞錯誤脈絡。查核影片的時間與地點。",
+        "image": {
+          "src": "/images/og/polling-video.png",
+          "alt": "「這是今年投票所的畫面」？舊影片換上新說明（示意圖，非真實查核事件）",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false,
+        "authorType": "Organization"
+      }
+    },
+    "coordinated-sharing": {
+      "version": 1,
+      "isMock": true,
+      "slug": "coordinated-sharing",
+      "kind": "analysis",
+      "category": "地方選舉",
+      "title": "社群帳號如何利用「民生議題」帶動選舉風向？",
+      "finding": "同步發文可以作為進一步觀察的線索，但不能單憑這點推定帳號的身分或動機。",
+      "tags": [
+        "手法解析"
+      ],
+      "published": "2026-09-02",
+      "updated": "2026-09-02",
+      "reportId": "DEMO-20260902-09",
+      "reporter": "示範查核小組",
+      "editor": "示範編輯",
+      "image": {
+        "src": "/images/network.svg",
+        "alt": "手法解析主題的報刊風格示意插圖，非事件照片"
+      },
+      "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+      "summaryPoints": [
+        "這份解析使用虛構的帳號網絡，說明如何有條理地記錄資訊傳播。",
+        "保存各則貼文的時間與公開網址，對照內容的異同。",
+        "相同文字是觀察到的現象；是否協調、由誰操作，需要另外的證據。"
+      ],
+      "summaryClose": "同步發文可以作為進一步觀察的線索，但不能單憑這點推定帳號的身分或動機。",
+      "background": {
+        "id": "background",
+        "title": "背景",
+        "paragraphs": [
+          "這份解析使用虛構的帳號網絡，說明如何有條理地記錄資訊傳播。",
+          "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+        ]
+      },
+      "checkSections": [
+        {
+          "id": "check-1",
+          "title": "記錄時間與版本",
+          "paragraphs": [
+            "保存各則貼文的時間與公開網址，對照內容的異同。"
+          ]
+        },
+        {
+          "id": "check-2",
+          "title": "把觀察與推論分開",
+          "paragraphs": [
+            "相同文字是觀察到的現象；是否協調、由誰操作，需要另外的證據。"
+          ]
+        },
+        {
+          "id": "check-3",
+          "title": "交代分析的限制",
+          "paragraphs": [
+            "可見的公開貼文只是部分資料，不能代表平台上的所有傳播行為。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "示範素材說明",
+          "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+        }
+      ],
+      "relatedSlugs": [
+        "ai-voice",
+        "ballot-paper",
+        "early-voting"
+      ],
+      "seo": {
+        "title": "社群帳號如何利用「民生議題」帶動選舉風向？｜台灣事實查核中心",
+        "description": "【示範資料】從發文時間、重複文案到轉貼路徑，認識資訊擴散的觀察方法。",
+        "image": {
+          "src": "/images/og/coordinated-sharing.png",
+          "alt": "社群帳號如何利用「民生議題」帶動選舉風向？（示意圖，非真實查核事件）",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false,
+        "authorType": "Organization"
+      }
+    },
+    "ai-voice": {
+      "version": 1,
+      "isMock": true,
+      "slug": "ai-voice",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「某候選人私下賄選錄音檔流出」？查核結果為變造",
+      "finding": "示範情境中的音檔是事先製作的合成素材，無法作為任何候選人發言的證據。",
+      "tags": [
+        "錯誤",
+        "AI 識別"
+      ],
+      "published": "2026-09-01",
+      "updated": "2026-09-01",
+      "reportId": "DEMO-20260901-01",
+      "reporter": "示範查核小組",
+      "editor": "示範編輯",
+      "image": {
+        "src": "/images/audio.svg",
+        "alt": "AI 識別主題的報刊風格示意插圖，非事件照片"
+      },
+      "imageCaption": "編輯示意插圖｜本頁為虛構資料，非真實查核報告。",
+      "summaryPoints": [
+        "示範社群貼文轉傳一段短音檔，並附上「候選人私下對話外流」的文字。這段情境完全虛構，沒有對應的真實候選人或事件。",
+        "示範素材的製作紀錄標示為人工合成。我們先比對檔案來源與發佈脈絡，而非僅根據聲音相似程度認定說話者。",
+        "AI 偵測工具可能誤判；本例的判讀依據是預先設定的素材製作紀錄。真實查核仍需要原始檔案、可核對的證據與獨立專業判讀。"
+      ],
+      "summaryClose": "示範情境中的音檔是事先製作的合成素材，無法作為任何候選人發言的證據。",
+      "background": {
+        "id": "background",
+        "title": "背景",
+        "paragraphs": [
+          "示範社群貼文轉傳一段短音檔，並附上「候選人私下對話外流」的文字。這段情境完全虛構，沒有對應的真實候選人或事件。",
+          "以下內容與證據設定僅供版型、資料串接與操作測試，不應引用為真實事件的查核結果。"
+        ],
+        "image": {
+          "src": "/images/message.svg",
+          "alt": "虛構轉傳訊息的示意排版，標示來源尚待確認"
+        },
+        "caption": "網傳訊息示意｜非真實貼文"
+      },
+      "checkSections": [
+        {
+          "id": "check-1",
+          "title": "先找原始音檔，確認來源",
+          "paragraphs": [
+            "示範素材的製作紀錄標示為人工合成。我們先比對檔案來源與發佈脈絡，而非僅根據聲音相似程度認定說話者。"
+          ]
+        },
+        {
+          "id": "check-2",
+          "title": "檢測結果不能單獨作為定論",
+          "paragraphs": [
+            "AI 偵測工具可能誤判；本例的判讀依據是預先設定的素材製作紀錄。真實查核仍需要原始檔案、可核對的證據與獨立專業判讀。"
+          ],
+          "image": {
+            "src": "/images/audio.svg",
+            "alt": "聲音波形與來源比對的概念示意，不是實際鑑定結果"
+          },
+          "caption": "音訊查核概念示意｜非實際工具輸出"
+        },
+        {
+          "id": "check-3",
+          "title": "回到完整脈絡，再決定是否轉傳",
+          "paragraphs": [
+            "音訊中的聲音相似、字幕或貼文描述都不等於來源證明。本示範的結論只適用於這份虛構素材，不涉及任何實際人物。"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "label": "示範素材說明",
+          "note": "文中場景、文件與判讀結果均為虛構；沒有對應的真實原始證據或採訪紀錄。"
+        }
+      ],
+      "relatedSlugs": [
+        "ballot-paper",
+        "early-voting",
+        "election-message"
+      ],
+      "verdict": "錯誤",
+      "seo": {
+        "title": "網傳「某候選人私下賄選錄音檔流出」？查核結果為變造｜台灣事實查核中心",
+        "description": "【示範資料】一段聲音，足以代表真相嗎？從原始檔案、完整脈絡與交叉比對，檢視可疑的選舉音訊。",
+        "image": {
+          "src": "/images/og/ai-voice.png",
+          "alt": "網傳「某候選人私下賄選錄音檔流出」？查核結果為變造（示意圖，非真實查核事件）",
+          "width": 1200,
+          "height": 630,
+          "type": "image/png"
+        },
+        "noindex": false,
+        "authorType": "Organization"
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@ const entries = [{ slug: 'home', image: '/images/network.svg', label: 'THE ELECT
 for (const story of listings.stories) {
   const report = JSON.parse(await readFile(resolve(root, `data/reports/${story.slug}.json`), 'utf8'));
   // Custom share images remain editor-owned. Only generate the named default fixture assets.
-  if (report.seo.image.src === `/images/og/${story.slug}.png`) entries.push({ slug: story.slug, image: report.image.src, label: report.reportId, mock: listings.isMock || report.isMock });
+  if (report.seo.image.src === `/images/og/${story.slug}.png`) entries.push({ slug: story.slug, image: report.image?.src ?? '/images/network.svg', label: report.reportId, mock: listings.isMock || report.isMock });
 }
 await mkdir(resolve(root, 'public/images/og'), { recursive: true });
 const escape = value => value.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[char]);

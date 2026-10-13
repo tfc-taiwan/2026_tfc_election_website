@@ -74,14 +74,14 @@ function Header({ data, onInfo }: { data: Listings; onInfo: (info: Info) => void
       <div className="header-actions"><button className="donate-button" onClick={support}>捐款支持</button><a className="official-link" href="https://tfc-taiwan.org.tw/" target="_blank" rel="noopener noreferrer">回官網<span className="sr-only">（開啟新視窗）</span></a><button className="icon-button header-search-toggle" aria-label={searchOpen ? '關閉搜尋' : '前往搜尋'} aria-expanded={searchOpen} aria-controls="header-search" onClick={() => { setSearchOpen(!searchOpen); if (!searchOpen) requestAnimationFrame(() => input.current?.focus()); }}><Icon name={searchOpen ? 'close' : 'search'} size={19} /></button></div>
     </div>
     {searchOpen && <form id="header-search" className="search-form header-search page-padding" role="search" action="https://tfc-taiwan.org.tw/" method="get"><input ref={input} name="s" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="搜尋台灣事實查核中心…" aria-label="搜尋台灣事實查核中心" /><button className="icon-button" type="submit" aria-label="送出搜尋"><Icon name="search" size={18} /></button></form>}
-    <nav className="mobile-dock" aria-label="手機快速導覽"><Link to="/"><Icon name="home" /><span>首頁</span></Link><Link to="/#latest"><Icon name="check" /><span>選舉查核</span></Link><Link to="/#infographics"><Icon name="bulb" /><span>資訊圖解</span></Link><button ref={menuButton} aria-label={menu ? '關閉選單' : '開啟選單'} aria-expanded={menu} aria-controls="main-nav" onClick={() => setMenu(!menu)}><Icon name={menu ? 'close' : 'menu'} /><span>選單</span></button></nav>
+    <nav className="mobile-dock" aria-label="手機快速導覽"><Link to="/"><Icon name="home" /><span>首頁</span></Link><Link to="/#latest"><Icon name="check" /><span>選舉查核</span></Link>{data.sections.infographics?.slugs.length ? <Link to="/#infographics"><Icon name="bulb" /><span>資訊圖解</span></Link> : <Link to="/reports"><Icon name="document" /><span>查核報告</span></Link>}<button ref={menuButton} aria-label={menu ? '關閉選單' : '開啟選單'} aria-expanded={menu} aria-controls="main-nav" onClick={() => setMenu(!menu)}><Icon name={menu ? 'close' : 'menu'} /><span>選單</span></button></nav>
   </header>;
 }
 
 function Illustration({ image, className = '', eager = false }: { image: Story['image']; className?: string; eager?: boolean }) {
   const [failed, setFailed] = useState(false);
   return <div className={`illustration ${className}`}>
-    {failed ? <div className="image-fallback" role="img" aria-label={image.alt}>FACT / CHECK</div> : <img src={publicPath(image.src)} alt={image.alt} loading={eager ? 'eager' : 'lazy'} onError={() => setFailed(true)} width="720" height="400" />}
+    {!image || failed ? <div className="image-fallback" role="img" aria-label={image?.alt ?? '尚未提供封面圖片'}>FACT / CHECK</div> : <img src={publicPath(image.src)} alt={image.alt} loading={eager ? 'eager' : 'lazy'} onError={() => setFailed(true)} width="720" height="400" />}
   </div>;
 }
 
@@ -100,7 +100,7 @@ function StoryCard({ story, compact = false, hidden = false }: { story: Story; c
       <div className="story-meta">
         {verdict && <><span className={`verdict-dot ${verdictClass(verdict)}`} aria-hidden="true" /><span className="verdict-label">{verdict}</span></>}
         {story.kind !== 'report' && <span className={`tag ${story.tone}`}>{story.tag}</span>}
-        <time dateTime={story.date}>{story.date}</time>
+        {story.date && <time dateTime={story.date}>{story.date}</time>}
       </div>
       <h3>{story.title}</h3>
       {!compact && <p>{story.description}</p>}
@@ -323,14 +323,14 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
       <div className="hero-intro"><div className="hero-kicker"><span>{hero.kicker}</span><small>2026 ELECTIONS</small></div><h1 id="hero-title">{hero.title.map(line => <span key={line}>{line}</span>)}</h1><p>{hero.description}</p><div className="countdown"><div><span>VOTING DAY</span><time dateTime={hero.electionDate}>{hero.electionDate.replaceAll('-', '.')}</time></div><p>距離投票日還有 <strong>{daysUntil(hero.electionDate, today)}</strong> 天</p>{data.isMock && <small>示範日期</small>}</div></div>
       <div className="election-facts"><h2>本次選舉基本事實</h2><ol>{hero.facts.map((fact, index) => <li key={fact.title}><span className="fact-number">{index + 1}</span><div><h3>{fact.title}</h3><p>{fact.description}</p></div></li>)}</ol></div>
     </section>
-    {sections.reports.categories.map((category, index) => <section className={`reports-section section-padding report-group report-group-${index}`} id={index === 0 ? 'latest' : 'referendum'} aria-labelledby={`report-group-${index}-title`} key={category}>
+    {sections.reports.categories.filter(category => homeReports.some(story => story.category === category)).map((category, index) => <section className={`reports-section section-padding report-group report-group-${index}`} id={index === 0 ? 'latest' : 'referendum'} aria-labelledby={`report-group-${index}-title`} key={category}>
       <Carousel stories={homeReports.filter(story => story.category === category)} label={`${category}查核報告`}
         heading={<h2 id={`report-group-${index}-title`}>{category}查核報告</h2>}
         footer={<Link className="pill-button section-more" to={`/reports?category=${encodeURIComponent(category)}`}>查看全部<span className="sr-only">{category}查核報告</span><Icon name="arrow" size={16} /></Link>} />
     </section>)}
-    <section className="analysis-section section-padding" id="analysis" aria-labelledby="analysis-title">
+    {!!sections.analyses.slugs.length && <section className="analysis-section section-padding" id="analysis" aria-labelledby="analysis-title">
       <Carousel stories={pick(sections.analyses.slugs)} label="資訊操弄解析" heading={<div><h2 id="analysis-title">{sections.analyses.title}</h2><p>{sections.analyses.description}</p></div>} />
-    </section>
+    </section>}
     {!!sections.shorts?.items.length && <section className="shorts-section section-padding" id="shorts" aria-labelledby="shorts-title">
       <YouTubeShorts items={sections.shorts.items} heading={<div><h2 id="shorts-title">{sections.shorts.title}</h2><p>{sections.shorts.description}</p><span className="shorts-label">VIDEO FACT-CHECKING / SHORT FORM</span></div>} />
     </section>}
@@ -345,7 +345,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
       </div>
     </section>
     <section className="process-section section-padding" id="process" aria-labelledby="process-title"><div className="center-heading"><h2 id="process-title">{sections.process.title}</h2></div><div className="process-grid">{sections.process.items.map(item => <div className="process-card" key={item.id}><span className={`process-icon ${item.tone}`}><Icon name={item.icon} size={30} /></span><h3>{item.title}</h3><p>{item.description}</p><button className="text-button" onClick={() => onInfo(item)}>了解更多 <span aria-hidden="true">→</span><span className="sr-only">：{item.title}</span></button></div>)}</div></section>
-    <section className="learning-section section-padding" id="learning" aria-labelledby="learning-title"><div className="center-heading"><h2 id="learning-title">{sections.learning.title}</h2></div><div className="learning-grid">{sections.learning.items.map(item => { const story = stories.find(s => s.slug === item.slug); return story && <div key={item.slug} className="learning-item"><Link to={`/reports/${item.slug}`} className="learning-art" tabIndex={-1} aria-hidden="true"><Illustration image={story.image} /></Link><div><span className="learning-topic">{item.badge}</span><h3>{story.title}</h3><p>{story.description}</p><Link to={`/reports/${item.slug}`}>閱讀教學指南<Icon name="arrow" size={16} /><span className="sr-only">：{story.title}</span></Link></div></div>; })}</div></section>
+    {!!sections.learning.items.length && <section className="learning-section section-padding" id="learning" aria-labelledby="learning-title"><div className="center-heading"><h2 id="learning-title">{sections.learning.title}</h2></div><div className="learning-grid">{sections.learning.items.map(item => { const story = stories.find(s => s.slug === item.slug); return story && <div key={item.slug} className="learning-item"><Link to={`/reports/${item.slug}`} className="learning-art" tabIndex={-1} aria-hidden="true"><Illustration image={story.image} /></Link><div><span className="learning-topic">{item.badge}</span><h3>{story.title}</h3><p>{story.description}</p><Link to={`/reports/${item.slug}`}>閱讀教學指南<Icon name="arrow" size={16} /><span className="sr-only">：{story.title}</span></Link></div></div>; })}</div></section>}
     <section className="activities-section section-padding" id="activities" aria-labelledby="activities-title"><div className="activities-inner"><h2 id="activities-title">{sections.activities.title}</h2><div className="activity-list">{sections.activities.items.map(item => <div className="activity" key={item.id}><span className={`activity-date ink-${item.tone}`}>{item.dateLabel}</span><div className="activity-content"><span className="tag neutral">{item.tag}</span><h3>{item.title}</h3><p>{item.description}</p></div><button className="button primary" onClick={() => onInfo(item)}>{item.cta}<span className="sr-only">：{item.title}</span><span aria-hidden="true">↗</span></button></div>)}</div></div></section>
   </>;
 }
@@ -420,10 +420,10 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
     <nav className="breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><Link to={report.kind === 'report' ? '/reports' : report.kind === 'analysis' ? '/#analysis' : '/#learning'}>{kind}</Link><span aria-hidden="true">／</span><span>{report.category}</span></nav>
     <div className="article-tags">{report.tags.map(tag => <span className={`tag ${tag === report.verdict ? `verdict-tag ${verdictClass(tag)}` : 'topic-tag'}`} key={tag}>{tag}</span>)}</div>
     <h1>{report.title}</h1><p className="article-finding">{report.finding}</p>
-    <div className="article-meta"><span><strong>發佈：</strong><time dateTime={report.published}>{report.published}</time></span><span><strong>更新：</strong><time dateTime={report.updated}>{report.updated}</time></span><span><strong>報告編號：</strong>{report.reportId}</span><span><strong>查核記者：</strong>{report.reporter}</span><span><strong>責任編輯：</strong>{report.editor}</span></div>
+    <div className="article-meta">{report.published && <span><strong>發佈：</strong><time dateTime={report.published}>{report.published}</time></span>}{report.updated && <span><strong>更新：</strong><time dateTime={report.updated}>{report.updated}</time></span>}<span><strong>報告編號：</strong>{report.reportId}</span><span><strong>查核記者：</strong>{report.reporter}</span><span><strong>責任編輯：</strong>{report.editor}</span></div>
     {report.isMock && <p className="article-mock-note"><span className="tag neutral">MOCK DATA</span> 本文為虛構示範，不代表真實事件或查核結論。</p>}
     <div className="article-toolbar"><nav aria-label="文章目錄"><span>內容：</span><a href="#background">背景</a><a href="#verification">{report.kind === 'report' ? '查核' : '解析'}</a>{!!report.supplementarySections?.length && <a href="#supplementary">補充資料</a>}{report.sources.length > 0 && <a href="#sources">資料來源</a>}</nav><ShareTools report={report} data={data} /></div>
-    <figure className="article-cover"><Illustration image={report.image} eager /><figcaption>{report.imageCaption}</figcaption></figure>
+    {report.image && <figure className="article-cover"><Illustration image={report.image} eager /><figcaption>{report.imageCaption}</figcaption></figure>}
     <section className="article-summary" aria-labelledby="summary-heading"><h2 id="summary-heading">{report.kind === 'report' ? '查核摘要' : '重點摘要'}</h2>{report.summaryBlocks ? <ContentBlocks blocks={report.summaryBlocks} /> : <ol>{report.summaryPoints.map(point => <li key={point}>{point}</li>)}</ol>}{report.summaryClose && <p>{report.summaryClose}</p>}</section>
     <section className="article-section" id="background"><h2>{report.background.title}</h2><SectionContent section={report.background} /></section>
     <section className="article-section" id="verification"><h2>{report.kind === 'report' ? '查核' : '深入解析'}</h2>{report.checkSections.map(section => <section className="check-section" key={section.id} id={section.id}><h3>{section.title}</h3><SectionContent section={section} /></section>)}</section>

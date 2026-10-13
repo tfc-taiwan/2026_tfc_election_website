@@ -13,7 +13,7 @@ const shareImage = image.extend({
 });
 const pageSeo = z.object({ title: text, description: text, image: shareImage, noindex: z.boolean().default(false) });
 const status = z.enum(['錯誤', '部分錯誤', '事實釐清', '正確']);
-const category = z.enum(['地方選舉', '公投議題']);
+const category = z.enum(['地方選舉', '公投議題', '選舉工具箱']);
 const youtubeId = /^[A-Za-z0-9_-]{11}$/;
 
 export function youtubeVideoId(value: string): string | null {
@@ -35,7 +35,7 @@ const youtubeUrl = z.url().refine(value => youtubeVideoId(value) !== null, '請�
 const socialLink = z.object({ label: text, url: z.url().refine(value => value.startsWith('https://'), '社群連結必須使用 HTTPS') });
 const story = z.object({
   slug, kind: z.enum(['report', 'analysis', 'guide']), category, title: text,
-  description: text, date, image, tag: text, tone, verdict: status.optional(),
+  description: text, date: date.nullable(), image: image.nullable(), tag: text, tone, verdict: status.optional(),
 });
 const info = z.object({ id: slug, title: text, description: text, content: z.array(text).min(1) });
 
@@ -84,7 +84,7 @@ export const listingsSchema = z.object({
   }
 });
 
-const inline = z.object({ text, href: z.url().refine(value => value.startsWith('https://')).optional(), bold: z.boolean().optional(), italic: z.boolean().optional() });
+const inline = z.object({ text, href: z.url().refine(value => /^https?:\/\//.test(value)).optional(), bold: z.boolean().optional(), italic: z.boolean().optional() });
 export const contentBlockSchema = z.discriminatedUnion('type', [
   z.object({ type: z.literal('paragraph'), content: z.array(inline).min(1) }),
   z.object({ type: z.literal('heading'), level: z.union([z.literal(3), z.literal(4)]), content: z.array(inline).min(1) }),
@@ -98,8 +98,8 @@ export const reportSchema = z.object({
   seo: pageSeo.extend({ authorType: z.enum(['Person', 'Organization']) }),
   kind: z.enum(['report', 'analysis', 'guide']), category, title: text, finding: text,
   verdict: status.optional(), tags: z.array(text),
-  published: date, updated: date, reportId: text, reporter: text, editor: text,
-  image, imageCaption: text, summaryPoints: z.array(text).min(1), summaryClose: z.string(), summaryBlocks: z.array(contentBlockSchema).min(1).optional(),
+  published: date.nullable(), updated: date.nullable(), reportId: text, reporter: text, editor: text,
+  image: image.nullable(), imageCaption: text, summaryPoints: z.array(text).min(1), summaryClose: z.string(), summaryBlocks: z.array(contentBlockSchema).min(1).optional(),
   background: section, checkSections: z.array(section).min(1),
   supplementarySections: z.array(section).optional(),
   sources: z.array(z.object({ label: text, note: text, href: z.url().refine(value => value.startsWith('https://')).optional() })), relatedSlugs: z.array(slug),

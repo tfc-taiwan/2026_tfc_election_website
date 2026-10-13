@@ -8,12 +8,12 @@ const order = f('order', '順序', 'number', undefined, 70);
 const slug = f('slug', 'slug', 'text', undefined, 180);
 const tone = f('tone', '色系', 'text', ['cyan', 'magenta'], 110);
 const imageFields = [f('image.src', '圖片路徑'), f('image.alt', '圖片替代文字')];
-const common = [slug, f('kind', '類型', 'text', ['report', 'analysis', 'guide'], 115), f('category', '主題', 'text', ['地方選舉', '公投議題'], 115), f('title', '標題', 'text', undefined, 350)];
+const common = [slug, f('kind', '類型', 'text', ['report', 'analysis', 'guide'], 115), f('category', '主題', 'text', ['地方選舉', '公投議題', '選舉工具箱'], 115), f('title', '標題', 'text', undefined, 350)];
 export const SHEETS: Record<string, Field[]> = {
   '網站設定': [f('key', '設定鍵', 'text', undefined, 260), f('value', '設定值', 'raw', undefined, 630)],
   '導覽': [order, f('label', '顯示文字'), f('href', '站內連結')],
   '首頁小卡': [order, f('title', '標題'), f('description', '說明', 'text', undefined, 560), tone],
-  '文章列表': [order, ...common, f('description', '列表摘要', 'text', undefined, 400), f('date', '刊登日期', 'date'), f('tag', '卡片標籤'), tone, f('verdict', '查核結果', 'optional', ['錯誤', '部分錯誤', '事實釐清', '正確']), ...imageFields, f('docUrl', 'Google Docs 連結', 'optional', undefined, 400)],
+  '文章列表': [order, ...common, f('description', '列表摘要', 'text', undefined, 400), f('date', '刊登日期', 'nullableDate'), f('tag', '卡片標籤'), tone, f('verdict', '查核結果', 'optional', ['錯誤', '部分錯誤', '事實釐清', '正確']), f('image.src', '圖片路徑', 'optional'), f('image.alt', '圖片替代文字', 'optional'), f('docUrl', 'Google Docs 連結', 'optional', undefined, 400)],
   '網頁SEO': [f('page', '頁面', 'text', ['home', 'reports'], 180), f('title', 'SEO 標題', 'text', undefined, 400), f('description', 'SEO 描述', 'text', undefined, 500), ...imageFields, f('image.width', '圖片寬度', 'number'), f('image.height', '圖片高度', 'number'), f('image.type', '圖片格式', 'text', ['image/png', 'image/jpeg', 'image/webp']), f('noindex', '不開放索引', 'boolean')],
   '首頁編排': [f('section', '區塊', 'text', ['reports', 'analyses', 'shorts', 'infographics', 'learning']), order, f('slug', 'slug', 'optional', undefined, 180), f('badge', '英文標籤', 'optional'), f('galleryTitle', '圖卡組名', 'optional'), f('homeTitle', '首頁標題', 'optional', undefined, 350), f('youtubeUrl', 'YouTube 連結', 'optional', undefined, 420)],
   '圖卡內容': [slug, order, f('image.src', '圖片路徑'), f('image.alt', '圖片替代文字'), f('caption', '圖卡說明', 'text', undefined, 400)],
@@ -61,7 +61,8 @@ function parse(value: Cell | undefined, field: Field, at: string): any {
     if (!Number.isSafeInteger(n)) return fail(`${at}：數字超出範圍`);
     return n;
   }
-  if (field.type === 'date') {
+  if (field.type === 'nullableDate' && !has(value)) return null;
+  if (field.type === 'date' || field.type === 'nullableDate') {
     if (value instanceof Date) value = value.toISOString().slice(0, 10);
     // Google Sheets values API can return an Excel-compatible date serial.
     if (typeof value === 'number') value = new Date(Date.UTC(1899, 11, 30) + value * 86400000).toISOString().slice(0, 10);
@@ -136,6 +137,10 @@ export function convertWorkbook(book: WorkbookRows): Listings {
   listings.navigation = ordered(tables['導覽'], '導覽').map(row => clean(row, ['label', 'href']));
   listings.hero.facts = ordered(tables['首頁小卡'], '首頁小卡').map(row => clean(row, ['title', 'description', 'tone']));
   const articles = ordered(tables['文章列表'], '文章列表');
+  for (const article of articles) {
+    if (!article.image?.src) article.image = null;
+    else if (!article.image.alt) fail(`文章 ${article.slug}：圖片缺少替代文字`);
+  }
   unique(articles.map(row => row.slug), '文章 slug');
   const slugs = new Set(articles.map(row => row.slug));
   const reference = (id: string, context: string) => { if (!slugs.has(id)) fail(`${context}：找不到文章 ${id}`); };
@@ -299,7 +304,7 @@ export function convertReport(paragraphs: DocParagraph[], listings: Listings, ex
   const story = listings.stories.find(story => story.slug === expectedSlug) ?? fail(`列表缺少 ${expectedSlug}`);
   for (const key of ['title', 'kind', 'category', 'verdict'] as const) if (parsed[key] !== story[key]) fail(`${expectedSlug} 的 ${key} 與試算表不一致`);
   if (parsed.published !== story.date) fail(`${expectedSlug} 刊登日期與試算表不一致`);
-  if (parsed.updated < parsed.published) fail(`${expectedSlug} 更新日期早於刊登日期`);
+  if (parsed.updated && parsed.published && parsed.updated < parsed.published) fail(`${expectedSlug} 更新日期早於刊登日期`);
   unique([parsed.background.id, ...parsed.checkSections.map(section => section.id)], `${expectedSlug} 段落代碼`);
   unique(parsed.relatedSlugs, `${expectedSlug} 相關文章`);
   for (const slug of parsed.relatedSlugs) if (slug === expectedSlug || !listings.stories.some(story => story.slug === slug)) fail(`${expectedSlug} 的相關文章 ${slug} 無效`);
