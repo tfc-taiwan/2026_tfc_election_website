@@ -49,8 +49,7 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
 
 function Brand({ site }: { site: Listings['site'] }) {
   return <Link to="/" className="brand" aria-label={`${site.name}，回首頁`}>
-    <span className="brand-mark" aria-hidden="true" />
-    <span><strong>{site.name}</strong><small>{site.englishName}</small></span>
+    <img className="brand-logo" src={publicPath('/images/tfc-logo.png')} alt={site.name} width="1000" height="191" />
   </Link>;
 }
 
