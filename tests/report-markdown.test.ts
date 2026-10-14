@@ -49,7 +49,7 @@ test('document identity comes from content and rejects missing, extra, duplicate
     await rm(join(dir, '重複下載.md'));
     await writeFile(join(dir, '文章名稱.md'), fixture.replace('slug: ai-voice', 'slug: unknown-article'));
     await assert.rejects(readMarkdownReports(dir, listings), /列表缺少/);
-    await writeFile(join(dir, '文章名稱.md'), fixture.replace('kind: report', 'kind: guide'));
+    await writeFile(join(dir, '文章名稱.md'), fixture.replace('kind: report', 'kind: guide').replace(/verdict:.*\n/, 'verdict: \n'));
     await assert.rejects(readMarkdownReports(dir, listings), /kind.*不一致/);
   } finally { await rm(dir, { recursive: true, force: true }); }
 });

@@ -21,4 +21,8 @@ test('guide import preserves Q&A, bold text and links without inventing a byline
   assert.ok(JSON.stringify(report.checkSections).includes('"bold":true'));
   await assert.rejects(() => convertGuideMarkdown(markdown + '\n\n| 表格 |\n| --- |\n| 不支援 |', listings, metadata), /不支援/);
   await assert.rejects(() => convertGuideMarkdown(markdown.replace(story.title, '錯誤標題'), listings, metadata), /標題與列表不一致/);
+  delete story.category;
+  const uncategorized = await convertGuideMarkdown(markdown, listings, metadata);
+  assert.equal(uncategorized.report.category, undefined);
+  assert.equal(uncategorized.report.verdict, undefined);
 });

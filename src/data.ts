@@ -14,6 +14,10 @@ const shareImage = image.extend({
 const pageSeo = z.object({ title: text, description: text, image: shareImage, noindex: z.boolean().default(false) });
 const status = z.enum(['錯誤', '部分錯誤', '事實釐清', '正確']);
 const category = z.enum(['地方選舉', '公投議題', '選舉工具箱']);
+function validateArticleFields(value: { kind: string; category?: string; verdict?: string }, ctx: z.RefinementCtx) {
+  if (value.kind === 'report' && !value.category) ctx.addIssue({ code: 'custom', path: ['category'], message: '查核報告須填主題；非查核文章可留白' });
+  if (value.kind !== 'report' && value.verdict) ctx.addIssue({ code: 'custom', path: ['verdict'], message: '非查核文章不使用查核結果，請留白' });
+}
 const youtubeId = /^[A-Za-z0-9_-]{11}$/;
 
 export function youtubeVideoId(value: string): string | null {
@@ -34,9 +38,9 @@ export function youtubeVideoId(value: string): string | null {
 const youtubeUrl = z.url().refine(value => youtubeVideoId(value) !== null, '請填有效的 YouTube 影片或 Shorts 連結');
 const socialLink = z.object({ label: text, url: z.url().refine(value => value.startsWith('https://'), '社群連結必須使用 HTTPS') });
 const story = z.object({
-  slug, kind: z.enum(['report', 'analysis', 'guide']), category, title: text,
+  slug, kind: z.enum(['report', 'analysis', 'guide']), category: category.optional(), title: text,
   description: text, date: date.nullable(), image: image.nullable(), tag: text, tone, verdict: status.optional(),
-});
+}).superRefine(validateArticleFields);
 const info = z.object({ id: slug, title: text, description: text, content: z.array(text).min(1) });
 
 export const listingsSchema = z.object({
@@ -96,14 +100,14 @@ const section = z.object({ id: slug, title: text, paragraphs: z.array(text).min(
 export const reportSchema = z.object({
   version: z.literal(1), isMock: z.boolean(), slug,
   seo: pageSeo.extend({ authorType: z.enum(['Person', 'Organization']) }),
-  kind: z.enum(['report', 'analysis', 'guide']), category, title: text, finding: text,
+  kind: z.enum(['report', 'analysis', 'guide']), category: category.optional(), title: text, finding: text,
   verdict: status.optional(), tags: z.array(text),
   published: date.nullable(), updated: date.nullable(), reportId: text, reporter: text, editor: text,
   image: image.nullable(), imageCaption: text, summaryPoints: z.array(text).min(1), summaryClose: z.string(), summaryBlocks: z.array(contentBlockSchema).min(1).optional(),
   background: section, checkSections: z.array(section).min(1),
   supplementarySections: z.array(section).optional(),
   sources: z.array(z.object({ label: text, note: text, href: z.url().refine(value => value.startsWith('https://')).optional() })), relatedSlugs: z.array(slug),
-});
+}).superRefine(validateArticleFields);
 
 export type Listings = z.infer<typeof listingsSchema>;
 export type Story = z.infer<typeof story>;
@@ -141,5 +145,5 @@ export function daysUntil(electionDate: string, now = new Date()): number {
 export function searchStories(stories: Story[], query: string, categoryFilter = '全部'): Story[] {
   const terms = query.trim().normalize('NFKC').toLocaleLowerCase().split(/\s+/).filter(Boolean);
   return stories.filter(story => (categoryFilter === '全部' || story.category === categoryFilter) &&
-    terms.every(term => `${story.title} ${story.description} ${story.tag} ${story.category}`.normalize('NFKC').toLocaleLowerCase().includes(term)));
+    terms.every(term => `${story.title} ${story.description} ${story.tag} ${story.category ?? ''}`.normalize('NFKC').toLocaleLowerCase().includes(term)));
 }

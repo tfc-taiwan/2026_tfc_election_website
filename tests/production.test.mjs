@@ -45,6 +45,29 @@ test('built static pages contain body content and unique head metadata', async (
   }
 });
 
+test('uncategorized guide renders without an empty breadcrumb or invented section metadata', async () => {
+  const guide = JSON.parse(await readFile('data/reports/election-prepare.json', 'utf8'));
+  delete guide.category;
+  const edited = structuredClone(source);
+  delete edited.stories.find(story => story.slug === guide.slug).category;
+  await writeFile(join(temp, 'data/listings.json'), JSON.stringify(edited));
+  await writeFile(join(temp, 'data/reports/election-prepare.json'), JSON.stringify(guide));
+  try {
+    const response = await fetch(base + '/reports/election-prepare');
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    const breadcrumbs = html.match(/<nav class="breadcrumbs"[\s\S]*?<\/nav>/)?.[0] ?? '';
+    assert.match(breadcrumbs, /查核學堂/);
+    assert.equal((breadcrumbs.match(/aria-hidden="true"/g) ?? []).length, 1);
+    assert.ok(!html.includes('property="article:section"'));
+    assert.ok(!html.includes('"articleSection":'));
+    assert.ok(!html.includes('class="verdict-legend"'));
+  } finally {
+    await writeFile(join(temp, 'data/listings.json'), JSON.stringify(source));
+    await writeFile(join(temp, 'data/reports/election-prepare.json'), await readFile('data/reports/election-prepare.json'));
+  }
+});
+
 test('production SSR uses canonical origin and returns real 404, asset and HEAD responses', async () => {
   const response = await fetch(base + '/reports/26-chinese-spouses');
   const html = await response.text();

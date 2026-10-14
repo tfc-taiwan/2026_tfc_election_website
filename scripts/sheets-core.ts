@@ -8,7 +8,7 @@ const order = f('order', '順序', 'number', undefined, 70);
 const slug = f('slug', 'slug', 'text', undefined, 180);
 const tone = f('tone', '色系', 'text', ['cyan', 'magenta'], 110);
 const imageFields = [f('image.src', '圖片路徑'), f('image.alt', '圖片替代文字')];
-const common = [slug, f('kind', '類型', 'text', ['report', 'analysis', 'guide'], 115), f('category', '主題', 'text', ['地方選舉', '公投議題', '選舉工具箱'], 115), f('title', '標題', 'text', undefined, 350)];
+const common = [slug, f('kind', '類型', 'text', ['report', 'analysis', 'guide'], 115), f('category', '主題', 'optional', ['地方選舉', '公投議題', '選舉工具箱'], 115), f('title', '標題', 'text', undefined, 350)];
 export const SHEETS: Record<string, Field[]> = {
   '網站設定': [f('key', '設定鍵', 'text', undefined, 260), f('value', '設定值', 'raw', undefined, 630)],
   '導覽': [order, f('label', '顯示文字'), f('href', '站內連結')],
@@ -99,6 +99,9 @@ function readRows(book: WorkbookRows, name: string): any[] {
   return rows.slice(1).flatMap((row, i) => {
     if (!row.some(has)) return [];
     if (row.some((value, column) => has(value) && !headers[column])) fail(`「${name}」第 ${i + 2} 列有無欄名的資料`);
+    if (name === '文章列表' && ['analysis', 'guide'].includes(String(row[headers.indexOf('類型')])) && has(row[headers.indexOf('查核結果')])) {
+      fail(`「${name}」第 ${i + 2} 列：非查核文章不使用查核結果，請留白，不必選評等或填「無」`);
+    }
     const result: any = { _row: i + 2 };
     fields.forEach((field, column) => { const value = parse(row[indexes[column]], field, `「${name}」第 ${i + 2} 列「${field.label}」`); if (value !== undefined) set(result, field.key, value); });
     return [result];

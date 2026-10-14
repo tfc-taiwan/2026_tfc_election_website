@@ -68,7 +68,8 @@ export function buildSeo(data: Listings, location: string, report: Report | null
   ];
   if (canonical) tags.push({ property: 'og:url', content: canonical });
   if (report && ready) {
-    tags.push({ name: 'author', content: report.reporter }, { property: 'article:section', content: report.category });
+    tags.push({ name: 'author', content: report.reporter });
+    if (report.category) tags.push({ property: 'article:section', content: report.category });
     if (report.published) tags.push({ property: 'article:published_time', content: report.published });
     if (report.updated) tags.push({ property: 'article:modified_time', content: report.updated });
     report.tags.forEach(tag => tags.push({ property: 'article:tag', content: tag }));
@@ -96,7 +97,7 @@ export function buildSeo(data: Listings, location: string, report: Report | null
       ...(report.published ? { datePublished: report.published } : {}), ...(report.updated ? { dateModified: report.updated } : {}), inLanguage: data.seo.language,
       author: { '@type': report.seo.authorType, name: report.reporter }, publisher,
       image: { '@type': 'ImageObject', url: imageUrl, width: page.image.width, height: page.image.height, caption: page.image.alt },
-      articleSection: report.category, keywords: report.tags.join(', '), isAccessibleForFree: true,
+      ...(report.category ? { articleSection: report.category } : {}), keywords: report.tags.join(', '), isAccessibleForFree: true,
     });
   }
   return { title, canonical, tags, graph, robots };

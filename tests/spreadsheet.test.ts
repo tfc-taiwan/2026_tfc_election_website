@@ -5,11 +5,38 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { spawnSync } from 'node:child_process';
 import { convertWorkbook, toWorkbookRows, convertReport, reportToParagraphs } from '../scripts/sheets-core.ts';
-import { listingsSchema, type Report } from '../src/data.ts';
+import { listingsSchema, reportSchema, type Report } from '../src/data.ts';
 
 const demo = JSON.parse(await readFile(new URL('./fixtures/demo-data.json', import.meta.url), 'utf8'));
 const listings = listingsSchema.parse(demo.listings);
 const reports: Report[] = listings.stories.map(story => demo.reports[story.slug]);
+
+test('non-report articles accept blank category and verdict across Sheets and original Docs imports', () => {
+  const book = toWorkbookRows(listings);
+  for (const row of book['文章列表'].slice(1)) if (row[2] !== 'report') { row[3] = null; row[9] = null; }
+  const converted = convertWorkbook(book);
+  for (const story of converted.stories.filter(story => story.kind !== 'report')) {
+    assert.equal(story.category, undefined);
+    assert.equal(story.verdict, undefined);
+    const report = structuredClone(demo.reports[story.slug]);
+    delete report.category;
+    delete report.verdict;
+    const imported = convertReport(reportToParagraphs(report), converted, story.slug);
+    assert.equal(imported.category, undefined);
+    assert.equal(imported.verdict, undefined);
+  }
+  const missingReportCategory = toWorkbookRows(listings);
+  missingReportCategory['文章列表'][1][3] = null;
+  assert.throws(() => convertWorkbook(missingReportCategory), /查核報告須填主題/);
+  const ratedGuide = toWorkbookRows(listings);
+  ratedGuide['文章列表'].find(row => row[2] === 'guide')![9] = '錯誤';
+  assert.throws(() => convertWorkbook(ratedGuide), /非查核文章不使用查核結果/);
+  ratedGuide['文章列表'].find(row => row[2] === 'guide')![9] = '無';
+  assert.throws(() => convertWorkbook(ratedGuide), /請留白，不必選評等或填「無」/);
+  const invalidReport = structuredClone(reports[0]);
+  delete invalidReport.category;
+  assert.equal(reportSchema.safeParse(invalidReport).success, false);
+});
 
 test('spreadsheet rows round-trip the complete homepage without reading or embedding report text', () => {
   const book = toWorkbookRows(listings);
