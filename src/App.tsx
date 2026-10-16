@@ -323,9 +323,9 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
       <div className="election-facts"><h2>本次選舉基本事實</h2><ol>{hero.facts.map((fact, index) => <li key={fact.title}><span className="fact-number">{index + 1}</span><div><h3>{fact.title}</h3><p>{fact.description}</p></div></li>)}</ol></div>
     </section>
     {sections.reports.categories.filter(category => homeReports.some(story => story.category === category)).map((category, index) => <section className={`reports-section section-padding report-group report-group-${index}`} id={index === 0 ? 'latest' : 'referendum'} aria-labelledby={`report-group-${index}-title`} key={category}>
-      <Carousel stories={homeReports.filter(story => story.category === category)} label={`${category}查核報告`}
-        heading={<h2 id={`report-group-${index}-title`}>{category}查核報告</h2>}
-        footer={<Link className="pill-button section-more" to={`/reports?category=${encodeURIComponent(category)}`}>查看全部<span className="sr-only">{category}查核報告</span><Icon name="arrow" size={16} /></Link>} />
+      <Carousel stories={homeReports.filter(story => story.category === category)} label={category === '深偽倡議' ? category : `${category}查核報告`}
+        heading={<h2 id={`report-group-${index}-title`}>{category === '深偽倡議' ? category : `${category}查核報告`}</h2>}
+        footer={<Link className="pill-button section-more" to={`/reports?category=${encodeURIComponent(category)}`}>查看全部<span className="sr-only">{category === '深偽倡議' ? category : `${category}查核報告`}</span><Icon name="arrow" size={16} /></Link>} />
     </section>)}
     {!!sections.analyses.slugs.length && <section className="analysis-section section-padding" id="analysis" aria-labelledby="analysis-title">
       <Carousel stories={pick(sections.analyses.slugs)} label="資訊操弄解析" heading={<div><h2 id="analysis-title">{sections.analyses.title}</h2><p>{sections.analyses.description}</p></div>} />
@@ -355,7 +355,7 @@ const LISTING_PAGE_SIZE = 12;
 function ListingsPage({ data }: { data: Listings }) {
   const [params, setParams] = useSearchParams();
   const query = params.get('q') ?? '';
-  const category = ['地方選舉', '公投議題'].includes(params.get('category') ?? '') ? params.get('category')! : '全部';
+  const category = data.sections.reports.categories.includes(params.get('category') as typeof data.sections.reports.categories[number]) ? params.get('category')! : '全部';
   const [visible, setVisible] = useState(LISTING_PAGE_SIZE);
   useEffect(() => setVisible(LISTING_PAGE_SIZE), [query, category]);
   const stories = searchStories(query ? data.stories : data.stories.filter(story => story.kind === 'report'), query, category);
