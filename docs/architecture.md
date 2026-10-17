@@ -30,6 +30,12 @@ Worker 在同網域子路徑提供檔案，不讓瀏覽器跳到 `workers.dev`�
 
 Cloudflare Static Assets 與 Worker 同版發佈。更新 `data/` 時先執行 converter，再執行 `npm run build:worker`（若僅編輯 JSON，仍須重產 HTML、JSON 與發佈資產），驗證輸出後才 `npm run deploy:worker`。部署成功、路由啟用、正式內容發布是不同狀態；建置完成不代表網站更新。帶雜湊的 JS/CSS 可長期快取，HTML/JSON 應重新驗證。回滾透過 Cloudflare Worker 版本與原始碼修訂，不直接在 Cloudflare 改內容。
 
+### GitHub Actions 驗收部署
+
+`.github/workflows/deploy-worker.yml` 在 PR 執行資料測試、根路徑建置與 SSR 測試、Worker 建置；推送 `main` 或手動執行 `main` 時，檢查通過後才將同次建置的資產部署。部署使用 `wrangler.preview.jsonc`，固定為 TFC 帳號的 `tfc-election2026`，僅啟用 `https://tfc-election2026.tfc-taiwan-org.workers.dev/election2026/` 驗收網址，`routes` 為空，不啟用正式 TFC 網域路由。正式 canonical 與 noindex 規則維持原設定。
+
+GitHub repository secret `CLOUDFLARE_API_TOKEN` 須使用限 TFC 帳號的 Workers 指令碼編輯權限；不需要 DNS、正式網域路由、KV、R2 或其他帳號權限。部署 job 使用 `preview` environment，PR 不執行部署或讀取此 secret。每次部署後執行 `scripts/verify-deployment.mjs`，確認遠端列表 JSON 與該修訂完全一致，並檢查首頁、列表、每篇文章、JSON、封面與 404。失敗時 Actions 標示失敗供追查；正式上線仍須另行明確授權，才可使用含正式路由的 `wrangler.jsonc`。
+
 ## 本機與驗收
 
 `npm run dev` 與 `npm run preview` 仍可在根路徑本機預覽；正式前綴用 `npm run build:worker` 產物與 `npm run preview:worker` 驗證。每次結構性改動至少檢查首頁、列表、直接開啟一篇文章、無 JS 正文、JSON／圖片網址、404、SEO，以及 320／390／834／1440 px。圖卡 lightbox 要檢查開關、上一張／下一張、鍵盤 Escape 與方向鍵、焦點回復、手機溢出。搜尋要確認瀏覽器送往原站 `s` 參數。

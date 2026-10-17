@@ -1,20 +1,22 @@
-name: Deploy election hub to Cloudflare
+name: Check and deploy election hub preview
 
 on:
+  pull_request:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: election2026-production
+  group: election2026-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  check:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    environment: production
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -26,8 +28,39 @@ jobs:
       - run: npm run build
       - run: npm run test:production
       - run: npm run build:worker
-      - name: Deploy Worker and static assets
-        run: npx --no-install wrangler deploy
+      - uses: actions/upload-artifact@v4
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          name: worker-assets
+          path: worker-assets/
+          retention-days: 7
+          if-no-files-found: error
+
+  deploy:
+    needs: check
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: worker-assets
+          path: worker-assets/
+      - name: Check deployment credentials
+        run: test -n "$CLOUDFLARE_API_TOKEN"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Deploy Worker and static assets
+        run: npx --no-install wrangler deploy --config wrangler.preview.jsonc
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: a1bad46d553cafed5f25a324dbc854d7
+      - name: Verify deployed preview
+        run: node scripts/verify-deployment.mjs https://tfc-election2026.tfc-taiwan-org.workers.dev
