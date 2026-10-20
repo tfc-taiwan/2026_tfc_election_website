@@ -9,7 +9,7 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const data = listingsSchema.parse(JSON.parse(readFileSync(resolve(root, 'data/listings.json'), 'utf8')));
 
 test('footer social links are unique HTTPS destinations', () => {
-  assert.deepEqual(data.site.socialLinks.map(item => item.label), ['Facebook', 'Instagram', 'Threads', 'YouTube', 'TikTok']);
+  assert.deepEqual(data.site.socialLinks.map(item => item.label), ['Facebook', 'Instagram', 'Threads', 'YouTube', 'TikTok', 'X', 'LINE', 'Podcast', '電子報']);
   assert.equal(new Set(data.site.socialLinks.map(item => item.url)).size, data.site.socialLinks.length);
   for (const item of data.site.socialLinks) assert.match(item.url, /^https:\/\//);
 });
@@ -72,14 +72,15 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 5);
-  assert.equal(data.stories.filter(story => story.date === null).length, 3);
-  assert.ok(data.stories.every(story => story.image?.src.startsWith('/images/covers/')));
-  assert.equal(data.sections.infographics, undefined);
+  assert.equal(data.stories.length, 6);
+  assert.equal(data.stories.filter(story => story.date === null).length, 4);
+  assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 5);
+  assert.equal(data.stories.find(story => story.slug === 'deepfake-pledge')?.image, null);
+  assert.deepEqual(data.sections.infographics?.slugs, []);
   for (const story of data.stories) {
     const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${story.slug}.json`), 'utf8')));
     assert.deepEqual(report.image, story.image);
-    assert.equal(report.seo.image.src, story.image?.src);
+    if (story.image) assert.equal(report.seo.image.src, story.image.src);
     const sections = [report.background, ...report.checkSections, ...(report.supplementarySections ?? [])];
     for (const section of sections) for (const block of section.blocks ?? []) {
       if (block.type === 'image' && block.image.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${block.image.src}`)));

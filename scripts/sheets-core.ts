@@ -11,15 +11,15 @@ const imageFields = [f('image.src', '圖片路徑'), f('image.alt', '圖片替�
 const common = [slug, f('kind', '類型', 'text', ['report', 'analysis', 'guide'], 115), f('category', '主題', 'optional', ['地方選舉', '深偽倡議', '公投議題', '選舉工具箱'], 115), f('title', '標題', 'text', undefined, 350)];
 export const SHEETS: Record<string, Field[]> = {
   '網站設定': [f('key', '設定鍵', 'text', undefined, 260), f('value', '設定值', 'raw', undefined, 630)],
-  '導覽': [order, f('label', '顯示文字'), f('href', '站內連結')],
+  '導覽': [order, f('label', '顯示文字'), f('href', '站內連結'), f('children', '下拉選單', 'optionalJson')],
   '首頁小卡': [order, f('title', '標題'), f('description', '說明', 'text', undefined, 560), tone],
   '文章列表': [order, ...common, f('description', '列表摘要', 'text', undefined, 400), f('date', '刊登日期', 'nullableDate'), f('tag', '卡片標籤'), tone, f('verdict', '查核結果', 'optional', ['錯誤', '部分錯誤', '事實釐清', '正確']), f('image.src', '圖片路徑', 'optional'), f('image.alt', '圖片替代文字', 'optional'), f('docUrl', 'Google Docs 連結', 'optional', undefined, 400)],
   '網頁SEO': [f('page', '頁面', 'text', ['home', 'reports'], 180), f('title', 'SEO 標題', 'text', undefined, 400), f('description', 'SEO 描述', 'text', undefined, 500), ...imageFields, f('image.width', '圖片寬度', 'number'), f('image.height', '圖片高度', 'number'), f('image.type', '圖片格式', 'text', ['image/png', 'image/jpeg', 'image/webp']), f('noindex', '不開放索引', 'boolean')],
   '首頁編排': [f('section', '區塊', 'text', ['reports', 'analyses', 'shorts', 'infographics', 'learning']), order, f('slug', 'slug', 'optional', undefined, 180), f('badge', '英文標籤', 'optional'), f('galleryTitle', '圖卡組名', 'optional'), f('homeTitle', '首頁標題', 'optional', undefined, 350), f('youtubeUrl', 'YouTube 連結', 'optional', undefined, 420)],
   '圖卡內容': [slug, order, f('image.src', '圖片路徑'), f('image.alt', '圖片替代文字'), f('caption', '圖卡說明', 'text', undefined, 400)],
   '謠言分類': [order, f('id', '分類代碼'), f('badge', '英文標籤'), f('label', '分類名稱'), tone, f('scriptId', '對應劇本')],
-  '常見劇本': [order, f('id', '劇本代碼'), f('question', '問題', 'text', undefined, 420), f('answer', '解答', 'text', undefined, 680)],
-  '資訊卡': [f('section', '區塊', 'text', ['process', 'activities']), order, f('id', '卡片代碼'), f('title', '標題', 'text', undefined, 350), f('description', '說明', 'text', undefined, 400), tone, f('icon', '圖示', 'optional', ['document', 'calendar', 'check', 'globe']), f('dateLabel', '日期標籤', 'optional'), f('tag', '標籤', 'optional'), f('cta', '按鈕文字', 'optional'), f('content', '內文', 'paragraphs', undefined, 680)],
+  '常見劇本': [order, f('id', '劇本代碼'), f('question', '問題', 'text', undefined, 420), f('answer', '解答', 'text', undefined, 680), f('href', '延伸閱讀連結', 'optional')],
+  '資訊卡': [f('section', '區塊', 'text', ['process', 'activities']), order, f('id', '卡片代碼'), f('title', '標題', 'text', undefined, 350), f('description', '說明', 'text', undefined, 400), tone, f('icon', '圖示', 'optional', ['document', 'calendar', 'check', 'globe']), f('dateLabel', '日期標籤', 'optional'), f('tag', '標籤', 'optional'), f('cta', '按鈕文字', 'optional'), f('content', '內文', 'paragraphs', undefined, 680), f('href', '閱讀連結', 'optional')],
 };
 
 const settingFields: Field[] = [
@@ -31,7 +31,7 @@ const settingFields: Field[] = [
   ...['reports', 'analyses', 'rumors', 'scripts', 'process', 'learning', 'activities'].map(k => f(`sections.${k}.title`, '')),
   f('sections.reports.categories', '', 'lines'), f('sections.analyses.description', ''),
 ];
-const optionalSettingFields = [f('sections.shorts.title', ''), f('sections.shorts.description', ''), f('sections.infographics.title', ''), f('sections.infographics.description', '')];
+const optionalSettingFields = [f('site.donationUrl', ''), f('hero.factsTitle', ''), f('sections.initiative', '', 'optionalJson'), f('sections.learning.resources', '', 'optionalJson'), f('sections.shorts.title', ''), f('sections.shorts.description', ''), f('sections.infographics.title', ''), f('sections.infographics.description', '')];
 
 const fail = (message: string): never => { throw new Error(message); };
 const has = (value: unknown) => value !== null && value !== undefined && value !== '';
@@ -42,11 +42,13 @@ function set(object: any, path: string, value: any) {
   target[parts.at(-1)!] = value;
 }
 function cellValue(value: any, field: Field): Cell {
+  if (field.type === 'optionalJson') return value === undefined ? '' : JSON.stringify(value);
   if (field.type === 'socialLinks' && Array.isArray(value)) return value.map(item => `${item.label} | ${item.url}`).join('\n');
   if (Array.isArray(value)) return value.join(field.type === 'paragraphs' ? '\n\n' : '\n');
   return value ?? '';
 }
 function parse(value: Cell | undefined, field: Field, at: string): any {
+  if (field.type === 'optionalJson') { if (!has(value)) return undefined; try { return JSON.parse(String(value)); } catch { return fail(`${at}：請填有效 JSON`); } }
   if (field.type === 'raw') return value ?? '';
   if (field.type === 'optional' && !has(value)) return undefined;
   if (field.type === 'nullable' && !has(value)) return null;
@@ -92,6 +94,7 @@ function readRows(book: WorkbookRows, name: string): any[] {
   const headers = rows[0]?.map(String) ?? [];
   const indexes = fields.map(field => {
     const positions = headers.flatMap((header, i) => header === field.label ? [i] : []);
+    if (!positions.length && ['下拉選單', '延伸閱讀連結', '閱讀連結'].includes(field.label)) return -1;
     if (positions.length !== 1) fail(`「${name}」欄位「${field.label}」缺少或重複`);
     return positions[0];
   });
@@ -137,7 +140,7 @@ export function convertWorkbook(book: WorkbookRows): Listings {
     const origin = listings.seo.siteUrl;
     if (!/^https?:\/\/[^/?#@]+\/?$/.test(origin)) fail('seo.siteUrl 必須為網站 origin，不可含路徑、帳密、查詢參數');
   }
-  listings.navigation = ordered(tables['導覽'], '導覽').map(row => clean(row, ['label', 'href']));
+  listings.navigation = ordered(tables['導覽'], '導覽').map(row => clean(row, ['label', 'href', 'children']));
   listings.hero.facts = ordered(tables['首頁小卡'], '首頁小卡').map(row => clean(row, ['title', 'description', 'tone']));
   const articles = ordered(tables['文章列表'], '文章列表');
   for (const article of articles) {
@@ -199,14 +202,14 @@ export function convertWorkbook(book: WorkbookRows): Listings {
     if (listings.sections.infographics.items.length !== gallerySlugs.length) fail('每一組圖卡至少需要一張圖片');
   }
   listings.sections.rumors.items = ordered(tables['謠言分類'], '謠言分類').map(row => clean(row, ['id', 'badge', 'label', 'tone', 'scriptId']));
-  listings.sections.scripts.items = ordered(tables['常見劇本'], '常見劇本').map(row => clean(row, ['id', 'question', 'answer']));
+  listings.sections.scripts.items = ordered(tables['常見劇本'], '常見劇本').map(row => clean(row, ['id', 'question', 'answer', 'href']));
   for (const section of ['process', 'activities']) {
     const rows = ordered(tables['資訊卡'].filter(row => row.section === section), `資訊卡 ${section}`);
     for (const row of rows) {
       if (section === 'process' && ['dateLabel', 'tag', 'cta'].some(k => row[k])) fail(`資訊卡第 ${row._row} 列：process 不使用活動欄位`);
       if (section === 'activities' && row.icon) fail(`資訊卡第 ${row._row} 列：activities 不使用圖示`);
     }
-    listings.sections[section].items = rows.map(row => clean(row, ['id', 'title', 'description', 'tone', 'content', ...(section === 'process' ? ['icon'] : ['dateLabel', 'tag', 'cta'])]));
+    listings.sections[section].items = rows.map(row => clean(row, ['id', 'title', 'description', 'tone', 'content', 'href', ...(section === 'process' ? ['icon'] : ['dateLabel', 'tag', 'cta'])]));
   }
   for (const name of ['rumors', 'scripts', 'process', 'activities']) unique(listings.sections[name].items.map((row: any) => row.id), `${name} 代碼`);
   for (const item of listings.sections.rumors.items) if (!listings.sections.scripts.items.some((script: any) => script.id === item.scriptId)) fail(`謠言分類 ${item.id} 找不到劇本 ${item.scriptId}`);

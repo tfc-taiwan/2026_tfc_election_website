@@ -5,6 +5,7 @@ import { buildSeo, siteRootFor, syncSeoHead, type PageStatus } from './seo';
 import { publicPath } from './paths';
 import { infographicPath, resolveInfographic } from './infographics';
 import type { RenderState } from './render-state';
+import InitiativePage from './InitiativePage';
 
 const RenderContext = createContext<Pick<RenderState, 'context' | 'now' | 'report' | 'status'>>({ context: { siteUrl: null, previewOrigin: 'http://localhost:4173' }, now: new Date().toISOString(), report: null, status: 200 });
 
@@ -61,16 +62,16 @@ function Header({ data, onInfo }: { data: Listings; onInfo: (info: Info) => void
   const menuButton = useRef<HTMLButtonElement>(null);
   const location = useLocation();
   useEffect(() => { setMenu(false); setSearchOpen(false); setQuery(new URLSearchParams(location.search).get('q') ?? ''); }, [location]);
-  const support = () => onInfo({ id: 'support', title: '支持事實查核', description: '讓有依據的資訊，成為公共討論的起點。', content: ['此為設計示範網站，沒有提供捐款或付款功能。你可以前往台灣事實查核中心正式網站，了解實際的支持方式。'] });
+
   return <header className="site-header">
     <a className="skip-link" href="#main-content">跳至主要內容</a>
     <div className="header-inner page-padding">
       <Brand site={data.site} />
       <nav id="main-nav" aria-label="主要導覽" className={`main-nav ${menu ? 'is-open' : ''}`} onKeyDown={event => { if (event.key === 'Escape') { setMenu(false); menuButton.current?.focus(); } }}>
-        {data.navigation.map(item => <NavLink key={item.href} to={item.href} onClick={() => setMenu(false)}>{item.label}</NavLink>)}
+        {data.navigation.map(item => item.children?.length ? <details className="nav-dropdown" key={item.label}><summary>{item.label}<Icon name="caret" size={14} /></summary><div className="nav-dropdown-links">{item.children.map(child => <Link key={child.href} to={child.href} onClick={event => { setMenu(false); event.currentTarget.closest('details')?.removeAttribute('open'); }}>{child.label}</Link>)}</div></details> : <NavLink key={item.href} to={item.href} onClick={() => setMenu(false)}>{item.label}</NavLink>)}
       </nav>
       <span className="header-divider" aria-hidden="true" />
-      <div className="header-actions"><button className="donate-button" onClick={support}>捐款支持</button><a className="official-link" href="https://tfc-taiwan.org.tw/" target="_blank" rel="noopener noreferrer">回官網<span className="sr-only">（開啟新視窗）</span></a><button className="icon-button header-search-toggle" aria-label={searchOpen ? '關閉搜尋' : '前往搜尋'} aria-expanded={searchOpen} aria-controls="header-search" onClick={() => { setSearchOpen(!searchOpen); if (!searchOpen) requestAnimationFrame(() => input.current?.focus()); }}><Icon name={searchOpen ? 'close' : 'search'} size={19} /></button></div>
+      <div className="header-actions"><a className="donate-button" href={data.site.donationUrl} target="_blank" rel="noopener noreferrer">捐款支持<span className="sr-only">（開啟新視窗）</span></a><a className="official-link" href="https://tfc-taiwan.org.tw/" target="_blank" rel="noopener noreferrer">回官網<span className="sr-only">（開啟新視窗）</span></a><button className="icon-button header-search-toggle" aria-label={searchOpen ? '關閉搜尋' : '前往搜尋'} aria-expanded={searchOpen} aria-controls="header-search" onClick={() => { setSearchOpen(!searchOpen); if (!searchOpen) requestAnimationFrame(() => input.current?.focus()); }}><Icon name={searchOpen ? 'close' : 'search'} size={19} /></button></div>
     </div>
     {searchOpen && <form id="header-search" className="search-form header-search page-padding" role="search" action="https://tfc-taiwan.org.tw/" method="get"><input ref={input} name="s" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="搜尋台灣事實查核中心…" aria-label="搜尋台灣事實查核中心" /><button className="icon-button" type="submit" aria-label="送出搜尋"><Icon name="search" size={18} /></button></form>}
     <nav className="mobile-dock" aria-label="手機快速導覽"><Link to="/"><Icon name="home" /><span>首頁</span></Link><Link to="/#latest"><Icon name="check" /><span>選舉查核</span></Link>{data.sections.infographics?.slugs.length ? <Link to="/#infographics"><Icon name="bulb" /><span>資訊圖解</span></Link> : <Link to="/reports"><Icon name="document" /><span>查核報告</span></Link>}<button ref={menuButton} aria-label={menu ? '關閉選單' : '開啟選單'} aria-expanded={menu} aria-controls="main-nav" onClick={() => setMenu(!menu)}><Icon name={menu ? 'close' : 'menu'} /><span>選單</span></button></nav>
@@ -219,7 +220,6 @@ function useScrollRow(contentKey: string): ScrollRow {
 
 function ScrollControls({ row, label, count }: { row: ScrollRow; label: string; count?: number }) {
   return <div className="scroll-controls">
-    {count !== undefined && <span>{String(count).padStart(2, '0')} 篇精選</span>}
     <div><button className="icon-button round-button" disabled={row.edges.start} aria-label={`${label}：上一組`} onClick={() => row.scroll(-1)}><Icon name="left" size={18} /></button><button className="icon-button round-button" disabled={row.edges.end} aria-label={`${label}：下一組`} onClick={() => row.scroll(1)}><Icon name="right" size={18} /></button></div>
   </div>;
 }
@@ -315,37 +315,38 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
     const story = stories.find(value => value.slug === item.slug);
     return story ? [{ ...story, title: item.title ?? story.title }] : [];
   });
-  function openScript(id: string) { setScript(id); requestAnimationFrame(() => { const button = document.getElementById(`script-toggle-${id}`); button?.focus({ preventScroll: true }); button?.scrollIntoView({ behavior: 'smooth', block: 'center' }); }); }
+
   return <>
     <PageSeo data={data} />
+    {data.isMock && <p className="review-notice page-padding" role="note">{data.site.notice}</p>}
     <section className="hero section-padding grid-texture" id="about" aria-labelledby="hero-title">
-      <div className="hero-intro"><div className="hero-kicker"><span>{hero.kicker}</span><small>2026 ELECTIONS</small></div><h1 id="hero-title">{hero.title.map(line => <span key={line}>{line}</span>)}</h1><p>{hero.description}</p><div className="countdown"><div><span>VOTING DAY</span><time dateTime={hero.electionDate}>{hero.electionDate.replaceAll('-', '.')}</time></div><p>距離投票日還有 <strong>{daysUntil(hero.electionDate, today)}</strong> 天</p>{data.isMock && <small>示範日期</small>}</div></div>
-      <div className="election-facts"><h2>本次選舉基本事實</h2><ol>{hero.facts.map((fact, index) => <li key={fact.title}><span className="fact-number">{index + 1}</span><div><h3>{fact.title}</h3><p>{fact.description}</p></div></li>)}</ol></div>
+      <div className="hero-intro"><div className="hero-kicker"><span>{hero.kicker}</span><small>2026 ELECTIONS</small></div><h1 id="hero-title">{hero.title.map(line => <span key={line}>{line}</span>)}</h1><p>{hero.description}</p><div className="countdown"><div><span>VOTING DAY</span><time dateTime={hero.electionDate}>{hero.electionDate.replaceAll('-', '.')}</time></div><p>距離投票日還有 <strong>{daysUntil(hero.electionDate, today)}</strong> 天</p></div></div>
+      <div className="election-facts"><h2>{hero.factsTitle}</h2><ol>{hero.facts.map((fact, index) => <li key={fact.title}><span className="fact-number">{index + 1}</span><div><h3>{fact.title}</h3><p>{fact.description}</p></div></li>)}</ol></div>
     </section>
-    {sections.reports.categories.filter(category => homeReports.some(story => story.category === category)).map((category, index) => <section className={`reports-section section-padding report-group report-group-${index}`} id={index === 0 ? 'latest' : 'referendum'} aria-labelledby={`report-group-${index}-title`} key={category}>
-      <Carousel stories={homeReports.filter(story => story.category === category)} label={category === '深偽倡議' ? category : `${category}查核報告`}
-        heading={<h2 id={`report-group-${index}-title`}>{category === '深偽倡議' ? category : `${category}查核報告`}</h2>}
-        footer={<Link className="pill-button section-more" to={`/reports?category=${encodeURIComponent(category)}`}>查看全部<span className="sr-only">{category === '深偽倡議' ? category : `${category}查核報告`}</span><Icon name="arrow" size={16} /></Link>} />
+    {sections.reports.categories.filter(category => category !== '深偽倡議').filter(category => homeReports.some(story => story.category === category)).map((category, index) => <section className={`reports-section section-padding report-group report-group-${index}`} id={index === 0 ? 'latest' : 'referendum'} aria-labelledby={`report-group-${index}-title`} key={category}>
+      <Carousel stories={homeReports.filter(story => story.category === category)} label={`${category}查核報告`}
+        heading={<h2 id={`report-group-${index}-title`}>{`${category}查核報告`}</h2>}
+        footer={<Link className="pill-button section-more" to={`/reports?category=${encodeURIComponent(category)}`}>查看全部<span className="sr-only">{`${category}查核報告`}</span><Icon name="arrow" size={16} /></Link>} />
     </section>)}
+    {sections.initiative && <section className="initiative-section section-padding" id="initiative" aria-labelledby="initiative-title"><h2 id="initiative-title">{sections.initiative.title}</h2><p>{sections.initiative.description}</p>{stories.some(story => story.category === '深偽倡議') && <Carousel stories={stories.filter(story => story.category === '深偽倡議')} label="深偽倡議文章" heading={<h3>專區文章</h3>} />}</section>}
     {!!sections.analyses.slugs.length && <section className="analysis-section section-padding" id="analysis" aria-labelledby="analysis-title">
       <Carousel stories={pick(sections.analyses.slugs)} label="資訊操弄解析" heading={<div><h2 id="analysis-title">{sections.analyses.title}</h2><p>{sections.analyses.description}</p></div>} />
     </section>}
     {!!sections.shorts?.items.length && <section className="shorts-section section-padding" id="shorts" aria-labelledby="shorts-title">
-      <YouTubeShorts items={sections.shorts.items} heading={<div><h2 id="shorts-title">{sections.shorts.title}</h2><p>{sections.shorts.description}</p><span className="shorts-label">VIDEO FACT-CHECKING / SHORT FORM</span></div>} />
+      <YouTubeShorts items={sections.shorts.items} heading={<div><h2 id="shorts-title">{sections.shorts.title}</h2><p>{sections.shorts.description}</p></div>} />
     </section>}
-    {!!sections.infographics?.slugs.length && <section className="infographics-section section-padding grid-texture" id="infographics" aria-labelledby="infographics-title">
-      <InfographicGallery data={data} stories={pick(sections.infographics.slugs)} heading={<div><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p></div>} />
+    {sections.infographics && <section className="infographics-section section-padding grid-texture" id="infographics" aria-labelledby="infographics-title">
+      {sections.infographics.slugs.length ? <InfographicGallery data={data} stories={pick(sections.infographics.slugs)} heading={<div><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p></div>} /> : <><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p><p className="pending-content">圖卡素材待補入，目前尚未發布圖卡。</p></>}
     </section>}
     <section className="rumors-section section-padding" id="rumors" aria-labelledby="rumors-title">
       <h2 id="rumors-title">{sections.rumors.title}</h2>
       <div className="rumors-layout">
-        <div className="rumors-narratives"><h3 className="rumor-subtitle">常見操弄敘事</h3><div className="rumor-grid">{sections.rumors.items.map(item => <button key={item.id} className="rumor-button" onClick={() => openScript(item.scriptId)} aria-label={`${item.label}：閱讀常見劇本`}><span className="rumor-badge"><Icon name={item.id === 'vote' ? 'document' : item.id === 'money' ? 'coin' : item.id === 'rumor' ? 'eye' : item.id === 'policy' ? 'edit' : item.id === 'unfair' ? 'scale' : item.id === 'foreign' ? 'globe' : 'check'} size={30} /></span><span>{item.label}</span></button>)}</div></div>
-        <div className="scripts"><h3 className="rumor-subtitle">{sections.scripts.title}</h3>{sections.scripts.items.map(item => <div className={`accordion ${script === item.id ? 'is-open' : ''}`} key={item.id}><h4><button id={`script-toggle-${item.id}`} aria-expanded={script === item.id} aria-controls={`script-${item.id}`} onClick={() => setScript(script === item.id ? null : item.id)}>{item.question}<Icon name="caret" size={18} /></button></h4><div id={`script-${item.id}`} role="region" aria-labelledby={`script-toggle-${item.id}`} hidden={script !== item.id}><p>{item.answer}</p></div></div>)}</div>
+        <div className="scripts">{sections.scripts.items.map(item => <div className={`accordion ${script === item.id ? 'is-open' : ''}`} key={item.id}><h4><button id={`script-toggle-${item.id}`} aria-expanded={script === item.id} aria-controls={`script-${item.id}`} onClick={() => setScript(script === item.id ? null : item.id)}>{item.question}<Icon name="caret" size={18} /></button></h4><div id={`script-${item.id}`} role="region" aria-labelledby={`script-toggle-${item.id}`} hidden={script !== item.id}>{item.answer.split('\n\n').map(paragraph => <p key={paragraph}>{paragraph}</p>)}{item.href && <a href={item.href} target="_blank" rel="noopener noreferrer">延伸閱讀 ↗</a>}</div></div>)}</div>
       </div>
     </section>
-    <section className="process-section section-padding" id="process" aria-labelledby="process-title"><div className="center-heading"><h2 id="process-title">{sections.process.title}</h2></div><div className="process-grid">{sections.process.items.map(item => <div className="process-card" key={item.id}><span className={`process-icon ${item.tone}`}><Icon name={item.icon} size={30} /></span><h3>{item.title}</h3><p>{item.description}</p><button className="text-button" onClick={() => onInfo(item)}>了解更多 <span aria-hidden="true">→</span><span className="sr-only">：{item.title}</span></button></div>)}</div></section>
-    {!!sections.learning.items.length && <section className="learning-section section-padding" id="learning" aria-labelledby="learning-title"><div className="center-heading"><h2 id="learning-title">{sections.learning.title}</h2></div><div className="learning-grid">{sections.learning.items.map(item => { const story = stories.find(s => s.slug === item.slug); return story && <div key={item.slug} className="learning-item"><Link to={`/reports/${item.slug}`} className="learning-art" tabIndex={-1} aria-hidden="true"><Illustration image={story.image} /></Link><div><span className="learning-topic">{item.badge}</span><h3>{story.title}</h3><p>{story.description}</p><Link to={`/reports/${item.slug}`}>閱讀教學指南<Icon name="arrow" size={16} /><span className="sr-only">：{story.title}</span></Link></div></div>; })}</div></section>}
-    <section className="activities-section section-padding" id="activities" aria-labelledby="activities-title"><div className="activities-inner"><h2 id="activities-title">{sections.activities.title}</h2><div className="activity-list">{sections.activities.items.map(item => <div className="activity" key={item.id}><span className={`activity-date ink-${item.tone}`}>{item.dateLabel}</span><div className="activity-content"><span className="tag neutral">{item.tag}</span><h3>{item.title}</h3><p>{item.description}</p></div><button className="button primary" onClick={() => onInfo(item)}>{item.cta}<span className="sr-only">：{item.title}</span><span aria-hidden="true">↗</span></button></div>)}</div></div></section>
+    <section className="process-section section-padding" id="process" aria-labelledby="process-title"><div className="center-heading"><h2 id="process-title">{sections.process.title}</h2></div><div className="process-grid">{sections.process.items.map(item => <div className="process-card" key={item.id}><span className={`process-icon ${item.tone}`}><Icon name={item.icon} size={30} /></span><h3>{item.title}</h3><p>{item.description}</p>{item.href ? (item.href.startsWith('/') ? <Link className="text-button" to={item.href}>閱讀全文 <span aria-hidden="true">→</span><span className="sr-only">：{item.title}</span></Link> : <a className="text-button" href={item.href} target="_blank" rel="noopener noreferrer">閱讀全文 ↗<span className="sr-only">：{item.title}（開啟新視窗）</span></a>) : <button className="text-button" onClick={() => onInfo(item)}>了解更多 <span aria-hidden="true">→</span><span className="sr-only">：{item.title}</span></button>}</div>)}</div></section>
+    {(!!sections.learning.items.length || !!sections.learning.resources?.length) && <section className="learning-section section-padding" id="learning" aria-labelledby="learning-title"><div className="center-heading"><h2 id="learning-title">{sections.learning.title}</h2></div><div className="learning-grid">{sections.learning.items.map(item => { const story = stories.find(s => s.slug === item.slug); return story && <div key={item.slug} className="learning-item"><Link to={`/reports/${item.slug}`} className="learning-art" tabIndex={-1} aria-hidden="true"><Illustration image={story.image} /></Link><div><span className="learning-topic">{item.badge}</span><h3>{story.title}</h3><p>{story.description}</p><Link to={`/reports/${item.slug}`}>閱讀教學指南<Icon name="arrow" size={16} /><span className="sr-only">：{story.title}</span></Link></div></div>; })}{sections.learning.resources?.map(item => <div className="learning-item" key={item.title}><div><h3>{item.title}</h3><p>{item.description}</p>{item.href && <a href={item.href}>閱讀教學指南 ↗</a>}</div></div>)}</div></section>}
+    <section className="activities-section section-padding" id="activities" aria-labelledby="activities-title"><div className="activities-inner"><h2 id="activities-title">{sections.activities.title}</h2><div className="activity-list">{sections.activities.items.map(item => <div className="activity" key={item.id}><span className={`activity-date ink-${item.tone}`}>{item.dateLabel}</span><div className="activity-content"><span className="tag neutral">{item.tag}</span><h3>{item.title}</h3><p>{item.description}</p></div>{item.href ? <a className="button primary" href={item.href} target="_blank" rel="noopener noreferrer">{item.cta}<span className="sr-only">：{item.title}（開啟新視窗）</span> ↗</a> : <button className="button primary" onClick={() => onInfo(item)}>{item.cta}<span className="sr-only">：{item.title}</span><span aria-hidden="true">↗</span></button>}</div>)}</div></div></section>
   </>;
 }
 
@@ -413,6 +414,7 @@ function SectionContent({ section }: { section: Report['background'] }) {
 }
 
 function ArticleBody({ report, data }: { report: Report; data: Listings }) {
+  if (report.initiativeContent) return <InitiativePage report={report} />;
   const related = report.relatedSlugs.flatMap(slug => data.stories.find(story => story.slug === slug) ?? []);
   const kind = report.kind === 'report' ? '查核報告' : report.kind === 'analysis' ? '資訊操弄解析' : '查核學堂';
   return <article className="report-page">
@@ -459,7 +461,7 @@ function ErrorPage({ error, onRetry }: { error?: Error; onRetry?: () => void }) 
 function InfoDialog({ info, close }: { info: Info | null; close: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => { const dialog = ref.current; if (info && dialog && !dialog.open) dialog.showModal(); if (!info && dialog?.open) dialog.close(); }, [info]);
-  return <dialog ref={ref} className="info-dialog" aria-labelledby="dialog-title" onClose={close} onClick={event => { if (event.target === event.currentTarget) { const box = event.currentTarget.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) close(); } }}><button className="icon-button dialog-close" aria-label="關閉說明" onClick={close} autoFocus><Icon name="close" /></button>{info && <><span className="tag cyan">2026 選舉工具箱</span><h2 id="dialog-title">{info.title}</h2><p className="dialog-description">{info.description}</p>{info.content.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{info.id === 'support' && <a className="button primary" href="https://tfc-taiwan.org.tw/" target="_blank" rel="noopener noreferrer">前往正式網站 ↗</a>}</>}</dialog>;
+  return <dialog ref={ref} className="info-dialog" aria-labelledby="dialog-title" onClose={close} onClick={event => { if (event.target === event.currentTarget) { const box = event.currentTarget.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) close(); } }}><button className="icon-button dialog-close" aria-label="關閉說明" onClick={close} autoFocus><Icon name="close" /></button>{info && <><span className="tag cyan">2026 選舉工具箱</span><h2 id="dialog-title">{info.title}</h2><p className="dialog-description">{info.description}</p>{info.content.map(paragraph => <p key={paragraph}>{paragraph}</p>)}{info.href && (info.href.startsWith('/') ? <Link className="button primary" to={info.href} onClick={close}>閱讀全文 ↗</Link> : <a className="button primary" href={info.href} target="_blank" rel="noopener noreferrer">閱讀全文 ↗</a>)}</>}</dialog>;
 }
 
 function RouteEffects() {
