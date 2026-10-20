@@ -41,7 +41,12 @@ test('built static pages contain body content and unique head metadata', async (
     assert.ok(html.includes('type="application/ld+json"'));
     assert.ok(!html.includes('<!--app-html-->'));
     assert.match(html, /<h1[^>]*>[\s\S]+?<\/h1>/);
-    if (path !== 'index.html' && path !== 'reports/index.html') assert.match(html, /<article class="report-page">[\s\S]+?id="verification"/);
+    if (path === 'reports/deepfake-pledge/index.html') {
+      assert.match(html, /<article class="pledge-page section-padding">/);
+      assert.ok(html.includes('自律公約承諾原則：三不二要'));
+      assert.match(html, /展開全部案例（(?:<!-- -->)?13/);
+      assert.ok(!html.includes('cdn.tailwindcss.com'));
+    } else if (path !== 'index.html' && path !== 'reports/index.html') assert.match(html, /<article class="report-page">[\s\S]+?id="verification"/);
   }
 });
 

@@ -6,8 +6,8 @@
     "language": "zh-Hant",
     "locale": "zh_TW",
     "home": {
-      "title": "2026 選舉工具箱｜台灣事實查核中心",
-      "description": "2026 地方選舉與深偽倡議資訊專區：閱讀查核報告、理解資訊操弄、學習查證方法。",
+      "title": "2026 選舉工具箱｜地方選舉與公投查核專區 - 台灣事實查核中心",
+      "description": "台灣事實查核中心「2026選舉工具箱」，掌握九合一選舉與公投的即時查核報告、破解常見謠言，以及查核中心發起的「拒絕深偽造假自律倡議」。拒絕資訊操弄！看懂訊息，做出知情的選擇。",
       "image": {
         "src": "/images/og/home.png",
         "alt": "2026 選舉工具箱：查核報告、資訊判讀與查核學堂示範網站",
@@ -35,7 +35,7 @@
     "englishName": "Taiwan FactCheck Center",
     "title": "2026 選舉工具箱",
     "notice": "示範網站・所有報告與活動皆為虛構資料",
-    "footer": "© 2026 台灣事實查核中心｜介面示範・非正式網站",
+    "footer": "© 2026 台灣事實查核中心 Taiwan FactCheck Center",
     "socialLinks": [
       {
         "label": "Facebook",
@@ -56,56 +56,98 @@
       {
         "label": "TikTok",
         "url": "https://www.tiktok.com/@taiwan_factcheckcenter"
+      },
+      {
+        "label": "X",
+        "url": "https://x.com/taiwantfc"
+      },
+      {
+        "label": "LINE",
+        "url": "https://line.me/R/ti/p/%40tfctaiwan"
+      },
+      {
+        "label": "Podcast",
+        "url": "https://open.firstory.fm/user/bye-fake-news/platforms"
+      },
+      {
+        "label": "電子報",
+        "url": "https://tfc-taiwan.org.tw/migration_article_104122_7756/"
       }
-    ]
+    ],
+    "donationUrl": "https://tfc-taiwan.oen.tw/"
   },
   "navigation": [
     {
-      "label": "地方選舉",
+      "label": "選舉查核報告",
       "href": "/#latest"
     },
     {
+      "label": "拒絕深偽造假倡議",
+      "href": "/#initiative"
+    },
+    {
+      "label": "影像圖解",
+      "href": "/#shorts",
+      "children": [
+        {
+          "label": "60秒短影音闢謠",
+          "href": "/#shorts"
+        },
+        {
+          "label": "圖卡懶人包",
+          "href": "/#infographics"
+        }
+      ]
+    },
+    {
       "label": "防禦指南",
-      "href": "/#learning"
+      "href": "/#rumors",
+      "children": [
+        {
+          "label": "謠言劇本",
+          "href": "/#rumors"
+        },
+        {
+          "label": "選務知識",
+          "href": "/#process"
+        },
+        {
+          "label": "實用查證工具",
+          "href": "/#learning"
+        }
+      ]
     },
     {
-      "label": "TFC 工作動態",
+      "label": "TFC工作動態",
       "href": "/#activities"
-    },
-    {
-      "label": "查核報告",
-      "href": "/reports"
-    },
-    {
-      "label": "60秒短影音闢謠",
-      "href": "/#video"
     }
   ],
   "hero": {
     "kicker": "2026 選舉工具箱",
     "title": [
-      "台灣地方選舉 & 深偽倡議",
+      "台灣九合一選舉",
       "事實查核與資訊專區"
     ],
     "description": "在眾聲喧嘩之中，讓事實成為判斷的起點。從即時查核、資訊操弄解析到投票知識，陪你看懂訊息，做出知情的選擇。",
     "electionDate": "2026-11-28",
     "facts": [
       {
-        "title": "選舉日期與時間",
-        "description": "示範投票日為 2026 年 11 月 28 日；實際日期與投票時間請以正式選務公告為準。",
+        "title": "日期與時間",
+        "description": "投票日為 2026 年 11 月 28 日（六），投票時間為上午 8 時至下午 4 時。",
         "tone": "cyan"
       },
       {
-        "title": "選舉項目與範圍",
-        "description": "認識地方公職人員選舉，以及不同投票種類的適用範圍。",
+        "title": "選舉項目",
+        "description": "包含縣市長、縣市議員等九合一地方公職人員選舉，以及全國性公民投票第22案（核電公投）。",
         "tone": "magenta"
       },
       {
         "title": "投票資格與準備",
-        "description": "出發前，向選務機關確認投票資格、地點與應攜帶的文件。",
+        "description": "參與九合一地方選舉投票需年滿 20 歲，公投則須年滿 18 歲；投票當天記得帶身分證、印章、投票通知單。",
         "tone": "cyan"
       }
-    ]
+    ],
+    "factsTitle": "選舉基本資訊"
   },
   "stories": [
     {
@@ -181,6 +223,17 @@
       },
       "tag": "選舉工具箱",
       "tone": "cyan"
+    },
+    {
+      "slug": "deepfake-pledge",
+      "kind": "analysis",
+      "category": "深偽倡議",
+      "title": "維護選舉公平，拒絕深偽造假",
+      "description": "因應深偽內容在全球選舉帶來的風險，台灣事實查核中心與MyGoPen、Cofacts等查核組織共同發起倡議，呼籲政黨、候選人與競選團隊拒絕使用深偽內容攻擊政治對手。",
+      "date": null,
+      "image": null,
+      "tag": "自律公約倡議",
+      "tone": "cyan"
     }
   ],
   "sections": {
@@ -210,8 +263,8 @@
       "slugs": []
     },
     "shorts": {
-      "title": "60 秒短影音闢謠",
-      "description": "直接觀看台灣事實查核中心的 YouTube 影片，快速掌握查證方法與資訊判讀重點。",
+      "title": "60秒短影音闢謠",
+      "description": "戳破謠言動態，快速掌握查證方法與資訊判讀重點！",
       "items": [
         {
           "title": "一分鐘掌握：先查來源，再判讀內容",
@@ -229,73 +282,22 @@
     },
     "rumors": {
       "title": "常見選舉謠言與劇本",
-      "items": [
-        {
-          "id": "vote",
-          "badge": "Vote",
-          "label": "作票疑雲",
-          "tone": "cyan",
-          "scriptId": "ballot-box"
-        },
-        {
-          "id": "money",
-          "badge": "Money",
-          "label": "買票賄選",
-          "tone": "magenta",
-          "scriptId": "audio-rumor"
-        },
-        {
-          "id": "rumor",
-          "badge": "Rumor",
-          "label": "私德抹黑",
-          "tone": "cyan",
-          "scriptId": "audio-rumor"
-        },
-        {
-          "id": "policy",
-          "badge": "Policy",
-          "label": "政策造假",
-          "tone": "magenta",
-          "scriptId": "invisible-ink"
-        },
-        {
-          "id": "unfair",
-          "badge": "Unfair",
-          "label": "選務不公",
-          "tone": "cyan",
-          "scriptId": "ballot-box"
-        },
-        {
-          "id": "foreign",
-          "badge": "Foreign",
-          "label": "外部勢力",
-          "tone": "magenta",
-          "scriptId": "counting-system"
-        }
-      ]
+      "items": []
     },
     "scripts": {
       "title": "破解常見劇本",
       "items": [
         {
           "id": "ballot-box",
-          "question": "劇本一：紙製票匭容易藏票、作票？",
-          "answer": "不要只由容器材質推論選務是否可靠。查核這類說法時，應核對現行查驗程序、公開監督方式，以及傳言提出的具體證據。本段是查證方法的示範，並非對個別選務事件的結論。"
+          "question": "劇本一：透明票匭被改成紙製的？容易作票？",
+          "answer": "2014年，台灣啟用紙箱票匭，目的是解決傳統票匭儲存保管及維護問題。\n\n依據規定，投開票所會公開查驗投票箱後加封，並在投票結束後開箱開票，讓民眾檢查是否漏開票，避免黑箱作業。",
+          "href": "https://tfc-taiwan.org.tw/fact-check-reports/paper-ballot-boxes-since-2014-checked-before-sealing/"
         },
         {
           "id": "invisible-ink",
           "question": "劇本二：選票上會沾隱形墨水？",
-          "answer": "先找出傳言所指的原始影像與選票來源，釐清是否有可驗證的檢測或紀錄。網友轉述與看不清楚的照片，都不能單獨證明選票受到處理。"
-        },
-        {
-          "id": "counting-system",
-          "question": "劇本三：駭客能直接改掉開票結果？",
-          "answer": "區分現場開票、結果彙整與對外顯示等不同流程，再查核傳言究竟指向哪一環節。單一網頁顯示異常，不足以推論整個選舉結果遭到更改。"
-        },
-        {
-          "id": "audio-rumor",
-          "question": "延伸劇本：有錄音就一定有真相？",
-          "answer": "聲音相似不代表身分已經確認。先核對來源與完整脈絡，也要檢查是否存在剪輯、配音或合成的可能。相關示範可參考本專區的音訊查核報告。"
+          "answer": "印刷、特殊油墨專家指出，投票使用一般快乾印台，隱形墨水的原理難以在選務實務實現。根據選舉手冊規定，圈選工具由各地選委會統一製備，民眾也無須自帶印台。",
+          "href": "https://tfc-taiwan.org.tw/fact-check-reports/no-need-to-bring-ink-pad-to-vote-in-taiwan/"
         }
       ]
     },
@@ -307,19 +309,18 @@
           "title": "選前準備",
           "description": "關於選票與投票通知單的那些事",
           "content": [
-            "先確認投票地點、應備文件與實際投票時間，減少當天的慌亂。",
-            "本區是內容結構示範；正式上線時可補入經確認的選務資訊與官方來源。"
+            "先確認投票地點、應備文件與實際投票時間，減少當天的慌亂。"
           ],
           "icon": "document",
-          "tone": "cyan"
+          "tone": "cyan",
+          "href": "/reports/election-prepare"
         },
         {
           "id": "voting",
           "title": "選中投票",
           "description": "一次看懂投開票所的流程與監督",
           "content": [
-            "將身分確認、領票、圈選與投票等步驟逐一閱讀，遇到疑問時詢問現場選務人員。",
-            "實際程序與注意事項應以各選務機關當次公告為準。"
+            "投票日當天，投開票所的秩序與防弊機制是選民最關心的核心。了解現場人力配置與標準作業流程，能有效破除對投票過程的疑慮。"
           ],
           "icon": "calendar",
           "tone": "magenta"
@@ -329,31 +330,20 @@
           "title": "選後開票",
           "description": "認識計票與查驗機制",
           "content": [
-            "區分現場開票、結果彙整與公告的不同階段，對照原始紀錄。",
-            "本示範不對任何實際選舉結果提出判斷。"
+            "選舉結束後的開票與計票階段，往往是假訊息滋生的溫床。了解計票原理與查驗方式，才能確保對選舉結果的信任。"
           ],
           "icon": "check",
           "tone": "cyan"
-        },
-        {
-          "id": "resources",
-          "title": "可信資源",
-          "description": "尋找官方公告與有依據的查核",
-          "content": [
-            "優先尋找發布機關的完整公告，並核對日期、適用範圍與更新版本。",
-            "查核文章應清楚交代引用來源、推論過程與尚待確認的限制。"
-          ],
-          "icon": "globe",
-          "tone": "magenta"
         }
       ]
     },
     "learning": {
-      "title": "全民查核學堂：資訊怎麼查？",
-      "items": [
+      "title": "資訊怎麼查？",
+      "items": [],
+      "resources": [
         {
-          "slug": "election-prepare",
-          "badge": "Election Guide"
+          "title": "選舉訊息繁雜，三大正確資訊管道報你知",
+          "description": "尋找官方公告與有依據的查核；文章與連結待編輯台補入。"
         }
       ]
     },
@@ -375,31 +365,68 @@
         },
         {
           "id": "weekly",
-          "title": "【解析 2026】一起觀察選舉資訊的變化",
-          "description": "跟著查核記者，理解傳言如何被包裝與擴散。",
+          "title": "【解析 2026】選前謠言動態大解密",
+          "description": "TFC 官網與社群平台，每週一將定期公布最新整理結果。",
           "content": [
-            "這是示範用的議題觀察活動，日期與內容均為虛構。",
-            "未來可在此提供正式活動時間、講者與報名資訊。"
+            "TFC 官網與社群平台，每週一將定期公布最新整理結果。"
           ],
-          "dateLabel": "10/25",
-          "tag": "議題觀察",
-          "cta": "查看活動",
-          "tone": "magenta"
+          "dateLabel": "10月起",
+          "tag": "闢謠專題",
+          "cta": "點我閱讀",
+          "tone": "magenta",
+          "href": "https://tfc-taiwan.org.tw/category/weekly-top-ten-rumors/"
+        },
+        {
+          "id": "debate",
+          "dateLabel": "10/31",
+          "title": "【首都之爭】台北市長辯論會查核",
+          "description": "現任台北市長蔣萬安與立法委員沈伯洋將進行辯論，TFC 當日也將關注辯論即時狀況。",
+          "content": [
+            "現任台北市長蔣萬安與立法委員沈伯洋將進行辯論，TFC 當日也將關注辯論即時狀況。"
+          ],
+          "cta": "追蹤社群",
+          "href": "https://linktr.ee/taiwan_factcheckcenter",
+          "tag": "即時查核",
+          "tone": "cyan"
+        },
+        {
+          "id": "election-day",
+          "dateLabel": "11/28",
+          "title": "【投票日】闢謠選務謠言，守護台灣民主",
+          "description": "查核記者出動，監看各種傳言並進行脈絡釐清。",
+          "content": [
+            "查核記者出動，監看各種傳言並進行脈絡釐清。"
+          ],
+          "cta": "鎖定官網",
+          "href": "https://tfc-taiwan.org.tw/",
+          "tag": "即時查核",
+          "tone": "cyan"
         },
         {
           "id": "community",
-          "title": "把查證多做一步，把分享慢下一秒",
-          "description": "從自己做起，讓有來源的資訊回到日常對話。",
+          "title": "傳 LINE 給我們，一起守護民主環境",
+          "description": "看到不明傳言，請傳給我們，並將正確澄清反饋給親友，讓可靠資訊回到日常對話！",
           "content": [
             "收到可疑訊息時，先保存原文、確認出處與時間，再決定是否分享。",
             "本示範網站不接收個人資料或疑似謠言投稿。"
           ],
-          "dateLabel": "EVERY DAY",
-          "tag": "一起參與",
-          "cta": "查看活動",
-          "tone": "cyan"
+          "dateLabel": "FOREVER",
+          "tag": "闢謠志工招募",
+          "cta": "加入 LINE",
+          "tone": "cyan",
+          "href": "https://line.me/R/ti/p/%40tfctaiwan"
         }
       ]
+    },
+    "initiative": {
+      "title": "「維護選舉公平，拒絕深偽造假」自律公約倡議",
+      "description": "因應深偽內容在全球選舉帶來的風險，台灣事實查核中心與MyGoPen、Cofacts等查核組織共同發起倡議，呼籲政黨、候選人與競選團隊拒絕使用深偽內容攻擊政治對手。"
+    },
+    "infographics": {
+      "slugs": [],
+      "items": [],
+      "title": "圖卡懶人包",
+      "description": "視覺化知識，直接左右滑動瀏覽吧！"
     }
   }
 }

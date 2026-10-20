@@ -41,7 +41,8 @@ const story = z.object({
   slug, kind: z.enum(['report', 'analysis', 'guide']), category: category.optional(), title: text,
   description: text, date: date.nullable(), image: image.nullable(), tag: text, tone, verdict: status.optional(),
 }).superRefine(validateArticleFields);
-const info = z.object({ id: slug, title: text, description: text, content: z.array(text).min(1) });
+const editorialLink = z.string().refine(value => /^https:\/\//.test(value) || /^\/reports\/[a-z0-9-]+$/.test(value), 'Use HTTPS or a local article URL');
+const info = z.object({ id: slug, title: text, description: text, content: z.array(text).min(1), href: editorialLink.optional() });
 
 export const listingsSchema = z.object({
   version: z.literal(1), isMock: z.boolean(),
@@ -49,20 +50,21 @@ export const listingsSchema = z.object({
     siteUrl: z.url().nullable(), language: text, locale: text,
     home: pageSeo, reports: pageSeo,
   }),
-  site: z.object({ name: text, englishName: text, title: text, notice: text, footer: text, socialLinks: z.array(socialLink).min(1) }),
-  navigation: z.array(z.object({ label: text, href: z.string().regex(/^\/(?:#[-a-z]+|reports)?$/) })),
-  hero: z.object({ kicker: text, title: z.array(text).min(1), description: text, electionDate: date,
+  site: z.object({ name: text, englishName: text, title: text, notice: text, footer: text, donationUrl: z.url().startsWith('https://').default('https://tfc-taiwan.oen.tw/'), socialLinks: z.array(socialLink).min(1) }),
+  navigation: z.array(z.object({ label: text, href: z.string().regex(/^\/(?:#[-a-z]+|reports)?$/), children: z.array(z.object({ label: text, href: z.string().regex(/^\/(?:#[-a-z]+|reports)?$/) })).optional() })),
+  hero: z.object({ factsTitle: text.default('選舉基本資訊'), kicker: text, title: z.array(text).min(1), description: text, electionDate: date,
     facts: z.array(z.object({ title: text, description: text, tone })) }),
   stories: z.array(story).min(1),
   sections: z.object({
+    initiative: z.object({ title: text, description: text }).optional(),
     reports: z.object({ title: text, categories: z.array(category).min(1), items: z.array(z.object({ slug, title: text.optional() })) }),
     analyses: z.object({ title: text, description: text, slugs: z.array(slug) }),
     shorts: z.object({ title: text, description: text, items: z.array(z.object({ title: text, url: youtubeUrl })).min(1) }).optional(),
     infographics: z.object({ title: text, description: text, slugs: z.array(slug), items: z.array(z.object({ slug, title: text, cards: z.array(z.object({ image, caption: text })).min(1) })).optional() }).optional(),
     rumors: z.object({ title: text, items: z.array(z.object({ id: slug, badge: text, label: text, tone, scriptId: slug })) }),
-    scripts: z.object({ title: text, items: z.array(z.object({ id: slug, question: text, answer: text })) }),
+    scripts: z.object({ title: text, items: z.array(z.object({ id: slug, question: text, answer: text, href: editorialLink.optional() })) }),
     process: z.object({ title: text, items: z.array(info.extend({ icon: z.enum(['document', 'calendar', 'check', 'globe']), tone })) }),
-    learning: z.object({ title: text, items: z.array(z.object({ slug, badge: text })) }),
+    learning: z.object({ title: text, items: z.array(z.object({ slug, badge: text })), resources: z.array(z.object({ title: text, description: text, href: editorialLink.optional() })).optional() }),
     activities: z.object({ title: text, items: z.array(info.extend({ dateLabel: text, tag: text, cta: text, tone })) }),
   }),
 }).superRefine((value, ctx) => {
@@ -98,6 +100,13 @@ export const contentBlockSchema = z.discriminatedUnion('type', [
 export type ContentBlock = z.infer<typeof contentBlockSchema>;
 const section = z.object({ id: slug, title: text, paragraphs: z.array(text).min(1), image: image.optional(), caption: text.optional(), blocks: z.array(contentBlockSchema).min(1).optional() });
 export const reportSchema = z.object({
+  initiativeContent: z.object({
+    eyebrow: text, titlePrefix: text, titleAccent: text, principlesTitle: text, casesTitle: text,
+    reasons: z.array(z.object({ title: text, description: text })).min(1),
+    groups: z.array(z.object({ title: text, items: z.array(text).min(1) })).length(2),
+    cases: z.array(z.object({ country: text, date: text, text })).min(1),
+    fullTextUrl: z.url().startsWith('https://').optional(),
+  }).optional(),
   version: z.literal(1), isMock: z.boolean(), slug,
   seo: pageSeo.extend({ authorType: z.enum(['Person', 'Organization']) }),
   kind: z.enum(['report', 'analysis', 'guide']), category: category.optional(), title: text, finding: text,
