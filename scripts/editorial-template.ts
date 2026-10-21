@@ -28,7 +28,8 @@ export function isEditorialTemplate(markdown: string) { return tree(markdown).ch
 
 function runs(nodes: PhrasingContent[], definitions: Map<string, Definition>, style: Partial<Run> = {}): Run[] {
   return nodes.flatMap((node): Run[] => {
-    if (node.type === 'text' || node.type === 'inlineCode') return node.value ? [{ ...style, text: node.value }] : [];
+    if (node.type === 'inlineCode') return node.value ? [{ ...style, text: node.value }] : [];
+    if (node.type === 'text') return node.value.split(/(\*\*[^*\n]+\*\*)/g).filter(Boolean).map(value => /^\*\*[^*\n]+\*\*$/.test(value) ? { ...style, text: value.slice(2, -2), bold: true } : { ...style, text: value });
     if (node.type === 'break') return [{ ...style, text: '\n' }];
     if (node.type === 'strong' || node.type === 'emphasis') return runs(node.children, definitions, { ...style, [node.type === 'strong' ? 'bold' : 'italic']: true });
     if (node.type === 'link' || node.type === 'linkReference') {
