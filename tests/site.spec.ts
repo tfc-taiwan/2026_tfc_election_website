@@ -91,7 +91,13 @@ test('separate report sections, carousel, accordion, mobile navigation, and moda
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).not.toBeVisible();
   await page.getByRole('navigation', { name: '手機快速導覽' }).getByRole('button', { name: '開啟選單' }).click();
-  await page.getByRole('navigation', { name: '主要導覽' }).getByRole('link', { name: '查核報告', exact: true }).click();
+  const mainNav = page.getByRole('navigation', { name: '主要導覽' });
+  await mainNav.getByText('影像圖解', { exact: true }).click();
+  await expect(mainNav.locator('details[open]')).toHaveCount(1);
+  await mainNav.getByText('防禦指南', { exact: true }).click();
+  await expect(mainNav.locator('details[open]')).toHaveCount(1);
+  await expect(mainNav.locator('details[open] summary')).toContainText('防禦指南');
+  await mainNav.getByRole('link', { name: '查核報告', exact: true }).click();
   await expect(page).toHaveURL('/reports');
   await expect(page.getByRole('button', { name: '開啟選單' })).toHaveAttribute('aria-expanded', 'false');
 });
@@ -109,6 +115,9 @@ test('search results, filters, empty state, and browser history', async ({ page 
   await page.goBack();
   await expect(page).toHaveURL('/reports?q=%E9%9F%B3%E6%AA%94');
   await expect(page.locator('.listing-grid .story-card').first()).toContainText('錄音檔');
+  await page.goto('/reports');
+  await page.getByRole('button', { name: '辯論會查核', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '敬請期待' })).toBeVisible();
 });
 
 test('search submits to the main TFC site and infographic cards open an accessible gallery', async ({ page }) => {
