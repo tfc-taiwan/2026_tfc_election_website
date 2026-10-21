@@ -41,9 +41,13 @@ test('built static pages contain body content and unique head metadata', async (
     assert.ok(html.includes('type="application/ld+json"'));
     assert.ok(!html.includes('<!--app-html-->'));
     assert.match(html, /<h1[^>]*>[\s\S]+?<\/h1>/);
-    if (path === 'reports/deepfake-pledge/index.html') {
+    if (path === 'index.html') {
+      assert.match(html, /class="pledge-description pledge-description-embedded"[\s\S]*?<p>[\s\S]*?<\/p>[\s\S]*?<p>[\s\S]*?<\/p>/);
+      assert.ok(html.includes('href="/reports/deepfake-pledge"'));
+      assert.ok(html.includes('閱讀完整倡議說明'));
+    } else if (path === 'reports/deepfake-pledge/index.html') {
       assert.match(html, /<article class="pledge-page section-padding">/);
-      assert.ok(html.includes('自律公約承諾原則：三不二要'));
+      assert.ok(html.includes('自律公約承諾原則：二不二要'));
       assert.match(html, /展開全部案例（(?:<!-- -->)?13/);
       assert.ok(!html.includes('cdn.tailwindcss.com'));
     } else if (path === 'reports/taiwan-2026-election-voting-notice-ballots-guide/index.html') {
