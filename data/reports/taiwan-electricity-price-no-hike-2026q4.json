@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "isMock": true,
+  "isMock": false,
   "slug": "taiwan-electricity-price-no-hike-2026q4",
   "seo": {
     "title": "10月至12月全國平均電價維持3.7823元，沒有調漲｜2026 選舉工具箱",
@@ -12,7 +12,7 @@
       "height": 1040,
       "type": "image/jpeg"
     },
-    "noindex": true,
+    "noindex": false,
     "authorType": "Person"
   },
   "kind": "report",

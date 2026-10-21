@@ -57,19 +57,20 @@ function Brand({ site }: { site: Listings['site'] }) {
 
 function Header({ data, onInfo }: { data: Listings; onInfo: (info: Info) => void }) {
   const [menu, setMenu] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState('');
   const input = useRef<HTMLInputElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
   const location = useLocation();
-  useEffect(() => { setMenu(false); setSearchOpen(false); setQuery(new URLSearchParams(location.search).get('q') ?? ''); }, [location]);
+  useEffect(() => { setMenu(false); setOpenDropdown(null); setSearchOpen(false); setQuery(new URLSearchParams(location.search).get('q') ?? ''); }, [location]);
 
   return <header className="site-header">
     <a className="skip-link" href="#main-content">跳至主要內容</a>
     <div className="header-inner page-padding">
       <Brand site={data.site} />
-      <nav id="main-nav" aria-label="主要導覽" className={`main-nav ${menu ? 'is-open' : ''}`} onKeyDown={event => { if (event.key === 'Escape') { setMenu(false); menuButton.current?.focus(); } }}>
-        {data.navigation.map(item => item.children?.length ? <details className="nav-dropdown" key={item.label}><summary>{item.label}<Icon name="caret" size={14} /></summary><div className="nav-dropdown-links">{item.children.map(child => <Link key={child.href} to={child.href} onClick={event => { setMenu(false); event.currentTarget.closest('details')?.removeAttribute('open'); }}>{child.label}</Link>)}</div></details> : <NavLink key={item.href} to={item.href} onClick={() => setMenu(false)}>{item.label}</NavLink>)}
+      <nav id="main-nav" aria-label="主要導覽" className={`main-nav ${menu ? 'is-open' : ''}`} onKeyDown={event => { if (event.key === 'Escape') { setOpenDropdown(null); setMenu(false); menuButton.current?.focus(); } }}>
+        {data.navigation.map(item => item.children?.length ? <details className="nav-dropdown" key={item.label} open={openDropdown === item.label}><summary onClick={event => { event.preventDefault(); setOpenDropdown(current => current === item.label ? null : item.label); }}>{item.label}<Icon name="caret" size={14} /></summary><div className="nav-dropdown-links">{item.children.map(child => <Link key={child.href} to={child.href} onClick={() => { setMenu(false); setOpenDropdown(null); }}>{child.label}</Link>)}</div></details> : <NavLink key={item.href} to={item.href} onClick={() => { setMenu(false); setOpenDropdown(null); }}>{item.label}</NavLink>)}
       </nav>
       <span className="header-divider" aria-hidden="true" />
       <div className="header-actions"><a className="donate-button" href={data.site.donationUrl} target="_blank" rel="noopener noreferrer">捐款支持<span className="sr-only">（開啟新視窗）</span></a><a className="official-link" href="https://tfc-taiwan.org.tw/" target="_blank" rel="noopener noreferrer">回官網<span className="sr-only">（開啟新視窗）</span></a><button className="icon-button header-search-toggle" aria-label={searchOpen ? '關閉搜尋' : '前往搜尋'} aria-expanded={searchOpen} aria-controls="header-search" onClick={() => { setSearchOpen(!searchOpen); if (!searchOpen) requestAnimationFrame(() => input.current?.focus()); }}><Icon name={searchOpen ? 'close' : 'search'} size={19} /></button></div>
@@ -234,16 +235,17 @@ function Carousel({ stories, label, heading, footer }: { stories: Story[]; label
   </div>;
 }
 
-function InfographicGallery({ data, stories, heading }: { data: Listings; stories: Story[]; heading: ReactNode }) {
+function InfographicGallery({ data, heading }: { data: Listings; heading: ReactNode }) {
   const section = data.sections.infographics!;
   const [active, setActive] = useState<string | null>(null);
   const [index, setIndex] = useState(0);
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement | null>(null);
   const [shareStatus, setShareStatus] = useState('');
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
   const selected = section.items?.find(item => item.slug === active);
   const cards = selected?.cards ?? [];
-  const row = useScrollRow(stories.map(story => story.slug).join(','));
+  const row = useScrollRow(section.items?.map(group => group.slug).join(',') ?? '');
   useEffect(() => {
     const element = dialog.current;
     if (active && !element?.open) element?.showModal();
@@ -256,24 +258,38 @@ function InfographicGallery({ data, stories, heading }: { data: Listings; storie
     const pageUrl = infographicShareUrl(infographicPath(active, index + 1));
     try {
       if (navigator.share) await navigator.share({ url: pageUrl });
-      else { await navigator.clipboard.writeText(pageUrl); setShareStatus('已複製這張圖卡的專頁連結'); }
-    } catch (error) { if (!(error instanceof DOMException && error.name === 'AbortError')) setShareStatus('無法自動分享，請開啟圖卡專頁複製網址'); }
+      else { await navigator.clipboard.writeText(pageUrl); setShareStatus('已複製這張圖卡的分享連結'); }
+    } catch (error) { if (!(error instanceof DOMException && error.name === 'AbortError')) setShareStatus('無法自動分享，請複製圖卡連結'); }
+  }
+  function startSwipe(event: React.TouchEvent<HTMLElement>) {
+    const touch = event.touches[0];
+    if (touch) touchStart.current = { x: touch.clientX, y: touch.clientY };
+  }
+  function endSwipe(event: React.TouchEvent<HTMLElement>) {
+    const start = touchStart.current;
+    const touch = event.changedTouches[0];
+    touchStart.current = null;
+    if (!start || !touch) return;
+    const deltaX = touch.clientX - start.x;
+    const deltaY = touch.clientY - start.y;
+    if (Math.abs(deltaX) < 45 || Math.abs(deltaX) < Math.abs(deltaY) * 1.2) return;
+    move(deltaX < 0 ? 1 : -1);
   }
   return <>
     <div className="section-heading no-bar">{heading}<ScrollControls row={row} label="圖卡懶人包" /></div>
-    <div ref={row.ref} className="infographic-grid scroll-track" tabIndex={0} aria-label="圖卡懶人包，可左右捲動" onKeyDown={row.onKeyDown}>{stories.map(story => {
-      const item = section.items?.find(value => value.slug === story.slug);
-      return <div className="infographic-card" key={story.slug}>
-        <button type="button" className="infographic-open" aria-label={`查看圖卡：${story.title}`} onClick={event => { if (!item) return; trigger.current = event.currentTarget; setIndex(0); setActive(story.slug); }}>
-          <Illustration image={item?.cards[0]?.image ?? story.image} />
-          <span className="infographic-count"><Icon name="copy" size={13} /> {item?.cards.length ?? 1}</span>
+    <div ref={row.ref} className="infographic-grid scroll-track" tabIndex={0} aria-label="圖卡懶人包，可左右捲動" onKeyDown={row.onKeyDown}>{(section.items ?? []).map(item => {
+      const story = data.stories.find(value => value.slug === item.slug);
+      return <div className="infographic-card" key={item.slug}>
+        <button type="button" className="infographic-open" aria-label={`查看圖卡：${item.title}`} onClick={event => { trigger.current = event.currentTarget; setIndex(0); setActive(item.slug); }}>
+          <Illustration image={item.cards[0]?.image ?? story?.image ?? null} />
+          <span className="infographic-count"><Icon name="copy" size={13} /> {item.cards.length}</span>
           <span className="infographic-hover" aria-hidden="true"><span>點擊查看大圖</span></span>
         </button>
-        <span className="infographic-copy"><small>{story.tag}</small><strong>{story.title}</strong>{!item && <Link to={`/reports/${story.slug}`}>閱讀完整內容 ↗</Link>}</span>
+        <span className="infographic-copy"><small>{story?.tag ?? '圖卡懶人包'}</small><strong>{item.title}</strong>{story && <Link to={`/reports/${story.slug}`}>閱讀完整內容 ↗</Link>}</span>
       </div>;
     })}</div>
     <dialog ref={dialog} className="infographic-lightbox" aria-label="圖卡大圖瀏覽" onClose={close} onClick={event => { if (event.target === event.currentTarget) close(); }} onKeyDown={event => { if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); } if (event.key === 'ArrowRight') { event.preventDefault(); move(1); } }}>
-      {selected && <div className="lightbox-layout"><div className="lightbox-top"><span>{index + 1} / {cards.length}</span><strong>{stories.find(story => story.slug === active)?.title}</strong><button type="button" aria-label="關閉圖卡" onClick={close}><Icon name="close" /></button></div><div className="lightbox-stage"><button type="button" className="lightbox-arrow" aria-label="上一張" onClick={() => move(-1)}><Icon name="left" /></button><figure><img src={publicPath(cards[index].image.src)} alt={cards[index].image.alt} /><figcaption>{cards[index].caption}</figcaption></figure><button type="button" className="lightbox-arrow" aria-label="下一張" onClick={() => move(1)}><Icon name="right" /></button></div><div className="lightbox-bottom"><button type="button" onClick={share}><Icon name="copy" size={17} />分享這張圖卡</button><Link to={infographicPath(selected.slug, index + 1)} onClick={close}>開啟圖卡專頁 ↗</Link><span role="status">{shareStatus}</span></div></div>}
+      {selected && <div className="lightbox-layout"><div className="lightbox-top"><span>{index + 1} / {cards.length}</span><strong>{selected.title}</strong><button type="button" aria-label="關閉圖卡" onClick={close}><Icon name="close" /></button></div><div className="lightbox-stage"><button type="button" className="lightbox-arrow" aria-label="上一張" onClick={() => move(-1)}><Icon name="left" /></button><figure onTouchStart={startSwipe} onTouchEnd={endSwipe} onTouchCancel={() => { touchStart.current = null; }}><img src={publicPath(cards[index].image.src)} alt={cards[index].image.alt} /><figcaption>{cards[index].caption}</figcaption></figure><button type="button" className="lightbox-arrow" aria-label="下一張" onClick={() => move(1)}><Icon name="right" /></button></div><div className="lightbox-bottom"><button type="button" onClick={share}><Icon name="copy" size={17} />分享這張圖卡</button><span role="status">{shareStatus}</span></div></div>}
     </dialog>
   </>;
 }
@@ -295,18 +311,18 @@ function InfographicPage({ data }: { data: Listings }) {
     } catch (error) { if (!(error instanceof DOMException && error.name === 'AbortError')) setShareStatus(`請複製網址：${pageUrl}`); }
   }
   return <><PageSeo data={data} /><article className="infographic-page">
-    <nav className="breadcrumbs infographic-breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><Link to="/#infographics">圖卡懶人包</Link><span aria-hidden="true">／</span><span>{story.title}</span></nav>
+    <nav className="breadcrumbs infographic-breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><Link to="/#infographics">圖卡懶人包</Link><span aria-hidden="true">／</span><span>{group.title}</span></nav>
     <div className="infographic-viewer"><div className="lightbox-layout">
-      <div className="lightbox-top"><span>{current} / {total}</span><h1>{story.title}</h1><Link className="infographic-close" to="/#infographics" aria-label="返回圖卡列表"><Icon name="close" /></Link></div>
+      <div className="lightbox-top"><span>{current} / {total}</span><h1>{group.title}</h1><Link className="infographic-close" to="/#infographics" aria-label="返回圖卡列表"><Icon name="close" /></Link></div>
       <div className="lightbox-stage"><Link className="lightbox-arrow" to={infographicPath(slug, current === 1 ? total : current - 1)} aria-label="上一張"><Icon name="left" /></Link><figure><img src={publicPath(card.image.src)} alt={card.image.alt} width="720" height="900" /><figcaption>{card.caption}</figcaption></figure><Link className="lightbox-arrow" to={infographicPath(slug, current === total ? 1 : current + 1)} aria-label="下一張"><Icon name="right" /></Link></div>
       <div className="lightbox-bottom"><button type="button" onClick={share}><Icon name="copy" size={17} />分享這張圖卡</button><span role="status">{shareStatus}</span></div>
     </div></div>
-    <div className="infographic-context"><p>{story.description}</p><Link to={`/reports/${story.slug}`}>閱讀原文章 ↗</Link>{data.isMock && <small>以上圖卡與文章為虛構示範內容。</small>}</div>
+    <div className="infographic-context">{(story?.description ?? group.description) && <p>{story?.description ?? group.description}</p>}{story && <Link to={`/reports/${story.slug}`}>閱讀原文章 ↗</Link>}</div>
   </article></>;
 }
 
 function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => void }) {
-  const { now } = useContext(RenderContext);
+  const { now, context } = useContext(RenderContext);
   const { hero, sections, stories } = data;
   const [script, setScript] = useState<string | null>(sections.scripts.items[0]?.id ?? null);
   const [today, setToday] = useState(() => new Date(now));
@@ -319,7 +335,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
 
   return <>
     <PageSeo data={data} />
-    {data.isMock && <p className="review-notice page-padding" role="note">{data.site.notice}</p>}
+    {(data.isMock || context.isPreview) && <p className="review-notice page-padding" role="note">{data.site.notice}</p>}
     <section className="hero section-padding grid-texture" id="about" aria-labelledby="hero-title">
       <div className="hero-intro"><div className="hero-kicker"><span>{hero.kicker}</span><small>2026 ELECTIONS</small></div><h1 id="hero-title">{hero.title.map(line => <span key={line}>{line}</span>)}</h1><p>{hero.description}</p><div className="countdown"><div><span>VOTING DAY</span><time dateTime={hero.electionDate}>{hero.electionDate.replaceAll('-', '.')}</time></div><p>距離投票日還有 <strong>{daysUntil(hero.electionDate, today)}</strong> 天</p></div></div>
       <div className="election-facts"><h2>{hero.factsTitle}</h2><ol>{hero.facts.map((fact, index) => <li key={fact.title}><span className="fact-number">{index + 1}</span><div><h3>{fact.title}</h3><p>{fact.description}</p></div></li>)}</ol></div>
@@ -329,7 +345,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
         heading={<h2 id="latest-title">{sections.reports.title}</h2>}
         footer={<Link className="pill-button section-more" to="/reports">查看全部查核報告<Icon name="arrow" size={16} /></Link>} />
     </section>}
-    {sections.initiative && <section className="initiative-section section-padding" id="initiative" aria-labelledby="initiative-title">{sections.initiative.content ? <InitiativePanel title={sections.initiative.title} page={sections.initiative.content} description={sections.initiative.description} isMock={data.isMock} embedded /> : <><h2 id="initiative-title">{sections.initiative.title}</h2><p>{sections.initiative.description}</p></>}{stories.some(story => story.category === '深偽倡議' && story.slug !== sections.initiative?.featuredSlug) && <Carousel stories={stories.filter(story => story.category === '深偽倡議' && story.slug !== sections.initiative?.featuredSlug)} label="深偽倡議文章" heading={<h3>專區文章</h3>} />}</section>}
+    {sections.initiative && <section className="initiative-section section-padding" id="initiative" aria-labelledby="initiative-title">{sections.initiative.content ? <InitiativePanel title={sections.initiative.title} page={sections.initiative.content} description={sections.initiative.description} isMock={data.isMock} embedded /> : <><h2 id="initiative-title">{sections.initiative.title}</h2><p>{sections.initiative.description}</p></>}</section>}
     {!!sections.analyses.slugs.length && <section className="analysis-section section-padding" id="analysis" aria-labelledby="analysis-title">
       <Carousel stories={pick(sections.analyses.slugs)} label="資訊操弄解析" heading={<div><h2 id="analysis-title">{sections.analyses.title}</h2><p>{sections.analyses.description}</p></div>} />
     </section>}
@@ -337,7 +353,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
       <YouTubeShorts items={sections.shorts.items} heading={<div><h2 id="shorts-title">{sections.shorts.title}</h2><p>{sections.shorts.description}</p></div>} />
     </section>}
     {sections.infographics && <section className="infographics-section section-padding grid-texture" id="infographics" aria-labelledby="infographics-title">
-      {sections.infographics.slugs.length ? <InfographicGallery data={data} stories={pick(sections.infographics.slugs)} heading={<div><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p></div>} /> : <><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p><p className="pending-content">圖卡素材待補入，目前尚未發布圖卡。</p>{!!sections.infographics.pendingItems?.length && <ul className="pending-gallery-list">{sections.infographics.pendingItems.map(group => <li key={group.slug}>{group.title}（{group.count}張）</li>)}</ul>}</>}
+      {sections.infographics.items?.length ? <InfographicGallery data={data} heading={<div><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p></div>} /> : <><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p><p className="pending-content">圖卡素材待補入，目前尚未發布圖卡。</p>{!!sections.infographics.pendingItems?.length && <ul className="pending-gallery-list">{sections.infographics.pendingItems.map(group => <li key={group.slug}>{group.title}（{group.count}張）</li>)}</ul>}</>}
     </section>}
     <section className="rumors-section section-padding" id="rumors" aria-labelledby="rumors-title">
       <h2 id="rumors-title">{sections.rumors.title}</h2>
@@ -346,7 +362,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
       </div>
     </section>
     <section className="process-section section-padding" id="process" aria-labelledby="process-title"><div className="center-heading"><h2 id="process-title">{sections.process.title}</h2></div><div className="process-grid">{sections.process.items.map(item => <div className="process-card" key={item.id}><span className={`process-icon ${item.tone}`}><Icon name={item.icon} size={30} /></span><h3>{item.title}</h3><p>{item.description}</p>{item.href ? (item.href.startsWith('/') ? <Link className="text-button" to={item.href}>閱讀全文 <span aria-hidden="true">→</span><span className="sr-only">：{item.title}</span></Link> : <a className="text-button" href={item.href} target="_blank" rel="noopener noreferrer">閱讀全文 ↗<span className="sr-only">：{item.title}（開啟新視窗）</span></a>) : <button className="text-button" onClick={() => onInfo(item)}>了解更多 <span aria-hidden="true">→</span><span className="sr-only">：{item.title}</span></button>}</div>)}</div></section>
-    {(!!sections.learning.items.length || !!sections.learning.resources?.length) && <section className="learning-section section-padding" id="learning" aria-labelledby="learning-title"><div className="center-heading"><h2 id="learning-title">{sections.learning.title}</h2></div><div className="learning-grid">{sections.learning.items.map(item => { const story = stories.find(s => s.slug === item.slug); return story && <div key={item.slug} className="learning-item"><Link to={`/reports/${item.slug}`} className="learning-art" tabIndex={-1} aria-hidden="true"><Illustration image={story.image} /></Link><div><span className="learning-topic">{item.badge}</span><h3>{story.title}</h3><p>{story.description}</p><Link to={`/reports/${item.slug}`}>閱讀教學指南<Icon name="arrow" size={16} /><span className="sr-only">：{story.title}</span></Link></div></div>; })}{sections.learning.resources?.map(item => <div className="learning-item" key={item.title}><div><h3>{item.title}</h3><p>{item.description}</p>{item.href && <a href={item.href}>閱讀教學指南 ↗</a>}</div></div>)}</div></section>}
+    {(!!sections.learning.items.length || !!sections.learning.resources?.length) && <section className="learning-section section-padding" id="learning" aria-labelledby="learning-title"><div className="center-heading"><h2 id="learning-title">{sections.learning.title}</h2></div><div className="learning-grid">{sections.learning.items.map(item => { const story = stories.find(s => s.slug === item.slug); return story && <div key={item.slug} className="learning-item"><Link to={`/reports/${item.slug}`} className="learning-art" tabIndex={-1} aria-hidden="true"><Illustration image={story.image} /></Link><div><span className="learning-topic">{item.badge}</span><h3>{story.title}</h3><p>{story.description}</p><Link to={`/reports/${item.slug}`}>閱讀教學指南<Icon name="arrow" size={16} /><span className="sr-only">：{story.title}</span></Link></div></div>; })}{sections.learning.resources?.map(item => <div className="learning-item" key={item.title}><div><h3>{item.title}</h3><p>{item.description}</p>{item.href && (item.href.startsWith('/') ? <Link to={item.href}>閱讀教學指南 ↗</Link> : <a href={item.href} target="_blank" rel="noopener noreferrer">閱讀教學指南 ↗</a>)}</div></div>)}</div></section>}
     <section className="activities-section section-padding" id="activities" aria-labelledby="activities-title"><div className="activities-inner"><h2 id="activities-title">{sections.activities.title}</h2><div className="activity-list">{sections.activities.items.map(item => <div className="activity" key={item.id}><span className={`activity-date ink-${item.tone}`}>{item.dateLabel}</span><div className="activity-content"><span className="tag neutral">{item.tag}</span><h3>{item.title}</h3><p>{item.description}</p></div>{item.cta && (item.href ? <a className="button primary" href={item.href} target="_blank" rel="noopener noreferrer">{item.cta}<span className="sr-only">：{item.title}（開啟新視窗）</span> ↗</a> : <button className="button primary" onClick={() => onInfo(item)}>{item.cta}<span className="sr-only">：{item.title}</span><span aria-hidden="true">↗</span></button>)}</div>)}</div></div></section>
   </>;
 }
@@ -372,7 +388,7 @@ function ListingsPage({ data }: { data: Listings }) {
     {stories.length ? <>
       <div className="listing-grid">{stories.map((story, index) => <StoryCard story={story} key={story.slug} hidden={index >= visible} />)}</div>
       {stories.length > visible && <div className="listing-more"><button className="pill-button" type="button" onClick={() => setVisible(count => count + LISTING_PAGE_SIZE)}>載入更多報告<span className="sr-only">（尚有 {stories.length - visible} 篇）</span></button></div>}
-    </> : <div className="empty-state"><Icon name="search" size={34} /><h2>沒有找到符合的內容</h2><p>試試較短的關鍵字，或切換其他分類。</p><button className="button secondary" onClick={() => setParams({})}>清除搜尋與篩選</button></div>}
+    </> : <div className="empty-state"><Icon name="search" size={34} /><h2>{category === '辯論會查核' ? '敬請期待' : '沒有找到符合的內容'}</h2><p>{category === '辯論會查核' ? '辯論會查核內容將於發布後更新。' : '試試較短的關鍵字，或切換其他分類。'}</p><button className="button secondary" onClick={() => setParams({})}>清除搜尋與篩選</button></div>}
   </section>;
 }
 
@@ -416,6 +432,7 @@ function SectionContent({ section }: { section: Report['background'] }) {
 }
 
 function ArticleBody({ report, data }: { report: Report; data: Listings }) {
+  const { context } = useContext(RenderContext);
   if (report.initiativeContent) return <InitiativePage report={report} />;
   const isGuide = report.kind === 'guide' || report.category === '選舉工具箱';
   const related = report.relatedSlugs.flatMap(slug => data.stories.find(story => story.slug === slug) ?? []);
@@ -425,7 +442,7 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
     <div className="article-tags">{report.tags.map(tag => <span className={`tag ${tag === report.verdict ? `verdict-tag ${verdictClass(tag)}` : 'topic-tag'}`} key={tag}>{tag}</span>)}</div>
     <h1>{report.title}</h1>{!isGuide && <p className="article-finding">{report.finding}</p>}
     <div className="article-meta">{report.published && <span><strong>發佈：</strong><time dateTime={report.published}>{report.published}</time></span>}{!isGuide && <>{report.updated && <span><strong>更新：</strong><time dateTime={report.updated}>{report.updated}</time></span>}<span><strong>報告編號：</strong>{report.reportId}</span><span><strong>查核記者：</strong>{report.reporter}</span><span><strong>責任編輯：</strong>{report.editor}</span></>}</div>
-    {report.isMock && <p className="article-mock-note"><span className="tag neutral">MOCK DATA</span> 本文為虛構示範，不代表真實事件或查核結論。</p>}
+    {report.isMock ? <p className="article-mock-note"><span className="tag neutral">MOCK DATA</span> 本文為虛構示範，不代表真實事件或查核結論。</p> : (data.isMock || context.isPreview) && <p className="article-mock-note"><span className="tag neutral">PREVIEW</span> {data.site.notice}</p>}
     <div className="article-toolbar">{!isGuide && <nav aria-label="文章目錄"><span>內容：</span><a href="#background">背景</a><a href="#verification">{report.kind === 'report' ? '查核' : '解析'}</a>{!!report.supplementarySections?.length && <a href="#supplementary">補充資料</a>}{report.sources.length > 0 && <a href="#sources">資料來源</a>}</nav>}<ShareTools report={report} data={data} /></div>
     {report.image && <figure className="article-cover"><Illustration image={report.image} eager /><figcaption>{report.imageCaption}</figcaption></figure>}
     {isGuide ? <div className="article-section guide-body">

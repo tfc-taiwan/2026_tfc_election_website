@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "isMock": true,
+  "isMock": false,
   "slug": "tree-brown-root-rot-treatment-no-concrete-needed",
   "seo": {
     "title": "樹木染褐根病，不需要用水泥封樹穴｜2026 選舉工具箱",
@@ -12,7 +12,7 @@
       "height": 1040,
       "type": "image/jpeg"
     },
-    "noindex": true,
+    "noindex": false,
     "authorType": "Person"
   },
   "kind": "report",

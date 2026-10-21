@@ -32,14 +32,25 @@ Cloudflare Static Assets 與 Worker 同版發佈。更新 `data/` 時先執行 c
 
 ### GitHub Actions 驗收部署
 
-2026-10-22 已將正式網域的 `/election2026` 與 `/election2026/*` 接到 `tfc-election2026`。此後 `main` 的驗收流程仍執行檢查與建置，但部署 job 預設停用（只有 repository variable `ELECTION2026_ENABLE_SHARED_PREVIEW_DEPLOY=true` 才會執行）。不得在正式站運作期間開啟此開關：驗收設定與正式站共用 Worker，會覆寫核准內容且空 `routes` 可能清除正式路由。正式發布沿用另行核准的 production release workflow；新增或調整路由時，保留其他路徑與既有服務。
+測試與正式發佈使用兩個獨立 Worker：
 
-`.github/workflows/deploy-worker.yml` 在 PR 執行資料測試、根路徑建置與 SSR 測試、Worker 建置；推送 `main` 或手動執行 `main` 時，檢查通過後才將同次建置的資產部署。部署使用 `wrangler.preview.jsonc`，固定為 TFC 帳號的 `tfc-election2026`，僅啟用 `https://tfc-election2026.tfc-taiwan-org.workers.dev/election2026/` 驗收網址，`routes` 為空，不啟用正式 TFC 網域路由。正式 canonical 與 noindex 規則維持原設定。
+| 用途 | Worker | 網址 | 建置指令 |
+| --- | --- | --- | --- |
+| 測試 | `tfc-election2026-preview` | `https://tfc-election2026-preview.tfc-taiwan-org.workers.dev/election2026/` | `npm run build:worker:preview` |
+| 正式 | `tfc-election2026` | `https://tfc-taiwan.org.tw/election2026/` | `npm run build:worker:production` |
 
-GitHub repository secret `CLOUDFLARE_API_TOKEN` 須使用限 TFC 帳號的 Workers 指令碼編輯權限；不需要 DNS、正式網域路由、KV、R2 或其他帳號權限。部署 job 使用 `preview` environment，PR 不執行部署或讀取此 secret。每次部署後執行 `scripts/verify-deployment.mjs`，確認遠端列表 JSON 與該修訂完全一致，並檢查首頁、列表、每篇文章、JSON、封面與 404。失敗時 Actions 標示失敗供追查；正式上線仍須另行明確授權，才可使用含正式路由的 `wrangler.jsonc`。
+`.github/workflows/deploy-worker.yml` 在 PR 執行資料測試、根路徑建置與 SSR 測試；推送 `main` 或手動選取 `main` 執行時，檢查通過後以 preview profile 建置並部署至 `wrangler.preview.jsonc`。測試 Worker 沒有正式網域路由、保留測試提示，所有頁面的 robots meta 與 Worker HTTP header 都是 noindex；即使頁面已獲准正式發布，測試站也不會開放索引。
+
+`.github/workflows/deploy-election2026-production.yml` 只在推送 `prod` 或手動選取 `prod` 執行時發布，以 production profile 建置，再使用 `wrangler.jsonc` 上傳及啟用既有正式 Worker 的程式版本。正式路由已於 2026-10-22 設定；CI 使用 `wrangler versions upload` 與 `wrangler versions deploy`，保留既有 `/election2026` 及 `/election2026/*`，不重設 DNS 或 routes。正式版不顯示測試提示；已核准文章為 `isMock: false`、可索引文章為 `seo.noindex: false`。舊版 `deepfake-pledge` 摘要頁保留 noindex 避免與完整公約文章重複；搜尋、錯誤、原始 JSON 等頁面仍不索引。
+
+驗收流程使用 GitHub `preview` environment，正式流程使用 `production` environment；共用限 TFC 帳號 Workers 指令碼編輯權限的 repository secret `CLOUDFLARE_API_TOKEN`。Worker 由各自的 Wrangler 設定決定；兩個日常部署流程都不需要 DNS 或 zone 路由編輯權限。
+
+日常操作：先推送 `main`，檢查獨立驗收網址；確認後以 PR 將 `main` 合併至 `prod`，自動發布正式站。手動重跑須選擇正確分支，production job 另以 `github.ref` 限制只能發布 `prod`。舊的 `deploy/2026-election-v11` 保留作歷史參考，不再是日常發布分支。
+
+每次 Worker 建置會執行 `scripts/verify-release-build.mjs <profile>`，檢查 Worker 不共用、測試無正式 routes、各 profile 的提示與索引設定。每次部署後執行 `scripts/verify-deployment.mjs <origin> <profile>`，確認遠端列表與每篇完整文章 JSON 都與該修訂完全一致，並檢查首頁、列表、文章、封面與 404。準備正式發布設定不等於已正式部署；正式發佈仍需使用者明確授權。
 
 ## 本機與驗收
 
 `npm run dev` 與 `npm run preview` 仍可在根路徑本機預覽；正式前綴用 `npm run build:worker` 產物與 `npm run preview:worker` 驗證。每次結構性改動至少檢查首頁、列表、直接開啟一篇文章、無 JS 正文、JSON／圖片網址、404、SEO，以及 320／390／834／1440 px。圖卡 lightbox 要檢查開關、上一張／下一張、鍵盤 Escape 與方向鍵、焦點回復、手機溢出。搜尋要確認瀏覽器送往原站 `s` 參數。
 
-目前資料為虛構示範，正式上線前必須由編輯更換內容及圖片、確認文章事實、關閉相應的 `isMock`，再決定是否開放索引。
+目前提供的文章與圖卡已依使用者的正式發布準備指示移除示範旗標。未來新增虛構／測試素材時仍須使用 `isMock: true` 並維持 noindex，不得以正式 profile 自動覆蓋其編輯狀態。

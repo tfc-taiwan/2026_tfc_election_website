@@ -2,9 +2,8 @@ name: Deploy approved Election Hub production release
 
 on:
   push:
-    branches: [deploy/2026-election-v11]
+    branches: [prod]
   workflow_dispatch:
-    branches: [deploy/2026-election-v11]
 
 permissions:
   contents: read
@@ -15,6 +14,7 @@ concurrency:
 
 jobs:
   check:
+    if: github.ref == 'refs/heads/prod'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -27,7 +27,7 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run test:production
-      - run: npm run build:worker
+      - run: npm run build:worker:production
       - uses: actions/upload-artifact@v4
         with:
           name: worker-assets
@@ -39,7 +39,7 @@ jobs:
     needs: check
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    environment: preview
+    environment: production
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -55,10 +55,13 @@ jobs:
         run: test -n "$CLOUDFLARE_API_TOKEN"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      - name: Deploy Worker and static assets to the TFC route
-        run: npx --no-install wrangler deploy --config wrangler.jsonc
+      - name: Release production Worker without changing routes
+        run: |
+          RELEASE_TAG="prod-${GITHUB_SHA:0:12}"
+          npx --no-install wrangler versions upload --config wrangler.jsonc --tag "$RELEASE_TAG"
+          npx --no-install wrangler versions deploy --config wrangler.jsonc --version-tag "$RELEASE_TAG" --yes
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: a1bad46d553cafed5f25a324dbc854d7
       - name: Verify production deployment
-        run: node scripts/verify-deployment.mjs https://tfc-taiwan.org.tw
+        run: node scripts/verify-deployment.mjs https://tfc-taiwan.org.tw production

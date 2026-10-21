@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "npm run generate:og && tsc --noEmit && vite build && vite build --ssr src/entry-server.tsx --outDir .server && node scripts/prerender.mjs",
-    "build:worker": "PUBLIC_BASE_PATH=/election2026/ SITE_URL=https://tfc-taiwan.org.tw npm run build && node scripts/stage-worker.mjs",
+    "build:worker": "npm run build:worker:production",
     "preview:worker": "wrangler dev --local",
     "deploy:worker": "npm run build:worker && wrangler deploy",
     "preview": "node server.mjs",
@@ -19,7 +19,9 @@
     "test:e2e:production": "PLAYWRIGHT_TARGET=production playwright test",
     "data:import": "node --experimental-strip-types scripts/convert-spreadsheet.ts",
     "data:reports": "node --experimental-strip-types scripts/convert-reports.ts",
-    "sheets:rows": "node --experimental-strip-types scripts/export-sheet-rows.ts"
+    "sheets:rows": "node --experimental-strip-types scripts/export-sheet-rows.ts",
+    "build:worker:production": "PUBLIC_BASE_PATH=/election2026/ SITE_URL=https://tfc-taiwan.org.tw DEPLOYMENT_ENV=production npm run build && node scripts/stage-worker.mjs && node scripts/verify-release-build.mjs production",
+    "build:worker:preview": "PUBLIC_BASE_PATH=/election2026/ SITE_URL=https://tfc-taiwan.org.tw DEPLOYMENT_ENV=preview npm run build && node scripts/stage-worker.mjs && node scripts/verify-release-build.mjs preview"
   },
   "dependencies": {
     "@fontsource/noto-sans-tc": "^5.3.0",

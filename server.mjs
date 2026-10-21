@@ -13,7 +13,7 @@ const template = await readFile(resolve(root, '.server/template.html'), 'utf8');
 const config = JSON.parse(await readFile(resolve(root, '.server/config.json'), 'utf8'));
 const port = Number(process.env.PORT || 4173);
 const host = process.env.HOST || '127.0.0.1';
-const context = { siteUrl: process.env.SITE_URL || config.siteUrl, previewOrigin: `http://localhost:${port}` };
+const context = { siteUrl: process.env.SITE_URL || config.siteUrl, previewOrigin: `http://localhost:${port}`, isPreview: process.env.DEPLOYMENT_ENV ? process.env.DEPLOYMENT_ENV === 'preview' : config.isPreview };
 const types = { '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.woff': 'font/woff', '.woff2': 'font/woff2', '.ico': 'image/x-icon' };
 
 function send(req, res, status, type, body) {

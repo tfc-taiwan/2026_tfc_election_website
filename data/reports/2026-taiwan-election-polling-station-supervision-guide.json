@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "isMock": true,
+  "isMock": false,
   "slug": "2026-taiwan-election-polling-station-supervision-guide",
   "seo": {
     "title": "【2026選舉查知識】選中投票篇：投開票所的運作與監督｜2026 選舉工具箱",
@@ -12,7 +12,7 @@
       "height": 1040,
       "type": "image/png"
     },
-    "noindex": true,
+    "noindex": false,
     "authorType": "Organization"
   },
   "kind": "guide",

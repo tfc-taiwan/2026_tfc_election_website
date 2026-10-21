@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "isMock": true,
+  "isMock": false,
   "seo": {
     "siteUrl": null,
     "language": "zh-Hant",
@@ -10,7 +10,7 @@
       "description": "台灣事實查核中心「2026選舉工具箱」，掌握九合一選舉與公投的即時查核報告、破解常見謠言，以及查核中心發起的「拒絕深偽造假自律倡議」。拒絕資訊操弄！看懂訊息，做出知情的選擇。",
       "image": {
         "src": "/images/og/home.png",
-        "alt": "2026 選舉工具箱：查核報告、資訊判讀與查核學堂示範網站",
+        "alt": "2026 選舉工具箱：查核報告、資訊判讀與查核學堂專區",
         "width": 1200,
         "height": 630,
         "type": "image/png"
@@ -19,7 +19,7 @@
     },
     "reports": {
       "title": "查核報告列表｜台灣事實查核中心 2026 選舉工具箱",
-      "description": "瀏覽地方選舉與公投議題的示範查核報告，依分類探索音訊、圖片、數據與選務訊息的查證過程。",
+      "description": "瀏覽地方選舉與公投議題的查核報告，依分類探索音訊、圖片、數據與選務訊息的查證過程。",
       "image": {
         "src": "/images/og/home.png",
         "alt": "2026 選舉工具箱查核報告列表",
@@ -34,7 +34,7 @@
     "name": "台灣事實查核中心",
     "englishName": "Taiwan FactCheck Center",
     "title": "2026 選舉工具箱",
-    "notice": "示範網站・所有報告與活動皆為虛構資料",
+    "notice": "測試網站・此版本僅供預覽，請以正式官網為準。",
     "footer": "© 2026 台灣事實查核中心 Taiwan FactCheck Center",
     "socialLinks": [
       {
@@ -236,13 +236,27 @@
       "tone": "cyan"
     },
     {
+      "slug": "reject-deepfake-election-disinformation-self-regulation-charter",
+      "kind": "analysis",
+      "category": "深偽倡議",
+      "title": "「維護選舉公平，拒絕深偽造假」自律公約",
+      "description": "台灣事實查核中心倡議：政治人物承諾不以AI深偽攻擊對手。",
+      "date": "2026-10-21",
+      "image": null,
+      "tag": "選舉工具箱",
+      "tone": "cyan"
+    },
+    {
       "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover",
       "kind": "report",
       "category": "地方選舉",
       "title": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成",
       "description": "網傳封面圖經AI編輯變造，《時代雜誌》最新一期封面人物為美國太平洋司令部司令",
       "date": "2026-10-12",
-      "image": null,
+      "image": {
+        "src": "/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg",
+        "alt": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成"
+      },
       "tag": "政治與政策",
       "tone": "magenta",
       "verdict": "錯誤"
@@ -254,7 +268,10 @@
       "title": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過",
       "description": "曾有立委於2020年提案修法，但並未完成三讀",
       "date": "2026-10-12",
-      "image": null,
+      "image": {
+        "src": "/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg",
+        "alt": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過"
+      },
       "tag": "政治與政策",
       "tone": "cyan",
       "verdict": "部分錯誤"
@@ -307,8 +324,7 @@
       "title": "最新查核報告",
       "categories": [
         "地方選舉",
-        "公投議題",
-        "辯論會即時查核"
+        "辯論會查核"
       ],
       "items": [
         {
@@ -456,7 +472,7 @@
         },
         {
           "id": "deepfake-press-conference",
-          "dateLabel": "10/28",
+          "dateLabel": "10/29",
           "title": "深偽倡議媒體記者會",
           "description": "台灣事實查核中心與媒體、公民團體攜手倡議：政治人物承諾不以AI深偽攻擊對手",
           "content": [
@@ -496,11 +512,10 @@
           "title": "傳 LINE 給我們，一起守護民主環境",
           "description": "看到不明傳言，請傳給我們，並將正確澄清反饋給親友，讓可靠資訊回到日常對話！",
           "content": [
-            "收到可疑訊息時，先保存原文、確認出處與時間，再決定是否分享。",
-            "本示範網站不接收個人資料或疑似謠言投稿。"
+            "收到可疑訊息時，先保存原文、確認出處與時間，再決定是否分享。"
           ],
           "dateLabel": "FOREVER",
-          "tag": "闢謠志工招募",
+          "tag": "共同維護資訊生態",
           "cta": "加入 LINE",
           "tone": "cyan",
           "href": "https://line.me/R/ti/p/%40tfctaiwan"
@@ -508,18 +523,23 @@
       ]
     },
     "initiative": {
-      "title": "自律公約倡議｜維護選舉公平，拒絕深偽造假",
-      "description": "因應深偽內容在全球選舉帶來的風險，台灣事實查核中心與MyGoPen、Cofacts等查核組織共同發起倡議，呼籲政黨、候選人與競選團隊拒絕使用深偽內容攻擊政治對手。",
+      "title": "維護選舉公平，拒絕深偽造假｜自律公約",
+      "description": "因應深偽內容在全球選舉帶來的風險，台灣事實查核中心與MyGoPen、Cofacts等查核組織共同發起倡議，呼籲政黨、候選人與競選團隊拒絕使用深偽內容攻擊政治對手。\n\n本公約並非要求各界停止使用 AI，亦無意限制政治嘲諷、漫畫、梗圖或明顯可知為虛構之創作自由；我們反對的是「以假亂真、客觀上足以使人誤認為真，進而干擾選舉公平之惡意深偽」。",
       "content": {
         "eyebrow": "自律公約倡議",
         "titlePrefix": "維護選舉公平，",
         "titleAccent": "拒絕深偽造假",
-        "principlesTitle": "自律公約承諾原則：三不二要",
+        "principlesTitle": "自律公約承諾原則：二不二要",
         "casesTitle": "真實受害案例",
+        "fullTextUrl": "/reports/reject-deepfake-election-disinformation-self-regulation-charter",
         "reasons": [
           {
-            "title": "全民皆可能是受害者",
-            "description": "不僅對手可能利用深偽攻擊，自身黨員或狂熱支持者也可能製造造假內容而捲入爭議。建立一致防線是所有陣營的共同利益。"
+            "title": "深偽傷害選舉公平",
+            "description": "當幾可亂真的深偽內容愈來愈難辨識，造假資訊不僅嚴重干擾選民認知，更將侵蝕民主社會賴以運作的信任基礎。"
+          },
+          {
+            "title": "各陣營都可能是受害者",
+            "description": "在台灣，不分黨派陣營都曾被深偽內容攻擊、淪為造假內容的受害者。建立一致防線是所有陣營的共同利益。"
           },
           {
             "title": "法規緩不濟急",
@@ -532,18 +552,16 @@
         ],
         "groups": [
           {
-            "title": "不製作、不委託製作、不散布",
+            "title": "不製作、不散布",
             "items": [
-              "不 親自製作 讓政治對手說出未曾說過的話、做出未曾做過行為的深偽影音。",
-              "不 委託他人製作 這類造假與操弄影音。",
-              "不 主動散布 未經查證的對手深偽攻擊素材。"
+              "承諾不製作、不委託製作、不散布「讓政治對手及其陣營說出未曾說過的話、做出未曾做過的行為」之AI深偽影音與圖像。"
             ]
           },
           {
-            "title": "勇於負責與更正",
+            "title": "要立即移除、要同等醒目更正",
             "items": [
-              "若誤信並轉傳深偽內容，發現錯誤後 要立即移除。",
-              "下架不實內容後， 要公開更正，降低錯誤資訊的持續影響。"
+              "若不慎誤信並轉傳深偽內容，一旦發現錯誤，立即下架移除。",
+              "下架後，於同一公開管道以「同等醒目程度」公開更正說明。"
             ]
           }
         ],
@@ -618,27 +636,99 @@
       "featuredSlug": "deepfake-pledge"
     },
     "infographics": {
-      "slugs": [],
-      "items": [],
-      "title": "圖卡懶人包",
-      "description": "視覺化知識，直接左右滑動瀏覽吧！",
-      "pendingItems": [
+      "slugs": [
+        "china-xiamen-bridge-does-not-reach-kinmen",
+        "taiwan-immigrant-stat-misread-cumulative-data-hoax-explained"
+      ],
+      "items": [
         {
-          "slug": "paper-ballot-box",
-          "title": "紙箱票匭",
-          "count": 6
+          "slug": "china-xiamen-bridge-does-not-reach-kinmen",
+          "title": "中國廈金大橋僅能連結廈門兩島，無法直通金門",
+          "description": "釐清廈金大橋的實際施工資訊，以及是否能直通金門。",
+          "cards": [
+            {
+              "image": {
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-1.jpg",
+                "alt": "廈金大橋查核圖卡，第 1 張"
+              },
+              "caption": "廈金大橋查核圖卡｜第 1 張"
+            },
+            {
+              "image": {
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-2.jpg",
+                "alt": "廈金大橋查核圖卡，第 2 張"
+              },
+              "caption": "廈金大橋查核圖卡｜第 2 張"
+            },
+            {
+              "image": {
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-3.jpg",
+                "alt": "廈金大橋查核圖卡，第 3 張"
+              },
+              "caption": "廈金大橋查核圖卡｜第 3 張"
+            },
+            {
+              "image": {
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-4.jpg",
+                "alt": "廈金大橋查核圖卡，第 4 張"
+              },
+              "caption": "廈金大橋查核圖卡｜第 4 張"
+            },
+            {
+              "image": {
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-5.jpg",
+                "alt": "廈金大橋查核圖卡，第 5 張"
+              },
+              "caption": "廈金大橋查核圖卡｜第 5 張"
+            }
+          ]
         },
         {
-          "slug": "2025-recall-vote",
-          "title": "大罷免投票",
-          "count": 5
-        },
-        {
-          "slug": "2025-maanshan-nuclear-referendum",
-          "title": "核能公投",
-          "count": 6
+          "slug": "taiwan-immigrant-stat-misread-cumulative-data-hoax-explained",
+          "title": "近 3 年在台定居中國人暴增？挪用累計 39 年數據偷換概念的謠言",
+          "description": "圖卡整理網傳定居人口說法與累計年數的脈絡。",
+          "cards": [
+            {
+              "image": {
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-1.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 1 張"
+              },
+              "caption": "在台定居中國人數據查核圖卡｜第 1 張"
+            },
+            {
+              "image": {
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-2.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 2 張"
+              },
+              "caption": "在台定居中國人數據查核圖卡｜第 2 張"
+            },
+            {
+              "image": {
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-3.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 3 張"
+              },
+              "caption": "在台定居中國人數據查核圖卡｜第 3 張"
+            },
+            {
+              "image": {
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-4.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 4 張"
+              },
+              "caption": "在台定居中國人數據查核圖卡｜第 4 張"
+            },
+            {
+              "image": {
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-5.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 5 張"
+              },
+              "caption": "在台定居中國人數據查核圖卡｜第 5 張"
+            }
+          ]
         }
-      ]
+      ],
+      "title": "圖卡懶人包",
+      "description": "直接左右滑動瀏覽吧！",
+      "pendingItems": []
     }
   }
 }

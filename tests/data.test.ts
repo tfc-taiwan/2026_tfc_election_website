@@ -4,6 +4,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { daysUntil, listingsSchema, reportSchema, searchStories, youtubeVideoId } from '../src/data.ts';
+import { resolveInfographic } from '../src/infographics.ts';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const data = listingsSchema.parse(JSON.parse(readFileSync(resolve(root, 'data/listings.json'), 'utf8')));
@@ -43,7 +44,6 @@ test('all listing references resolve to unique, matching report files and local 
   }
   for (const item of data.sections.rumors.items) assert.ok(data.sections.scripts.items.some(script => script.id === item.scriptId));
   for (const group of data.sections.infographics?.items ?? []) {
-    assert.ok(slugs.has(group.slug));
     for (const card of group.cards) if (card.image.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${card.image.src}`)), `Missing gallery asset: ${card.image.src}`);
   }
   for (const story of data.stories.filter(story => story.kind === 'report')) assert.ok(data.sections.reports.categories.includes(story.category!));
@@ -72,11 +72,19 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 11);
+  assert.equal(data.stories.length, 12);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
-  assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 5);
+  assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 7);
+  assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
+  assert.equal(data.stories.find(story => story.slug === 'five-star-flag-fine-2020-proposal-not-passed')?.image?.src, '/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg');
   assert.equal(data.stories.find(story => story.slug === 'deepfake-pledge')?.image, null);
-  assert.deepEqual(data.sections.infographics?.slugs, []);
+  assert.deepEqual(data.sections.infographics?.slugs, [
+    'china-xiamen-bridge-does-not-reach-kinmen',
+    'taiwan-immigrant-stat-misread-cumulative-data-hoax-explained',
+  ]);
+  const standaloneCard = resolveInfographic(data, '/infographics/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained/1');
+  assert.equal(standaloneCard?.story, null);
+  assert.equal(standaloneCard?.group.cards.length, 5);
   for (const story of data.stories) {
     const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${story.slug}.json`), 'utf8')));
     assert.deepEqual(report.image, story.image);
@@ -87,4 +95,28 @@ test('provided covers match reports while unfilled dates stay absent', () => {
     }
     for (const privateText of ['Canva', 'slack', '第一行十八個字', '影片存證', 'data:image']) assert.ok(!JSON.stringify(report).includes(privateText));
   }
+});
+
+test('deepfake pledge overview has paragraph breaks and a working full article route', () => {
+  const initiative = data.sections.initiative!;
+  assert.deepEqual(initiative.description.split(/\n\s*\n/).length, 2);
+  assert.equal(initiative.content?.fullTextUrl, '/reports/reject-deepfake-election-disinformation-self-regulation-charter');
+  assert.ok(data.stories.some(story => story.slug === 'deepfake-pledge'));
+  assert.ok(data.stories.some(story => story.slug === 'reject-deepfake-election-disinformation-self-regulation-charter'));
+  const article = reportSchema.parse(JSON.parse(readFileSync(resolve(root, 'data/reports/reject-deepfake-election-disinformation-self-regulation-charter.json'), 'utf8')));
+  assert.equal(article.seo.noindex, false);
+  assert.equal(article.supplementarySections?.length ?? 0, 0);
+  assert.equal(article.checkSections.some(section => section.title.startsWith('常見問答')), false);
+});
+
+test('learning guide and community activity use the requested destinations and label', () => {
+  assert.equal(data.sections.learning.resources?.find(item => item.title === '選舉訊息繁雜，三大正確資訊管道報你知')?.href, '/reports/reliable-taiwan-election-information-channels-explained');
+  assert.equal(data.sections.activities.items.find(item => item.id === 'community')?.tag, '共同維護資訊生態');
+});
+
+test('standalone infographic cards resolve without inventing an article', () => {
+  const path = '/infographics/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained/1';
+  const selected = resolveInfographic(data, path);
+  assert.equal(selected?.story, null);
+  assert.equal(selected?.group.cards.length, 5);
 });

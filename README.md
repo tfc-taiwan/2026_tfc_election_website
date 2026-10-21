@@ -1,6 +1,6 @@
 # 2026 選舉工具箱
 
-依據設計稿實作的 React + TypeScript + Vite 選舉專區。公開網址規劃為 `https://tfc-taiwan.org.tw/election2026/`，由 Cloudflare Worker 與 Static Assets 在原網站子路徑提供。架構與後續工作規則見 [系統架構](docs/architecture.md) 與 [AGENTS.md](AGENTS.md)。目前仍是虛構示範資料，尚未正式部署。
+依據設計稿實作的 React + TypeScript + Vite 選舉專區。公開網址規劃為 `https://tfc-taiwan.org.tw/election2026/`，由 Cloudflare Worker 與 Static Assets 在原網站子路徑提供。架構與後續工作規則見 [系統架構](docs/architecture.md) 與 [AGENTS.md](AGENTS.md)。目前已準備正式發布資料；測試／正式 Worker 分開，正式上線需走正式發布分支。
 
 ## 啟動
 
@@ -154,10 +154,19 @@ SITE_URL=https://tfc-taiwan.org.tw PUBLIC_BASE_PATH=/election2026/ npm run build
 
 `npm run build:worker` 會使用正式網址與 `/election2026/` 前綴，生成各頁預渲染 HTML、JSON、圖片、前端資源及 sitemap，並封裝於 `worker-assets/election2026/`。圖卡分享網址為 `/election2026/infographics/<slug>/<張數>`，例如 `/election2026/infographics/ai-tools/2`；訪客會看到圖卡專頁而非圖片檔，可導覽前後張與原文章。`wrangler.jsonc` 將同一個 Worker 指派到原網域的 `/election2026` 與 `/election2026/*`；不設定整站路由，也不跳轉到 `workers.dev`。首頁帶尾斜線，文章、圖卡與列表網址不帶尾斜線，Worker 會統一轉址。
 
-`npm run preview:worker` 可在本機測試。`npm run deploy:worker` 會重新建置並正式發布；只有在 Cloudflare zone、既有 routes、編輯內容與發布權限都確認後才執行。此儲存庫目前沒有執行正式部署。
+`npm run preview:worker` 可在本機測試。`npm run deploy:worker` 會重新建置並正式發布；只有在 Cloudflare zone、既有 routes、編輯內容與發布權限都確認後才執行。測試部署請用 `npm run build:worker:preview` 與 `wrangler.preview.jsonc`；正式發布請用 `npm run build:worker:production` 與 `wrangler.jsonc`。目前的 Worker 分工與核准資料狀態見架構文件。
 
 在 Worker Static Assets 模式，調整 `data/` 後要執行 `npm run build:worker` 並部署新版資產；網站不會直接讀取開發電腦的 JSON。`generate:pages` 僅供本機根路徑預覽的既有流程使用。
 
 原站管理根目錄搜尋與 `robots.txt`。本專區的 sitemap 為 `/election2026/sitemap.xml`；示範資料維持 noindex 且 sitemap 不含示範文章。正式上線前須更換並審核內容，更新原站 sitemap 或於 Search Console 提交子路徑 sitemap。
 
 `server.mjs` 與 `npm run preview` 保留作本機 Node SSR 與既有測試用途，並非這次規劃的 Cloudflare 正式架構。
+
+
+## 正式發布準備與測試隔離
+
+- 測試 Worker：`tfc-election2026-preview`，測試網址為 https://tfc-election2026-preview.tfc-taiwan-org.workers.dev/election2026/ 。
+- 正式 Worker：`tfc-election2026`，正式路徑為 https://tfc-taiwan.org.tw/election2026/ 。
+- 正式 profile 不顯示預覽／示範提示，已核准的主要文章可供搜尋引擎索引。測試 profile 保留測試提示及 meta／HTTP noindex；兩者都維持正式 canonical 網址。
+- 舊版公約摘要頁保留 noindex，完整公約文章開放索引。搜尋／錯誤／JSON 頁面仍維持原有的索引限制。
+- 完成設定準備後，推送 `main` 自動更新獨立驗收 Worker；驗收後將修訂合併到 `prod` 才會觸發正式發佈。正式流程只更新 Worker 版本，保留既有正式路由。

@@ -41,11 +41,25 @@ test('built static pages contain body content and unique head metadata', async (
     assert.ok(html.includes('type="application/ld+json"'));
     assert.ok(!html.includes('<!--app-html-->'));
     assert.match(html, /<h1[^>]*>[\s\S]+?<\/h1>/);
-    if (path === 'reports/deepfake-pledge/index.html') {
+    if (path === 'index.html') {
+      assert.match(html, /class="pledge-description pledge-description-embedded"[\s\S]*?<p>[\s\S]*?<\/p>[\s\S]*?<p>[\s\S]*?<\/p>/);
+      assert.ok(html.includes('href="/reports/reject-deepfake-election-disinformation-self-regulation-charter"'));
+      assert.ok(html.includes('閱讀完整內容'));
+      assert.ok(!html.includes('上一則案例'));
+      assert.ok(!html.includes('暫停案例輪播'));
+      assert.ok(!html.includes('專區文章'));
+    } else if (path === 'reports/deepfake-pledge/index.html') {
       assert.match(html, /<article class="pledge-page section-padding">/);
-      assert.ok(html.includes('自律公約承諾原則：三不二要'));
+      assert.ok(html.includes('自律公約承諾原則：二不二要'));
       assert.match(html, /展開全部案例（(?:<!-- -->)?13/);
       assert.ok(!html.includes('cdn.tailwindcss.com'));
+    } else if (path === 'reports/reject-deepfake-election-disinformation-self-regulation-charter/index.html') {
+      assert.ok(html.includes('自律公約內容'));
+      assert.ok(!html.includes('常見問答'));
+      assert.ok(!html.includes('補充資料'));
+      assert.ok(!html.includes('這項倡議在做什麼'));
+      assert.ok(!html.includes('對外時程是什麼'));
+      assert.ok(html.includes('資料來源與說明'));
     } else if (path === 'reports/taiwan-2026-election-voting-notice-ballots-guide/index.html') {
       assert.ok(html.includes('guide-body'));
       assert.ok(!html.includes('id="verification"'));
@@ -81,7 +95,7 @@ test('production SSR uses canonical origin and returns real 404, asset and HEAD 
   const response = await fetch(base + '/reports/fake-infographic-26-chinese-spouses-running-for-chief');
   const html = await response.text();
   assert.equal(response.status, 200);
-  assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow');
+  assert.equal(response.headers.get('x-robots-tag'), 'index, follow, max-image-preview:large');
   assert.ok(html.includes('href="https://election.example.org/reports/fake-infographic-26-chinese-spouses-running-for-chief"'));
   assert.ok(html.includes('class="report-page"'));
   const head = await fetch(base + '/reports/fake-infographic-26-chinese-spouses-running-for-chief', { method: 'HEAD' });
@@ -141,9 +155,10 @@ test('publishing configuration indexes real content only, including sitemap and 
   const html = await (await fetch(base + '/reports/fake-infographic-26-chinese-spouses-running-for-chief')).text();
   assert.ok(html.includes('content="index, follow, max-image-preview:large"'));
   const xml = await (await fetch(base + '/sitemap.xml')).text();
-  assert.equal((xml.match(/<loc>/g) || []).length, 3);
+  assert.equal((xml.match(/<loc>/g) || []).length, 18);
+  assert.ok(xml.includes('/infographics/china-xiamen-bridge-does-not-reach-kinmen/1'));
   assert.ok(xml.includes('https://election.example.org/reports/fake-infographic-26-chinese-spouses-running-for-chief'));
-  assert.ok(!xml.includes('taiwan-electricity-price-no-hike-2026q4'));
+  assert.ok(!xml.includes('/reports/deepfake-pledge</loc>'));
   assert.ok((await (await fetch(base + '/robots.txt')).text()).includes('Sitemap: https://election.example.org/sitemap.xml'));
   const search = await fetch(base + '/reports?q=音檔');
   assert.equal(search.headers.get('x-robots-tag'), 'noindex, follow');
@@ -160,12 +175,13 @@ test('broken editorial JSON returns a non-indexable 503, then recovers after cor
 });
 
 
-test('homepage embeds the initiative with accessible ticker controls and one page title', async () => {
+test('homepage embeds the initiative with automatic case rotation and one page title', async () => {
   const html = await readFile('dist/index.html', 'utf8');
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
   assert.ok(html.includes('pledge-embedded'));
   assert.ok(html.includes('真實受害案例'));
-  for (const label of ['上一則案例', '下一則案例', '暫停案例輪播']) assert.ok(html.includes(label));
+  for (const label of ['上一則案例', '下一則案例', '暫停案例輪播']) assert.ok(!html.includes(label));
+  assert.ok(html.includes('閱讀完整內容'));
 });
 
 test('toolkit has publication-only metadata and consistent return navigation', async () => {

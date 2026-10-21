@@ -22,7 +22,7 @@ export default defineConfig(({ mode, isSsrBuild }) => {
         try {
           const renderer = await server.ssrLoadModule('/src/entry-server.tsx');
           const previewOrigin = server.resolvedUrls?.local[0]?.replace(/\/$/, '') ?? `http://127.0.0.1:${server.config.server.port ?? 5173}`;
-          const context = { siteUrl, previewOrigin };
+          const context = { siteUrl, previewOrigin, isPreview: process.env.DEPLOYMENT_ENV === 'preview' };
           if (pathname === '/robots.txt' || pathname === '/sitemap.xml') {
             const data = renderer.readListings(dataDir);
             const result = pathname === '/robots.txt' ? renderer.robotsTxt(data, context) : renderer.sitemapXml(data, renderer.readReports(dataDir, data), context);
