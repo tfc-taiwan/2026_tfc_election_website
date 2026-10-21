@@ -441,7 +441,7 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
     <div className="article-tags">{report.tags.map(tag => <span className={`tag ${tag === report.verdict ? `verdict-tag ${verdictClass(tag)}` : 'topic-tag'}`} key={tag}>{tag}</span>)}</div>
     <h1>{report.title}</h1>{!isGuide && <p className="article-finding">{report.finding}</p>}
     <div className="article-meta">{report.published && <span><strong>發佈：</strong><time dateTime={report.published}>{report.published}</time></span>}{!isGuide && <>{report.updated && <span><strong>更新：</strong><time dateTime={report.updated}>{report.updated}</time></span>}<span><strong>報告編號：</strong>{report.reportId}</span><span><strong>查核記者：</strong>{report.reporter}</span><span><strong>責任編輯：</strong>{report.editor}</span></>}</div>
-    {report.isMock && <p className="article-mock-note"><span className="tag neutral">MOCK DATA</span> 本文為虛構示範，不代表真實事件或查核結論。</p>}
+    {report.isMock ? <p className="article-mock-note"><span className="tag neutral">MOCK DATA</span> 本文為虛構示範，不代表真實事件或查核結論。</p> : data.isMock && <p className="article-mock-note"><span className="tag neutral">PREVIEW</span> 本文為測試版內容，尚待編輯確認，未正式發布。</p>}
     <div className="article-toolbar">{!isGuide && <nav aria-label="文章目錄"><span>內容：</span><a href="#background">背景</a><a href="#verification">{report.kind === 'report' ? '查核' : '解析'}</a>{!!report.supplementarySections?.length && <a href="#supplementary">補充資料</a>}{report.sources.length > 0 && <a href="#sources">資料來源</a>}</nav>}<ShareTools report={report} data={data} /></div>
     {report.image && <figure className="article-cover"><Illustration image={report.image} eager /><figcaption>{report.imageCaption}</figcaption></figure>}
     {isGuide ? <div className="article-section guide-body">

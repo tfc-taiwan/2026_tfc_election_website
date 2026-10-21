@@ -72,7 +72,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 11);
+  assert.equal(data.stories.length, 12);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 5);
   assert.equal(data.stories.find(story => story.slug === 'deepfake-pledge')?.image, null);
@@ -98,8 +98,11 @@ test('provided covers match reports while unfilled dates stay absent', () => {
 test('deepfake pledge overview has paragraph breaks and a working full article route', () => {
   const initiative = data.sections.initiative!;
   assert.deepEqual(initiative.description.split(/\n\s*\n/).length, 2);
-  assert.equal(initiative.content?.fullTextUrl, 'https://tfc-taiwan.org.tw/election2026/reject-deepfake-election-disinformation-self-regulation-charter');
+  assert.equal(initiative.content?.fullTextUrl, '/reports/reject-deepfake-election-disinformation-self-regulation-charter');
   assert.ok(data.stories.some(story => story.slug === 'deepfake-pledge'));
+  const article = reportSchema.parse(JSON.parse(readFileSync(resolve(root, 'data/reports/reject-deepfake-election-disinformation-self-regulation-charter.json'), 'utf8')));
+  assert.equal(article.seo.noindex, true);
+  assert.equal(article.supplementarySections?.reduce((n, section) => n + (section.blocks ?? []).filter(block => block.type === 'heading').length, 0), 24);
 });
 
 test('learning guide and community activity use the requested destinations and label', () => {

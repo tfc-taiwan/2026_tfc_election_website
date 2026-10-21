@@ -236,6 +236,17 @@
       "tone": "cyan"
     },
     {
+      "slug": "reject-deepfake-election-disinformation-self-regulation-charter",
+      "kind": "analysis",
+      "category": "深偽倡議",
+      "title": "「維護選舉公平，拒絕深偽造假」自律公約",
+      "description": "台灣事實查核中心倡議：政治人物承諾不以AI深偽攻擊對手。",
+      "date": "2026-10-21",
+      "image": null,
+      "tag": "選舉工具箱",
+      "tone": "cyan"
+    },
+    {
       "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover",
       "kind": "report",
       "category": "地方選舉",
@@ -515,7 +526,7 @@
         "titleAccent": "拒絕深偽造假",
         "principlesTitle": "自律公約承諾原則：二不二要",
         "casesTitle": "真實受害案例",
-        "fullTextUrl": "https://tfc-taiwan.org.tw/election2026/reject-deepfake-election-disinformation-self-regulation-charter",
+        "fullTextUrl": "/reports/reject-deepfake-election-disinformation-self-regulation-charter",
         "reasons": [
           {
             "title": "深偽傷害選舉公平",

@@ -43,7 +43,7 @@ test('built static pages contain body content and unique head metadata', async (
     assert.match(html, /<h1[^>]*>[\s\S]+?<\/h1>/);
     if (path === 'index.html') {
       assert.match(html, /class="pledge-description pledge-description-embedded"[\s\S]*?<p>[\s\S]*?<\/p>[\s\S]*?<p>[\s\S]*?<\/p>/);
-      assert.ok(html.includes('href="https://tfc-taiwan.org.tw/election2026/reject-deepfake-election-disinformation-self-regulation-charter"'));
+      assert.ok(html.includes('href="/reports/reject-deepfake-election-disinformation-self-regulation-charter"'));
       assert.ok(html.includes('閱讀完整內容'));
       assert.ok(!html.includes('上一則案例'));
       assert.ok(!html.includes('暫停案例輪播'));
