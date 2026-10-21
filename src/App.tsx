@@ -242,6 +242,7 @@ function InfographicGallery({ data, heading }: { data: Listings; heading: ReactN
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement | null>(null);
   const [shareStatus, setShareStatus] = useState('');
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
   const selected = section.items?.find(item => item.slug === active);
   const cards = selected?.cards ?? [];
   const row = useScrollRow(section.items?.map(group => group.slug).join(',') ?? '');
@@ -257,8 +258,22 @@ function InfographicGallery({ data, heading }: { data: Listings; heading: ReactN
     const pageUrl = infographicShareUrl(infographicPath(active, index + 1));
     try {
       if (navigator.share) await navigator.share({ url: pageUrl });
-      else { await navigator.clipboard.writeText(pageUrl); setShareStatus('已複製這張圖卡的專頁連結'); }
-    } catch (error) { if (!(error instanceof DOMException && error.name === 'AbortError')) setShareStatus('無法自動分享，請開啟圖卡專頁複製網址'); }
+      else { await navigator.clipboard.writeText(pageUrl); setShareStatus('已複製這張圖卡的分享連結'); }
+    } catch (error) { if (!(error instanceof DOMException && error.name === 'AbortError')) setShareStatus('無法自動分享，請複製圖卡連結'); }
+  }
+  function startSwipe(event: React.TouchEvent<HTMLElement>) {
+    const touch = event.touches[0];
+    if (touch) touchStart.current = { x: touch.clientX, y: touch.clientY };
+  }
+  function endSwipe(event: React.TouchEvent<HTMLElement>) {
+    const start = touchStart.current;
+    const touch = event.changedTouches[0];
+    touchStart.current = null;
+    if (!start || !touch) return;
+    const deltaX = touch.clientX - start.x;
+    const deltaY = touch.clientY - start.y;
+    if (Math.abs(deltaX) < 45 || Math.abs(deltaX) < Math.abs(deltaY) * 1.2) return;
+    move(deltaX < 0 ? 1 : -1);
   }
   return <>
     <div className="section-heading no-bar">{heading}<ScrollControls row={row} label="圖卡懶人包" /></div>
@@ -274,7 +289,7 @@ function InfographicGallery({ data, heading }: { data: Listings; heading: ReactN
       </div>;
     })}</div>
     <dialog ref={dialog} className="infographic-lightbox" aria-label="圖卡大圖瀏覽" onClose={close} onClick={event => { if (event.target === event.currentTarget) close(); }} onKeyDown={event => { if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); } if (event.key === 'ArrowRight') { event.preventDefault(); move(1); } }}>
-      {selected && <div className="lightbox-layout"><div className="lightbox-top"><span>{index + 1} / {cards.length}</span><strong>{selected.title}</strong><button type="button" aria-label="關閉圖卡" onClick={close}><Icon name="close" /></button></div><div className="lightbox-stage"><button type="button" className="lightbox-arrow" aria-label="上一張" onClick={() => move(-1)}><Icon name="left" /></button><figure><img src={publicPath(cards[index].image.src)} alt={cards[index].image.alt} /><figcaption>{cards[index].caption}</figcaption></figure><button type="button" className="lightbox-arrow" aria-label="下一張" onClick={() => move(1)}><Icon name="right" /></button></div><div className="lightbox-bottom"><button type="button" onClick={share}><Icon name="copy" size={17} />分享這張圖卡</button><Link to={infographicPath(selected.slug, index + 1)} onClick={close}>開啟圖卡專頁 ↗</Link><span role="status">{shareStatus}</span></div></div>}
+      {selected && <div className="lightbox-layout"><div className="lightbox-top"><span>{index + 1} / {cards.length}</span><strong>{selected.title}</strong><button type="button" aria-label="關閉圖卡" onClick={close}><Icon name="close" /></button></div><div className="lightbox-stage"><button type="button" className="lightbox-arrow" aria-label="上一張" onClick={() => move(-1)}><Icon name="left" /></button><figure onTouchStart={startSwipe} onTouchEnd={endSwipe} onTouchCancel={() => { touchStart.current = null; }}><img src={publicPath(cards[index].image.src)} alt={cards[index].image.alt} /><figcaption>{cards[index].caption}</figcaption></figure><button type="button" className="lightbox-arrow" aria-label="下一張" onClick={() => move(1)}><Icon name="right" /></button></div><div className="lightbox-bottom"><button type="button" onClick={share}><Icon name="copy" size={17} />分享這張圖卡</button><span role="status">{shareStatus}</span></div></div>}
     </dialog>
   </>;
 }
@@ -347,7 +362,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
       </div>
     </section>
     <section className="process-section section-padding" id="process" aria-labelledby="process-title"><div className="center-heading"><h2 id="process-title">{sections.process.title}</h2></div><div className="process-grid">{sections.process.items.map(item => <div className="process-card" key={item.id}><span className={`process-icon ${item.tone}`}><Icon name={item.icon} size={30} /></span><h3>{item.title}</h3><p>{item.description}</p>{item.href ? (item.href.startsWith('/') ? <Link className="text-button" to={item.href}>閱讀全文 <span aria-hidden="true">→</span><span className="sr-only">：{item.title}</span></Link> : <a className="text-button" href={item.href} target="_blank" rel="noopener noreferrer">閱讀全文 ↗<span className="sr-only">：{item.title}（開啟新視窗）</span></a>) : <button className="text-button" onClick={() => onInfo(item)}>了解更多 <span aria-hidden="true">→</span><span className="sr-only">：{item.title}</span></button>}</div>)}</div></section>
-    {(!!sections.learning.items.length || !!sections.learning.resources?.length) && <section className="learning-section section-padding" id="learning" aria-labelledby="learning-title"><div className="center-heading"><h2 id="learning-title">{sections.learning.title}</h2></div><div className="learning-grid">{sections.learning.items.map(item => { const story = stories.find(s => s.slug === item.slug); return story && <div key={item.slug} className="learning-item"><Link to={`/reports/${item.slug}`} className="learning-art" tabIndex={-1} aria-hidden="true"><Illustration image={story.image} /></Link><div><span className="learning-topic">{item.badge}</span><h3>{story.title}</h3><p>{story.description}</p><Link to={`/reports/${item.slug}`}>閱讀教學指南<Icon name="arrow" size={16} /><span className="sr-only">：{story.title}</span></Link></div></div>; })}{sections.learning.resources?.map(item => <div className="learning-item" key={item.title}><div><h3>{item.title}</h3><p>{item.description}</p>{item.href && <a href={item.href}>閱讀教學指南 ↗</a>}</div></div>)}</div></section>}
+    {(!!sections.learning.items.length || !!sections.learning.resources?.length) && <section className="learning-section section-padding" id="learning" aria-labelledby="learning-title"><div className="center-heading"><h2 id="learning-title">{sections.learning.title}</h2></div><div className="learning-grid">{sections.learning.items.map(item => { const story = stories.find(s => s.slug === item.slug); return story && <div key={item.slug} className="learning-item"><Link to={`/reports/${item.slug}`} className="learning-art" tabIndex={-1} aria-hidden="true"><Illustration image={story.image} /></Link><div><span className="learning-topic">{item.badge}</span><h3>{story.title}</h3><p>{story.description}</p><Link to={`/reports/${item.slug}`}>閱讀教學指南<Icon name="arrow" size={16} /><span className="sr-only">：{story.title}</span></Link></div></div>; })}{sections.learning.resources?.map(item => <div className="learning-item" key={item.title}><div><h3>{item.title}</h3><p>{item.description}</p>{item.href && (item.href.startsWith('/') ? <Link to={item.href}>閱讀教學指南 ↗</Link> : <a href={item.href} target="_blank" rel="noopener noreferrer">閱讀教學指南 ↗</a>)}</div></div>)}</div></section>}
     <section className="activities-section section-padding" id="activities" aria-labelledby="activities-title"><div className="activities-inner"><h2 id="activities-title">{sections.activities.title}</h2><div className="activity-list">{sections.activities.items.map(item => <div className="activity" key={item.id}><span className={`activity-date ink-${item.tone}`}>{item.dateLabel}</span><div className="activity-content"><span className="tag neutral">{item.tag}</span><h3>{item.title}</h3><p>{item.description}</p></div>{item.cta && (item.href ? <a className="button primary" href={item.href} target="_blank" rel="noopener noreferrer">{item.cta}<span className="sr-only">：{item.title}（開啟新視窗）</span> ↗</a> : <button className="button primary" onClick={() => onInfo(item)}>{item.cta}<span className="sr-only">：{item.title}</span><span aria-hidden="true">↗</span></button>)}</div>)}</div></div></section>
   </>;
 }

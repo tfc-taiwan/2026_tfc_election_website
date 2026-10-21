@@ -120,13 +120,14 @@ test('search results, filters, empty state, and browser history', async ({ page 
   await expect(page.getByRole('heading', { name: '敬請期待' })).toBeVisible();
 });
 
-test('search submits to the main TFC site and infographic cards open an accessible gallery', async ({ page }) => {
+test('learning article link, search, and mobile infographic gallery work', async ({ page }) => {
   await page.addInitScript(() => {
     Object.defineProperty(navigator, 'share', { value: async (value: ShareData) => { (window as Window & { sharedCard?: ShareData }).sharedCard = value; }, configurable: true });
   });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.route('https://tfc-taiwan.org.tw/**', route => route.fulfill({ status: 200, contentType: 'text/html', body: '<h1>原站搜尋</h1>' }));
   await page.goto('/');
+  await expect(page.locator('#learning').getByRole('link', { name: /閱讀教學指南/ })).toHaveAttribute('href', '/reports/reliable-taiwan-election-information-channels-explained');
   const opener = page.getByRole('button', { name: /查看圖卡：.*AI/ });
   await opener.click();
   const gallery = page.getByRole('dialog', { name: '圖卡大圖瀏覽' });
@@ -136,17 +137,13 @@ test('search submits to the main TFC site and infographic cards open an accessib
   await expect(gallery).toContainText('2 / 3');
   await gallery.getByRole('button', { name: '分享這張圖卡' }).click();
   expect(await page.evaluate(() => (window as Window & { sharedCard?: ShareData }).sharedCard)).toEqual({ url: 'http://127.0.0.1:5173/infographics/ai-tools/2' });
-  await gallery.getByRole('link', { name: '開啟圖卡專頁' }).click();
-  await expect(page).toHaveURL(/\/infographics\/ai-tools\/2$/);
-  await expect(page.locator('.infographic-viewer figcaption')).toContainText('觀察影像或聲音的來源與脈絡');
-  await page.getByRole('button', { name: '分享這張圖卡' }).click();
-  expect(await page.evaluate(() => (window as Window & { sharedCard?: ShareData }).sharedCard)).toEqual({ url: 'http://127.0.0.1:5173/infographics/ai-tools/2' });
-  await page.reload();
-  await expect(page.locator('.infographic-viewer figcaption')).toContainText('觀察影像或聲音的來源與脈絡');
-  await page.getByRole('link', { name: '下一張' }).click();
-  await expect(page).toHaveURL(/\/infographics\/ai-tools\/3$/);
-  await page.getByRole('link', { name: '返回圖卡列表' }).click();
-  await expect(page).toHaveURL(/\/#infographics$/);
+  await expect(gallery.getByRole('link', { name: '開啟圖卡專頁' })).toHaveCount(0);
+  await gallery.locator('.lightbox-stage figure').evaluate(figure => {
+    const makeTouch = (clientX: number, clientY: number) => new Touch({ identifier: 1, target: figure, clientX, clientY });
+    figure.dispatchEvent(new TouchEvent('touchstart', { bubbles: true, touches: [makeTouch(300, 200)] }));
+    figure.dispatchEvent(new TouchEvent('touchend', { bubbles: true, changedTouches: [makeTouch(100, 205)], touches: [] }));
+  });
+  await expect(gallery).toContainText('3 / 3');
   await opener.click();
   await page.keyboard.press('ArrowLeft');
   await expect(gallery).toContainText('3 / 3');
@@ -158,6 +155,16 @@ test('search submits to the main TFC site and infographic cards open an accessib
   await page.getByRole('searchbox', { name: '搜尋台灣事實查核中心' }).fill('選舉');
   await page.getByRole('button', { name: '送出搜尋' }).click();
   await expect(page).toHaveURL('https://tfc-taiwan.org.tw/?s=%E9%81%B8%E8%88%89');
+});
+
+test('case ticker advances automatically on mobile without manual controls', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/#initiative');
+  const ticker = page.locator('.pledge-ticker');
+  const currentCase = ticker.locator('.pledge-ticker-copy > div:not([hidden]) .pledge-case-meta small');
+  await expect(currentCase).toHaveText('1 / 13');
+  await expect(currentCase).toHaveText('2 / 13', { timeout: 5000 });
+  await expect(ticker.getByRole('button')).toHaveCount(0);
 });
 
 for (const width of [390, 1440]) {

@@ -289,7 +289,7 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 .lightbox-top > strong { font-family: var(--font-serif); font-weight: 700; text-align: center; }
 .lightbox-top button, .infographic-close { justify-self: end; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; color: #fff; background: rgba(255, 255, 255, .14); cursor: pointer; }
 .lightbox-stage { display: grid; grid-template-columns: 72px minmax(0, 1fr) 72px; gap: 18px; align-items: center; justify-items: center; min-height: 0; }
-.lightbox-stage figure { display: grid; grid-template-rows: minmax(0, 1fr) auto; justify-items: center; gap: 14px; min-width: 0; min-height: 0; height: 100%; margin: 0; }
+.lightbox-stage figure { display: grid; grid-template-rows: minmax(0, 1fr) auto; justify-items: center; gap: 14px; min-width: 0; min-height: 0; height: 100%; margin: 0; touch-action: pan-y; }
 .lightbox-stage img { display: block; width: auto; height: 100%; max-width: 100%; max-height: calc(100dvh - 230px); object-fit: contain; border-radius: var(--radius-md); box-shadow: 0 8px 25px rgba(0, 0, 0, .3); }
 .lightbox-stage figcaption { color: rgba(255, 255, 255, .88); text-align: center; font-size: 15px; line-height: 1.6; }
 .lightbox-arrow { display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .14); color: #fff; cursor: pointer; text-decoration: none; }

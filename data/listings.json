@@ -499,7 +499,7 @@
             "本示範網站不接收個人資料或疑似謠言投稿。"
           ],
           "dateLabel": "FOREVER",
-          "tag": "闢謠志工招募",
+          "tag": "共同維護資訊生態",
           "cta": "加入 LINE",
           "tone": "cyan",
           "href": "https://line.me/R/ti/p/%40tfctaiwan"
@@ -515,7 +515,7 @@
         "titleAccent": "拒絕深偽造假",
         "principlesTitle": "自律公約承諾原則：二不二要",
         "casesTitle": "真實受害案例",
-        "fullTextUrl": "/reports/deepfake-pledge",
+        "fullTextUrl": "https://tfc-taiwan.org.tw/election2026/reject-deepfake-election-disinformation-self-regulation-charter",
         "reasons": [
           {
             "title": "深偽傷害選舉公平",

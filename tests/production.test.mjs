@@ -43,8 +43,10 @@ test('built static pages contain body content and unique head metadata', async (
     assert.match(html, /<h1[^>]*>[\s\S]+?<\/h1>/);
     if (path === 'index.html') {
       assert.match(html, /class="pledge-description pledge-description-embedded"[\s\S]*?<p>[\s\S]*?<\/p>[\s\S]*?<p>[\s\S]*?<\/p>/);
-      assert.ok(html.includes('href="/reports/deepfake-pledge"'));
-      assert.ok(html.includes('閱讀完整倡議說明'));
+      assert.ok(html.includes('href="https://tfc-taiwan.org.tw/election2026/reject-deepfake-election-disinformation-self-regulation-charter"'));
+      assert.ok(html.includes('閱讀完整內容'));
+      assert.ok(!html.includes('上一則案例'));
+      assert.ok(!html.includes('暫停案例輪播'));
     } else if (path === 'reports/deepfake-pledge/index.html') {
       assert.match(html, /<article class="pledge-page section-padding">/);
       assert.ok(html.includes('自律公約承諾原則：二不二要'));
@@ -164,12 +166,13 @@ test('broken editorial JSON returns a non-indexable 503, then recovers after cor
 });
 
 
-test('homepage embeds the initiative with accessible ticker controls and one page title', async () => {
+test('homepage embeds the initiative with automatic case rotation and one page title', async () => {
   const html = await readFile('dist/index.html', 'utf8');
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
   assert.ok(html.includes('pledge-embedded'));
   assert.ok(html.includes('真實受害案例'));
-  for (const label of ['上一則案例', '下一則案例', '暫停案例輪播']) assert.ok(html.includes(label));
+  for (const label of ['上一則案例', '下一則案例', '暫停案例輪播']) assert.ok(!html.includes(label));
+  assert.ok(html.includes('閱讀完整內容'));
 });
 
 test('toolkit has publication-only metadata and consistent return navigation', async () => {

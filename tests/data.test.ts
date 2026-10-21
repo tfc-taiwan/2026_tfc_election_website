@@ -98,8 +98,13 @@ test('provided covers match reports while unfilled dates stay absent', () => {
 test('deepfake pledge overview has paragraph breaks and a working full article route', () => {
   const initiative = data.sections.initiative!;
   assert.deepEqual(initiative.description.split(/\n\s*\n/).length, 2);
-  assert.equal(initiative.content?.fullTextUrl, '/reports/deepfake-pledge');
+  assert.equal(initiative.content?.fullTextUrl, 'https://tfc-taiwan.org.tw/election2026/reject-deepfake-election-disinformation-self-regulation-charter');
   assert.ok(data.stories.some(story => story.slug === 'deepfake-pledge'));
+});
+
+test('learning guide and community activity use the requested destinations and label', () => {
+  assert.equal(data.sections.learning.resources?.find(item => item.title === '選舉訊息繁雜，三大正確資訊管道報你知')?.href, '/reports/reliable-taiwan-election-information-channels-explained');
+  assert.equal(data.sections.activities.items.find(item => item.id === 'community')?.tag, '共同維護資訊生態');
 });
 
 test('standalone infographic cards resolve without inventing an article', () => {
