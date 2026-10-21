@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "isMock": true,
+  "isMock": false,
   "slug": "taiwan-2026-election-voting-notice-ballots-guide",
   "seo": {
     "title": "【2026選舉查知識】選前準備篇：選票與通知單的那些事",
@@ -12,7 +12,7 @@
       "height": 1040,
       "type": "image/png"
     },
-    "noindex": true,
+    "noindex": false,
     "authorType": "Organization"
   },
   "kind": "guide",

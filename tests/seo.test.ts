@@ -36,11 +36,12 @@ test('each article gets its own canonical, description, share image, author, dat
 });
 
 test('mock mode remains noindex even with a public origin, and does not advertise mock URLs', () => {
-  assert.equal(buildSeo(data, '/', null, context).robots, 'noindex, nofollow');
-  assert.equal(buildSeo(data, '/reports/ai-voice', report, context).robots, 'noindex, nofollow');
-  assert.ok(!sitemapXml(data, reports, context).includes('<loc>'));
-  assert.ok(!robotsTxt(data, context).includes('Disallow: /'));
-  assert.ok(!robotsTxt(data, context).includes('Sitemap:'));
+  const mock = structuredClone(data); mock.isMock = true;
+  assert.equal(buildSeo(mock, '/', null, context).robots, 'noindex, nofollow');
+  assert.equal(buildSeo(mock, '/reports/ai-voice', report, context).robots, 'noindex, nofollow');
+  assert.ok(!sitemapXml(mock, reports, context).includes('<loc>'));
+  assert.ok(!robotsTxt(mock, context).includes('Disallow: /'));
+  assert.ok(!robotsTxt(mock, context).includes('Sitemap:'));
 });
 
 test('each infographic card has its own page metadata and share image', async () => {
@@ -100,4 +101,13 @@ test('metadata and embedded JSON escape executable markup and preserve text', ()
   assert.equal(JSON.parse(serialized).attack, attack);
   assert.equal(normalizeSiteUrl('https://election.example.org/'), context.siteUrl);
   for (const url of ['javascript:alert(1)', 'https://user:secret@example.org', 'https://example.org/path', 'https://example.org?track=1']) assert.throws(() => normalizeSiteUrl(url));
+});
+
+
+test('preview profile stays noindex even with approved public content and production canonical', () => {
+  const preview = { ...context, isPreview: true };
+  assert.equal(buildSeo(data, '/', null, preview).robots, 'noindex, nofollow');
+  assert.equal(buildSeo(data, `/reports/${report.slug}`, report, preview).robots, 'noindex, nofollow');
+  assert.ok(!sitemapXml(data, reports, preview).includes('<loc>'));
+  assert.match(buildSeo(data, '/', null, context).robots, /^index, follow/);
 });

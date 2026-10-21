@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "isMock": true,
+  "isMock": false,
   "seo": {
     "siteUrl": null,
     "language": "zh-Hant",
@@ -10,7 +10,7 @@
       "description": "台灣事實查核中心「2026選舉工具箱」，掌握九合一選舉與公投的即時查核報告、破解常見謠言，以及查核中心發起的「拒絕深偽造假自律倡議」。拒絕資訊操弄！看懂訊息，做出知情的選擇。",
       "image": {
         "src": "/images/og/home.png",
-        "alt": "2026 選舉工具箱：查核報告、資訊判讀與查核學堂示範網站",
+        "alt": "2026 選舉工具箱：查核報告、資訊判讀與查核學堂專區",
         "width": 1200,
         "height": 630,
         "type": "image/png"
@@ -19,7 +19,7 @@
     },
     "reports": {
       "title": "查核報告列表｜台灣事實查核中心 2026 選舉工具箱",
-      "description": "瀏覽地方選舉與公投議題的示範查核報告，依分類探索音訊、圖片、數據與選務訊息的查證過程。",
+      "description": "瀏覽地方選舉與公投議題的查核報告，依分類探索音訊、圖片、數據與選務訊息的查證過程。",
       "image": {
         "src": "/images/og/home.png",
         "alt": "2026 選舉工具箱查核報告列表",
@@ -34,7 +34,7 @@
     "name": "台灣事實查核中心",
     "englishName": "Taiwan FactCheck Center",
     "title": "2026 選舉工具箱",
-    "notice": "預覽版本・部分文章與活動資料仍待編輯確認後正式發布",
+    "notice": "測試網站・此版本僅供預覽，請以正式官網為準。",
     "footer": "© 2026 台灣事實查核中心 Taiwan FactCheck Center",
     "socialLinks": [
       {
@@ -236,13 +236,27 @@
       "tone": "cyan"
     },
     {
+      "slug": "reject-deepfake-election-disinformation-self-regulation-charter",
+      "kind": "analysis",
+      "category": "深偽倡議",
+      "title": "「維護選舉公平，拒絕深偽造假」自律公約",
+      "description": "台灣事實查核中心倡議：政治人物承諾不以AI深偽攻擊對手。",
+      "date": "2026-10-21",
+      "image": null,
+      "tag": "選舉工具箱",
+      "tone": "cyan"
+    },
+    {
       "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover",
       "kind": "report",
       "category": "地方選舉",
       "title": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成",
       "description": "網傳封面圖經AI編輯變造，《時代雜誌》最新一期封面人物為美國太平洋司令部司令",
       "date": "2026-10-12",
-      "image": null,
+      "image": {
+        "src": "/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg",
+        "alt": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成"
+      },
       "tag": "政治與政策",
       "tone": "magenta",
       "verdict": "錯誤"
@@ -254,7 +268,10 @@
       "title": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過",
       "description": "曾有立委於2020年提案修法，但並未完成三讀",
       "date": "2026-10-12",
-      "image": null,
+      "image": {
+        "src": "/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg",
+        "alt": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過"
+      },
       "tag": "政治與政策",
       "tone": "cyan",
       "verdict": "部分錯誤"
@@ -495,8 +512,7 @@
           "title": "傳 LINE 給我們，一起守護民主環境",
           "description": "看到不明傳言，請傳給我們，並將正確澄清反饋給親友，讓可靠資訊回到日常對話！",
           "content": [
-            "收到可疑訊息時，先保存原文、確認出處與時間，再決定是否分享。",
-            "本示範網站不接收個人資料或疑似謠言投稿。"
+            "收到可疑訊息時，先保存原文、確認出處與時間，再決定是否分享。"
           ],
           "dateLabel": "FOREVER",
           "tag": "共同維護資訊生態",
@@ -515,7 +531,7 @@
         "titleAccent": "拒絕深偽造假",
         "principlesTitle": "自律公約承諾原則：二不二要",
         "casesTitle": "真實受害案例",
-        "fullTextUrl": "https://tfc-taiwan.org.tw/election2026/reject-deepfake-election-disinformation-self-regulation-charter",
+        "fullTextUrl": "/reports/reject-deepfake-election-disinformation-self-regulation-charter",
         "reasons": [
           {
             "title": "深偽傷害選舉公平",

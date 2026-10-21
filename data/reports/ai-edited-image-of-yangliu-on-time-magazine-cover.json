@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "isMock": true,
+  "isMock": false,
   "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover",
   "seo": {
     "title": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成｜2026 選舉工具箱",
     "description": "網傳封面圖經AI編輯變造，《時代雜誌》最新一期封面人物為美國太平洋司令部司令",
     "image": {
-      "src": "/images/og/ai-edited-image-of-yangliu-on-time-magazine-cover.png",
+      "src": "/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg",
       "alt": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成",
-      "width": 1200,
-      "height": 630,
-      "type": "image/png"
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
     },
-    "noindex": true,
+    "noindex": false,
     "authorType": "Person"
   },
   "kind": "report",
@@ -29,7 +29,10 @@
   "reportId": "4352",
   "reporter": "曾慧雯",
   "editor": "陳偉婷",
-  "image": null,
+  "image": {
+    "src": "/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg",
+    "alt": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成"
+  },
   "imageCaption": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成",
   "summaryPoints": [
     "近日網路流傳「洋流登上時代雜誌封面」圖片；經查證，網傳圖片並非《時代雜誌》最新一期封面，而是造勢場合照片經AI編輯加工而成。",

@@ -6,7 +6,7 @@ import { readListings, readReports, renderPage, robotsTxt, sitemapXml, infograph
 const root = process.cwd();
 const mountPath = (process.env.PUBLIC_BASE_PATH || '/').replace(/\/+$/, '');
 const env = loadEnv('production', root, 'SITE_');
-const context = { siteUrl: process.env.SITE_URL || env.SITE_URL || null, previewOrigin: 'http://localhost:4173' };
+const context = { siteUrl: process.env.SITE_URL || env.SITE_URL || null, previewOrigin: 'http://localhost:4173', isPreview: process.env.DEPLOYMENT_ENV === 'preview' };
 const sourceDir = resolve(root, 'data');
 let template = await readFile(resolve(root, 'dist/index.html'), 'utf8');
 if (template.includes('<!--app-html-->')) await writeFile(resolve(root, '.server/template.html'), template);

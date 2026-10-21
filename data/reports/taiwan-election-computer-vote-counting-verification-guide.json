@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "isMock": true,
+  "isMock": false,
   "slug": "taiwan-election-computer-vote-counting-verification-guide",
   "seo": {
     "title": "【2026選舉查知識】選後開票篇：計票系統與查驗機制｜2026 選舉工具箱",
@@ -12,7 +12,7 @@
       "height": 1040,
       "type": "image/png"
     },
-    "noindex": true,
+    "noindex": false,
     "authorType": "Organization"
   },
   "kind": "guide",

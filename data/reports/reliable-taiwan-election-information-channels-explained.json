@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "isMock": true,
+  "isMock": false,
   "slug": "reliable-taiwan-election-information-channels-explained",
   "seo": {
     "title": "選舉訊息繁雜，三大正確資訊管道報你知｜2026 選舉工具箱",
@@ -12,7 +12,7 @@
       "height": 1040,
       "type": "image/png"
     },
-    "noindex": true,
+    "noindex": false,
     "authorType": "Organization"
   },
   "kind": "guide",

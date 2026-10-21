@@ -27,7 +27,7 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run test:production
-      - run: npm run build:worker
+      - run: npm run build:worker:preview
       - uses: actions/upload-artifact@v4
         if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/review/v10-infographic-galleries' || github.ref == 'refs/heads/review/v11-local-preview') && github.event_name != 'pull_request'
         with:
@@ -63,4 +63,4 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: a1bad46d553cafed5f25a324dbc854d7
       - name: Verify deployed preview
-        run: node scripts/verify-deployment.mjs https://tfc-election2026.tfc-taiwan-org.workers.dev
+        run: node scripts/verify-deployment.mjs https://tfc-election2026-preview.tfc-taiwan-org.workers.dev preview

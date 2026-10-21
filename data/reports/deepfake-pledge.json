@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "isMock": true,
+  "isMock": false,
   "slug": "deepfake-pledge",
   "seo": {
     "title": "維護選舉公平，拒絕深偽造假｜2026 選舉工具箱",
     "description": "因應深偽內容在全球選舉帶來的風險，台灣事實查核中心與MyGoPen、Cofacts等查核組織共同發起倡議，呼籲政黨、候選人與競選團隊拒絕使用深偽內容攻擊政治對手。",
     "image": {
       "src": "/images/og/home.png",
-      "alt": "2026 選舉工具箱：查核報告、資訊判讀與查核學堂示範網站",
+      "alt": "2026 選舉工具箱：查核報告、資訊判讀與查核學堂專區",
       "width": 1200,
       "height": 630,
       "type": "image/png"
@@ -40,10 +40,10 @@
   "background": {
     "id": "background",
     "title": "倡議理念",
-      "paragraphs": [
-        "因應深偽內容在全球選舉帶來的風險，台灣事實查核中心與MyGoPen、Cofacts等查核組織共同發起倡議，呼籲政黨、候選人與競選團隊拒絕使用深偽內容攻擊政治對手。",
-        "本公約並非要求各界停止使用 AI，亦無意限制政治嘲諷、漫畫、梗圖或明顯可知為虛構之創作自由；我們反對的是「以假亂真、客觀上足以使人誤認為真，進而干擾選舉公平之惡意深偽」。"
-      ]
+    "paragraphs": [
+      "因應深偽內容在全球選舉帶來的風險，台灣事實查核中心與MyGoPen、Cofacts等查核組織共同發起倡議，呼籲政黨、候選人與競選團隊拒絕使用深偽內容攻擊政治對手。",
+      "本公約並非要求各界停止使用 AI，亦無意限制政治嘲諷、漫畫、梗圖或明顯可知為虛構之創作自由；我們反對的是「以假亂真、客觀上足以使人誤認為真，進而干擾選舉公平之惡意深偽」。"
+    ]
   },
   "checkSections": [
     {
@@ -64,7 +64,7 @@
     "titleAccent": "拒絕深偽造假",
     "principlesTitle": "自律公約承諾原則：二不二要",
     "casesTitle": "真實受害案例",
-    "fullTextUrl": "https://tfc-taiwan.org.tw/election2026/reject-deepfake-election-disinformation-self-regulation-charter",
+    "fullTextUrl": "/reports/reject-deepfake-election-disinformation-self-regulation-charter",
     "reasons": [
       {
         "title": "深偽傷害選舉公平",

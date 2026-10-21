@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "isMock": true,
+  "isMock": false,
   "slug": "fake-infographic-26-chinese-spouses-running-for-chief",
   "seo": {
     "title": "網傳「26名中配參選里長」圖卡的參選人照片是AI生成 內容多處錯誤｜2026 選舉工具箱",
@@ -12,7 +12,7 @@
       "height": 1040,
       "type": "image/jpeg"
     },
-    "noindex": true,
+    "noindex": false,
     "authorType": "Person"
   },
   "kind": "report",
