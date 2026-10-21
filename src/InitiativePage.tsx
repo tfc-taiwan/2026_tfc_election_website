@@ -11,6 +11,7 @@ export function InitiativePanel({ page, description, title, embedded = false }: 
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
   const [engaged, setEngaged] = useState(false);
+  const descriptionParagraphs = description.split(/\n\s*\n/).map(paragraph => paragraph.trim()).filter(Boolean);
   useEffect(() => {
     if (paused || engaged || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = window.setInterval(() => setCurrent(value => (value + 1) % page.cases.length), 2500);
@@ -19,18 +20,20 @@ export function InitiativePanel({ page, description, title, embedded = false }: 
   function move(step: number) { setCurrent(value => (value + step + page.cases.length) % page.cases.length); }
   return <Container className={`pledge-page ${embedded ? 'pledge-embedded' : 'section-padding'}`}>
     {!embedded && <nav className="breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><Link to="/#initiative">深偽倡議</Link></nav>}
-    {embedded && <div className="section-heading"><div><h2 id="initiative-title">{title}</h2><p>{description}</p></div></div>}
+    {embedded && <div className="section-heading"><div><h2 id="initiative-title">{title}</h2><div className="pledge-description pledge-description-embedded">{descriptionParagraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div></div></div>}
     <div className="pledge-columns">
       <div className="pledge-intro">
         {!embedded && <span className="pledge-eyebrow">{page.eyebrow}</span>}
         {!embedded && <Heading className="pledge-title">{page.titlePrefix}<span>{page.titleAccent}</span></Heading>}
-        {!embedded && <p className="pledge-lead">{description}</p>}
+        {!embedded && <div className="pledge-description pledge-lead">{descriptionParagraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div>}
         <ol className="pledge-reasons">{page.reasons.map((reason, index) => <li key={reason.title}><span className="pledge-number" aria-hidden="true">{index + 1}</span><div><Subheading>{reason.title}</Subheading><p>{reason.description}</p></div></li>)}</ol>
       </div>
       <section className="pledge-paper" aria-labelledby="pledge-principles-title">
         <Subheading id="pledge-principles-title"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="M12 3 3 6v5c0 5 5 9 9 10 4-1 9-5 9-10V6l-9-3Z"/><path d="m8 12 3 3 5-6"/></svg>{page.principlesTitle}</Subheading>
         {page.groups.map((group, index) => <section className={`pledge-group pledge-group-${index}`} key={group.title}><h3><span aria-hidden="true">{index === 0 ? '×' : '✓'}</span>{group.title}</h3><ul>{group.items.map(item => <li key={item}>{item}</li>)}</ul></section>)}
-        {page.fullTextUrl && <a className="button primary pledge-fulltext" href={page.fullTextUrl} target="_blank" rel="noopener noreferrer">瀏覽完整倡議全文 ↗<span className="sr-only">（開啟新視窗）</span></a>}
+        {embedded && page.fullTextUrl && (page.fullTextUrl.startsWith('/')
+          ? <Link className="button primary pledge-fulltext" to={page.fullTextUrl}>閱讀完整倡議說明 →</Link>
+          : <a className="button primary pledge-fulltext" href={page.fullTextUrl} target="_blank" rel="noopener noreferrer">瀏覽完整倡議全文 ↗<span className="sr-only">（開啟新視窗）</span></a>)}
       </section>
     </div>
     <section className="pledge-ticker" aria-label={page.casesTitle} onMouseEnter={() => setEngaged(true)} onMouseLeave={() => setEngaged(false)} onFocusCapture={() => setEngaged(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setEngaged(false); }}>
