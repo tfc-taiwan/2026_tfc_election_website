@@ -151,7 +151,7 @@
   },
   "stories": [
     {
-      "slug": "26-chinese-spouses",
+      "slug": "fake-infographic-26-chinese-spouses-running-for-chief",
       "kind": "report",
       "category": "地方選舉",
       "title": "網傳「26名中配參選里長」圖卡的參選人照片是AI生成 內容多處錯誤",
@@ -166,12 +166,12 @@
       "verdict": "錯誤"
     },
     {
-      "slug": "ballot-paper",
+      "slug": "taiwan-electricity-price-no-hike-2026q4",
       "kind": "report",
       "category": "地方選舉",
       "title": "10月至12月全國平均電價維持3.7823元，沒有調漲",
       "description": "經濟部已在9月底決議暫不調整，目前電價沒有調漲",
-      "date": null,
+      "date": "2026-09-23",
       "image": {
         "src": "/images/covers/4324-1.jpg",
         "alt": "經濟部已在9月底決議暫不調整，目前電價沒有調漲"
@@ -181,12 +181,12 @@
       "verdict": "錯誤"
     },
     {
-      "slug": "early-voting",
+      "slug": "tree-brown-root-rot-treatment-no-concrete-needed",
       "kind": "report",
       "category": "地方選舉",
       "title": "樹木染褐根病，不需要用水泥封樹穴",
       "description": "樹木若染褐根病，正確作法是完整移除病根、配合殺菌，並不需要覆蓋水泥",
-      "date": null,
+      "date": "2026-09-21",
       "image": {
         "src": "/images/covers/4322-1.jpg",
         "alt": "樹木若染褐根病，正確作法是完整移除病根、配合殺菌，並不需要覆蓋水泥"
@@ -196,12 +196,12 @@
       "verdict": "錯誤"
     },
     {
-      "slug": "election-message",
+      "slug": "china-xiamen-bridge-does-not-reach-kinmen",
       "kind": "report",
       "category": "地方選舉",
       "title": "中國廈金大橋僅能連結廈門兩島，無法直通金門",
       "description": "僅能連結廈門兩島，無法直通金門",
-      "date": null,
+      "date": "2026-09-03",
       "image": {
         "src": "/images/covers/4300-1.jpg",
         "alt": "僅能連結廈門兩島，無法直通金門"
@@ -211,7 +211,7 @@
       "verdict": "錯誤"
     },
     {
-      "slug": "election-prepare",
+      "slug": "taiwan-2026-election-voting-notice-ballots-guide",
       "kind": "guide",
       "category": "選舉工具箱",
       "title": "【2026選舉查知識】選前準備篇：選票與通知單的那些事",
@@ -234,26 +234,100 @@
       "image": null,
       "tag": "自律公約倡議",
       "tone": "cyan"
+    },
+    {
+      "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成",
+      "description": "網傳封面圖經AI編輯變造，《時代雜誌》最新一期封面人物為美國太平洋司令部司令",
+      "date": "2026-10-12",
+      "image": null,
+      "tag": "政治與政策",
+      "tone": "magenta",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "five-star-flag-fine-2020-proposal-not-passed",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過",
+      "description": "曾有立委於2020年提案修法，但並未完成三讀",
+      "date": "2026-10-12",
+      "image": null,
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "部分錯誤"
+    },
+    {
+      "slug": "2026-taiwan-election-polling-station-supervision-guide",
+      "kind": "guide",
+      "category": "選舉工具箱",
+      "title": "【2026選舉查知識】選中投票篇：投開票所的運作與監督",
+      "description": "投票日當天，投開票所的秩序與防弊機制是選民最關心的核心。透過了解現場的人力配置與標準作業流程，能有效破除對投票過程的疑慮。",
+      "date": "2026-10-16",
+      "image": {
+        "src": "/images/imported/80c02fbe0900a8b431af2510cfac976b6d39180eeee0251e19e87b68270880e1.png",
+        "alt": "【2026選舉查知識】選中投票篇：投開票所的運作與監督"
+      },
+      "tag": "選舉工具箱",
+      "tone": "magenta"
+    },
+    {
+      "slug": "taiwan-election-computer-vote-counting-verification-guide",
+      "kind": "guide",
+      "category": "選舉工具箱",
+      "title": "【2026選舉查知識】選後開票篇：計票系統與查驗機制",
+      "description": "選舉結束後的開票與計票階段，往往是假訊息滋生的溫床。了解計票原理與查驗方式，才能確保對選舉結果的信任。",
+      "date": "2026-10-16",
+      "image": {
+        "src": "/images/imported/8d1894844966a9be6fef482810fece90837376e381b10b4957773598e398d0ce.png",
+        "alt": "【2026選舉查知識】選後開票篇：計票系統與查驗機制"
+      },
+      "tag": "選舉工具箱",
+      "tone": "cyan"
+    },
+    {
+      "slug": "reliable-taiwan-election-information-channels-explained",
+      "kind": "guide",
+      "category": "選舉工具箱",
+      "title": "選舉訊息繁雜，三大正確資訊管道報你知",
+      "description": "為了避免受到網路謠言的誤導，建議透過以下三大類具公信力的正當管道來獲取與查證資訊。",
+      "date": "2026-10-16",
+      "image": {
+        "src": "/images/imported/d3c78380fd6358a9a1856e7da7ade105ab14e842e07943f7e15cb33a8e117ec0.png",
+        "alt": "選舉訊息繁雜，三大正確資訊管道報你知"
+      },
+      "tag": "選舉工具箱",
+      "tone": "magenta"
     }
   ],
   "sections": {
     "reports": {
-      "title": "即時查核報告",
+      "title": "最新查核報告",
       "categories": [
-        "地方選舉"
+        "地方選舉",
+        "公投議題",
+        "辯論會即時查核"
       ],
       "items": [
         {
-          "slug": "26-chinese-spouses"
+          "slug": "fake-infographic-26-chinese-spouses-running-for-chief"
         },
         {
-          "slug": "ballot-paper"
+          "slug": "taiwan-electricity-price-no-hike-2026q4"
         },
         {
-          "slug": "early-voting"
+          "slug": "tree-brown-root-rot-treatment-no-concrete-needed"
         },
         {
-          "slug": "election-message"
+          "slug": "china-xiamen-bridge-does-not-reach-kinmen"
+        },
+        {
+          "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover"
+        },
+        {
+          "slug": "five-star-flag-fine-2020-proposal-not-passed"
         }
       ]
     },
@@ -267,16 +341,24 @@
       "description": "戳破謠言動態，快速掌握查證方法與資訊判讀重點！",
       "items": [
         {
-          "title": "一分鐘掌握：先查來源，再判讀內容",
-          "url": "https://www.youtube.com/watch?v=GoRukYrdkdE"
+          "title": "紙箱票匭方便作票？破解選舉老謠言！",
+          "url": "https://www.youtube.com/shorts/kXQ61YShNXo"
         },
         {
-          "title": "事實查核必修課：辨識資訊真偽",
-          "url": "https://www.youtube.com/watch?v=63hT8oS83Vo"
+          "title": "26名中配將參選里長？網傳圖卡為AI生成且多處錯誤",
+          "url": "https://www.youtube.com/shorts/MAwC3ke7MFU"
         },
         {
-          "title": "查核中心如何維持獨立與透明",
-          "url": "https://www.youtube.com/watch?v=vGsTY_ct1eI"
+          "title": "每年補助移工小孩20億？這是源自錯誤報導的老謠言",
+          "url": "https://www.youtube.com/shorts/ehcxxdCNASc"
+        },
+        {
+          "title": "中國稱賴清德演練逃亡？實為「萬鈞演練」總統前往指揮所",
+          "url": "https://www.youtube.com/shorts/x8XBC_BLPb0"
+        },
+        {
+          "title": "台北砍樹路段跟中國模擬攻台路線一模一樣？傳言說法穿鑿附會",
+          "url": "https://www.youtube.com/shorts/vnj3INJwcNU"
         }
       ]
     },
@@ -298,6 +380,12 @@
           "question": "劇本二：選票上會沾隱形墨水？",
           "answer": "印刷、特殊油墨專家指出，投票使用一般快乾印台，隱形墨水的原理難以在選務實務實現。根據選舉手冊規定，圈選工具由各地選委會統一製備，民眾也無須自帶印台。",
           "href": "https://tfc-taiwan.org.tw/fact-check-reports/no-need-to-bring-ink-pad-to-vote-in-taiwan/"
+        },
+        {
+          "id": "election-commission-control",
+          "question": "劇本三：中選會可以控制各地選委會、沒收選舉？",
+          "answer": "各地選委會主管是地方官員，各地政府有自主性，不太可能都被中選會操控。\n\n另外，投開票有多重防弊機制，每個投開票所至少有13個工作人員組成，此外還有2個不同政黨推薦的監察員負責監票。如果想作票，至少要串通工作人員、監票員，還有現場所有民眾，只要有1人不合作，就很難成功。",
+          "href": "https://tfc-taiwan.org.tw/fact-check-reports/migration-8332/"
         }
       ]
     },
@@ -313,7 +401,7 @@
           ],
           "icon": "document",
           "tone": "cyan",
-          "href": "/reports/election-prepare"
+          "href": "/reports/taiwan-2026-election-voting-notice-ballots-guide"
         },
         {
           "id": "voting",
@@ -323,7 +411,8 @@
             "投票日當天，投開票所的秩序與防弊機制是選民最關心的核心。了解現場人力配置與標準作業流程，能有效破除對投票過程的疑慮。"
           ],
           "icon": "calendar",
-          "tone": "magenta"
+          "tone": "magenta",
+          "href": "/reports/2026-taiwan-election-polling-station-supervision-guide"
         },
         {
           "id": "counting",
@@ -333,7 +422,8 @@
             "選舉結束後的開票與計票階段，往往是假訊息滋生的溫床。了解計票原理與查驗方式，才能確保對選舉結果的信任。"
           ],
           "icon": "check",
-          "tone": "cyan"
+          "tone": "cyan",
+          "href": "/reports/taiwan-election-computer-vote-counting-verification-guide"
         }
       ]
     },
@@ -343,26 +433,14 @@
       "resources": [
         {
           "title": "選舉訊息繁雜，三大正確資訊管道報你知",
-          "description": "尋找官方公告與有依據的查核；文章與連結待編輯台補入。"
+          "description": "為了避免受到網路謠言的誤導，建議透過以下三大類具公信力的正當管道來獲取與查證資訊。",
+          "href": "/reports/reliable-taiwan-election-information-channels-explained"
         }
       ]
     },
     "activities": {
       "title": "查核中心工作動態",
       "items": [
-        {
-          "id": "workshop",
-          "title": "看懂選舉假訊息：資訊判讀工作坊",
-          "description": "從日常訊息出發，練習找來源、看證據、讀脈絡。",
-          "content": [
-            "這是一場虛構的示範活動，沒有開放報名。",
-            "預計內容包含圖片來源查找、音訊查核觀念與小組練習；正式活動資訊可在這份 JSON 中替換。"
-          ],
-          "dateLabel": "10/12",
-          "tag": "線上講座",
-          "cta": "查看活動",
-          "tone": "cyan"
-        },
         {
           "id": "weekly",
           "title": "【解析 2026】選前謠言動態大解密",
@@ -375,6 +453,17 @@
           "cta": "點我閱讀",
           "tone": "magenta",
           "href": "https://tfc-taiwan.org.tw/category/weekly-top-ten-rumors/"
+        },
+        {
+          "id": "deepfake-press-conference",
+          "dateLabel": "10/28",
+          "title": "深偽倡議媒體記者會",
+          "description": "台灣事實查核中心與媒體、公民團體攜手倡議：政治人物承諾不以AI深偽攻擊對手",
+          "content": [
+            "台灣事實查核中心與媒體、公民團體攜手倡議：政治人物承諾不以AI深偽攻擊對手"
+          ],
+          "tag": "自律公約倡議",
+          "tone": "cyan"
         },
         {
           "id": "debate",
@@ -419,7 +508,7 @@
       ]
     },
     "initiative": {
-      "title": "「維護選舉公平，拒絕深偽造假」自律公約倡議",
+      "title": "自律公約倡議｜維護選舉公平，拒絕深偽造假",
       "description": "因應深偽內容在全球選舉帶來的風險，台灣事實查核中心與MyGoPen、Cofacts等查核組織共同發起倡議，呼籲政黨、候選人與競選團隊拒絕使用深偽內容攻擊政治對手。",
       "content": {
         "eyebrow": "自律公約倡議",
@@ -532,7 +621,24 @@
       "slugs": [],
       "items": [],
       "title": "圖卡懶人包",
-      "description": "視覺化知識，直接左右滑動瀏覽吧！"
+      "description": "視覺化知識，直接左右滑動瀏覽吧！",
+      "pendingItems": [
+        {
+          "slug": "paper-ballot-box",
+          "title": "紙箱票匭",
+          "count": 6
+        },
+        {
+          "slug": "2025-recall-vote",
+          "title": "大罷免投票",
+          "count": 5
+        },
+        {
+          "slug": "2025-maanshan-nuclear-referendum",
+          "title": "核能公投",
+          "count": 6
+        }
+      ]
     }
   }
 }

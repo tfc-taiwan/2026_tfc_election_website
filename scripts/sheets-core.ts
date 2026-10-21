@@ -8,7 +8,7 @@ const order = f('order', '順序', 'number', undefined, 70);
 const slug = f('slug', 'slug', 'text', undefined, 180);
 const tone = f('tone', '色系', 'text', ['cyan', 'magenta'], 110);
 const imageFields = [f('image.src', '圖片路徑'), f('image.alt', '圖片替代文字')];
-const common = [slug, f('kind', '類型', 'text', ['report', 'analysis', 'guide'], 115), f('category', '主題', 'optional', ['地方選舉', '深偽倡議', '公投議題', '選舉工具箱'], 115), f('title', '標題', 'text', undefined, 350)];
+const common = [slug, f('kind', '類型', 'text', ['report', 'analysis', 'guide'], 115), f('category', '主題', 'optional', ['地方選舉', '深偽倡議', '公投議題', '辯論會即時查核', '選舉工具箱'], 115), f('title', '標題', 'text', undefined, 350)];
 export const SHEETS: Record<string, Field[]> = {
   '網站設定': [f('key', '設定鍵', 'text', undefined, 260), f('value', '設定值', 'raw', undefined, 630)],
   '導覽': [order, f('label', '顯示文字'), f('href', '站內連結'), f('children', '下拉選單', 'optionalJson')],
@@ -31,7 +31,7 @@ const settingFields: Field[] = [
   ...['reports', 'analyses', 'rumors', 'scripts', 'process', 'learning', 'activities'].map(k => f(`sections.${k}.title`, '')),
   f('sections.reports.categories', '', 'lines'), f('sections.analyses.description', ''),
 ];
-const optionalSettingFields = [f('site.donationUrl', ''), f('hero.factsTitle', ''), f('sections.initiative', '', 'optionalJson'), f('sections.learning.resources', '', 'optionalJson'), f('sections.shorts.title', ''), f('sections.shorts.description', ''), f('sections.infographics.title', ''), f('sections.infographics.description', '')];
+const optionalSettingFields = [f('sections.infographics.pendingItems', '', 'optionalJson'), f('site.donationUrl', ''), f('hero.factsTitle', ''), f('sections.initiative', '', 'optionalJson'), f('sections.learning.resources', '', 'optionalJson'), f('sections.shorts.title', ''), f('sections.shorts.description', ''), f('sections.infographics.title', ''), f('sections.infographics.description', '')];
 
 const fail = (message: string): never => { throw new Error(message); };
 const has = (value: unknown) => value !== null && value !== undefined && value !== '';

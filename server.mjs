@@ -1,3 +1,4 @@
+import { reportAliases } from './src/report-aliases.ts';
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -29,10 +30,13 @@ const server = createServer(async (req, res) => {
     const url = new URL(req.url || '/', context.previewOrigin);
     let path;
     try { path = decodeURIComponent(url.pathname); } catch { return send(req, res, 400, 'text/plain; charset=utf-8', 'Invalid URL'); }
+    const legacyReport = /^\/reports\/([^/]+)\/?$/.exec(path);
+    const replacement = legacyReport && reportAliases[legacyReport[1]];
+    if (replacement) { res.statusCode = 308; res.setHeader('Location', '/reports/' + replacement + url.search); res.end(); return; }
     if (path === '/index.html' || path.length > 1 && path.endsWith('/')) {
       res.statusCode = 308; res.setHeader('Location', (path === '/index.html' ? '/' : path.replace(/\/+$/, '')) + url.search); res.end(); return;
     }
-    if (path.startsWith('/data/') || path.startsWith('/images/') || path.startsWith('/assets/') || path === '/favicon.svg') {
+    if (path.startsWith('/data/') || path.startsWith('/images/') || path.startsWith('/assets/') || ['/favicon.svg', '/favicon.ico', '/favicon-32.png', '/apple-touch-icon.png'].includes(path)) {
       const base = path.startsWith('/data/') ? dataDir : dist;
       const file = resolve(base, path.startsWith('/data/') ? path.slice(6) : `.${path}`);
       const within = relative(base, file);

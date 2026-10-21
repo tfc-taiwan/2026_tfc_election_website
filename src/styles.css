@@ -872,3 +872,27 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 
 @media(prefers-reduced-motion:reduce) { .pledge-ticker-copy > div:not([hidden]) { animation: none; }
  }
+
+/* Editorial preview: natural line wrapping and a full-width case text column. */
+.listing-intro { max-width: none; text-wrap: wrap; word-break: normal; overflow-wrap: break-word; }
+.pledge-embedded #initiative-title { text-wrap: wrap; line-height: 1.5; }
+.pledge-ticker { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; }
+.pledge-ticker-copy { width: 100%; min-width: 0; }
+.pledge-ticker-copy p { max-width: none; width: 100%; }
+.pledge-ticker-controls { margin: 0; }
+@media (max-width: 900px) {
+  .pledge-ticker { grid-template-columns: minmax(0, 1fr) auto; }
+  .pledge-ticker > :is(h2,h3) { grid-column: 1 / -1; width: 100%; }
+  .pledge-ticker-controls { width: auto; border-top: 0; border-left: 1px solid var(--ink-10); }
+}
+@media (max-width: 600px) {
+  .pledge-ticker { grid-template-columns: minmax(0, 1fr); }
+  .pledge-ticker-controls { width: 100%; border-left: 0; border-top: 1px solid var(--ink-10); }
+}
+
+/* Keep date labels and FOREVER intact without breaking the activity layout. */
+.activity-date { flex-basis: 148px; white-space: nowrap; overflow-wrap: normal; word-break: normal; font-size: clamp(24px, 2.4vw, 30px); }
+@media (max-width: 700px) { .activity-date { flex-basis: auto; } }
+
+.pending-gallery-list { display: flex; flex-wrap: wrap; gap: 12px; padding: 0; margin-top: 20px; list-style: none; }
+.pending-gallery-list li { padding: 12px 16px; border: 1px solid var(--ink-10); border-radius: var(--radius-md); color: var(--brand-blue); }

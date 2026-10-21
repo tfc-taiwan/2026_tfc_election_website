@@ -4,7 +4,7 @@ import type { Report } from './data';
 
 /** An article-specific layout; all editorial text remains in its report JSON. */
 type InitiativeContent = NonNullable<Report['initiativeContent']>;
-export function InitiativePanel({ page, description, isMock, embedded = false }: { page: InitiativeContent; description: string; isMock: boolean; embedded?: boolean }) {
+export function InitiativePanel({ page, description, title, embedded = false }: { page: InitiativeContent; description: string; isMock: boolean; title?: string; embedded?: boolean }) {
   const Container = embedded ? 'div' : 'article';
   const Heading = embedded ? 'h3' : 'h1';
   const Subheading = embedded ? 'h3' : 'h2';
@@ -13,18 +13,17 @@ export function InitiativePanel({ page, description, isMock, embedded = false }:
   const [engaged, setEngaged] = useState(false);
   useEffect(() => {
     if (paused || engaged || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const timer = window.setInterval(() => setCurrent(value => (value + 1) % page.cases.length), 6000);
+    const timer = window.setInterval(() => setCurrent(value => (value + 1) % page.cases.length), 2500);
     return () => window.clearInterval(timer);
   }, [paused, engaged, page.cases.length]);
   function move(step: number) { setCurrent(value => (value + step + page.cases.length) % page.cases.length); }
   return <Container className={`pledge-page ${embedded ? 'pledge-embedded' : 'section-padding'}`}>
     {!embedded && <nav className="breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><Link to="/#initiative">深偽倡議</Link></nav>}
-    {isMock && <p className="pledge-review-note" role="note">預覽版本：倡議與案例依提供文件呈現，來源與內容尚待編輯確認。</p>}
-    {embedded && <div className="section-heading"><div><h2 id="initiative-title">深偽專區</h2><p>{description}</p></div></div>}
+    {embedded && <div className="section-heading"><div><h2 id="initiative-title">{title}</h2><p>{description}</p></div></div>}
     <div className="pledge-columns">
       <div className="pledge-intro">
-        <span className="pledge-eyebrow">{page.eyebrow}</span>
-        <Heading className="pledge-title">{page.titlePrefix}<span>{page.titleAccent}</span></Heading>
+        {!embedded && <span className="pledge-eyebrow">{page.eyebrow}</span>}
+        {!embedded && <Heading className="pledge-title">{page.titlePrefix}<span>{page.titleAccent}</span></Heading>}
         {!embedded && <p className="pledge-lead">{description}</p>}
         <ol className="pledge-reasons">{page.reasons.map((reason, index) => <li key={reason.title}><span className="pledge-number" aria-hidden="true">{index + 1}</span><div><Subheading>{reason.title}</Subheading><p>{reason.description}</p></div></li>)}</ol>
       </div>
