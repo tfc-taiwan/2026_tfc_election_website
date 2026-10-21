@@ -46,6 +46,10 @@ test('built static pages contain body content and unique head metadata', async (
       assert.ok(html.includes('自律公約承諾原則：三不二要'));
       assert.match(html, /展開全部案例（(?:<!-- -->)?13/);
       assert.ok(!html.includes('cdn.tailwindcss.com'));
+    } else if (path === 'reports/election-prepare/index.html') {
+      assert.ok(html.includes('guide-body'));
+      assert.ok(!html.includes('id="verification"'));
+      assert.ok(html.includes('<strong>寄送時間：</strong>'));
     } else if (path !== 'index.html' && path !== 'reports/index.html') assert.match(html, /<article class="report-page">[\s\S]+?id="verification"/);
   }
 });
@@ -153,4 +157,22 @@ test('broken editorial JSON returns a non-indexable 503, then recovers after cor
   assert.equal(broken.status, 503); assert.match(broken.headers.get('x-robots-tag'), /noindex/);
   await writeFile(join(temp, 'data/reports/26-chinese-spouses.json'), JSON.stringify(article));
   assert.equal((await fetch(base + '/reports/26-chinese-spouses')).status, 200);
+});
+
+
+test('homepage embeds the initiative with accessible ticker controls and one page title', async () => {
+  const html = await readFile('dist/index.html', 'utf8');
+  assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
+  assert.ok(html.includes('pledge-embedded'));
+  assert.ok(html.includes('真實受害案例'));
+  for (const label of ['上一則案例', '下一則案例', '暫停案例輪播']) assert.ok(html.includes(label));
+});
+
+test('toolkit has publication-only metadata and consistent return navigation', async () => {
+  const html = await readFile('dist/reports/election-prepare/index.html', 'utf8');
+  const meta = html.match(/<div class="article-meta">([\s\S]*?)<\/div>/)?.[1] || '';
+  assert.ok(meta.includes('2026-10-13'));
+  for (const label of ['報告編號', '查核記者', '責任編輯', '更新：']) assert.ok(!meta.includes(label));
+  assert.ok(html.includes('返回選舉工具箱'));
+  assert.ok(!html.includes('**寄送時間：**'));
 });

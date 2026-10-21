@@ -44,6 +44,13 @@ const story = z.object({
 const editorialLink = z.string().refine(value => /^https:\/\//.test(value) || /^\/reports\/[a-z0-9-]+$/.test(value), 'Use HTTPS or a local article URL');
 const info = z.object({ id: slug, title: text, description: text, content: z.array(text).min(1), href: editorialLink.optional() });
 
+const initiativeContentSchema = z.object({
+    eyebrow: text, titlePrefix: text, titleAccent: text, principlesTitle: text, casesTitle: text,
+    reasons: z.array(z.object({ title: text, description: text })).min(1),
+    groups: z.array(z.object({ title: text, items: z.array(text).min(1) })).length(2),
+    cases: z.array(z.object({ country: text, date: text, text })).min(1),
+    fullTextUrl: z.url().startsWith('https://').optional(),
+  });
 export const listingsSchema = z.object({
   version: z.literal(1), isMock: z.boolean(),
   seo: z.object({
@@ -56,7 +63,7 @@ export const listingsSchema = z.object({
     facts: z.array(z.object({ title: text, description: text, tone })) }),
   stories: z.array(story).min(1),
   sections: z.object({
-    initiative: z.object({ title: text, description: text }).optional(),
+    initiative: z.object({ title: text, description: text, content: initiativeContentSchema.optional(), featuredSlug: slug.optional() }).optional(),
     reports: z.object({ title: text, categories: z.array(category).min(1), items: z.array(z.object({ slug, title: text.optional() })) }),
     analyses: z.object({ title: text, description: text, slugs: z.array(slug) }),
     shorts: z.object({ title: text, description: text, items: z.array(z.object({ title: text, url: youtubeUrl })).min(1) }).optional(),
@@ -100,13 +107,7 @@ export const contentBlockSchema = z.discriminatedUnion('type', [
 export type ContentBlock = z.infer<typeof contentBlockSchema>;
 const section = z.object({ id: slug, title: text, paragraphs: z.array(text).min(1), image: image.optional(), caption: text.optional(), blocks: z.array(contentBlockSchema).min(1).optional() });
 export const reportSchema = z.object({
-  initiativeContent: z.object({
-    eyebrow: text, titlePrefix: text, titleAccent: text, principlesTitle: text, casesTitle: text,
-    reasons: z.array(z.object({ title: text, description: text })).min(1),
-    groups: z.array(z.object({ title: text, items: z.array(text).min(1) })).length(2),
-    cases: z.array(z.object({ country: text, date: text, text })).min(1),
-    fullTextUrl: z.url().startsWith('https://').optional(),
-  }).optional(),
+  initiativeContent: initiativeContentSchema.optional(),
   version: z.literal(1), isMock: z.boolean(), slug,
   seo: pageSeo.extend({ authorType: z.enum(['Person', 'Organization']) }),
   kind: z.enum(['report', 'analysis', 'guide']), category: category.optional(), title: text, finding: text,
