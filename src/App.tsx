@@ -301,7 +301,7 @@ function InfographicPage({ data }: { data: Listings }) {
       <div className="lightbox-stage"><Link className="lightbox-arrow" to={infographicPath(slug, current === 1 ? total : current - 1)} aria-label="上一張"><Icon name="left" /></Link><figure><img src={publicPath(card.image.src)} alt={card.image.alt} width="720" height="900" /><figcaption>{card.caption}</figcaption></figure><Link className="lightbox-arrow" to={infographicPath(slug, current === total ? 1 : current + 1)} aria-label="下一張"><Icon name="right" /></Link></div>
       <div className="lightbox-bottom"><button type="button" onClick={share}><Icon name="copy" size={17} />分享這張圖卡</button><span role="status">{shareStatus}</span></div>
     </div></div>
-    <div className="infographic-context">{(story?.description ?? group.description) && <p>{story?.description ?? group.description}</p>}{story && <Link to={`/reports/${story.slug}`}>閱讀原文章 ↗</Link>}{data.isMock && <small>以上圖卡與文章為虛構示範內容。</small>}</div>
+    <div className="infographic-context">{(story?.description ?? group.description) && <p>{story?.description ?? group.description}</p>}{story && <Link to={`/reports/${story.slug}`}>閱讀原文章 ↗</Link>}</div>
   </article></>;
 }
 
