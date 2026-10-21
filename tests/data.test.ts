@@ -104,7 +104,7 @@ test('deepfake pledge overview has paragraph breaks and a working full article r
   assert.ok(data.stories.some(story => story.slug === 'deepfake-pledge'));
   assert.ok(data.stories.some(story => story.slug === 'reject-deepfake-election-disinformation-self-regulation-charter'));
   const article = reportSchema.parse(JSON.parse(readFileSync(resolve(root, 'data/reports/reject-deepfake-election-disinformation-self-regulation-charter.json'), 'utf8')));
-  assert.equal(article.seo.noindex, true);
+  assert.equal(article.seo.noindex, false);
   assert.equal(article.supplementarySections?.length ?? 0, 0);
   assert.equal(article.checkSections.some(section => section.title.startsWith('常見問答')), false);
 });

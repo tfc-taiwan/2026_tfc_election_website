@@ -2,7 +2,7 @@ import type { Listings, Report } from './data.ts';
 import { basePath, localPath, publicPath } from './paths.ts';
 import { infographicPath, resolveInfographic } from './infographics.ts';
 
-export type SeoContext = { siteUrl: string | null; previewOrigin: string };
+export type SeoContext = { siteUrl: string | null; previewOrigin: string; isPreview?: boolean };
 export type PageStatus = 'ready' | 'loading' | 'not-found' | 'error';
 type MetaTag = { name?: string; property?: string; content: string };
 export type SeoResult = { title: string; canonical?: string; tags: MetaTag[]; graph: Record<string, unknown>[]; robots: string };
@@ -18,7 +18,7 @@ export function normalizeSiteUrl(value: string | null | undefined): string | nul
 
 export function canIndexSite(data: Listings, context: SeoContext): boolean {
   const configured = normalizeSiteUrl(context.siteUrl ?? data.seo.siteUrl);
-  if (!configured || data.isMock) return false;
+  if (!configured || data.isMock || context.isPreview) return false;
   const url = new URL(configured);
   return url.protocol === 'https:' && !/^(localhost|127\.|\[::1\])/.test(url.hostname) && !/\.(invalid|test|localhost)$/.test(url.hostname);
 }

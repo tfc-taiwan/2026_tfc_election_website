@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
 const origin = new URL(process.argv[2]).origin;
+const profile = process.argv[3];
 const local = JSON.parse(await readFile('data/listings.json', 'utf8'));
 const escapeHtml = value => value.replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;' })[character]);
 async function request(path, status = 200) {
@@ -13,7 +14,15 @@ async function request(path, status = 200) {
 let lastError;
 for (let attempt = 0; attempt < 6; attempt++) {
   try {
-    const home = await (await request('')).text();
+    const homeResponse = await request('');
+    const home = await homeResponse.text();
+    if (profile === 'preview') {
+      assert.equal(homeResponse.headers.get('x-robots-tag'), 'noindex, nofollow');
+      assert.ok(home.includes('name="robots" content="noindex, nofollow"'));
+    } else if (profile === 'production') {
+      assert.ok(home.includes('name="robots" content="index, follow, max-image-preview:large"'));
+      assert.ok(!home.includes('class="review-notice page-padding"'));
+    }
     for (const title of local.hero.title) assert.ok(home.includes(escapeHtml(title)), `Missing home title: ${title}`);
     const remote = await (await request('data/listings.json')).json();
     assert.deepEqual(remote, local, 'Deployed content differs from this revision');
@@ -22,7 +31,8 @@ for (let attempt = 0; attempt < 6; attempt++) {
       const html = await (await request(`reports/${story.slug}`)).text();
       assert.ok(html.includes('<h1'), `Missing article HTML: ${story.slug}`);
       const article = await (await request(`data/reports/${story.slug}.json`)).json();
-      assert.equal(article.slug, story.slug);
+      const expectedArticle = JSON.parse(await readFile(`data/reports/${story.slug}.json`, 'utf8'));
+      assert.deepEqual(article, expectedArticle, `Deployed article differs: ${story.slug}`);
       if (story.image?.src.startsWith('/images/')) await request(story.image.src.slice(1));
     }
     await request('__deployment-check-not-found__', 404);

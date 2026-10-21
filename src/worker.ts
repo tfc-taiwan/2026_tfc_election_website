@@ -1,5 +1,5 @@
 import { reportAliases } from './report-aliases.ts';
-type Env = { ASSETS: { fetch(request: Request): Promise<Response> } };
+type Env = { ASSETS: { fetch(request: Request): Promise<Response> }; DEPLOYMENT_ENV?: string };
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -31,6 +31,7 @@ export default {
     if (type.includes('text/html') || type.includes('application/json') || type.includes('application/xml')) headers.set('Cache-Control', 'no-cache');
     if (url.pathname.startsWith('/election2026/data/')) headers.set('X-Robots-Tag', 'noindex');
     if (url.pathname === '/election2026/reports' && url.search) headers.set('X-Robots-Tag', 'noindex, follow');
+    if (env.DEPLOYMENT_ENV === 'preview') headers.set('X-Robots-Tag', 'noindex, nofollow');
     return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
   },
 };

@@ -322,7 +322,7 @@ function InfographicPage({ data }: { data: Listings }) {
 }
 
 function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => void }) {
-  const { now } = useContext(RenderContext);
+  const { now, context } = useContext(RenderContext);
   const { hero, sections, stories } = data;
   const [script, setScript] = useState<string | null>(sections.scripts.items[0]?.id ?? null);
   const [today, setToday] = useState(() => new Date(now));
@@ -335,7 +335,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
 
   return <>
     <PageSeo data={data} />
-    {data.isMock && <p className="review-notice page-padding" role="note">{data.site.notice}</p>}
+    {(data.isMock || context.isPreview) && <p className="review-notice page-padding" role="note">{data.site.notice}</p>}
     <section className="hero section-padding grid-texture" id="about" aria-labelledby="hero-title">
       <div className="hero-intro"><div className="hero-kicker"><span>{hero.kicker}</span><small>2026 ELECTIONS</small></div><h1 id="hero-title">{hero.title.map(line => <span key={line}>{line}</span>)}</h1><p>{hero.description}</p><div className="countdown"><div><span>VOTING DAY</span><time dateTime={hero.electionDate}>{hero.electionDate.replaceAll('-', '.')}</time></div><p>距離投票日還有 <strong>{daysUntil(hero.electionDate, today)}</strong> 天</p></div></div>
       <div className="election-facts"><h2>{hero.factsTitle}</h2><ol>{hero.facts.map((fact, index) => <li key={fact.title}><span className="fact-number">{index + 1}</span><div><h3>{fact.title}</h3><p>{fact.description}</p></div></li>)}</ol></div>
@@ -432,6 +432,7 @@ function SectionContent({ section }: { section: Report['background'] }) {
 }
 
 function ArticleBody({ report, data }: { report: Report; data: Listings }) {
+  const { context } = useContext(RenderContext);
   if (report.initiativeContent) return <InitiativePage report={report} />;
   const isGuide = report.kind === 'guide' || report.category === '選舉工具箱';
   const related = report.relatedSlugs.flatMap(slug => data.stories.find(story => story.slug === slug) ?? []);
@@ -441,7 +442,7 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
     <div className="article-tags">{report.tags.map(tag => <span className={`tag ${tag === report.verdict ? `verdict-tag ${verdictClass(tag)}` : 'topic-tag'}`} key={tag}>{tag}</span>)}</div>
     <h1>{report.title}</h1>{!isGuide && <p className="article-finding">{report.finding}</p>}
     <div className="article-meta">{report.published && <span><strong>發佈：</strong><time dateTime={report.published}>{report.published}</time></span>}{!isGuide && <>{report.updated && <span><strong>更新：</strong><time dateTime={report.updated}>{report.updated}</time></span>}<span><strong>報告編號：</strong>{report.reportId}</span><span><strong>查核記者：</strong>{report.reporter}</span><span><strong>責任編輯：</strong>{report.editor}</span></>}</div>
-    {report.isMock ? <p className="article-mock-note"><span className="tag neutral">MOCK DATA</span> 本文為虛構示範，不代表真實事件或查核結論。</p> : data.isMock && <p className="article-mock-note"><span className="tag neutral">PREVIEW</span> 本文為測試版內容，尚待編輯確認，未正式發布。</p>}
+    {report.isMock ? <p className="article-mock-note"><span className="tag neutral">MOCK DATA</span> 本文為虛構示範，不代表真實事件或查核結論。</p> : (data.isMock || context.isPreview) && <p className="article-mock-note"><span className="tag neutral">PREVIEW</span> {data.site.notice}</p>}
     <div className="article-toolbar">{!isGuide && <nav aria-label="文章目錄"><span>內容：</span><a href="#background">背景</a><a href="#verification">{report.kind === 'report' ? '查核' : '解析'}</a>{!!report.supplementarySections?.length && <a href="#supplementary">補充資料</a>}{report.sources.length > 0 && <a href="#sources">資料來源</a>}</nav>}<ShareTools report={report} data={data} /></div>
     {report.image && <figure className="article-cover"><Illustration image={report.image} eager /><figcaption>{report.imageCaption}</figcaption></figure>}
     {isGuide ? <div className="article-section guide-body">

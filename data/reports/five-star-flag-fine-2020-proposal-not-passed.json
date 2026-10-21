@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "isMock": true,
+  "isMock": false,
   "slug": "five-star-flag-fine-2020-proposal-not-passed",
   "seo": {
     "title": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過｜2026 選舉工具箱",
@@ -12,7 +12,7 @@
       "height": 1040,
       "type": "image/jpeg"
     },
-    "noindex": true,
+    "noindex": false,
     "authorType": "Person"
   },
   "kind": "report",

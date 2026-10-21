@@ -95,7 +95,7 @@ test('production SSR uses canonical origin and returns real 404, asset and HEAD 
   const response = await fetch(base + '/reports/fake-infographic-26-chinese-spouses-running-for-chief');
   const html = await response.text();
   assert.equal(response.status, 200);
-  assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow');
+  assert.equal(response.headers.get('x-robots-tag'), 'index, follow, max-image-preview:large');
   assert.ok(html.includes('href="https://election.example.org/reports/fake-infographic-26-chinese-spouses-running-for-chief"'));
   assert.ok(html.includes('class="report-page"'));
   const head = await fetch(base + '/reports/fake-infographic-26-chinese-spouses-running-for-chief', { method: 'HEAD' });
@@ -155,9 +155,10 @@ test('publishing configuration indexes real content only, including sitemap and 
   const html = await (await fetch(base + '/reports/fake-infographic-26-chinese-spouses-running-for-chief')).text();
   assert.ok(html.includes('content="index, follow, max-image-preview:large"'));
   const xml = await (await fetch(base + '/sitemap.xml')).text();
-  assert.equal((xml.match(/<loc>/g) || []).length, 3);
+  assert.equal((xml.match(/<loc>/g) || []).length, 18);
+  assert.ok(xml.includes('/infographics/china-xiamen-bridge-does-not-reach-kinmen/1'));
   assert.ok(xml.includes('https://election.example.org/reports/fake-infographic-26-chinese-spouses-running-for-chief'));
-  assert.ok(!xml.includes('taiwan-electricity-price-no-hike-2026q4'));
+  assert.ok(!xml.includes('/reports/deepfake-pledge</loc>'));
   assert.ok((await (await fetch(base + '/robots.txt')).text()).includes('Sitemap: https://election.example.org/sitemap.xml'));
   const search = await fetch(base + '/reports?q=音檔');
   assert.equal(search.headers.get('x-robots-tag'), 'noindex, follow');

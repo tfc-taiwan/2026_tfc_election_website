@@ -28,3 +28,13 @@ test('legacy article URLs redirect to Spreadsheet slugs without dropping query s
   assert.equal(response.status, 308);
   assert.equal(response.headers.get('location'), 'https://tfc-taiwan.org.tw/election2026/reports/taiwan-electricity-price-no-hike-2026q4?source=old');
 });
+
+test('preview Worker adds noindex to HTML, assets and JSON while production keeps public HTML indexable', async () => {
+  const ASSETS = { fetch: async () => new Response('asset', { headers: { 'content-type': 'text/html' } }) };
+  for (const path of ['', 'reports', 'data/listings.json', 'images/cover.jpg']) {
+    const response = await worker.fetch(new Request(`https://preview.workers.dev/election2026/${path}`), { ASSETS, DEPLOYMENT_ENV: 'preview' });
+    assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow');
+  }
+  const production = await worker.fetch(new Request('https://tfc-taiwan.org.tw/election2026/'), { ASSETS, DEPLOYMENT_ENV: 'production' });
+  assert.equal(production.headers.get('x-robots-tag'), null);
+});

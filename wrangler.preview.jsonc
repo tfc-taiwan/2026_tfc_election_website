@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "tfc-election2026",
+  "name": "tfc-election2026-preview",
   "account_id": "a1bad46d553cafed5f25a324dbc854d7",
   "main": "src/worker.ts",
   "compatibility_date": "2026-09-22",
@@ -12,5 +12,8 @@
     "binding": "ASSETS",
     "run_worker_first": true,
     "not_found_handling": "404-page"
+  },
+  "vars": {
+    "DEPLOYMENT_ENV": "preview"
   }
 }

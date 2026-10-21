@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "isMock": true,
+  "isMock": false,
   "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover",
   "seo": {
     "title": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成｜2026 選舉工具箱",
@@ -12,7 +12,7 @@
       "height": 1040,
       "type": "image/jpeg"
     },
-    "noindex": true,
+    "noindex": false,
     "authorType": "Person"
   },
   "kind": "report",
