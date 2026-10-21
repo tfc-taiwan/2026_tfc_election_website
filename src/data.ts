@@ -13,7 +13,7 @@ const shareImage = image.extend({
 });
 const pageSeo = z.object({ title: text, description: text, image: shareImage, noindex: z.boolean().default(false) });
 const status = z.enum(['錯誤', '部分錯誤', '事實釐清', '正確']);
-const category = z.enum(['地方選舉', '深偽倡議', '公投議題', '辯論會即時查核', '選舉工具箱']);
+const category = z.enum(['地方選舉', '深偽倡議', '公投議題', '辯論會查核', '選舉工具箱']);
 function validateArticleFields(value: { kind: string; category?: string; verdict?: string }, ctx: z.RefinementCtx) {
   if (value.kind === 'report' && !value.category) ctx.addIssue({ code: 'custom', path: ['category'], message: '查核報告須填主題；非查核文章可留白' });
   if (value.kind !== 'report' && value.verdict) ctx.addIssue({ code: 'custom', path: ['verdict'], message: '非查核文章不使用查核結果，請留白' });
@@ -49,7 +49,7 @@ const initiativeContentSchema = z.object({
     reasons: z.array(z.object({ title: text, description: text })).min(1),
     groups: z.array(z.object({ title: text, items: z.array(text).min(1) })).length(2),
     cases: z.array(z.object({ country: text, date: text, text })).min(1),
-    fullTextUrl: z.url().startsWith('https://').optional(),
+    fullTextUrl: editorialLink.optional(),
   });
 export const listingsSchema = z.object({
   version: z.literal(1), isMock: z.boolean(),
