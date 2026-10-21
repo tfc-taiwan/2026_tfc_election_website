@@ -32,6 +32,8 @@ Cloudflare Static Assets 與 Worker 同版發佈。更新 `data/` 時先執行 c
 
 ### GitHub Actions 驗收部署
 
+2026-10-22 已將正式網域的 `/election2026` 與 `/election2026/*` 接到 `tfc-election2026`。此後 `main` 的驗收流程仍執行檢查與建置，但部署 job 預設停用（只有 repository variable `ELECTION2026_ENABLE_SHARED_PREVIEW_DEPLOY=true` 才會執行）。不得在正式站運作期間開啟此開關：驗收設定與正式站共用 Worker，會覆寫核准內容且空 `routes` 可能清除正式路由。正式發布沿用另行核准的 production release workflow；新增或調整路由時，保留其他路徑與既有服務。
+
 `.github/workflows/deploy-worker.yml` 在 PR 執行資料測試、根路徑建置與 SSR 測試、Worker 建置；推送 `main` 或手動執行 `main` 時，檢查通過後才將同次建置的資產部署。部署使用 `wrangler.preview.jsonc`，固定為 TFC 帳號的 `tfc-election2026`，僅啟用 `https://tfc-election2026.tfc-taiwan-org.workers.dev/election2026/` 驗收網址，`routes` 為空，不啟用正式 TFC 網域路由。正式 canonical 與 noindex 規則維持原設定。
 
 GitHub repository secret `CLOUDFLARE_API_TOKEN` 須使用限 TFC 帳號的 Workers 指令碼編輯權限；不需要 DNS、正式網域路由、KV、R2 或其他帳號權限。部署 job 使用 `preview` environment，PR 不執行部署或讀取此 secret。每次部署後執行 `scripts/verify-deployment.mjs`，確認遠端列表 JSON 與該修訂完全一致，並檢查首頁、列表、每篇文章、JSON、封面與 404。失敗時 Actions 標示失敗供追查；正式上線仍須另行明確授權，才可使用含正式路由的 `wrangler.jsonc`。

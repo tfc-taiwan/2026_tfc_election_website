@@ -38,7 +38,9 @@ jobs:
 
   deploy:
     needs: check
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    # This Worker now serves production. Do not overwrite an approved release
+    # or clear its routes with the shared preview configuration on a main push.
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.ELECTION2026_ENABLE_SHARED_PREVIEW_DEPLOY == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     environment: preview
