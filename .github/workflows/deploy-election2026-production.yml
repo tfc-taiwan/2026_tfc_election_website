@@ -3,6 +3,8 @@ name: Deploy approved Election Hub production release
 on:
   push:
     branches: [deploy/2026-election-v11]
+  workflow_dispatch:
+    branches: [deploy/2026-election-v11]
 
 permissions:
   contents: read
