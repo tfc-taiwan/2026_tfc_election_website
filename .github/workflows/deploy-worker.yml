@@ -3,7 +3,7 @@ name: Check and deploy election hub preview
 on:
   pull_request:
   push:
-    branches: [main, review/v10-infographic-galleries]
+    branches: [main, review/v10-infographic-galleries, review/v11-local-preview]
   workflow_dispatch:
 
 permissions:
@@ -29,7 +29,7 @@ jobs:
       - run: npm run test:production
       - run: npm run build:worker
       - uses: actions/upload-artifact@v4
-        if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/review/v10-infographic-galleries') && github.event_name != 'pull_request'
+        if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/review/v10-infographic-galleries' || github.ref == 'refs/heads/review/v11-local-preview') && github.event_name != 'pull_request'
         with:
           name: worker-assets
           path: worker-assets/
@@ -38,7 +38,7 @@ jobs:
 
   deploy:
     needs: check
-    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/review/v10-infographic-galleries') && github.event_name != 'pull_request'
+    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/review/v10-infographic-galleries' || github.ref == 'refs/heads/review/v11-local-preview') && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     environment: preview
