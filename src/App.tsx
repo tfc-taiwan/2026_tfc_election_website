@@ -1,5 +1,6 @@
+import { reportAliases } from './report-aliases';
 import React, { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
-import { Link, NavLink, Route, Routes, useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { Link, NavLink, Navigate, Route, Routes, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { DataError, daysUntil, getListings, getReport, searchStories, youtubeVideoId, type ContentBlock, type Info, type Listings, type Report, type Story } from './data';
 import { buildSeo, siteRootFor, syncSeoHead, type PageStatus } from './seo';
 import { publicPath } from './paths';
@@ -323,12 +324,12 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
       <div className="hero-intro"><div className="hero-kicker"><span>{hero.kicker}</span><small>2026 ELECTIONS</small></div><h1 id="hero-title">{hero.title.map(line => <span key={line}>{line}</span>)}</h1><p>{hero.description}</p><div className="countdown"><div><span>VOTING DAY</span><time dateTime={hero.electionDate}>{hero.electionDate.replaceAll('-', '.')}</time></div><p>距離投票日還有 <strong>{daysUntil(hero.electionDate, today)}</strong> 天</p></div></div>
       <div className="election-facts"><h2>{hero.factsTitle}</h2><ol>{hero.facts.map((fact, index) => <li key={fact.title}><span className="fact-number">{index + 1}</span><div><h3>{fact.title}</h3><p>{fact.description}</p></div></li>)}</ol></div>
     </section>
-    {sections.reports.categories.filter(category => category !== '深偽倡議').filter(category => homeReports.some(story => story.category === category)).map((category, index) => <section className={`reports-section section-padding report-group report-group-${index}`} id={index === 0 ? 'latest' : 'referendum'} aria-labelledby={`report-group-${index}-title`} key={category}>
-      <Carousel stories={homeReports.filter(story => story.category === category)} label={`${category}查核報告`}
-        heading={<h2 id={`report-group-${index}-title`}>{`${category}查核報告`}</h2>}
-        footer={<Link className="pill-button section-more" to={`/reports?category=${encodeURIComponent(category)}`}>查看全部<span className="sr-only">{`${category}查核報告`}</span><Icon name="arrow" size={16} /></Link>} />
-    </section>)}
-    {sections.initiative && <section className="initiative-section section-padding" id="initiative" aria-labelledby="initiative-title">{sections.initiative.content ? <InitiativePanel page={sections.initiative.content} description={sections.initiative.description} isMock={data.isMock} embedded /> : <><h2 id="initiative-title">{sections.initiative.title}</h2><p>{sections.initiative.description}</p></>}{stories.some(story => story.category === '深偽倡議' && story.slug !== sections.initiative?.featuredSlug) && <Carousel stories={stories.filter(story => story.category === '深偽倡議' && story.slug !== sections.initiative?.featuredSlug)} label="深偽倡議文章" heading={<h3>專區文章</h3>} />}</section>}
+    {!!homeReports.length && <section className="reports-section section-padding" id="latest" aria-labelledby="latest-title">
+      <Carousel stories={homeReports} label={sections.reports.title}
+        heading={<h2 id="latest-title">{sections.reports.title}</h2>}
+        footer={<Link className="pill-button section-more" to="/reports">查看全部查核報告<Icon name="arrow" size={16} /></Link>} />
+    </section>}
+    {sections.initiative && <section className="initiative-section section-padding" id="initiative" aria-labelledby="initiative-title">{sections.initiative.content ? <InitiativePanel title={sections.initiative.title} page={sections.initiative.content} description={sections.initiative.description} isMock={data.isMock} embedded /> : <><h2 id="initiative-title">{sections.initiative.title}</h2><p>{sections.initiative.description}</p></>}{stories.some(story => story.category === '深偽倡議' && story.slug !== sections.initiative?.featuredSlug) && <Carousel stories={stories.filter(story => story.category === '深偽倡議' && story.slug !== sections.initiative?.featuredSlug)} label="深偽倡議文章" heading={<h3>專區文章</h3>} />}</section>}
     {!!sections.analyses.slugs.length && <section className="analysis-section section-padding" id="analysis" aria-labelledby="analysis-title">
       <Carousel stories={pick(sections.analyses.slugs)} label="資訊操弄解析" heading={<div><h2 id="analysis-title">{sections.analyses.title}</h2><p>{sections.analyses.description}</p></div>} />
     </section>}
@@ -336,7 +337,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
       <YouTubeShorts items={sections.shorts.items} heading={<div><h2 id="shorts-title">{sections.shorts.title}</h2><p>{sections.shorts.description}</p></div>} />
     </section>}
     {sections.infographics && <section className="infographics-section section-padding grid-texture" id="infographics" aria-labelledby="infographics-title">
-      {sections.infographics.slugs.length ? <InfographicGallery data={data} stories={pick(sections.infographics.slugs)} heading={<div><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p></div>} /> : <><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p><p className="pending-content">圖卡素材待補入，目前尚未發布圖卡。</p></>}
+      {sections.infographics.slugs.length ? <InfographicGallery data={data} stories={pick(sections.infographics.slugs)} heading={<div><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p></div>} /> : <><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p><p className="pending-content">圖卡素材待補入，目前尚未發布圖卡。</p>{!!sections.infographics.pendingItems?.length && <ul className="pending-gallery-list">{sections.infographics.pendingItems.map(group => <li key={group.slug}>{group.title}（{group.count}張）</li>)}</ul>}</>}
     </section>}
     <section className="rumors-section section-padding" id="rumors" aria-labelledby="rumors-title">
       <h2 id="rumors-title">{sections.rumors.title}</h2>
@@ -346,7 +347,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
     </section>
     <section className="process-section section-padding" id="process" aria-labelledby="process-title"><div className="center-heading"><h2 id="process-title">{sections.process.title}</h2></div><div className="process-grid">{sections.process.items.map(item => <div className="process-card" key={item.id}><span className={`process-icon ${item.tone}`}><Icon name={item.icon} size={30} /></span><h3>{item.title}</h3><p>{item.description}</p>{item.href ? (item.href.startsWith('/') ? <Link className="text-button" to={item.href}>閱讀全文 <span aria-hidden="true">→</span><span className="sr-only">：{item.title}</span></Link> : <a className="text-button" href={item.href} target="_blank" rel="noopener noreferrer">閱讀全文 ↗<span className="sr-only">：{item.title}（開啟新視窗）</span></a>) : <button className="text-button" onClick={() => onInfo(item)}>了解更多 <span aria-hidden="true">→</span><span className="sr-only">：{item.title}</span></button>}</div>)}</div></section>
     {(!!sections.learning.items.length || !!sections.learning.resources?.length) && <section className="learning-section section-padding" id="learning" aria-labelledby="learning-title"><div className="center-heading"><h2 id="learning-title">{sections.learning.title}</h2></div><div className="learning-grid">{sections.learning.items.map(item => { const story = stories.find(s => s.slug === item.slug); return story && <div key={item.slug} className="learning-item"><Link to={`/reports/${item.slug}`} className="learning-art" tabIndex={-1} aria-hidden="true"><Illustration image={story.image} /></Link><div><span className="learning-topic">{item.badge}</span><h3>{story.title}</h3><p>{story.description}</p><Link to={`/reports/${item.slug}`}>閱讀教學指南<Icon name="arrow" size={16} /><span className="sr-only">：{story.title}</span></Link></div></div>; })}{sections.learning.resources?.map(item => <div className="learning-item" key={item.title}><div><h3>{item.title}</h3><p>{item.description}</p>{item.href && <a href={item.href}>閱讀教學指南 ↗</a>}</div></div>)}</div></section>}
-    <section className="activities-section section-padding" id="activities" aria-labelledby="activities-title"><div className="activities-inner"><h2 id="activities-title">{sections.activities.title}</h2><div className="activity-list">{sections.activities.items.map(item => <div className="activity" key={item.id}><span className={`activity-date ink-${item.tone}`}>{item.dateLabel}</span><div className="activity-content"><span className="tag neutral">{item.tag}</span><h3>{item.title}</h3><p>{item.description}</p></div>{item.href ? <a className="button primary" href={item.href} target="_blank" rel="noopener noreferrer">{item.cta}<span className="sr-only">：{item.title}（開啟新視窗）</span> ↗</a> : <button className="button primary" onClick={() => onInfo(item)}>{item.cta}<span className="sr-only">：{item.title}</span><span aria-hidden="true">↗</span></button>}</div>)}</div></div></section>
+    <section className="activities-section section-padding" id="activities" aria-labelledby="activities-title"><div className="activities-inner"><h2 id="activities-title">{sections.activities.title}</h2><div className="activity-list">{sections.activities.items.map(item => <div className="activity" key={item.id}><span className={`activity-date ink-${item.tone}`}>{item.dateLabel}</span><div className="activity-content"><span className="tag neutral">{item.tag}</span><h3>{item.title}</h3><p>{item.description}</p></div>{item.cta && (item.href ? <a className="button primary" href={item.href} target="_blank" rel="noopener noreferrer">{item.cta}<span className="sr-only">：{item.title}（開啟新視窗）</span> ↗</a> : <button className="button primary" onClick={() => onInfo(item)}>{item.cta}<span className="sr-only">：{item.title}</span><span aria-hidden="true">↗</span></button>)}</div>)}</div></div></section>
   </>;
 }
 
@@ -356,7 +357,8 @@ const LISTING_PAGE_SIZE = 12;
 function ListingsPage({ data }: { data: Listings }) {
   const [params, setParams] = useSearchParams();
   const query = params.get('q') ?? '';
-  const category = data.sections.reports.categories.includes(params.get('category') as typeof data.sections.reports.categories[number]) ? params.get('category')! : '全部';
+  const requestedCategory = params.get('category') === '公投' ? '公投議題' : params.get('category');
+  const category = data.sections.reports.categories.includes(requestedCategory as typeof data.sections.reports.categories[number]) ? requestedCategory! : '全部';
   const [visible, setVisible] = useState(LISTING_PAGE_SIZE);
   useEffect(() => setVisible(LISTING_PAGE_SIZE), [query, category]);
   const stories = searchStories(query ? data.stories : data.stories.filter(story => story.kind === 'report'), query, category);
@@ -366,7 +368,7 @@ function ListingsPage({ data }: { data: Listings }) {
     <span className="eyebrow">THE FACTCHECK INDEX</span>
     <h1>{query ? '尋找資訊的真實脈絡' : '選舉查核報告'}</h1>
     <p className="listing-intro">彙整台灣事實查核中心針對 2026 地方選舉與公投議題發布的查核報告，隨最新查證進度持續更新。</p>
-    <div className="listing-filters"><div className="segmented" role="group" aria-label="篩選報告分類">{['全部', ...data.sections.reports.categories].map(value => <button key={value} aria-pressed={category === value} onClick={() => update('category', value)}>{value}</button>)}</div><p role="status">{query && <>「{query}」・</>}{stories.length} 篇內容</p></div>
+    <div className="listing-filters"><div className="segmented" role="group" aria-label="篩選報告分類">{['全部', ...data.sections.reports.categories].map(value => <button key={value} aria-pressed={category === value} onClick={() => update('category', value)}>{value === '公投議題' ? '公投' : value}</button>)}</div><p role="status">{query && <>「{query}」・</>}{stories.length} 篇內容</p></div>
     {stories.length ? <>
       <div className="listing-grid">{stories.map((story, index) => <StoryCard story={story} key={story.slug} hidden={index >= visible} />)}</div>
       {stories.length > visible && <div className="listing-more"><button className="pill-button" type="button" onClick={() => setVisible(count => count + LISTING_PAGE_SIZE)}>載入更多報告<span className="sr-only">（尚有 {stories.length - visible} 篇）</span></button></div>}
@@ -443,6 +445,13 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
   </article>;
 }
 
+function ReportRoute({ data }: { data: Listings }) {
+  const { slug = '' } = useParams();
+  const location = useLocation();
+  const replacement = reportAliases[slug];
+  return replacement ? <Navigate replace to={`/reports/${replacement}${location.search}${location.hash}`} /> : <ReportPage key={location.pathname} data={data} />;
+}
+
 function ReportPage({ data }: { data: Listings }) {
   const { slug = '' } = useParams();
   const initial = useContext(RenderContext);
@@ -498,5 +507,5 @@ export default function App({ initial }: { initial?: RenderState }) {
   useEffect(() => { const controller = new AbortController(); setError(null); getListings(controller.signal).then(value => { if (!controller.signal.aborted) setData(value); }).catch(error => { if (!controller.signal.aborted) setError(error); }); return () => controller.abort(); }, [attempt]);
   if (error) return <>{data && <PageSeo data={data} status="error" />}<ErrorPage error={error} onRetry={() => setAttempt(attempt + 1)} /></>;
   if (!data) return <Loading />;
-  return <RenderContext.Provider value={initial ?? { context: { siteUrl: null, previewOrigin: window.location.origin }, now: new Date().toISOString(), report: null, status: 200 }}><div className="site-shell"><RouteEffects /><Header data={data} onInfo={setInfo} /><main id="main-content" tabIndex={-1}><Routes><Route path="/" element={<HomePage data={data} onInfo={setInfo} />} /><Route path="/reports" element={<ListingsPage data={data} />} /><Route path="/reports/:slug" element={<ReportPage key={location.pathname} data={data} />} /><Route path="/infographics/:slug/:number" element={<InfographicPage data={data} />} /><Route path="*" element={<><PageSeo data={data} status="not-found" /><ErrorPage /></>} /></Routes></main><footer className="site-footer page-padding"><span>{data.site.footer}</span><nav className="footer-social" aria-label="社群媒體"><span>追蹤我們</span><div>{data.site.socialLinks.map(item => <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer">{item.label}<span className="sr-only">（開啟新視窗）</span></a>)}</div></nav><Link className="footer-home" to="/">回到首頁 ↑</Link></footer><InfoDialog info={info} close={() => setInfo(null)} /></div></RenderContext.Provider>;
+  return <RenderContext.Provider value={initial ?? { context: { siteUrl: null, previewOrigin: window.location.origin }, now: new Date().toISOString(), report: null, status: 200 }}><div className="site-shell"><RouteEffects /><Header data={data} onInfo={setInfo} /><main id="main-content" tabIndex={-1}><Routes><Route path="/" element={<HomePage data={data} onInfo={setInfo} />} /><Route path="/reports" element={<ListingsPage data={data} />} /><Route path="/reports/:slug" element={<ReportRoute data={data} />} /><Route path="/infographics/:slug/:number" element={<InfographicPage data={data} />} /><Route path="*" element={<><PageSeo data={data} status="not-found" /><ErrorPage /></>} /></Routes></main><footer className="site-footer page-padding"><span>{data.site.footer}</span><nav className="footer-social" aria-label="社群媒體"><span>追蹤我們</span><div>{data.site.socialLinks.map(item => <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer">{item.label}<span className="sr-only">（開啟新視窗）</span></a>)}</div></nav><Link className="footer-home" to="/">回到首頁 ↑</Link></footer><InfoDialog info={info} close={() => setInfo(null)} /></div></RenderContext.Provider>;
 }

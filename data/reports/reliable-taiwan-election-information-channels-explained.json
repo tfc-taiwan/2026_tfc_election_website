@@ -1,0 +1,323 @@
+{
+  "version": 1,
+  "isMock": true,
+  "slug": "reliable-taiwan-election-information-channels-explained",
+  "seo": {
+    "title": "選舉訊息繁雜，三大正確資訊管道報你知｜2026 選舉工具箱",
+    "description": "為了避免受到網路謠言的誤導，建議透過以下三大類具公信力的正當管道來獲取與查證資訊。",
+    "image": {
+      "src": "/images/imported/d3c78380fd6358a9a1856e7da7ade105ab14e842e07943f7e15cb33a8e117ec0.png",
+      "alt": "選舉訊息繁雜，三大正確資訊管道報你知",
+      "width": 1040,
+      "height": 1040,
+      "type": "image/png"
+    },
+    "noindex": true,
+    "authorType": "Organization"
+  },
+  "kind": "guide",
+  "category": "選舉工具箱",
+  "title": "選舉訊息繁雜，三大正確資訊管道報你知",
+  "finding": "為了避免受到網路謠言的誤導，建議透過以下三大類具公信力的正當管道來獲取與查證資訊。",
+  "tags": [
+    "選舉工具箱"
+  ],
+  "published": "2026-10-16",
+  "updated": null,
+  "reportId": "reliable-taiwan-election-information-channels-explained",
+  "reporter": "未提供",
+  "editor": "未提供",
+  "image": {
+    "src": "/images/imported/d3c78380fd6358a9a1856e7da7ade105ab14e842e07943f7e15cb33a8e117ec0.png",
+    "alt": "選舉訊息繁雜，三大正確資訊管道報你知"
+  },
+  "imageCaption": "選舉訊息繁雜，三大正確資訊管道報你知",
+  "summaryPoints": [
+    "為了避免受到網路謠言的誤導，建議透過以下三大類具公信力的正當管道來獲取與查證資訊。"
+  ],
+  "summaryClose": "",
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "paragraphs": [
+      "獲取正確的選舉資訊，最核心的管道是中央選舉委員會（中選會）官方網站。所有關於投票資格、投開票所地點、候選人政見及最終計票結果，皆以此機關發布的權威數據為準。",
+      "為了避免受到網路謠言的誤導，建議透過以下三大類具公信力的正當管道來獲取與查證資訊："
+    ],
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "獲取正確的選舉資訊，最核心的管道是"
+          },
+          {
+            "text": "中央選舉委員會（中選會）官方網站",
+            "href": "https://www.cec.gov.tw/"
+          },
+          {
+            "text": "。所有關於投票資格、投開票所地點、候選人政見及最終計票結果，皆以此機關發布的權威數據為準。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "為了避免受到網路謠言的誤導，建議透過以下三大類具公信力的正當管道來獲取與查證資訊："
+          }
+        ]
+      }
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "一、 權威源頭：官方選務與候選人資訊",
+      "paragraphs": [
+        "中央選舉委員會：提供最新的選舉專區網頁，可查詢個人投票資格、政令法規、歷年選舉資料庫及選務爭議澄清等資訊。",
+        "電子選舉公報：中選會會將標準化的數位選舉公報上網，供選民完整查閱各候選人的學經歷與政見。",
+        "內政部戶政司全球資訊網：過往通常在投票日前，會開放線上的「投票所地點查詢系統」，可精準查詢個人應前往的投開票所。",
+        "監察院政治獻金查閱平台：可查看候選人的募款與支出明細。",
+        "中選會網站建有多個資訊專區供民眾參考（中央選舉委員會官網）"
+      ],
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "中央選舉委員會",
+                "href": "https://web.cec.gov.tw/central",
+                "bold": true
+              },
+              {
+                "text": "：",
+                "bold": true
+              },
+              {
+                "text": "提供最新的選舉專區網頁，可查詢個人投票資格、政令法規、歷年"
+              },
+              {
+                "text": "選舉資料庫",
+                "href": "https://db.cec.gov.tw/"
+              },
+              {
+                "text": "及選務爭議澄清等資訊。"
+              }
+            ],
+            [
+              {
+                "text": "電子選舉公報",
+                "href": "https://bulletin.cec.gov.tw/?dir=",
+                "bold": true
+              },
+              {
+                "text": "：",
+                "bold": true
+              },
+              {
+                "text": "中選會會將標準化的數位選舉公報上網，供選民完整查閱各候選人的學經歷與政見。"
+              }
+            ],
+            [
+              {
+                "text": "內政部戶政司全球資訊網",
+                "href": "https://www.ris.gov.tw/",
+                "bold": true
+              },
+              {
+                "text": "：過往通常在投票日前，會開放線上的「投票所地點查詢系統」，可精準查詢個人應前往的投開票所。"
+              }
+            ],
+            [
+              {
+                "text": "監察院政治獻金查閱平台",
+                "href": "https://ardata.cy.gov.tw/home",
+                "bold": true
+              },
+              {
+                "text": "：可查看候選人的募款與支出明細。"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/71b0d0cf1fd38c689e8d51268c13586af6976768507c2202d8b6cc70042b0a76.png",
+            "alt": "選舉訊息繁雜，三大正確資訊管道報你知・內文圖片2"
+          }
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "中選會網站建有多個資訊專區供民眾參考（",
+              "italic": true
+            },
+            {
+              "text": "中央選舉委員會官網",
+              "href": "https://web.cec.gov.tw/central",
+              "italic": true
+            },
+            {
+              "text": "）",
+              "italic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "check-2",
+      "title": "二、深度檢視：政黨背景與司法紀錄",
+      "paragraphs": [
+        "內政部政黨資訊網：可用來查詢台灣各政黨的立案資訊與財務報表。",
+        "司法院法學資料檢索系統：若想核實候選人過去是否曾涉及賄選、貪污或其他刑事犯罪，可至官方裁判書系統輸入候選人姓名，進行交叉比對。"
+      ],
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "內政部政黨資訊網",
+                "href": "https://party.moi.gov.tw/",
+                "bold": true
+              },
+              {
+                "text": "：可用來查詢台灣各政黨的立案資訊與財務報表。"
+              }
+            ],
+            [
+              {
+                "text": "司法院法學資料檢索系統",
+                "href": "https://lawsearch.judicial.gov.tw/",
+                "bold": true
+              },
+              {
+                "text": "：若想核實候選人過去是否曾涉及賄選、貪污或其他刑事犯罪，可至官方裁判書系統輸入候選人姓名，進行交叉比對。"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "check-3",
+      "title": "三、 辨識真偽：第三方事實查核機構",
+      "paragraphs": [
+        "針對通訊軟體或社群平台上流傳的「選務作票」、「計票造假」等不實謠言，推薦選民多方查證，也可參考第三方查核組織的資訊（如：台灣事實查核中心、MyGoPen、Cofacts 真的假的、美玉姨、LINE訊息查證、趨勢科技防詐達人等）。",
+        "在過去的選舉裡，中選會也倡導的四個步驟，藉由加入查證平台的LINE官方帳號，反制選務錯假訊息：",
+        "加入：將上述「台灣事實查核中心」或「LINE訊息查證」等官方帳號加為好友。",
+        "查證：將可疑的文字或影片轉傳給查證機器人。",
+        "取得：等待並接收系統回傳的即時或初步查核結果。",
+        "分享：將正確的澄清資訊反饋給親友，共同捍衛民主選舉的公平性。"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "針對通訊軟體或社群平台上流傳的「選務作票」、「計票造假」等不實謠言，推薦選民多方查證，也可參考第三方查核組織的資訊（如："
+            },
+            {
+              "text": "台灣事實查核中心",
+              "href": "https://tfc-taiwan.org.tw/"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "text": "MyGoPen",
+              "href": "https://www.mygopen.com/"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "text": "Cofacts 真的假的",
+              "href": "https://cofacts.tw/"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "text": "美玉姨",
+              "href": "https://www.checkcheck.me/"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "text": "LINE訊息查證",
+              "href": "https://fact-checker.line.me/"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "text": "趨勢科技防詐達人",
+              "href": "https://trendlife.com/zh-tw/products/scam-check"
+            },
+            {
+              "text": "等）。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/87db3de9cba2c38a00873392aadca01af025ecc201a6bcf5c6e151400438a08d.png",
+            "alt": "選舉訊息繁雜，三大正確資訊管道報你知・內文圖片3"
+          }
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "在過去的選舉裡，中選會也倡導的"
+            },
+            {
+              "text": "四個步驟",
+              "href": "https://2024.cec.gov.tw/article/content/?id=M0026&target=%2Farticle%2FA0171"
+            },
+            {
+              "text": "，藉由加入查證平台的LINE官方帳號，反制選務錯假訊息："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            [
+              {
+                "text": "加入：將上述「台灣事實查核中心」或「LINE訊息查證」等官方帳號加為好友。"
+              }
+            ],
+            [
+              {
+                "text": "查證：將可疑的文字或影片轉傳給查證機器人。"
+              }
+            ],
+            [
+              {
+                "text": "取得：等待並接收系統回傳的即時或初步查核結果。"
+              }
+            ],
+            [
+              {
+                "text": "分享：將正確的澄清資訊反饋給親友，共同捍衛民主選舉的公平性。"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [],
+  "relatedSlugs": []
+}

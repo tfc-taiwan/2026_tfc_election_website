@@ -46,7 +46,7 @@ test('all listing references resolve to unique, matching report files and local 
     assert.ok(slugs.has(group.slug));
     for (const card of group.cards) if (card.image.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${card.image.src}`)), `Missing gallery asset: ${card.image.src}`);
   }
-  for (const category of data.sections.reports.categories) assert.ok(data.stories.some(story => story.kind === 'report' && story.category === category));
+  for (const story of data.stories.filter(story => story.kind === 'report')) assert.ok(data.sections.reports.categories.includes(story.category!));
 });
 
 test('YouTube watch, short and youtu.be links resolve to embed ids', () => {
@@ -64,16 +64,16 @@ test('countdown uses Taipei calendar days and never becomes negative', () => {
 });
 
 test('search supports Chinese, normalization, multiple terms, category, and no results', () => {
-  assert.ok(searchStories(data.stories, '中配').some(story => story.slug === '26-chinese-spouses'));
+  assert.ok(searchStories(data.stories, '中配').some(story => story.slug === 'fake-infographic-26-chinese-spouses-running-for-chief'));
   assert.deepEqual(searchStories(data.stories, 'ＡＩ'), searchStories(data.stories, 'ai'));
-  assert.ok(searchStories(data.stories, '樹木 水泥').some(story => story.slug === 'early-voting'));
+  assert.ok(searchStories(data.stories, '樹木 水泥').some(story => story.slug === 'tree-brown-root-rot-treatment-no-concrete-needed'));
   assert.ok(searchStories(data.stories, '', '公投議題').every(story => story.category === '公投議題'));
   assert.equal(searchStories(data.stories, 'absolutely-no-match').length, 0);
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 6);
-  assert.equal(data.stories.filter(story => story.date === null).length, 4);
+  assert.equal(data.stories.length, 11);
+  assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 5);
   assert.equal(data.stories.find(story => story.slug === 'deepfake-pledge')?.image, null);
   assert.deepEqual(data.sections.infographics?.slugs, []);

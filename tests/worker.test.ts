@@ -22,3 +22,9 @@ test('the Worker serves only the election mount with canonical URLs and keeps se
   assert.equal(json.headers.get('x-robots-tag'), 'noindex');
   assert.equal(json.headers.get('cache-control'), 'no-cache');
 });
+
+test('legacy article URLs redirect to Spreadsheet slugs without dropping query strings', async () => {
+  const response = await worker.fetch(new Request('https://tfc-taiwan.org.tw/election2026/reports/ballot-paper?source=old'), { ASSETS: { fetch: async () => { throw new Error('Redirect must run before assets'); } } });
+  assert.equal(response.status, 308);
+  assert.equal(response.headers.get('location'), 'https://tfc-taiwan.org.tw/election2026/reports/taiwan-electricity-price-no-hike-2026q4?source=old');
+});

@@ -6,10 +6,10 @@ import { listingsSchema } from '../src/data.ts';
 
 test('guide import preserves Q&A, bold text and links without inventing a byline', async () => {
   const listings = listingsSchema.parse(JSON.parse(readFileSync('data/listings.json', 'utf8')));
-  const story = listings.stories.find(story => story.slug === 'election-prepare')!;
+  const story = listings.stories.find(story => story.slug === 'taiwan-2026-election-voting-notice-ballots-guide')!;
   const metadata = {
     slug: story.slug, reportId: story.slug, updated: null, imageCaption: story.image!.alt,
-    seo: JSON.parse(readFileSync('data/reports/election-prepare.json', 'utf8')).seo,
+    seo: JSON.parse(readFileSync('data/reports/taiwan-2026-election-voting-notice-ballots-guide.json', 'utf8')).seo,
   };
   const markdown = `# ${story.title}\n\n指南導言。\n\n### Q1、怎麼查？\n\n* **來源：**[官方網站](https://example.org/source)\n\n### Q2、何時查？\n\n先確認日期。`;
   const { report } = await convertGuideMarkdown(markdown, listings, metadata);

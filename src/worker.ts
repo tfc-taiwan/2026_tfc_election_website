@@ -1,3 +1,4 @@
+import { reportAliases } from './report-aliases.ts';
 type Env = { ASSETS: { fetch(request: Request): Promise<Response> } };
 
 export default {
@@ -9,6 +10,9 @@ export default {
       return Response.redirect(url, 308);
     }
     if (!url.pathname.startsWith('/election2026/')) return new Response('Not found', { status: 404 });
+    const legacyReport = /^\/election2026\/reports\/([^/]+)\/?$/.exec(url.pathname);
+    const replacement = legacyReport && reportAliases[legacyReport[1]];
+    if (replacement) { url.pathname = `/election2026/reports/${replacement}`; return Response.redirect(url, 308); }
     // Earlier native share sheets appended the card caption after a space. Preserve those links.
     const captionSuffix = url.pathname.match(/^(\/election2026\/infographics\/[a-z0-9-]+\/[1-9]\d*)%20[^/]+$/i);
     if (captionSuffix) {

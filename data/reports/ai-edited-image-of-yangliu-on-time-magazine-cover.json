@@ -1,0 +1,341 @@
+{
+  "version": 1,
+  "isMock": true,
+  "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover",
+  "seo": {
+    "title": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成｜2026 選舉工具箱",
+    "description": "網傳封面圖經AI編輯變造，《時代雜誌》最新一期封面人物為美國太平洋司令部司令",
+    "image": {
+      "src": "/images/og/ai-edited-image-of-yangliu-on-time-magazine-cover.png",
+      "alt": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成",
+      "width": 1200,
+      "height": 630,
+      "type": "image/png"
+    },
+    "noindex": true,
+    "authorType": "Person"
+  },
+  "kind": "report",
+  "category": "地方選舉",
+  "title": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成",
+  "finding": "網傳圖片並非真實的《時代雜誌》封面，而是以真實照片為基礎，透過AI工具編輯而成，因此，為「影像變造」訊息。",
+  "verdict": "錯誤",
+  "tags": [
+    "錯誤",
+    "政治與政策"
+  ],
+  "published": "2026-10-12",
+  "updated": null,
+  "reportId": "4352",
+  "reporter": "曾慧雯",
+  "editor": "陳偉婷",
+  "image": null,
+  "imageCaption": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成",
+  "summaryPoints": [
+    "近日網路流傳「洋流登上時代雜誌封面」圖片；經查證，網傳圖片並非《時代雜誌》最新一期封面，而是造勢場合照片經AI編輯加工而成。",
+    "一、《時代雜誌》最新一期（2026年10月12日出版）封面人物為美國太平洋司令部司令帕帕羅（Samuel Paparo），並非網傳圖片。",
+    "二、網傳圖片是以真實人物照片為基礎，再經AI編輯而成。原始照片拍攝於10月4日台北市長參選人沈伯洋競選總部成立大會會場，拍攝者於社群貼文表示，這是一名從彰化搭客運北上參與活動的長者。",
+    "有網友稱讚照片很有《時代雜誌》封面的感覺，並以AI加工成封面樣式，標註「AI內容」，但流傳時因脈絡流失而造成誤解。",
+    "三、線上AI偵測工具顯示，網傳圖片經過AI編輯。OpenAI的SynthID檢測工具則顯示，圖片含有SynthID浮水印，為OpenAI工具生成。",
+    "網傳圖片並非真實的《時代雜誌》封面，而是以真實照片為基礎，透過AI工具編輯而成，因此，為「影像變造」訊息。"
+  ],
+  "summaryClose": "",
+  "summaryBlocks": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "近日網路流傳「洋流登上時代雜誌封面」圖片；經查證，網傳圖片並非《時代雜誌》最新一期封面，而是造勢場合照片經AI編輯加工而成。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "一、《時代雜誌》最新一期（2026年10月12日出版）封面人物為美國太平洋司令部司令帕帕羅（Samuel Paparo），並非網傳圖片。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "二、網傳圖片是以真實人物照片為基礎，再經AI編輯而成。原始照片拍攝於10月4日台北市長參選人沈伯洋競選總部成立大會會場，拍攝者於社群貼文表示，這是一名從彰化搭客運北上參與活動的長者。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "有網友稱讚照片很有《時代雜誌》封面的感覺，並以AI加工成封面樣式，標註「AI內容」，但流傳時因脈絡流失而造成誤解。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "三、線上AI偵測工具顯示，網傳圖片經過AI編輯。OpenAI的SynthID檢測工具則顯示，圖片含有SynthID浮水印，為OpenAI工具生成。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "網傳圖片並非真實的《時代雜誌》封面，而是以真實照片為基礎，透過AI工具編輯而成，因此，為「影像變造」訊息。"
+        }
+      ]
+    }
+  ],
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "paragraphs": [
+      "九合一選舉將在11月28日舉行，選情也漸趨激烈。近日社群平台流傳一張「洋流登上時代雜誌封面」圖片，圖片裡是一名頭上繫著「洋流」飄帶的白髮長者，出版日期則標註為2026年10月13日。",
+      "有不少網友在謠言觀測平台上詢問此圖是否為真，查核中心LINE聊天機器人也收到讀者通報。",
+      "社群平台流傳訊息擷圖"
+    ],
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "九合一選舉將在11月28日舉行，選情也漸趨激烈。近日社群平台流傳一張「洋流登上時代雜誌封面」圖片，圖片裡是一名頭上繫著「洋流」飄帶的白髮長者，出版日期則標註為2026年10月13日。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "有不少網友在謠言觀測平台上詢問此圖是否為真，查核中心LINE聊天機器人也收到讀者通報。"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "/images/imported/014af8ce38cb5cbe429159b3147ade7ee70ed399c2e798ba7bfee78bbca8c37d.jpg",
+          "alt": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成・內文圖片2"
+        }
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "社群平台流傳訊息擷圖",
+            "italic": true
+          }
+        ]
+      }
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "查核",
+      "paragraphs": [
+        "查核點：網傳圖片是最新一期《時代雜誌》封面嗎？",
+        "最新一期《時代雜誌》封面人物為美國太平洋司令部司令",
+        "查核中心查詢《時代雜誌》官網公布的最新一期封面，可發現真實封面與網傳圖片完全不同。",
+        "2026年10月12日出版的《時代雜誌》封面人物為美國太平洋司令部司令帕帕羅（Samuel Paparo），他近日接受專訪時談美國如何防範中國對台動武，目標是孫子兵法裡的「不戰而屈人之兵」。",
+        "搜尋《時代雜誌》的歷史資料庫，過去3個月都沒有與台灣選舉議題有關的封面。",
+        "網傳圖片以真實照片為基礎，再利用AI編輯而成",
+        "以google以圖反搜網傳圖片，可查找到社群平台Threads有多名用戶流傳類似圖片，但都沒有以《時代雜誌》封面的方式排版呈現，背景也沒有出現台北101大樓。",
+        "最早發布這張圖片的用戶在貼文裡指出，這張照片是他在10月4日台北市長參選人沈伯洋競選總部成立大會所拍攝，主角是一名從彰化搭客運北上參加活動的長者，當時這位長者正在專心聆聽滅火器樂團的演唱。",
+        "檢視這篇貼文的留言，可看見有其他網友從後方拍到這位長者的背影；也有支持者讚美這張照片「拍得真好，很有時代雜誌封面的感覺」，並將照片加工做成《時代雜誌》封面樣式，底下標註「AI內容」。由此可判斷，網傳圖片是以真實人物照片為基礎，再利用AI編輯修改，並套上《時代雜誌》封面模板做成，但在流傳時失去脈絡，有可能造成誤解。",
+        "網傳圖片是由OpenAI工具生成",
+        "查核中心進一步以線上AI偵測工具檢測網傳圖片。根據Hive Moderation檢測結果，網傳《時代雜誌》封面圖有極高機率經過AI編輯及變造；Image Whisperer也偵測到編輯跡象，編輯偵測器發現可疑區域是局部的，而非遍布整幅影像，判斷這是一幅由相機拍攝的圖像，但其中包含AI編輯的元素，並非完全由AI生成。",
+        "網傳圖片是以真實照片為基礎，再利用AI重新編輯製成（綠框為台灣事實查核中心所加）",
+        "另外，查核中心也透過OpenAI「SynthID檢測工具」檢測，結果顯示，網傳圖片擁有SynthID浮水印，是由OpenAI工具生成。"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "查核點：網傳圖片是最新一期《時代雜誌》封面嗎？",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "最新一期《時代雜誌》封面人物為美國太平洋司令部司令",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "查核中心查詢《時代雜誌》官網公布的最新一期"
+            },
+            {
+              "text": "封面",
+              "href": "https://time.com/magazine/us/2026/10/02/october-12th-2026-vol-208-no-11-u-s-south-pacific-asia/"
+            },
+            {
+              "text": "，可發現真實封面與網傳圖片完全不同。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "2026年10月12日出版的《時代雜誌》封面人物為美國太平洋司令部司令帕帕羅（Samuel Paparo），他近日接受"
+            },
+            {
+              "text": "專訪",
+              "href": "https://time.com/article/2026/09/24/admiral-paparo-war-china-taiwan/"
+            },
+            {
+              "text": "時談美國如何防範中國對台動武，目標是孫子兵法裡的「不戰而屈人之兵」。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "搜尋《時代雜誌》的歷史資料庫，"
+            },
+            {
+              "text": "過去3個月",
+              "href": "https://time.com/vault/year/2026/"
+            },
+            {
+              "text": "都沒有與台灣選舉議題有關的封面。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "網傳圖片以真實照片為基礎，再利用AI編輯而成",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "以google以圖反搜網傳圖片，可查找到社群平台Threads有多名用戶流傳類似圖片，但都沒有以《時代雜誌》封面的方式排版呈現，背景也沒有出現台北101大樓。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "最早發布這張圖片的用戶在貼文裡指出，這張照片是他在10月4日台北市長參選人沈伯洋競選總部成立大會所拍攝，主角是一名從彰化搭客運北上參加活動的長者，當時這位長者正在專心聆聽滅火器樂團的演唱。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/37f5d65a0040e1d01ff263c2e4de270b0a1765eb353d250793453bf2801a1fdf.png",
+            "alt": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成・內文圖片3"
+          }
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "檢視這篇貼文的留言，可看見有其他網友從後方拍到這位長者的背影；也有支持者讚美這張照片「拍得真好，很有時代雜誌封面的感覺」，並將照片加工做成《時代雜誌》封面樣式，底下標註「AI內容」。由此可判斷，網傳圖片是以真實人物照片為基礎，再利用AI編輯修改，並套上《時代雜誌》封面模板做成，但在流傳時失去脈絡，有可能造成誤解。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/ddb9bcda5d5040618c7bc83e8f7b902326c4ec90184c508fab33d2cc95e4d320.png",
+            "alt": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成・內文圖片4"
+          }
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "網傳圖片是由OpenAI工具生成",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "查核中心進一步以線上AI偵測工具檢測網傳圖片。根據"
+            },
+            {
+              "text": "Hive Moderation",
+              "href": "https://hivemoderation.com/ai-generated-content-detection"
+            },
+            {
+              "text": "檢測結果，網傳《時代雜誌》封面圖有極高機率經過AI編輯及變造；"
+            },
+            {
+              "text": "Image Whisperer",
+              "href": "https://imagewhisperer.org/?mc_cid=e61aec6281&mc_eid=eca87e9610"
+            },
+            {
+              "text": "也偵測到編輯跡象，編輯偵測器發現可疑區域是局部的，而非遍布整幅影像，判斷這是一幅由相機拍攝的圖像，但其中包含AI編輯的元素，並非完全由AI生成。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/d2f1067d38e98c9676e20a10ed63e19bbcac10ff3754ef31035b2c6ccddd33c0.png",
+            "alt": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成・內文圖片5"
+          }
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "網傳圖片是以真實照片為基礎，再利用AI重新編輯製成（綠框為台灣事實查核中心所加）",
+              "italic": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "另外，查核中心也透過OpenAI「"
+            },
+            {
+              "text": "SynthID檢測工具",
+              "href": "https://openai.com/zh-Hant/research/verify/"
+            },
+            {
+              "text": "」檢測，結果顯示，網傳圖片擁有SynthID浮水印，是由OpenAI工具生成。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/80204bb60e1c7163097f26c95fa81b2705bde91647329a585186809dd926e10b.png",
+            "alt": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成・內文圖片6"
+          }
+        }
+      ]
+    }
+  ],
+  "supplementarySections": [],
+  "sources": [],
+  "relatedSlugs": []
+}
