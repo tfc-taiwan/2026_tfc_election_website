@@ -57,19 +57,20 @@ function Brand({ site }: { site: Listings['site'] }) {
 
 function Header({ data, onInfo }: { data: Listings; onInfo: (info: Info) => void }) {
   const [menu, setMenu] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState('');
   const input = useRef<HTMLInputElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
   const location = useLocation();
-  useEffect(() => { setMenu(false); setSearchOpen(false); setQuery(new URLSearchParams(location.search).get('q') ?? ''); }, [location]);
+  useEffect(() => { setMenu(false); setOpenDropdown(null); setSearchOpen(false); setQuery(new URLSearchParams(location.search).get('q') ?? ''); }, [location]);
 
   return <header className="site-header">
     <a className="skip-link" href="#main-content">跳至主要內容</a>
     <div className="header-inner page-padding">
       <Brand site={data.site} />
-      <nav id="main-nav" aria-label="主要導覽" className={`main-nav ${menu ? 'is-open' : ''}`} onKeyDown={event => { if (event.key === 'Escape') { setMenu(false); menuButton.current?.focus(); } }}>
-        {data.navigation.map(item => item.children?.length ? <details className="nav-dropdown" key={item.label}><summary>{item.label}<Icon name="caret" size={14} /></summary><div className="nav-dropdown-links">{item.children.map(child => <Link key={child.href} to={child.href} onClick={event => { setMenu(false); event.currentTarget.closest('details')?.removeAttribute('open'); }}>{child.label}</Link>)}</div></details> : <NavLink key={item.href} to={item.href} onClick={() => setMenu(false)}>{item.label}</NavLink>)}
+      <nav id="main-nav" aria-label="主要導覽" className={`main-nav ${menu ? 'is-open' : ''}`} onKeyDown={event => { if (event.key === 'Escape') { setOpenDropdown(null); setMenu(false); menuButton.current?.focus(); } }}>
+        {data.navigation.map(item => item.children?.length ? <details className="nav-dropdown" key={item.label} open={openDropdown === item.label}><summary onClick={event => { event.preventDefault(); setOpenDropdown(current => current === item.label ? null : item.label); }}>{item.label}<Icon name="caret" size={14} /></summary><div className="nav-dropdown-links">{item.children.map(child => <Link key={child.href} to={child.href} onClick={() => { setMenu(false); setOpenDropdown(null); }}>{child.label}</Link>)}</div></details> : <NavLink key={item.href} to={item.href} onClick={() => { setMenu(false); setOpenDropdown(null); }}>{item.label}</NavLink>)}
       </nav>
       <span className="header-divider" aria-hidden="true" />
       <div className="header-actions"><a className="donate-button" href={data.site.donationUrl} target="_blank" rel="noopener noreferrer">捐款支持<span className="sr-only">（開啟新視窗）</span></a><a className="official-link" href="https://tfc-taiwan.org.tw/" target="_blank" rel="noopener noreferrer">回官網<span className="sr-only">（開啟新視窗）</span></a><button className="icon-button header-search-toggle" aria-label={searchOpen ? '關閉搜尋' : '前往搜尋'} aria-expanded={searchOpen} aria-controls="header-search" onClick={() => { setSearchOpen(!searchOpen); if (!searchOpen) requestAnimationFrame(() => input.current?.focus()); }}><Icon name={searchOpen ? 'close' : 'search'} size={19} /></button></div>
@@ -372,7 +373,7 @@ function ListingsPage({ data }: { data: Listings }) {
     {stories.length ? <>
       <div className="listing-grid">{stories.map((story, index) => <StoryCard story={story} key={story.slug} hidden={index >= visible} />)}</div>
       {stories.length > visible && <div className="listing-more"><button className="pill-button" type="button" onClick={() => setVisible(count => count + LISTING_PAGE_SIZE)}>載入更多報告<span className="sr-only">（尚有 {stories.length - visible} 篇）</span></button></div>}
-    </> : <div className="empty-state"><Icon name="search" size={34} /><h2>沒有找到符合的內容</h2><p>試試較短的關鍵字，或切換其他分類。</p><button className="button secondary" onClick={() => setParams({})}>清除搜尋與篩選</button></div>}
+    </> : <div className="empty-state"><Icon name="search" size={34} /><h2>{category === '辯論會查核' ? '敬請期待' : '沒有找到符合的內容'}</h2><p>{category === '辯論會查核' ? '辯論會查核內容將於發布後更新。' : '試試較短的關鍵字，或切換其他分類。'}</p><button className="button secondary" onClick={() => setParams({})}>清除搜尋與篩選</button></div>}
   </section>;
 }
 
