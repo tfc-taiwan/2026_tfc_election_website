@@ -6,11 +6,11 @@
     "title": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過｜2026 選舉工具箱",
     "description": "曾有立委於2020年提案修法，但並未完成三讀",
     "image": {
-      "src": "/images/og/five-star-flag-fine-2020-proposal-not-passed.png",
+      "src": "/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg",
       "alt": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過",
-      "width": 1200,
-      "height": 630,
-      "type": "image/png"
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
     },
     "noindex": true,
     "authorType": "Person"
@@ -29,7 +29,10 @@
   "reportId": "4350",
   "reporter": "宋思彤",
   "editor": "陳偉婷",
-  "image": null,
+  "image": {
+    "src": "/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg",
+    "alt": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過"
+  },
   "imageCaption": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過",
   "summaryPoints": [
     "近期網路流傳圖卡，指出台灣國安法草案一讀修正通過，在台灣揮五星旗要罰款5萬新台幣。經查，2020年確實有立委提案修改《國安法》，且經一讀、送入內政委員會審查，但最終並未完成修法。",

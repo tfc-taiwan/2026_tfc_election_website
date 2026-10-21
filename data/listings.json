@@ -253,7 +253,10 @@
       "title": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成",
       "description": "網傳封面圖經AI編輯變造，《時代雜誌》最新一期封面人物為美國太平洋司令部司令",
       "date": "2026-10-12",
-      "image": null,
+      "image": {
+        "src": "/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg",
+        "alt": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成"
+      },
       "tag": "政治與政策",
       "tone": "magenta",
       "verdict": "錯誤"
@@ -265,7 +268,10 @@
       "title": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過",
       "description": "曾有立委於2020年提案修法，但並未完成三讀",
       "date": "2026-10-12",
-      "image": null,
+      "image": {
+        "src": "/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg",
+        "alt": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過"
+      },
       "tag": "政治與政策",
       "tone": "cyan",
       "verdict": "部分錯誤"

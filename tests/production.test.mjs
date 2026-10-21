@@ -47,11 +47,19 @@ test('built static pages contain body content and unique head metadata', async (
       assert.ok(html.includes('閱讀完整內容'));
       assert.ok(!html.includes('上一則案例'));
       assert.ok(!html.includes('暫停案例輪播'));
+      assert.ok(!html.includes('專區文章'));
     } else if (path === 'reports/deepfake-pledge/index.html') {
       assert.match(html, /<article class="pledge-page section-padding">/);
       assert.ok(html.includes('自律公約承諾原則：二不二要'));
       assert.match(html, /展開全部案例（(?:<!-- -->)?13/);
       assert.ok(!html.includes('cdn.tailwindcss.com'));
+    } else if (path === 'reports/reject-deepfake-election-disinformation-self-regulation-charter/index.html') {
+      assert.ok(html.includes('自律公約內容'));
+      assert.ok(!html.includes('常見問答'));
+      assert.ok(!html.includes('補充資料'));
+      assert.ok(!html.includes('這項倡議在做什麼'));
+      assert.ok(!html.includes('對外時程是什麼'));
+      assert.ok(html.includes('資料來源與說明'));
     } else if (path === 'reports/taiwan-2026-election-voting-notice-ballots-guide/index.html') {
       assert.ok(html.includes('guide-body'));
       assert.ok(!html.includes('id="verification"'));

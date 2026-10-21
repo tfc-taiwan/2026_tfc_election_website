@@ -74,7 +74,9 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 test('provided covers match reports while unfilled dates stay absent', () => {
   assert.equal(data.stories.length, 12);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
-  assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 5);
+  assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 7);
+  assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
+  assert.equal(data.stories.find(story => story.slug === 'five-star-flag-fine-2020-proposal-not-passed')?.image?.src, '/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg');
   assert.equal(data.stories.find(story => story.slug === 'deepfake-pledge')?.image, null);
   assert.deepEqual(data.sections.infographics?.slugs, [
     'china-xiamen-bridge-does-not-reach-kinmen',
@@ -100,9 +102,11 @@ test('deepfake pledge overview has paragraph breaks and a working full article r
   assert.deepEqual(initiative.description.split(/\n\s*\n/).length, 2);
   assert.equal(initiative.content?.fullTextUrl, '/reports/reject-deepfake-election-disinformation-self-regulation-charter');
   assert.ok(data.stories.some(story => story.slug === 'deepfake-pledge'));
+  assert.ok(data.stories.some(story => story.slug === 'reject-deepfake-election-disinformation-self-regulation-charter'));
   const article = reportSchema.parse(JSON.parse(readFileSync(resolve(root, 'data/reports/reject-deepfake-election-disinformation-self-regulation-charter.json'), 'utf8')));
   assert.equal(article.seo.noindex, true);
-  assert.equal(article.supplementarySections?.reduce((n, section) => n + (section.blocks ?? []).filter(block => block.type === 'heading').length, 0), 24);
+  assert.equal(article.supplementarySections?.length ?? 0, 0);
+  assert.equal(article.checkSections.some(section => section.title.startsWith('常見問答')), false);
 });
 
 test('learning guide and community activity use the requested destinations and label', () => {
