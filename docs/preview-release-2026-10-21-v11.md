@@ -1,6 +1,6 @@
 # V11 本機預覽｜2026-10-21
 
-V11 延續 V10 專區，僅建立本機檢視版本，沒有推送 GitHub，也沒有部署。
+V11 延續 V10 專區，已推送至 GitHub `review/v11-local-preview` 分支；沒有部署正式網站。
 
 ## 本次調整
 
@@ -27,7 +27,8 @@ npm run preview
 
 ## 驗證
 
-- `npm test`：32 項通過。
+- `npm test`：33 項通過。
 - `npm run build`：通過，預渲染 23 個頁面。
+- `npm run test:production`：10 項通過。
 - 預覽伺服器本機回應檢查：首頁與報告列表 HTTP 200、favicon HTTP 200，favicon 與提供檔案一致。
 - Playwright 瀏覽器測試無法啟動：執行環境沒有 Chrome（`/opt/google/chrome/chrome`）。
