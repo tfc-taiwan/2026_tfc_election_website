@@ -95,6 +95,13 @@ test('provided covers match reports while unfilled dates stay absent', () => {
   }
 });
 
+test('deepfake pledge overview has paragraph breaks and a working full article route', () => {
+  const initiative = data.sections.initiative!;
+  assert.deepEqual(initiative.description.split(/\n\s*\n/).length, 2);
+  assert.equal(initiative.content?.fullTextUrl, '/reports/deepfake-pledge');
+  assert.ok(data.stories.some(story => story.slug === 'deepfake-pledge'));
+});
+
 test('standalone infographic cards resolve without inventing an article', () => {
   const path = '/infographics/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained/1';
   const selected = resolveInfographic(data, path);
