@@ -234,7 +234,7 @@ function Carousel({ stories, label, heading, footer }: { stories: Story[]; label
   </div>;
 }
 
-function InfographicGallery({ data, stories, heading }: { data: Listings; stories: Story[]; heading: ReactNode }) {
+function InfographicGallery({ data, heading }: { data: Listings; heading: ReactNode }) {
   const section = data.sections.infographics!;
   const [active, setActive] = useState<string | null>(null);
   const [index, setIndex] = useState(0);
@@ -243,7 +243,7 @@ function InfographicGallery({ data, stories, heading }: { data: Listings; storie
   const [shareStatus, setShareStatus] = useState('');
   const selected = section.items?.find(item => item.slug === active);
   const cards = selected?.cards ?? [];
-  const row = useScrollRow(stories.map(story => story.slug).join(','));
+  const row = useScrollRow(section.items?.map(group => group.slug).join(',') ?? '');
   useEffect(() => {
     const element = dialog.current;
     if (active && !element?.open) element?.showModal();
@@ -261,19 +261,19 @@ function InfographicGallery({ data, stories, heading }: { data: Listings; storie
   }
   return <>
     <div className="section-heading no-bar">{heading}<ScrollControls row={row} label="圖卡懶人包" /></div>
-    <div ref={row.ref} className="infographic-grid scroll-track" tabIndex={0} aria-label="圖卡懶人包，可左右捲動" onKeyDown={row.onKeyDown}>{stories.map(story => {
-      const item = section.items?.find(value => value.slug === story.slug);
-      return <div className="infographic-card" key={story.slug}>
-        <button type="button" className="infographic-open" aria-label={`查看圖卡：${story.title}`} onClick={event => { if (!item) return; trigger.current = event.currentTarget; setIndex(0); setActive(story.slug); }}>
-          <Illustration image={item?.cards[0]?.image ?? story.image} />
-          <span className="infographic-count"><Icon name="copy" size={13} /> {item?.cards.length ?? 1}</span>
+    <div ref={row.ref} className="infographic-grid scroll-track" tabIndex={0} aria-label="圖卡懶人包，可左右捲動" onKeyDown={row.onKeyDown}>{(section.items ?? []).map(item => {
+      const story = data.stories.find(value => value.slug === item.slug);
+      return <div className="infographic-card" key={item.slug}>
+        <button type="button" className="infographic-open" aria-label={`查看圖卡：${item.title}`} onClick={event => { trigger.current = event.currentTarget; setIndex(0); setActive(item.slug); }}>
+          <Illustration image={item.cards[0]?.image ?? story?.image ?? null} />
+          <span className="infographic-count"><Icon name="copy" size={13} /> {item.cards.length}</span>
           <span className="infographic-hover" aria-hidden="true"><span>點擊查看大圖</span></span>
         </button>
-        <span className="infographic-copy"><small>{story.tag}</small><strong>{story.title}</strong>{!item && <Link to={`/reports/${story.slug}`}>閱讀完整內容 ↗</Link>}</span>
+        <span className="infographic-copy"><small>{story?.tag ?? '圖卡懶人包'}</small><strong>{item.title}</strong>{story && <Link to={`/reports/${story.slug}`}>閱讀完整內容 ↗</Link>}</span>
       </div>;
     })}</div>
     <dialog ref={dialog} className="infographic-lightbox" aria-label="圖卡大圖瀏覽" onClose={close} onClick={event => { if (event.target === event.currentTarget) close(); }} onKeyDown={event => { if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); } if (event.key === 'ArrowRight') { event.preventDefault(); move(1); } }}>
-      {selected && <div className="lightbox-layout"><div className="lightbox-top"><span>{index + 1} / {cards.length}</span><strong>{stories.find(story => story.slug === active)?.title}</strong><button type="button" aria-label="關閉圖卡" onClick={close}><Icon name="close" /></button></div><div className="lightbox-stage"><button type="button" className="lightbox-arrow" aria-label="上一張" onClick={() => move(-1)}><Icon name="left" /></button><figure><img src={publicPath(cards[index].image.src)} alt={cards[index].image.alt} /><figcaption>{cards[index].caption}</figcaption></figure><button type="button" className="lightbox-arrow" aria-label="下一張" onClick={() => move(1)}><Icon name="right" /></button></div><div className="lightbox-bottom"><button type="button" onClick={share}><Icon name="copy" size={17} />分享這張圖卡</button><Link to={infographicPath(selected.slug, index + 1)} onClick={close}>開啟圖卡專頁 ↗</Link><span role="status">{shareStatus}</span></div></div>}
+      {selected && <div className="lightbox-layout"><div className="lightbox-top"><span>{index + 1} / {cards.length}</span><strong>{selected.title}</strong><button type="button" aria-label="關閉圖卡" onClick={close}><Icon name="close" /></button></div><div className="lightbox-stage"><button type="button" className="lightbox-arrow" aria-label="上一張" onClick={() => move(-1)}><Icon name="left" /></button><figure><img src={publicPath(cards[index].image.src)} alt={cards[index].image.alt} /><figcaption>{cards[index].caption}</figcaption></figure><button type="button" className="lightbox-arrow" aria-label="下一張" onClick={() => move(1)}><Icon name="right" /></button></div><div className="lightbox-bottom"><button type="button" onClick={share}><Icon name="copy" size={17} />分享這張圖卡</button><Link to={infographicPath(selected.slug, index + 1)} onClick={close}>開啟圖卡專頁 ↗</Link><span role="status">{shareStatus}</span></div></div>}
     </dialog>
   </>;
 }
@@ -295,13 +295,13 @@ function InfographicPage({ data }: { data: Listings }) {
     } catch (error) { if (!(error instanceof DOMException && error.name === 'AbortError')) setShareStatus(`請複製網址：${pageUrl}`); }
   }
   return <><PageSeo data={data} /><article className="infographic-page">
-    <nav className="breadcrumbs infographic-breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><Link to="/#infographics">圖卡懶人包</Link><span aria-hidden="true">／</span><span>{story.title}</span></nav>
+    <nav className="breadcrumbs infographic-breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><Link to="/#infographics">圖卡懶人包</Link><span aria-hidden="true">／</span><span>{group.title}</span></nav>
     <div className="infographic-viewer"><div className="lightbox-layout">
-      <div className="lightbox-top"><span>{current} / {total}</span><h1>{story.title}</h1><Link className="infographic-close" to="/#infographics" aria-label="返回圖卡列表"><Icon name="close" /></Link></div>
+      <div className="lightbox-top"><span>{current} / {total}</span><h1>{group.title}</h1><Link className="infographic-close" to="/#infographics" aria-label="返回圖卡列表"><Icon name="close" /></Link></div>
       <div className="lightbox-stage"><Link className="lightbox-arrow" to={infographicPath(slug, current === 1 ? total : current - 1)} aria-label="上一張"><Icon name="left" /></Link><figure><img src={publicPath(card.image.src)} alt={card.image.alt} width="720" height="900" /><figcaption>{card.caption}</figcaption></figure><Link className="lightbox-arrow" to={infographicPath(slug, current === total ? 1 : current + 1)} aria-label="下一張"><Icon name="right" /></Link></div>
       <div className="lightbox-bottom"><button type="button" onClick={share}><Icon name="copy" size={17} />分享這張圖卡</button><span role="status">{shareStatus}</span></div>
     </div></div>
-    <div className="infographic-context"><p>{story.description}</p><Link to={`/reports/${story.slug}`}>閱讀原文章 ↗</Link>{data.isMock && <small>以上圖卡與文章為虛構示範內容。</small>}</div>
+    <div className="infographic-context">{(story?.description ?? group.description) && <p>{story?.description ?? group.description}</p>}{story && <Link to={`/reports/${story.slug}`}>閱讀原文章 ↗</Link>}{data.isMock && <small>以上圖卡與文章為虛構示範內容。</small>}</div>
   </article></>;
 }
 
@@ -337,7 +337,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
       <YouTubeShorts items={sections.shorts.items} heading={<div><h2 id="shorts-title">{sections.shorts.title}</h2><p>{sections.shorts.description}</p></div>} />
     </section>}
     {sections.infographics && <section className="infographics-section section-padding grid-texture" id="infographics" aria-labelledby="infographics-title">
-      {sections.infographics.slugs.length ? <InfographicGallery data={data} stories={pick(sections.infographics.slugs)} heading={<div><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p></div>} /> : <><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p><p className="pending-content">圖卡素材待補入，目前尚未發布圖卡。</p>{!!sections.infographics.pendingItems?.length && <ul className="pending-gallery-list">{sections.infographics.pendingItems.map(group => <li key={group.slug}>{group.title}（{group.count}張）</li>)}</ul>}</>}
+      {sections.infographics.items?.length ? <InfographicGallery data={data} heading={<div><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p></div>} /> : <><h2 id="infographics-title">{sections.infographics.title}</h2><p>{sections.infographics.description}</p><p className="pending-content">圖卡素材待補入，目前尚未發布圖卡。</p>{!!sections.infographics.pendingItems?.length && <ul className="pending-gallery-list">{sections.infographics.pendingItems.map(group => <li key={group.slug}>{group.title}（{group.count}張）</li>)}</ul>}</>}
     </section>}
     <section className="rumors-section section-padding" id="rumors" aria-labelledby="rumors-title">
       <h2 id="rumors-title">{sections.rumors.title}</h2>

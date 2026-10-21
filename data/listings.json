@@ -618,27 +618,99 @@
       "featuredSlug": "deepfake-pledge"
     },
     "infographics": {
-      "slugs": [],
-      "items": [],
+      "slugs": [
+        "china-xiamen-bridge-does-not-reach-kinmen",
+        "taiwan-immigrant-stat-misread-cumulative-data-hoax-explained"
+      ],
+      "items": [
+        {
+          "slug": "china-xiamen-bridge-does-not-reach-kinmen",
+          "title": "中國廈金大橋僅能連結廈門兩島，無法直通金門",
+          "description": "釐清廈金大橋的實際施工資訊，以及是否能直通金門。",
+          "cards": [
+            {
+              "image": {
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-1.jpg",
+                "alt": "廈金大橋查核圖卡，第 1 張"
+              },
+              "caption": "廈金大橋查核圖卡｜第 1 張"
+            },
+            {
+              "image": {
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-2.jpg",
+                "alt": "廈金大橋查核圖卡，第 2 張"
+              },
+              "caption": "廈金大橋查核圖卡｜第 2 張"
+            },
+            {
+              "image": {
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-3.jpg",
+                "alt": "廈金大橋查核圖卡，第 3 張"
+              },
+              "caption": "廈金大橋查核圖卡｜第 3 張"
+            },
+            {
+              "image": {
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-4.jpg",
+                "alt": "廈金大橋查核圖卡，第 4 張"
+              },
+              "caption": "廈金大橋查核圖卡｜第 4 張"
+            },
+            {
+              "image": {
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-5.jpg",
+                "alt": "廈金大橋查核圖卡，第 5 張"
+              },
+              "caption": "廈金大橋查核圖卡｜第 5 張"
+            }
+          ]
+        },
+        {
+          "slug": "taiwan-immigrant-stat-misread-cumulative-data-hoax-explained",
+          "title": "近 3 年在台定居中國人暴增？挪用累計 39 年數據偷換概念的謠言",
+          "description": "圖卡整理網傳定居人口說法與累計年數的脈絡。",
+          "cards": [
+            {
+              "image": {
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-1.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 1 張"
+              },
+              "caption": "在台定居中國人數據查核圖卡｜第 1 張"
+            },
+            {
+              "image": {
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-2.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 2 張"
+              },
+              "caption": "在台定居中國人數據查核圖卡｜第 2 張"
+            },
+            {
+              "image": {
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-3.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 3 張"
+              },
+              "caption": "在台定居中國人數據查核圖卡｜第 3 張"
+            },
+            {
+              "image": {
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-4.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 4 張"
+              },
+              "caption": "在台定居中國人數據查核圖卡｜第 4 張"
+            },
+            {
+              "image": {
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-5.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 5 張"
+              },
+              "caption": "在台定居中國人數據查核圖卡｜第 5 張"
+            }
+          ]
+        }
+      ],
       "title": "圖卡懶人包",
       "description": "視覺化知識，直接左右滑動瀏覽吧！",
-      "pendingItems": [
-        {
-          "slug": "paper-ballot-box",
-          "title": "紙箱票匭",
-          "count": 6
-        },
-        {
-          "slug": "2025-recall-vote",
-          "title": "大罷免投票",
-          "count": 5
-        },
-        {
-          "slug": "2025-maanshan-nuclear-referendum",
-          "title": "核能公投",
-          "count": 6
-        }
-      ]
+      "pendingItems": []
     }
   }
 }

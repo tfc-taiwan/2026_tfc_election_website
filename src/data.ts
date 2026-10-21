@@ -67,7 +67,7 @@ export const listingsSchema = z.object({
     reports: z.object({ title: text, categories: z.array(category).min(1), items: z.array(z.object({ slug, title: text.optional() })) }),
     analyses: z.object({ title: text, description: text, slugs: z.array(slug) }),
     shorts: z.object({ title: text, description: text, items: z.array(z.object({ title: text, url: youtubeUrl })).min(1) }).optional(),
-    infographics: z.object({ pendingItems: z.array(z.object({ slug, title: text, count: z.number().int().positive() })).optional(), title: text, description: text, slugs: z.array(slug), items: z.array(z.object({ slug, title: text, cards: z.array(z.object({ image, caption: text })).min(1) })).optional() }).optional(),
+    infographics: z.object({ pendingItems: z.array(z.object({ slug, title: text, count: z.number().int().positive() })).optional(), title: text, description: text, slugs: z.array(slug), items: z.array(z.object({ slug, title: text, description: text.optional(), cards: z.array(z.object({ image, caption: text })).min(1) })).optional() }).optional(),
     rumors: z.object({ title: text, items: z.array(z.object({ id: slug, badge: text, label: text, tone, scriptId: slug })) }),
     scripts: z.object({ title: text, items: z.array(z.object({ id: slug, question: text, answer: text, href: editorialLink.optional() })) }),
     process: z.object({ title: text, items: z.array(info.extend({ icon: z.enum(['document', 'calendar', 'check', 'globe']), tone })) }),

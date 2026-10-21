@@ -43,10 +43,10 @@ export function buildSeo(data: Listings, location: string, report: Report | null
   const isQuery = isListing && (url.searchParams.has('q') || url.searchParams.has('category'));
   const missing = status === 'not-found' || (!['/', '/reports'].includes(path) && !isArticle && !infographic);
   const page = infographic ? {
-    title: `${infographic.story.title}｜圖卡 ${infographic.number}/${infographic.group.cards.length}｜${data.site.name}`,
-    description: `${infographic.card.caption}。${infographic.story.description}`,
+    title: `${infographic.group.title}｜圖卡 ${infographic.number}/${infographic.group.cards.length}｜${data.site.name}`,
+    description: `${infographic.card.caption}。${infographic.story?.description ?? infographic.group.description ?? infographic.group.title}`,
     image: { src: `/images/og/cards/${infographic.group.slug}-${infographic.number}.png`, alt: infographic.card.image.alt, width: 1200, height: 630, type: 'image/png' },
-    noindex: data.seo.home.noindex,
+    noindex: data.seo.home.noindex || !infographic.story,
   } : report?.seo ?? (isListing ? data.seo.reports : data.seo.home);
   const title = missing ? `找不到頁面｜${data.site.name}` : status === 'error' ? `資料暫時無法載入｜${data.site.name}` : isQuery ? `搜尋與篩選結果｜${data.site.name}` : status === 'loading' ? `載入內容中｜${data.site.name}` : page.title;
   const description = missing ? '找不到這個頁面，請回到首頁或查核報告列表。' : status === 'error' ? '資料暫時無法載入，請稍後重試。' : page.description;
@@ -86,10 +86,10 @@ export function buildSeo(data: Listings, location: string, report: Report | null
       const items = [{ '@type': 'ListItem', position: 1, name: '首頁', item: siteRoot },
         { '@type': 'ListItem', position: 2, name: infographic ? '圖卡懶人包' : report?.kind === 'analysis' ? '資訊操弄解析' : report?.kind === 'guide' ? '查核學堂' : '查核報告', item: infographic ? `${siteRoot}#infographics` : report?.kind === 'analysis' ? `${siteRoot}#analysis` : report?.kind === 'guide' ? `${siteRoot}#learning` : `${siteRootFor(data, context)}/reports` }];
       if (report) items.push({ '@type': 'ListItem', position: 3, name: report.title, item: canonical });
-      if (infographic) items.push({ '@type': 'ListItem', position: 3, name: `${infographic.story.title} 圖卡 ${infographic.number}`, item: canonical });
+      if (infographic) items.push({ '@type': 'ListItem', position: 3, name: `${infographic.group.title} 圖卡 ${infographic.number}`, item: canonical });
       graph.push({ '@type': 'BreadcrumbList', '@id': `${canonical}#breadcrumbs`, itemListElement: items });
     }
-    if (infographic) graph.push({ '@type': 'ImageObject', '@id': `${canonical}#image`, contentUrl: new URL(publicPath(infographic.card.image.src), origin).href, thumbnailUrl: imageUrl, caption: infographic.card.caption, name: `${infographic.story.title} 圖卡 ${infographic.number}` });
+    if (infographic) graph.push({ '@type': 'ImageObject', '@id': `${canonical}#image`, contentUrl: new URL(publicPath(infographic.card.image.src), origin).href, thumbnailUrl: imageUrl, caption: infographic.card.caption, name: `${infographic.group.title} 圖卡 ${infographic.number}` });
     if (isListing) graph.push({ '@type': 'ItemList', itemListElement: data.stories.filter(story => story.kind === 'report').map((story, index) => ({ '@type': 'ListItem', position: index + 1, name: story.title, url: `${siteRootFor(data, context)}/reports/${story.slug}` })) });
     if (report) graph.push({
       '@type': report.kind === 'guide' ? 'Article' : 'NewsArticle', '@id': `${canonical}#article`,
