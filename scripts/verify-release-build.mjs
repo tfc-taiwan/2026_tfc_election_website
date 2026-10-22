@@ -1,10 +1,13 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { verifyImageDirectory } from './image-integrity.mjs';
 
 const profile = process.argv[2];
 assert.ok(['production', 'preview'].includes(profile), 'Pass a deployment profile');
 const preview = profile === 'preview';
 const read = path => readFile(`worker-assets/election2026/${path}`, 'utf8');
+const imageCount = await verifyImageDirectory('worker-assets/election2026/images');
+console.log(`Verified full decoding and content hashes for ${imageCount} staged raster images.`);
 const home = await read('index.html');
 const data = JSON.parse(await read('data/listings.json'));
 const initial = JSON.parse(home.match(/<script id="__TFC_DATA__" type="application\/json">([\s\S]*?)<\/script>/)[1]);
