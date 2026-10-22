@@ -151,6 +151,36 @@
   },
   "stories": [
     {
+      "slug": "qiaohu-island-poll-six-municipal-elections-dpp-lead-fabricated",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「巧虎島民調」是虛構民調，且有違反選罷法之虞",
+      "description": "近期流傳「巧虎島民調」圖卡，聲稱民進黨市長候選人在六都全面領先。經查證並無該家民調公司，民調方法也說明不清，並非可信民調。",
+      "date": "2026-10-20",
+      "image": {
+        "src": "/images/covers/qiaohu-island-poll-six-municipal-elections-dpp-lead-fabricated.jpg",
+        "alt": "網傳「巧虎島民調」是虛構民調，且有違反選罷法之虞"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "cheng-chao-hsin-wife-lin-hsin-yi-same-name-different-person",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "鄭照新妻子與廢死聯盟執行長林欣怡同名同姓，但非同一人",
+      "description": "網路流傳廢死聯盟執行長林欣怡丈夫為台中副市長鄭照新。經查證，鄭照新妻子與廢死聯盟執行長同名同姓，但不是同一人。網傳說法為「錯誤」訊息。",
+      "date": "2026-10-19",
+      "image": {
+        "src": "/images/covers/cheng-chao-hsin-wife-lin-hsin-yi-same-name-different-person.jpg",
+        "alt": "鄭照新妻子與廢死聯盟執行長林欣怡同名同姓，但非同一人"
+      },
+      "tag": "政治與政策",
+      "tone": "magenta",
+      "verdict": "錯誤"
+    },
+    {
       "slug": "fake-infographic-26-chinese-spouses-running-for-chief",
       "kind": "report",
       "category": "地方選舉",
@@ -327,6 +357,12 @@
         "辯論會查核"
       ],
       "items": [
+        {
+          "slug": "qiaohu-island-poll-six-municipal-elections-dpp-lead-fabricated"
+        },
+        {
+          "slug": "cheng-chao-hsin-wife-lin-hsin-yi-same-name-different-person"
+        },
         {
           "slug": "fake-infographic-26-chinese-spouses-running-for-chief"
         },

@@ -1,0 +1,202 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "cheng-chao-hsin-wife-lin-hsin-yi-same-name-different-person",
+  "kind": "report",
+  "category": "地方選舉",
+  "title": "鄭照新妻子與廢死聯盟執行長林欣怡同名同姓，但非同一人",
+  "finding": "鄭照新妻子與廢死聯盟執行長林欣怡同名同姓，但非同一人",
+  "verdict": "錯誤",
+  "tags": [
+    "錯誤",
+    "政治與政策"
+  ],
+  "published": "2026-10-19",
+  "updated": "2026-10-19",
+  "reportId": "4360",
+  "reporter": "許雲凱",
+  "editor": "陳偉婷",
+  "image": {
+    "src": "/images/covers/cheng-chao-hsin-wife-lin-hsin-yi-same-name-different-person.jpg",
+    "alt": "鄭照新妻子與廢死聯盟執行長林欣怡同名同姓，但非同一人"
+  },
+  "imageCaption": "鄭照新妻子與廢死聯盟執行長林欣怡同名同姓，但非同一人",
+  "summaryPoints": [
+    "網路流傳廢死聯盟執行長林欣怡丈夫為台中副市長鄭照新。經查證，鄭照新妻子與廢死聯盟執行長同名同姓，但不是同一人。網傳說法為「錯誤」訊息。",
+    "查核記者分別向兩位當事人查證，均否認傳言說法。台中市副市長鄭照新表示，他的太太是與廢死聯盟執行長林欣怡同名同姓，不是同一人，傳言說法太瞎了。",
+    "林欣怡則表示自己未婚，當然不可能為鄭照新妻子，與自己同名同姓的人很多，呼籲網友要查證不要亂傳。"
+  ],
+  "summaryBlocks": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "網路流傳廢死聯盟執行長林欣怡丈夫為台中副市長鄭照新。經查證，鄭照新妻子與廢死聯盟執行長同名同姓，但不是同一人。網傳說法為「錯誤」訊息。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "查核記者分別向兩位當事人查證，均否認傳言說法。台中市副市長鄭照新表示，他的太太是與廢死聯盟執行長林欣怡同名同姓，不是同一人，傳言說法太瞎了。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "林欣怡則表示自己未婚，當然不可能為鄭照新妻子，與自己同名同姓的人很多，呼籲網友要查證不要亂傳。\n\n\n\n"
+        }
+      ]
+    }
+  ],
+  "summaryClose": "",
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "paragraphs": [
+      "10月7日國民黨立委召開記者會，呼籲民進黨台北市長候選人沈伯洋公開說明廢死立場。沈伯洋在當日媒體專訪表示，長遠來講死刑減少使用，但死刑現階段無法不存在。",
+      "隨後社群流傳訊息、圖卡，聲稱廢死聯盟執行長林欣怡丈夫為台中副市長鄭照新，並評論國民黨要將廢死栽贓沈伯洋。"
+    ],
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "10月7日國民黨立委召開"
+          },
+          {
+            "href": "https://www.cna.com.tw/news/aipl/202610070274.aspx",
+            "text": "記者會"
+          },
+          {
+            "text": "，呼籲民進黨台北市長候選人沈伯洋公開說明廢死立場。沈伯洋在當日"
+          },
+          {
+            "href": "https://udn.com/news/story/124652/9801115",
+            "text": "媒體專訪"
+          },
+          {
+            "text": "表示，長遠來講死刑減少使用，但死刑現階段無法不存在。 "
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "隨後社群流傳訊息、圖卡，聲稱廢死聯盟執行長林欣怡丈夫為台中副市長鄭照新，並評論國民黨要將廢死栽贓沈伯洋。"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "/images/imported/b0bb2ef412a3312496aa0b80225f55485c6b8975e92bbcb02888f3f3c5eaf091.jpg",
+          "alt": "社群平台流傳訊息擷圖"
+        },
+        "caption": "社群平台流傳訊息擷圖"
+      }
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "查核點：廢死聯盟執行長林欣怡丈夫是台中副市長鄭照新？",
+      "paragraphs": [
+        "依照監察院廉政專刊第315期，現任台中副市長鄭照新配偶為林欣怡，與廢死聯盟執行長同名同姓，但並非同一人。",
+        "廢死聯盟執行長林欣怡表示自己未婚，當然不可能為鄭照新妻子。大約兩個禮拜前就看到傳言，但跟自己相同姓名的人很多，呼籲網友要查證不要亂傳。",
+        "台中市副市長鄭照新表示，他的太太是與廢死聯盟執行長林欣怡同名同姓，不是同一人，傳言說法太瞎了。"
+      ],
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "bold": true,
+              "text": "鄭照新妻子與廢死聯盟執行長同名同姓，但非同一人"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "依照監察院"
+            },
+            {
+              "href": "https://www-ws.cy.gov.tw/Download.ashx?u=LzAwMS9VcGxvYWQvMS9yZWxmaWxlLzg4NjEvMzczNjMvYWM5MmQwOTUtNWM5MC00YTMzLTlkYzEtNzFkMWFjN2M4ZGM1LnBkZg%3d%3d&n=44CQ5buJ5pS%2f5bCI5YiK56ysMzE15pyf44CRLnBkZg%3d%3d&icon=..pdf",
+              "text": "廉政專刊第315期"
+            },
+            {
+              "text": "，現任台中副市長鄭照新配偶為林欣怡，與廢死聯盟執行長同名同姓，但並非同一人。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "廢死聯盟執行長林欣怡表示自己未婚，當然不可能為鄭照新妻子。大約兩個禮拜前就看到傳言，但跟自己相同姓名的人很多，呼籲網友要查證不要亂傳。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "台中市副市長鄭照新表示，他的太太是與廢死聯盟執行長林欣怡同名同姓，不是同一人，傳言說法太瞎了。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/f6b45f489583a1117cb1d41b52fb31072e351eb5d2d69f8d5aa216b04d465483.jpg",
+            "alt": "台中副市長鄭照新妻子為林欣怡，與廢死聯盟執行長同名同姓，但不是同一人。"
+          },
+          "caption": "台中副市長鄭照新妻子為林欣怡，與廢死聯盟執行長同名同姓，但不是同一人。"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "原始查核報告（台灣事實查核中心）",
+      "href": "https://tfc-taiwan.org.tw/fact-check-reports/cheng-chao-hsin-wife-lin-hsin-yi-same-name-different-person/",
+      "note": "原文發佈：2026-10-19；更新：2026-10-19。本頁保留原文內容、署名、引用連結與圖片。"
+    },
+    {
+      "label": "記者會",
+      "href": "https://www.cna.com.tw/news/aipl/202610070274.aspx",
+      "note": "原始查核報告引用資料。"
+    },
+    {
+      "label": "媒體專訪",
+      "href": "https://udn.com/news/story/124652/9801115",
+      "note": "原始查核報告引用資料。"
+    },
+    {
+      "label": "廉政專刊第315期",
+      "href": "https://www-ws.cy.gov.tw/Download.ashx?u=LzAwMS9VcGxvYWQvMS9yZWxmaWxlLzg4NjEvMzczNjMvYWM5MmQwOTUtNWM5MC00YTMzLTlkYzEtNzFkMWFjN2M4ZGM1LnBkZg%3d%3d&n=44CQ5buJ5pS%2f5bCI5YiK56ysMzE15pyf44CRLnBkZg%3d%3d&icon=..pdf",
+      "note": "原始查核報告引用資料。"
+    }
+  ],
+  "relatedSlugs": [],
+  "seo": {
+    "title": "鄭照新妻子與廢死聯盟執行長林欣怡同名同姓，但非同一人｜台灣事實查核中心 2026 選舉工具箱",
+    "description": "網路流傳廢死聯盟執行長林欣怡丈夫為台中副市長鄭照新。經查證，鄭照新妻子與廢死聯盟執行長同名同姓，但不是同一人。網傳說法為「錯誤」訊息。",
+    "image": {
+      "src": "/images/covers/cheng-chao-hsin-wife-lin-hsin-yi-same-name-different-person.jpg",
+      "alt": "鄭照新妻子與廢死聯盟執行長林欣怡同名同姓，但非同一人",
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
+    },
+    "noindex": false,
+    "authorType": "Person"
+  }
+}

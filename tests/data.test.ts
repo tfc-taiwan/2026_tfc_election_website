@@ -72,9 +72,9 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 12);
+  assert.equal(data.stories.length, 14);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
-  assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 7);
+  assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 9);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
   assert.equal(data.stories.find(story => story.slug === 'five-star-flag-fine-2020-proposal-not-passed')?.image?.src, '/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg');
   assert.equal(data.stories.find(story => story.slug === 'deepfake-pledge')?.image, null);

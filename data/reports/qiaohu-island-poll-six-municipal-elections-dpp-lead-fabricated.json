@@ -1,0 +1,469 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "qiaohu-island-poll-six-municipal-elections-dpp-lead-fabricated",
+  "kind": "report",
+  "category": "地方選舉",
+  "title": "網傳「巧虎島民調」是虛構民調，且有違反選罷法之虞",
+  "finding": "虛構的民調",
+  "verdict": "錯誤",
+  "tags": [
+    "錯誤",
+    "政治與政策"
+  ],
+  "published": "2026-10-20",
+  "updated": "2026-10-20",
+  "reportId": "4363",
+  "reporter": "許雲凱",
+  "editor": "何蕙安",
+  "image": {
+    "src": "/images/covers/qiaohu-island-poll-six-municipal-elections-dpp-lead-fabricated.jpg",
+    "alt": "網傳「巧虎島民調」是虛構民調，且有違反選罷法之虞"
+  },
+  "imageCaption": "網傳「巧虎島民調」是虛構民調，且有違反選罷法之虞",
+  "summaryPoints": [
+    "近期流傳「巧虎島民調」圖卡，聲稱民進黨市長候選人在六都全面領先。經查證並無該家民調公司，民調方法也說明不清，並非可信民調。",
+    "一、網傳民調自稱執行單位為「巧虎島民調」，但以經濟部公司登記系統查詢，並沒有這間公司。",
+    "二、除了虛構民調公司，該份民調也沒有說明如何隨機抽樣、樣本人口結構、拒訪率、民調題目、是否加權或加權方式等，不符合正規民調做法，並不可信。",
+    "三、中選會指出，該份民調沒有依《公職人員選罷法》53條，揭露8項必要資訊，在形式上已經不符規定，但是否違法仍需中選會委員開會認定。",
+    "網傳「巧虎島民調」為虛構公司、調查方法說明不清，並非可信民調，因此為「錯誤」資訊。"
+  ],
+  "summaryBlocks": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "近期流傳「巧虎島民調」圖卡，聲稱民進黨市長候選人在六都全面領先。經查證並無該家民調公司，民調方法也說明不清，並非可信民調。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "一、網傳民調自稱執行單位為「巧虎島民調」，但以經濟部公司登記系統查詢，並沒有這間公司。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "二、除了虛構民調公司，該份民調也沒有說明如何隨機抽樣、樣本人口結構、拒訪率、民調題目、是否加權或加權方式等，不符合正規民調做法，並不可信。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "三、中選會指出，該份民調沒有依《公職人員選罷法》53條，揭露8項必要資訊，在形式上已經不符規定，但是否違法仍需中選會委員開會認定。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "網傳「巧虎島民調」為虛構公司、調查方法說明不清，並非可信民調，因此為「錯誤」資訊。\n\n\n\n"
+        }
+      ]
+    }
+  ],
+  "summaryClose": "",
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "paragraphs": [
+      "近期流傳民調圖卡，聲稱民進黨候選人在六都全面領先。該民調由「巧虎島民調」執行，並列出調查時間、調查對象、樣本數等資訊。",
+      "該圖卡在Facebook、Threads、PTT等社群平台均有流傳，有網友認為這是真實民調，因而評論「即使如此依舊要戒慎恐懼」、「洋流真的發威了」，也有人認為這是假圖或反串。查核中心也接獲讀者詢問，想知道民調真假。"
+    ],
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "近期流傳民調圖卡，聲稱民進黨候選人在六都全面領先。該民調由「巧虎島民調」執行，並列出調查時間、調查對象、樣本數等資訊。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "該圖卡在Facebook、Threads、PTT等社群平台均有流傳，有網友認為這是真實民調，因而評論「即使如此依舊要戒慎恐懼」、「洋流真的發威了」，也有人認為這是假圖或反串。查核中心也接獲讀者詢問，想知道民調真假。"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "/images/imported/3436ea56cdcc77fc72d7b4ddf73101b90412e79cd730e95232f1ea61be1d61aa.jpg",
+          "alt": "社群平台流傳訊息擷圖"
+        },
+        "caption": "社群平台流傳訊息擷圖"
+      }
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "查核點：網傳「巧虎島六都民調」是真的嗎？",
+      "paragraphs": [
+        "網傳民調自稱調查單位為「巧虎島民調」，但查詢經濟部商工登記資料，不但沒有此家民調公司，也沒有任何以「巧虎島」為名的公司。",
+        "政大選舉研究中心主任蕭怡靖協助檢視民調，他指出，查無巧虎島民調公司，是這份民調最不可信的地方。而且民調方法說明不清，內容不合常理，都顯示這不是可靠的民調。",
+        "蕭怡靖解釋，該圖卡自稱抽樣方法是「市話+手機雙底冊，分層隨機抽樣」，但沒有說明各自如何分層，以及如何隨機抽樣。有效樣本稱六都均為1200份，共7200份，但沒有揭露市話、手機樣本各佔多少，也缺乏拒訪率、樣本人口結構等資訊。",
+        "此外這份民調沒有公布民調題目，沒有說明加權與否或加權方式，只有呈現藍綠候選人民調，缺乏其他選項（如未表態比例），這些做法都不符合民調常規。",
+        "中選會受訪表示，從8月20日選舉公告發布之後，任何民調資料發布都應遵守《公職人員選罷法》53條規定，必須同時揭露「調查單位、主持人、辦理時間、抽樣方式、母體數、樣本數、誤差值及經費來源」等8項資訊。",
+        "網傳圖卡沒有說明主持人、經費來源，形式就已不符規定；如果中選會接獲民眾檢舉，須中選會委員開會後才能認定是否違法。"
+      ],
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "bold": true,
+              "text": "查無巧虎島民調公司，該民調並不可信"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "網傳民調自稱調查單位為「巧虎島民調」，但查詢"
+            },
+            {
+              "href": "https://findbiz.nat.gov.tw/fts/query/QueryBar/queryInit.do?disj=43A715C03B5630665DF0C52C4F7DA529&fhl=zh_TW",
+              "text": "經濟部商工登記資料"
+            },
+            {
+              "text": "，不但沒有此家民調公司，也沒有任何以「巧虎島」為名的公司。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "政大選舉研究中心主任蕭怡靖協助檢視民調，他指出，"
+            },
+            {
+              "bold": true,
+              "text": "查"
+            },
+            {
+              "bold": true,
+              "text": "無"
+            },
+            {
+              "bold": true,
+              "text": "巧"
+            },
+            {
+              "bold": true,
+              "text": "虎"
+            },
+            {
+              "bold": true,
+              "text": "島"
+            },
+            {
+              "bold": true,
+              "text": "民"
+            },
+            {
+              "bold": true,
+              "text": "調"
+            },
+            {
+              "bold": true,
+              "text": "公"
+            },
+            {
+              "bold": true,
+              "text": "司"
+            },
+            {
+              "bold": true,
+              "text": "，"
+            },
+            {
+              "bold": true,
+              "text": "是"
+            },
+            {
+              "bold": true,
+              "text": "這"
+            },
+            {
+              "bold": true,
+              "text": "份"
+            },
+            {
+              "bold": true,
+              "text": "民"
+            },
+            {
+              "bold": true,
+              "text": "調"
+            },
+            {
+              "bold": true,
+              "text": "最"
+            },
+            {
+              "bold": true,
+              "text": "不"
+            },
+            {
+              "bold": true,
+              "text": "可"
+            },
+            {
+              "bold": true,
+              "text": "信"
+            },
+            {
+              "bold": true,
+              "text": "的"
+            },
+            {
+              "bold": true,
+              "text": "地"
+            },
+            {
+              "bold": true,
+              "text": "方"
+            },
+            {
+              "bold": true,
+              "text": "。"
+            },
+            {
+              "bold": true,
+              "text": "而"
+            },
+            {
+              "bold": true,
+              "text": "且"
+            },
+            {
+              "bold": true,
+              "text": "民"
+            },
+            {
+              "bold": true,
+              "text": "調"
+            },
+            {
+              "bold": true,
+              "text": "方"
+            },
+            {
+              "bold": true,
+              "text": "法"
+            },
+            {
+              "bold": true,
+              "text": "說"
+            },
+            {
+              "bold": true,
+              "text": "明"
+            },
+            {
+              "bold": true,
+              "text": "不"
+            },
+            {
+              "bold": true,
+              "text": "清"
+            },
+            {
+              "bold": true,
+              "text": "，"
+            },
+            {
+              "bold": true,
+              "text": "內"
+            },
+            {
+              "bold": true,
+              "text": "容"
+            },
+            {
+              "bold": true,
+              "text": "不"
+            },
+            {
+              "bold": true,
+              "text": "合"
+            },
+            {
+              "bold": true,
+              "text": "常"
+            },
+            {
+              "bold": true,
+              "text": "理"
+            },
+            {
+              "bold": true,
+              "text": "，"
+            },
+            {
+              "bold": true,
+              "text": "都"
+            },
+            {
+              "bold": true,
+              "text": "顯"
+            },
+            {
+              "bold": true,
+              "text": "示"
+            },
+            {
+              "bold": true,
+              "text": "這"
+            },
+            {
+              "bold": true,
+              "text": "不"
+            },
+            {
+              "bold": true,
+              "text": "是"
+            },
+            {
+              "bold": true,
+              "text": "可"
+            },
+            {
+              "bold": true,
+              "text": "靠"
+            },
+            {
+              "bold": true,
+              "text": "的"
+            },
+            {
+              "bold": true,
+              "text": "民"
+            },
+            {
+              "bold": true,
+              "text": "調"
+            },
+            {
+              "bold": true,
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "蕭怡靖解釋，該圖卡自稱抽樣方法是「市話+手機雙底冊，分層隨機抽樣」，但沒有說明各自如何分層，以及如何隨機抽樣。有效樣本稱六都均為1200份，共7200份，但沒有揭露市話、手機樣本各佔多少，也缺乏拒訪率、樣本人口結構等資訊。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "此外這份民調沒有公布民調題目，沒有說明加權與否或加權方式，只有呈現藍綠候選人民調，缺乏其他選項（如未表態比例），這些做法都不符合民調常規。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/694d4bc640a072950827490b2a3f3bea96274d56535bd6f0f0be1213898c06a2.jpg",
+            "alt": "網傳圖卡的調查方式說明不清，違背民調常理，並不可信。"
+          },
+          "caption": "網傳圖卡的調查方式說明不清，違背民調常理，並不可信。"
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "bold": true,
+              "text": "中選會：網傳民調圖卡恐違反選罷法"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "中選會受訪表示，從8月20日"
+            },
+            {
+              "href": "https://web.cec.gov.tw/central/article/63625",
+              "text": "選舉公告"
+            },
+            {
+              "text": "發布之後，任何民調資料發布都應遵守《公職人員選罷法》"
+            },
+            {
+              "href": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0020010&flno=53",
+              "text": "53條"
+            },
+            {
+              "text": "規定，必須同時揭露「調查單位、主持人、辦理時間、抽樣方式、母體數、樣本數、誤差值及經費來源」等8項資訊。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "網傳圖卡沒有說明主持人、經費來源，形式就已不符規定；如果中選會接獲民眾檢舉，須中選會委員開會後才能認定是否違法。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "原始查核報告（台灣事實查核中心）",
+      "href": "https://tfc-taiwan.org.tw/fact-check-reports/qiaohu-island-poll-six-municipal-elections-dpp-lead-fabricated/",
+      "note": "原文發佈：2026-10-20；更新：2026-10-20。本頁保留原文內容、署名、引用連結與圖片。"
+    },
+    {
+      "label": "經濟部商工登記資料",
+      "href": "https://findbiz.nat.gov.tw/fts/query/QueryBar/queryInit.do?disj=43A715C03B5630665DF0C52C4F7DA529&fhl=zh_TW",
+      "note": "原始查核報告引用資料。"
+    },
+    {
+      "label": "選舉公告",
+      "href": "https://web.cec.gov.tw/central/article/63625",
+      "note": "原始查核報告引用資料。"
+    },
+    {
+      "label": "53條",
+      "href": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0020010&flno=53",
+      "note": "原始查核報告引用資料。"
+    }
+  ],
+  "relatedSlugs": [],
+  "seo": {
+    "title": "網傳「巧虎島民調」是虛構民調，且有違反選罷法之虞｜台灣事實查核中心 2026 選舉工具箱",
+    "description": "近期流傳「巧虎島民調」圖卡，聲稱民進黨市長候選人在六都全面領先。經查證並無該家民調公司，民調方法也說明不清，並非可信民調。",
+    "image": {
+      "src": "/images/covers/qiaohu-island-poll-six-municipal-elections-dpp-lead-fabricated.jpg",
+      "alt": "網傳「巧虎島民調」是虛構民調，且有違反選罷法之虞",
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
+    },
+    "noindex": false,
+    "authorType": "Person"
+  }
+}

@@ -1,11 +1,20 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { verifyImage, verifyImageDirectory } from './image-integrity.mjs';
 
 const profile = process.argv[2];
 assert.ok(['production', 'preview'].includes(profile), 'Pass a deployment profile');
 const preview = profile === 'preview';
 const read = path => readFile(`worker-assets/election2026/${path}`, 'utf8');
+const imageCount = await verifyImageDirectory('worker-assets/election2026/images');
+console.log(`Verified full decoding and content hashes for ${imageCount} staged raster images.`);
 const home = await read('index.html');
+for (const asset of ['favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png', 'android-chrome-192x192.png', 'apple-touch-icon.png', 'site.webmanifest']) {
+  assert.ok(home.includes(`href="/election2026/${asset}?v=`), `Missing versioned favicon reference: ${asset}`);
+  const bytes = await readFile(`worker-assets/election2026/${asset}`);
+  if (asset.endsWith('.ico')) assert.equal(bytes.subarray(0, 4).toString('hex'), '00000100', 'Favicon must be an ICO file');
+  await verifyImage(bytes, asset);
+}
 const data = JSON.parse(await read('data/listings.json'));
 const initial = JSON.parse(home.match(/<script id="__TFC_DATA__" type="application\/json">([\s\S]*?)<\/script>/)[1]);
 assert.equal(initial.context.isPreview, preview);

@@ -1,0 +1,58 @@
+{
+  "status": "preview-only",
+  "sources": [
+    "https://tfc-taiwan.org.tw/fact-check-reports/qiaohu-island-poll-six-municipal-elections-dpp-lead-fabricated/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/cheng-chao-hsin-wife-lin-hsin-yi-same-name-different-person/"
+  ],
+  "datePolicy": "Use the visible publication/update dates in the original report; structured-data modification timestamps may differ.",
+  "images": [
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4363-0.jpg",
+      "path": "/images/covers/qiaohu-island-poll-six-municipal-elections-dpp-lead-fabricated.jpg",
+      "sha256": "a491ff4828b94711139a5ebb4f075a34192e8790e5c1ed3cd11acc76d50d1d7b",
+      "bytes": 36302,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4363-2.jpg",
+      "path": "/images/imported/3436ea56cdcc77fc72d7b4ddf73101b90412e79cd730e95232f1ea61be1d61aa.jpg",
+      "sha256": "3436ea56cdcc77fc72d7b4ddf73101b90412e79cd730e95232f1ea61be1d61aa",
+      "bytes": 168499,
+      "width": 2048,
+      "height": 1203
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4363-3.jpg",
+      "path": "/images/imported/694d4bc640a072950827490b2a3f3bea96274d56535bd6f0f0be1213898c06a2.jpg",
+      "sha256": "694d4bc640a072950827490b2a3f3bea96274d56535bd6f0f0be1213898c06a2",
+      "bytes": 38391,
+      "width": 1169,
+      "height": 175
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4360-0.jpg",
+      "path": "/images/covers/cheng-chao-hsin-wife-lin-hsin-yi-same-name-different-person.jpg",
+      "sha256": "bb45760dfa3369626a786c8f51b0ec8eafb63ca2c80ffc6f95c9ee84e8a2fb2f",
+      "bytes": 42469,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4360-2.jpg",
+      "path": "/images/imported/b0bb2ef412a3312496aa0b80225f55485c6b8975e92bbcb02888f3f3c5eaf091.jpg",
+      "sha256": "b0bb2ef412a3312496aa0b80225f55485c6b8975e92bbcb02888f3f3c5eaf091",
+      "bytes": 89034,
+      "width": 2048,
+      "height": 1093
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4360-3.jpg",
+      "path": "/images/imported/f6b45f489583a1117cb1d41b52fb31072e351eb5d2d69f8d5aa216b04d465483.jpg",
+      "sha256": "f6b45f489583a1117cb1d41b52fb31072e351eb5d2d69f8d5aa216b04d465483",
+      "bytes": 65962,
+      "width": 2048,
+      "height": 764
+    }
+  ]
+}
