@@ -2,6 +2,14 @@
 
 [列表與文章管理試算表](https://docs.google.com/spreadsheets/d/1rRRptUYoOoqz6OxLHnOuZE1ayu9Tk7kdHwjiyne7pkY/edit) · [Mockdata 資料夾](https://drive.google.com/drive/folders/12ekCd2_EkqUSA8QUF7qieq8dPpk2XIWt)
 
+## 正式網站同步副本（2026-10-22）
+
+[正式網站同步副本](https://docs.google.com/spreadsheets/d/1bso8-5wsl12oy0HjrpRz_NmxjSl6cuupo6kJiwzEEmU/edit) 依已部署的 `57323b4` 建立；原表未修改。請先閱讀副本中的「使用說明」「同步紀錄」。副本的 10 張匯入資料表已驗證可完整還原正式 `listings.json`；另保留未上線草稿與全部 12 篇文章的 JSON 快照。Docs 連結沿用原表，文件正文可能較舊，重新匯入全文前應對照快照，避免恢復已刪除的內容。
+
+新版「首頁編排」新增選填「圖卡組說明」；`infographics` 只需對應圖卡組，不再強制對應文章列表，仍須每組至少有一張圖。「資訊卡」的「閱讀連結」、「常見劇本」的「延伸閱讀連結」及「導覽」的「下拉選單」已填入正式資料。目前「資訊怎麼查？」使用網站設定的 `sections.learning.resources`，首頁公約使用 `sections.initiative`；二者以 JSON 儲存，不要另新增不受 converter 支援的欄位。這些匯入器更新不會自行部署網站。
+
+以下為原始流程與示範格式的說明；示範資料數量不代表本次正式副本的內容。
+
 試算表管理 `data/listings.json`；每篇 Google Docs 管理 `data/reports/<slug>.json`。目前已有 13 筆列表與 13 篇虛構文章。保留原有 Google 編輯流程，下載檔案後在本機轉換，不需要 Apps Script、GCP 專案、API key 或 OAuth 憑證；converter 不連網，也不直接存取私人文件。
 
 ## 第一次使用

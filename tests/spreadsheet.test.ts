@@ -11,6 +11,20 @@ const demo = JSON.parse(await readFile(new URL('./fixtures/demo-data.json', impo
 const listings = listingsSchema.parse(demo.listings);
 const reports: Report[] = listings.stories.map(story => demo.reports[story.slug]);
 
+test('current official homepage round-trips standalone galleries and their descriptions', async () => {
+  const official = listingsSchema.parse(JSON.parse(await readFile(new URL('../data/listings.json', import.meta.url), 'utf8')));
+  const book = toWorkbookRows(official);
+  assert.deepEqual(convertWorkbook(book), official);
+  const missingCards = structuredClone(book);
+  const standalone = official.sections.infographics?.slugs.find(slug => !official.stories.some(story => story.slug === slug));
+  assert.ok(standalone);
+  missingCards['圖卡內容'] = missingCards['圖卡內容'].filter((row, i) => i === 0 || row[0] !== standalone);
+  assert.throws(() => convertWorkbook(missingCards), /每一組圖卡至少需要一張圖片/);
+  const legacy = toWorkbookRows(listings);
+  for (const row of legacy['首頁編排']) row.pop();
+  assert.deepEqual(convertWorkbook(legacy), listings);
+});
+
 test('non-report articles accept blank category and verdict across Sheets and original Docs imports', () => {
   const book = toWorkbookRows(listings);
   for (const row of book['文章列表'].slice(1)) if (row[2] !== 'report') { row[3] = null; row[9] = null; }

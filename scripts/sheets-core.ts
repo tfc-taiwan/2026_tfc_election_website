@@ -15,7 +15,7 @@ export const SHEETS: Record<string, Field[]> = {
   '首頁小卡': [order, f('title', '標題'), f('description', '說明', 'text', undefined, 560), tone],
   '文章列表': [order, ...common, f('description', '列表摘要', 'text', undefined, 400), f('date', '刊登日期', 'nullableDate'), f('tag', '卡片標籤'), tone, f('verdict', '查核結果', 'optional', ['錯誤', '部分錯誤', '事實釐清', '正確']), f('image.src', '圖片路徑', 'optional'), f('image.alt', '圖片替代文字', 'optional'), f('docUrl', 'Google Docs 連結', 'optional', undefined, 400)],
   '網頁SEO': [f('page', '頁面', 'text', ['home', 'reports'], 180), f('title', 'SEO 標題', 'text', undefined, 400), f('description', 'SEO 描述', 'text', undefined, 500), ...imageFields, f('image.width', '圖片寬度', 'number'), f('image.height', '圖片高度', 'number'), f('image.type', '圖片格式', 'text', ['image/png', 'image/jpeg', 'image/webp']), f('noindex', '不開放索引', 'boolean')],
-  '首頁編排': [f('section', '區塊', 'text', ['reports', 'analyses', 'shorts', 'infographics', 'learning']), order, f('slug', 'slug', 'optional', undefined, 180), f('badge', '英文標籤', 'optional'), f('galleryTitle', '圖卡組名', 'optional'), f('homeTitle', '首頁標題', 'optional', undefined, 350), f('youtubeUrl', 'YouTube 連結', 'optional', undefined, 420)],
+  '首頁編排': [f('section', '區塊', 'text', ['reports', 'analyses', 'shorts', 'infographics', 'learning']), order, f('slug', 'slug', 'optional', undefined, 180), f('badge', '英文標籤', 'optional'), f('galleryTitle', '圖卡組名', 'optional'), f('homeTitle', '首頁標題', 'optional', undefined, 350), f('youtubeUrl', 'YouTube 連結', 'optional', undefined, 420), f('galleryDescription', '圖卡組說明', 'optional', undefined, 400)],
   '圖卡內容': [slug, order, f('image.src', '圖片路徑'), f('image.alt', '圖片替代文字'), f('caption', '圖卡說明', 'text', undefined, 400)],
   '謠言分類': [order, f('id', '分類代碼'), f('badge', '英文標籤'), f('label', '分類名稱'), tone, f('scriptId', '對應劇本')],
   '常見劇本': [order, f('id', '劇本代碼'), f('question', '問題', 'text', undefined, 420), f('answer', '解答', 'text', undefined, 680), f('href', '延伸閱讀連結', 'optional')],
@@ -94,7 +94,7 @@ function readRows(book: WorkbookRows, name: string): any[] {
   const headers = rows[0]?.map(String) ?? [];
   const indexes = fields.map(field => {
     const positions = headers.flatMap((header, i) => header === field.label ? [i] : []);
-    if (!positions.length && ['下拉選單', '延伸閱讀連結', '閱讀連結'].includes(field.label)) return -1;
+    if (!positions.length && ['下拉選單', '延伸閱讀連結', '閱讀連結', '圖卡組說明'].includes(field.label)) return -1;
     if (positions.length !== 1) fail(`「${name}」欄位「${field.label}」缺少或重複`);
     return positions[0];
   });
@@ -170,7 +170,8 @@ export function convertWorkbook(book: WorkbookRows): Listings {
         if (!item.youtubeUrl) fail(`首頁編排第 ${item._row} 列：shorts 須填 YouTube 連結`);
       } else {
         if (!item.slug) fail(`首頁編排第 ${item._row} 列：${section} 須填 slug`);
-        reference(item.slug, `首頁編排第 ${item._row} 列`);
+        // A standalone gallery has cards but does not need an article with the same slug.
+        if (section !== 'infographics') reference(item.slug, `首頁編排第 ${item._row} 列`);
       }
     }
     unique(items.map(row => section === 'shorts' ? row.youtubeUrl : row.slug), `首頁 ${section} 項目`);
@@ -180,6 +181,7 @@ export function convertWorkbook(book: WorkbookRows): Listings {
       if (section !== 'learning' && item.badge) fail(`首頁編排第 ${item._row} 列：英文標籤僅供 learning 使用`);
       if (section === 'infographics' && !item.galleryTitle) fail(`首頁編排第 ${item._row} 列：infographics 須填圖卡組名`);
       if (section !== 'infographics' && item.galleryTitle) fail(`首頁編排第 ${item._row} 列：圖卡組名僅供 infographics 使用`);
+      if (section !== 'infographics' && item.galleryDescription) fail(`首頁編排第 ${item._row} 列：圖卡組說明僅供 infographics 使用`);
       if (section !== 'reports' && section !== 'shorts' && item.homeTitle) fail(`首頁編排第 ${item._row} 列：首頁標題僅供 reports 與 shorts 使用`);
       if (section !== 'shorts' && item.youtubeUrl) fail(`首頁編排第 ${item._row} 列：YouTube 連結僅供 shorts 使用`);
     }
@@ -197,7 +199,8 @@ export function convertWorkbook(book: WorkbookRows): Listings {
     listings.sections.infographics.items = gallerySlugs.flatMap((slug: string) => {
       const cards = ordered(tables['圖卡內容'].filter(row => row.slug === slug), `圖卡 ${slug}`).map(row => clean(row, ['image', 'caption']));
       const title = tables['首頁編排'].find(row => row.section === 'infographics' && row.slug === slug)?.galleryTitle;
-      return cards.length ? [{ slug, title, cards }] : [];
+      const description = tables['首頁編排'].find(row => row.section === 'infographics' && row.slug === slug)?.galleryDescription;
+      return cards.length ? [{ slug, title, ...(description ? { description } : {}), cards }] : [];
     });
     if (listings.sections.infographics.items.length !== gallerySlugs.length) fail('每一組圖卡至少需要一張圖片');
   }
@@ -226,7 +229,7 @@ export function toWorkbookRows(listings: Listings, docUrls: Record<string, strin
   objects['首頁編排'].push(...listings.sections.reports.items.map((item, i) => ({ section: 'reports', order: i + 1, slug: item.slug, homeTitle: item.title })));
   objects['首頁編排'].push(...listings.sections.analyses.slugs.map((slug, i) => ({ section: 'analyses', order: i + 1, slug })));
   objects['首頁編排'].push(...(listings.sections.shorts?.items ?? []).map((item, i) => ({ section: 'shorts', order: i + 1, homeTitle: item.title, youtubeUrl: item.url })));
-  objects['首頁編排'].push(...(listings.sections.infographics?.slugs ?? []).map((slug, i) => ({ section: 'infographics', order: i + 1, slug, galleryTitle: listings.sections.infographics?.items?.find(item => item.slug === slug)?.title })));
+  objects['首頁編排'].push(...(listings.sections.infographics?.slugs ?? []).map((slug, i) => ({ section: 'infographics', order: i + 1, slug, galleryTitle: listings.sections.infographics?.items?.find(item => item.slug === slug)?.title, galleryDescription: listings.sections.infographics?.items?.find(item => item.slug === slug)?.description })));
   objects['圖卡內容'] = listings.sections.infographics?.items?.flatMap(group => group.cards.map((card, i) => ({ slug: group.slug, order: i + 1, ...card }))) ?? [];
   objects['首頁編排'].push(...listings.sections.learning.items.map((row, i) => ({ section: 'learning', order: i + 1, ...row })));
   objects['謠言分類'] = listings.sections.rumors.items.map((row, i) => ({ order: i + 1, ...row }));
