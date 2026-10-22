@@ -54,6 +54,14 @@ for (let attempt = 0; attempt < 6; attempt++) {
       await verifyImage(bytes, path);
     }
     console.log(`Verified ${imagePaths.size} deployed images against source bytes and complete raster decoding.`);
+    for (const asset of ['favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png', 'android-chrome-192x192.png', 'apple-touch-icon.png', 'site.webmanifest']) {
+      assert.ok(home.includes(`href="/election2026/${asset}?v=`), `Missing versioned favicon reference: ${asset}`);
+      const bytes = Buffer.from(await (await request(asset)).arrayBuffer());
+      const expected = await readFile(`public/${asset}`);
+      assert.equal(createHash('sha256').update(bytes).digest('hex'), createHash('sha256').update(expected).digest('hex'), `Deployed favicon differs: ${asset}`);
+      await verifyImage(bytes, asset);
+    }
+    console.log('Verified production favicon files, Apple icon, manifest and versioned HTML references.');
     await request('__deployment-check-not-found__', 404);
     console.log(`Verified home, listing, ${local.stories.length} articles, JSON, images and 404 at ${origin}/election2026/`);
     process.exit(0);
