@@ -523,81 +523,6 @@
           ]
         }
       ]
-    },
-    {
-      "id": "supporting-organizations",
-      "title": "倡議響應組織",
-      "paragraphs": [
-        "有線電視衛星公會自律委員會：主委沈建宏（東森副總）\n台灣網路新聞自律聯盟：副召集人陳俍任\n記者協會：會長吳銘軒\n卓新基金會：執行長陳靜雲\n台灣媒體觀察教育基金會：執行長蔡蕙如\n中央通訊社：社長胡婉玲\n中央廣播電台\n公視：新聞部經理屠乃瑋、\n華視：新聞台台長蔡莞瑩、\n台語台：新聞部經理許恆慈、\n客家台：新聞部經理林玟伶\nTaiwan +: 執行長何國華"
-      ],
-      "blocks": [
-        {
-          "type": "list",
-          "ordered": false,
-          "items": [
-            [
-              {
-                "text": "有線電視衛星公會自律委員會：主委沈建宏（東森副總）"
-              }
-            ],
-            [
-              {
-                "text": "台灣網路新聞自律聯盟：副召集人陳俍任"
-              }
-            ],
-            [
-              {
-                "text": "記者協會：會長吳銘軒"
-              }
-            ],
-            [
-              {
-                "text": "卓新基金會：執行長陳靜雲"
-              }
-            ],
-            [
-              {
-                "text": "台灣媒體觀察教育基金會：執行長蔡蕙如"
-              }
-            ],
-            [
-              {
-                "text": "中央通訊社：社長胡婉玲"
-              }
-            ],
-            [
-              {
-                "text": "中央廣播電台"
-              }
-            ],
-            [
-              {
-                "text": "公視：新聞部經理屠乃瑋、"
-              }
-            ],
-            [
-              {
-                "text": "華視：新聞台台長蔡莞瑩、"
-              }
-            ],
-            [
-              {
-                "text": "台語台：新聞部經理許恆慈、"
-              }
-            ],
-            [
-              {
-                "text": "客家台：新聞部經理林玟伶"
-              }
-            ],
-            [
-              {
-                "text": "Taiwan +: 執行長何國華"
-              }
-            ]
-          ]
-        }
-      ]
     }
   ],
   "sources": [
@@ -607,5 +532,9 @@
       "href": "https://tfc-taiwan.org.tw/italian-political-parties-pledge-no-deepfakes-in-election-campaigns/"
     }
   ],
-  "relatedSlugs": []
+  "relatedSlugs": [],
+  "presentation": {
+    "showReportMetadata": false,
+    "showSummary": false
+  }
 }

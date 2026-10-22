@@ -106,6 +106,8 @@ test('deepfake pledge overview has paragraph breaks and a working full article r
   const article = reportSchema.parse(JSON.parse(readFileSync(resolve(root, 'data/reports/reject-deepfake-election-disinformation-self-regulation-charter.json'), 'utf8')));
   assert.equal(article.seo.noindex, false);
   assert.equal(article.supplementarySections?.length ?? 0, 0);
+  assert.deepEqual(article.presentation, { showReportMetadata: false, showSummary: false });
+  assert.ok(!article.checkSections.some(section => section.id === 'supporting-organizations'));
   assert.equal(article.checkSections.some(section => section.title.startsWith('常見問答')), false);
 });
 

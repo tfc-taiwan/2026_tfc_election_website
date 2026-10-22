@@ -54,6 +54,10 @@ test('built static pages contain body content and unique head metadata', async (
       assert.match(html, /展開全部案例（(?:<!-- -->)?13/);
       assert.ok(!html.includes('cdn.tailwindcss.com'));
     } else if (path === 'reports/reject-deepfake-election-disinformation-self-regulation-charter/index.html') {
+      const articleMarkup = html.slice(html.indexOf('<article class="report-page">'), html.indexOf('</article>'));
+      for (const label of ['報告編號：', '查核記者：', '責任編輯：', '重點摘要', '倡議響應組織', '有線電視衛星公會自律委員會', 'Taiwan +']) assert.ok(!articleMarkup.includes(label), label);
+      assert.ok(articleMarkup.includes('發佈：'));
+      assert.ok(articleMarkup.includes('2026-10-21'));
       assert.ok(html.includes('自律公約內容'));
       assert.ok(!html.includes('常見問答'));
       assert.ok(!html.includes('補充資料'));
