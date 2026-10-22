@@ -50,6 +50,7 @@ const initiativeContentSchema = z.object({
     groups: z.array(z.object({ title: text, items: z.array(text).min(1) })).length(2),
     cases: z.array(z.object({ country: text, date: text, text })).min(1),
     fullTextUrl: editorialLink.optional(),
+    principlesNote: text.optional(),
   });
 export const listingsSchema = z.object({
   version: z.literal(1), isMock: z.boolean(),

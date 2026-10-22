@@ -27,6 +27,7 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run test:production
+      - run: node scripts/verify-initiative-layout.mjs
       - run: npm run build:worker:production
       - uses: actions/upload-artifact@v4
         with:

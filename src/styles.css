@@ -744,6 +744,7 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 .pledge-group li + li { margin-top: 20px; }
 .pledge-group-0 li::marker { color: #c72828; }
 .pledge-group-1 li::marker { color: #526943; }
+.pledge-paper .pledge-principles-note { margin: 24px 0 0; padding-top: 20px; border-top: 1px solid var(--ink-10); font-family: var(--font-sans); font-size: 14px; line-height: 1.8; color: var(--ink-70); }
 .pledge-fulltext { margin-top: 32px; }
 .pledge-ticker { margin-top: 40px; display: flex; align-items: stretch; background: white; border-block: 1px solid var(--ink-30); }
 .pledge-ticker > h2 { display: flex; align-items: center; gap: 12px; padding: 18px 24px; flex-shrink: 0; background: var(--brand-dark); color: var(--brand-gold); font-size: 16px; }

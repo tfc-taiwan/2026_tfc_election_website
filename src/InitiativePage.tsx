@@ -28,6 +28,7 @@ export function InitiativePanel({ page, description, title, embedded = false }: 
       <section className="pledge-paper" aria-labelledby="pledge-principles-title">
         <Subheading id="pledge-principles-title"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="M12 3 3 6v5c0 5 5 9 9 10 4-1 9-5 9-10V6l-9-3Z"/><path d="m8 12 3 3 5-6"/></svg>{page.principlesTitle}</Subheading>
         {page.groups.map((group, index) => <section className={`pledge-group pledge-group-${index}`} key={group.title}><h3><span aria-hidden="true">{index === 0 ? '×' : '✓'}</span>{group.title}</h3><ul>{group.items.map(item => <li key={item}>{item}</li>)}</ul></section>)}
+        {page.principlesNote && <p className="pledge-principles-note">{page.principlesNote}</p>}
         {embedded && page.fullTextUrl && (page.fullTextUrl.startsWith('/')
           ? <Link className="button primary pledge-fulltext" to={page.fullTextUrl}>閱讀完整內容 →</Link>
           : <a className="button primary pledge-fulltext" href={page.fullTextUrl} target="_blank" rel="noopener noreferrer">閱讀完整內容 ↗<span className="sr-only">（開啟新視窗）</span></a>)}

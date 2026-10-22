@@ -99,7 +99,8 @@ test('provided covers match reports while unfilled dates stay absent', () => {
 
 test('deepfake pledge overview has paragraph breaks and a working full article route', () => {
   const initiative = data.sections.initiative!;
-  assert.deepEqual(initiative.description.split(/\n\s*\n/).length, 2);
+  assert.equal(initiative.description.split(/\n\s*\n/).length, 1);
+  assert.ok(initiative.content?.principlesNote?.startsWith('本公約並非要求各界停止使用 AI'));
   assert.equal(initiative.content?.fullTextUrl, '/reports/reject-deepfake-election-disinformation-self-regulation-charter');
   assert.ok(data.stories.some(story => story.slug === 'deepfake-pledge'));
   assert.ok(data.stories.some(story => story.slug === 'reject-deepfake-election-disinformation-self-regulation-charter'));

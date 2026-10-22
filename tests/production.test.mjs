@@ -54,7 +54,11 @@ test('built static pages contain body content and unique head metadata', async (
       }
     }
     if (path === 'index.html') {
-      assert.match(html, /class="pledge-description pledge-description-embedded"[\s\S]*?<p>[\s\S]*?<\/p>[\s\S]*?<p>[\s\S]*?<\/p>/);
+      const intro = html.match(/class="pledge-description pledge-description-embedded">([\s\S]*?)<\/div>/)?.[1];
+      assert.ok(intro && !intro.includes('本公約並非要求各界停止使用 AI'));
+      const note = html.match(/<p class="pledge-principles-note">([\s\S]*?)<\/p>/)?.[1];
+      assert.equal(note, source.sections.initiative.content.principlesNote);
+      assert.ok(html.indexOf('pledge-principles-note') > html.indexOf('要立即移除、要同等醒目更正'));
       assert.ok(html.includes('href="/reports/reject-deepfake-election-disinformation-self-regulation-charter"'));
       assert.ok(html.includes('閱讀完整內容'));
       assert.ok(!html.includes('上一則案例'));
