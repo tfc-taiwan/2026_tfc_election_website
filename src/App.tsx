@@ -411,9 +411,20 @@ function InlineContent({ content }: { content: Extract<ContentBlock, { type: 'pa
   })}</>;
 }
 
-function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
+function ContentBlocks({ blocks, trimParagraphEdges = false }: { blocks: ContentBlock[]; trimParagraphEdges?: boolean }) {
   return <div className="article-content">{blocks.map((block, index) => {
-    if (block.type === 'paragraph') return <p key={index}><InlineContent content={block.content} /></p>;
+    if (block.type === 'paragraph') {
+      const content = trimParagraphEdges ? block.content.map(run => ({ ...run })) : block.content;
+      if (trimParagraphEdges) {
+        while (content.length && !content[0].text.trim()) content.shift();
+        while (content.length && !content[content.length - 1].text.trim()) content.pop();
+        if (content.length) {
+          content[0].text = content[0].text.trimStart();
+          content[content.length - 1].text = content[content.length - 1].text.trimEnd();
+        }
+      }
+      return content.length ? <p key={index}><InlineContent content={content} /></p> : null;
+    }
     if (block.type === 'heading') {
       const Heading = block.level === 3 ? 'h3' : 'h4';
       return <Heading key={index}><InlineContent content={block.content} /></Heading>;
@@ -435,6 +446,7 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
   const { context } = useContext(RenderContext);
   if (report.initiativeContent) return <InitiativePage report={report} />;
   const isGuide = report.kind === 'guide' || report.category === '選舉工具箱';
+  const showSources = report.kind !== 'report' && report.sources.length > 0;
   const related = report.relatedSlugs.flatMap(slug => data.stories.find(story => story.slug === slug) ?? []);
   const kind = report.kind === 'report' ? '查核報告' : report.kind === 'analysis' ? '資訊操弄解析' : report.category === '選舉工具箱' ? '選舉工具箱' : '查核學堂';
   return <article className="report-page">
@@ -443,19 +455,19 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
     <h1>{report.title}</h1>{!isGuide && <p className="article-finding">{report.finding}</p>}
     <div className="article-meta">{report.published && <span><strong>發佈：</strong><time dateTime={report.published}>{report.published}</time></span>}{!isGuide && <>{report.updated && <span><strong>更新：</strong><time dateTime={report.updated}>{report.updated}</time></span>}{report.presentation?.showReportMetadata !== false && <><span><strong>報告編號：</strong>{report.reportId}</span><span><strong>查核記者：</strong>{report.reporter}</span><span><strong>責任編輯：</strong>{report.editor}</span></>}</>}</div>
     {report.isMock ? <p className="article-mock-note"><span className="tag neutral">MOCK DATA</span> 本文為虛構示範，不代表真實事件或查核結論。</p> : (data.isMock || context.isPreview) && <p className="article-mock-note"><span className="tag neutral">PREVIEW</span> {data.site.notice}</p>}
-    <div className="article-toolbar">{!isGuide && <nav aria-label="文章目錄"><span>內容：</span><a href="#background">背景</a><a href="#verification">{report.kind === 'report' ? '查核' : '解析'}</a>{!!report.supplementarySections?.length && <a href="#supplementary">補充資料</a>}{report.sources.length > 0 && <a href="#sources">資料來源</a>}</nav>}<ShareTools report={report} data={data} /></div>
+    <div className="article-toolbar">{!isGuide && <nav aria-label="文章目錄"><span>內容：</span><a href="#background">背景</a><a href="#verification">{report.kind === 'report' ? '查核' : '解析'}</a>{!!report.supplementarySections?.length && <a href="#supplementary">補充資料</a>}{showSources && <a href="#sources">資料來源</a>}</nav>}<ShareTools report={report} data={data} /></div>
     {report.image && <figure className="article-cover"><Illustration image={report.image} eager /><figcaption>{report.imageCaption}</figcaption></figure>}
     {isGuide ? <div className="article-section guide-body">
       <SectionContent section={report.background} />
       {report.checkSections.map(section => <section className="guide-section" id={section.id} key={section.id}><h2>{section.title}</h2><SectionContent section={section} /></section>)}
       {report.supplementarySections?.map(section => <section className="guide-section" id={section.id} key={section.id}><h2>{section.title}</h2><SectionContent section={section} /></section>)}
     </div> : <>
-    {report.presentation?.showSummary !== false && <section className="article-summary" aria-labelledby="summary-heading"><h2 id="summary-heading">{report.kind === 'report' ? '查核摘要' : '重點摘要'}</h2>{report.summaryBlocks ? <ContentBlocks blocks={report.summaryBlocks} /> : <ol>{report.summaryPoints.map(point => <li key={point}>{point}</li>)}</ol>}{report.summaryClose && <p>{report.summaryClose}</p>}</section>}
+    {report.presentation?.showSummary !== false && <section className="article-summary" aria-labelledby="summary-heading"><h2 id="summary-heading">{report.kind === 'report' ? '查核摘要' : '重點摘要'}</h2>{report.summaryBlocks ? <ContentBlocks blocks={report.summaryBlocks} trimParagraphEdges /> : <ol>{report.summaryPoints.map(point => <li key={point}>{point}</li>)}</ol>}{report.summaryClose && <p>{report.summaryClose}</p>}</section>}
     <section className="article-section" id="background"><h2>{report.background.title}</h2><SectionContent section={report.background} /></section>
     <section className="article-section" id="verification"><h2>{report.kind === 'report' ? '查核' : '深入解析'}</h2>{report.checkSections.map(section => <section className="check-section" key={section.id} id={section.id}><h3>{section.title}</h3><SectionContent section={section} /></section>)}</section>
     {!!report.supplementarySections?.length && <section className="article-section" id="supplementary"><h2>補充資料</h2>{report.supplementarySections.map(section => <section className="check-section" key={section.id} id={section.id}><h3>{section.title}</h3><SectionContent section={section} /></section>)}</section>}
     </>}
-    {report.sources.length > 0 && <section className="article-section article-sources" id="sources"><h2>資料來源與說明</h2><ul>{report.sources.map(source => <li key={source.label}><strong>{source.href ? <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label} ↗</a> : source.label}</strong><p>{source.note}</p></li>)}</ul></section>}
+    {showSources && <section className="article-section article-sources" id="sources"><h2>資料來源與說明</h2><ul>{report.sources.map(source => <li key={source.label}><strong>{source.href ? <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label} ↗</a> : source.label}</strong><p>{source.note}</p></li>)}</ul></section>}
     {report.kind === 'report' && <aside className="verdict-legend" aria-label="查核結果說明"><p>查核結果說明：</p><ul>{['錯誤', '部分錯誤', '事實釐清', '正確'].map((label, index) => <li key={label}><span className={`legend-dot verdict-${index}`} />{label}</li>)}</ul></aside>}
     {related.length > 0 && <section className="related-reports"><h2>{report.kind === 'report' ? '相關查核報告' : '延伸閱讀'}</h2><div className="related-grid">{related.map(story => <StoryCard key={story.slug} story={story} compact />)}</div></section>}
     <Link className="back-link" to={isGuide ? '/#process' : '/reports'}>{isGuide ? '← 返回選舉工具箱' : '← 返回完整報告列表'}</Link>

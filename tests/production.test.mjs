@@ -41,6 +41,18 @@ test('built static pages contain body content and unique head metadata', async (
     assert.ok(html.includes('type="application/ld+json"'));
     assert.ok(!html.includes('<!--app-html-->'));
     assert.match(html, /<h1[^>]*>[\s\S]+?<\/h1>/);
+    const story = source.stories.find(story => `reports/${story.slug}/index.html` === path);
+    if (story?.kind === 'report') {
+      assert.ok(!html.includes('id="sources"'), path);
+      assert.ok(!html.includes('href="#sources"'), path);
+      assert.ok(!html.includes('資料來源與說明'), path);
+      const summary = html.match(/<section class="article-summary"[\s\S]*?<\/section>/)?.[0];
+      assert.ok(summary, path);
+      for (const paragraph of summary.matchAll(/<p>([\s\S]*?)<\/p>/g)) {
+        const text = paragraph[1].replace(/<[^>]*>/g, '');
+        assert.equal(text, text.trim(), `Extra blank lines around summary text: ${path}`);
+      }
+    }
     if (path === 'index.html') {
       assert.match(html, /class="pledge-description pledge-description-embedded"[\s\S]*?<p>[\s\S]*?<\/p>[\s\S]*?<p>[\s\S]*?<\/p>/);
       assert.ok(html.includes('href="/reports/reject-deepfake-election-disinformation-self-regulation-charter"'));
