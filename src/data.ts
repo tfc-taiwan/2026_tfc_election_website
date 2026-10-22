@@ -114,6 +114,7 @@ export const reportSchema = z.object({
   verdict: status.optional(), tags: z.array(text),
   published: date.nullable(), updated: date.nullable(), reportId: text, reporter: text, editor: text,
   image: image.nullable(), imageCaption: text, summaryPoints: z.array(text).min(1), summaryClose: z.string(), summaryBlocks: z.array(contentBlockSchema).min(1).optional(),
+  presentation: z.object({ showReportMetadata: z.boolean().optional(), showSummary: z.boolean().optional() }).optional(),
   background: section, checkSections: z.array(section).min(1),
   supplementarySections: z.array(section).optional(),
   sources: z.array(z.object({ label: text, note: text, href: z.url().refine(value => value.startsWith('https://')).optional() })), relatedSlugs: z.array(slug),

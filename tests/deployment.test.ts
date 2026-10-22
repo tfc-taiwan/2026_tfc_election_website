@@ -16,5 +16,9 @@ test('preview and production deployments cannot target the same Worker or domain
   const productionWorkflow = readFileSync('.github/workflows/deploy-election2026-production.yml', 'utf8');
   assert.ok(previewWorkflow.includes('run: npm run build:worker:preview'));
   assert.ok(productionWorkflow.includes('run: npm run build:worker:production'));
+  assert.ok(productionWorkflow.includes('wrangler versions upload --config wrangler.jsonc'));
+  assert.ok(productionWorkflow.includes('wrangler versions deploy --config wrangler.jsonc'));
+  assert.ok(productionWorkflow.includes('run: node scripts/verify-production-route.mjs'));
+  assert.ok(!productionWorkflow.includes('wrangler deploy --config wrangler.jsonc'));
   assert.ok(previewWorkflow.includes(`https://${preview.name}.tfc-taiwan-org.workers.dev preview`));
 });

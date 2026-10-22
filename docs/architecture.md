@@ -41,7 +41,7 @@ Cloudflare Static Assets 與 Worker 同版發佈。更新 `data/` 時先執行 c
 
 `.github/workflows/deploy-worker.yml` 在 PR 執行資料測試、根路徑建置與 SSR 測試；推送 `main`、`review/v10-infographic-galleries` 或 `review/v11-local-preview` 時，檢查通過後以 preview profile 建置並部署至 `wrangler.preview.jsonc`。測試 Worker 沒有正式網域路由、保留測試提示，所有頁面的 robots meta 與 Worker HTTP header 都是 noindex；即使頁面已獲准正式發布，測試站也不會開放索引。
 
-`.github/workflows/deploy-election2026-production.yml` 只在推送 `deploy/2026-election-v11` 時執行，以 production profile 建置，再使用 `wrangler.jsonc` 發佈既有正式 Worker 與 `/election2026` 路由。正式版不顯示測試提示；已核准文章為 `isMock: false`、可索引文章為 `seo.noindex: false`。舊版 `deepfake-pledge` 摘要頁保留 noindex 避免與完整公約文章重複；搜尋、錯誤、原始 JSON 等頁面仍不索引。
+`.github/workflows/deploy-election2026-production.yml` 只在推送 `deploy/2026-election-v11` 時執行，以 production profile 建置，先確認既有 `/election2026` 正式路由回傳網站資料，再使用 `wrangler versions upload` 與 `wrangler versions deploy` 發佈 `wrangler.jsonc` 指定的 Worker 版本；一般內容發布不修改網域路由。正式版不顯示測試提示；已核准文章為 `isMock: false`、可索引文章為 `seo.noindex: false`。舊版 `deepfake-pledge` 摘要頁保留 noindex 避免與完整公約文章重複；搜尋、錯誤、原始 JSON 等頁面仍不索引。
 
 兩個流程保留目前已可用的 GitHub `preview` environment 作為部署憑證來源；這個 environment 名稱不決定部署到哪個 Worker。Worker 由各自的 Wrangler 設定決定。正式憑證仍須具有既有 TFC zone Worker route 的權限；測試部署不需要更改正式路由。
 
