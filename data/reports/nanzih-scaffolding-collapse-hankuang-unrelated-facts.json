@@ -1,0 +1,235 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "nanzih-scaffolding-collapse-hankuang-unrelated-facts",
+  "kind": "report",
+  "category": "地方選舉",
+  "title": "楠梓鷹架倒塌與漢光演習無關，實為外牆工程事故",
+  "finding": "鷹架倒塌與演習無關，是廠商未依規定施工",
+  "verdict": "錯誤",
+  "tags": [
+    "錯誤",
+    "政治與政策"
+  ],
+  "published": "2026-08-10",
+  "updated": "2026-08-10",
+  "reportId": "4262",
+  "reporter": "邱劭安",
+  "editor": "陳偉婷",
+  "image": {
+    "src": "/images/covers/nanzih-scaffolding-collapse-hankuang-unrelated-facts.jpg",
+    "alt": "楠梓鷹架倒塌與漢光演習無關，實為外牆工程事故"
+  },
+  "imageCaption": "楠梓鷹架倒塌與漢光演習無關，實為外牆工程事故",
+  "summaryPoints": [
+    "漢光42號演習自8月5號展開。網路流傳一段鷹架倒塌影片，宣稱漢光演習每天都在出包。經查證，這是高雄楠梓電子公司外牆拉皮工程，營建廠商疏於固定、導致鷹架倒塌，與漢光演習無關。",
+    "一、高雄楠梓科技園區內電子公司大樓外牆施做拉皮工程，8月7日鷹架倒塌。",
+    "根據監視器畫面，旁邊的路樹被風吹拂、不斷搖擺，隨後鷹架倒塌、砸向一旁草叢和汽車，並未有任何軍隊經過等與演習有關的軍事行為。",
+    "二、高雄楠梓科技園區受訪表示，鷹架倒塌事故與漢光演習無關。初判鷹架倒塌是因營建廠商未依規定架設，導致鷹架鬆動並倒塌。",
+    "高雄楠梓科技園區鷹架倒塌事件與漢光演習無關，廠商未依規定施工才導致鷹架倒塌。傳言為虛構的錯誤訊息。"
+  ],
+  "summaryBlocks": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "漢光42號演習自8月5號展開。網路流傳一段鷹架倒塌影片，宣稱漢光演習每天都在出包。經查證，這是高雄楠梓電子公司外牆拉皮工程，營建廠商疏於固定、導致鷹架倒塌，與漢光演習無關。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "一、高雄楠梓科技園區內電子公司大樓外牆施做拉皮工程，8月7日鷹架倒塌。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "根據監視器畫面，旁邊的路樹被風吹拂、不斷搖擺，隨後鷹架倒塌、砸向一旁草叢和汽車，並未有任何軍隊經過等與演習有關的軍事行為。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "二、高雄楠梓科技園區受訪表示，鷹架倒塌事故與漢光演習無關。初判鷹架倒塌是因營建廠商未依規定架設，導致鷹架鬆動並倒塌。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "高雄楠梓科技園區鷹架倒塌事件與漢光演習無關，廠商未依規定施工才導致鷹架倒塌。傳言為虛構的錯誤訊息。"
+        }
+      ]
+    }
+  ],
+  "summaryClose": "",
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "漢光42號演習自8月5日展開。社群平台流傳一段鷹架倒塌影片，並搭配文字訊息宣稱「漢光演習每天都在出包，今天輪到高雄」。"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "/images/imported/5e84c9a01b3488e8db26455bcb40479f3687939402083065395f7cec3defa582.jpg",
+          "alt": "網傳訊息擷圖"
+        },
+        "caption": "網傳訊息擷圖"
+      }
+    ],
+    "paragraphs": [
+      "漢光42號演習自8月5日展開。社群平台流傳一段鷹架倒塌影片，並搭配文字訊息宣稱「漢光演習每天都在出包，今天輪到高雄」。"
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "查核點：網傳影片的原始事件",
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "bold": true,
+              "text": "高雄楠梓科技廠外牆拉皮工程，營建商疏於固定導致鷹架倒塌"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "（一）將網傳影片畫面反搜，實為Threads帳號於8月7日發布"
+            },
+            {
+              "href": "https://www.threads.com/@jyc._.1201/post/Dbui-b0D4z9",
+              "text": "影片"
+            },
+            {
+              "text": "，貼文標註「楠梓科技園區」。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "以關鍵字「楠梓科技園區 鷹架 倒塌」檢索網路，可以找到《"
+            },
+            {
+              "href": "https://news.cts.com.tw/cts/general/202608/202608073064791.html",
+              "text": "華視"
+            },
+            {
+              "text": "》、《"
+            },
+            {
+              "href": "https://news.pts.org.tw/article/821412",
+              "text": "公視"
+            },
+            {
+              "text": "》、《"
+            },
+            {
+              "href": "https://udn.com/news/story/7320/9677360",
+              "text": "聯合報"
+            },
+            {
+              "text": "》、《"
+            },
+            {
+              "href": "https://news.ttv.com.tw/news/11508070023400N/amp",
+              "text": "台視"
+            },
+            {
+              "text": "》、《"
+            },
+            {
+              "href": "https://news.tvbs.com.tw/local/4003859",
+              "text": "TVBS"
+            },
+            {
+              "text": "》、《"
+            },
+            {
+              "href": "https://www.ftvnews.com.tw/news/detail/2026807U15M1",
+              "text": "民視"
+            },
+            {
+              "text": "》8月7日媒體報導指出，楠梓科技園區內電子公司大樓，施做拉皮工程的鷹架突然整面倒塌。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "媒體報導檢附鷹架倒塌的監視器畫面。監視器畫面顯示，旁邊的路樹被風吹拂、不斷搖擺，隨後鷹架倒塌、砸向一旁草叢和汽車。但並未有任何軍隊經過等軍事行為。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "YouTube video player",
+              "href": "https://www.youtube.com/watch?v=YbEfStn4U2A"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "（二）高雄楠梓科技園區8月10日受訪表示，8月7日上午10時許園區內的雙葉電子公司旁，發生鷹架倒塌事故。鷹架倒塌原因，初判是因營建廠商未依規定架設鷹架，導致鷹架鬆動並倒塌，目前事故鷹架已全數移除。鷹架倒塌事故與漢光演習無關。"
+            }
+          ]
+        }
+      ],
+      "paragraphs": [
+        "（一）將網傳影片畫面反搜，實為Threads帳號於8月7日發布影片，貼文標註「楠梓科技園區」。",
+        "以關鍵字「楠梓科技園區 鷹架 倒塌」檢索網路，可以找到《華視》、《公視》、《聯合報》、《台視》、《TVBS》、《民視》8月7日媒體報導指出，楠梓科技園區內電子公司大樓，施做拉皮工程的鷹架突然整面倒塌。",
+        "媒體報導檢附鷹架倒塌的監視器畫面。監視器畫面顯示，旁邊的路樹被風吹拂、不斷搖擺，隨後鷹架倒塌、砸向一旁草叢和汽車。但並未有任何軍隊經過等軍事行為。",
+        "YouTube video player",
+        "（二）高雄楠梓科技園區8月10日受訪表示，8月7日上午10時許園區內的雙葉電子公司旁，發生鷹架倒塌事故。鷹架倒塌原因，初判是因營建廠商未依規定架設鷹架，導致鷹架鬆動並倒塌，目前事故鷹架已全數移除。鷹架倒塌事故與漢光演習無關。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "原始查核報告（台灣事實查核中心）",
+      "href": "https://tfc-taiwan.org.tw/fact-check-reports/nanzih-scaffolding-collapse-hankuang-unrelated-facts/",
+      "note": "本頁保留原文內容、署名、引用連結與圖片。"
+    }
+  ],
+  "relatedSlugs": [],
+  "seo": {
+    "title": "楠梓鷹架倒塌與漢光演習無關，實為外牆工程事故｜台灣事實查核中心 2026 選舉工具箱",
+    "description": "漢光42號演習自8月5號展開。網路流傳一段鷹架倒塌影片，宣稱漢光演習每天都在出包。經查證，這是高雄楠梓電子公司外牆拉皮工程，營建廠商疏於固定、導致鷹架倒塌，與漢光演習無關。",
+    "image": {
+      "src": "/images/covers/nanzih-scaffolding-collapse-hankuang-unrelated-facts.jpg",
+      "alt": "楠梓鷹架倒塌與漢光演習無關，實為外牆工程事故",
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
+    },
+    "noindex": false,
+    "authorType": "Person"
+  }
+}

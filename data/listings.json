@@ -151,6 +151,32 @@
   },
   "stories": [
     {
+      "slug": "reject-deepfake-election-disinformation-self-regulation-charter",
+      "kind": "analysis",
+      "category": "深偽倡議",
+      "title": "「維護選舉公平，拒絕深偽造假」自律公約",
+      "description": "台灣事實查核中心倡議：政治人物承諾不以AI深偽攻擊對手。",
+      "date": "2026-10-21",
+      "image": null,
+      "tag": "選舉工具箱",
+      "tone": "cyan"
+    },
+    {
+      "slug": "puma-shen-grandfather-battle-rumor",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「沈伯洋的爺爺打過古寧頭、八二三戰役」是移花接木訊息",
+      "description": "近期網路流傳「沈伯洋介紹他住在民生社區的78歲爺爺」文章；經查，該內容原文是反串帳號發佈的一則貼文，轉傳過程中被移花接木為沈伯洋的說法。",
+      "date": "2026-10-21",
+      "image": {
+        "src": "/images/covers/puma-shen-grandfather-battle-rumor.jpg",
+        "alt": "網傳「沈伯洋的爺爺打過古寧頭、八二三戰役」是移花接木訊息"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
       "slug": "qiaohu-island-poll-six-municipal-elections-dpp-lead-fabricated",
       "kind": "report",
       "category": "地方選舉",
@@ -179,132 +205,6 @@
       "tag": "政治與政策",
       "tone": "magenta",
       "verdict": "錯誤"
-    },
-    {
-      "slug": "fake-infographic-26-chinese-spouses-running-for-chief",
-      "kind": "report",
-      "category": "地方選舉",
-      "title": "網傳「26名中配參選里長」圖卡的參選人照片是AI生成 內容多處錯誤",
-      "description": "參選人照片是AI生成，內容夾雜多處錯誤資訊",
-      "date": "2026-09-08",
-      "image": {
-        "src": "/images/covers/4306-1.jpg",
-        "alt": "參選人照片是AI生成，內容夾雜多處錯誤資訊"
-      },
-      "tag": "政治與政策",
-      "tone": "cyan",
-      "verdict": "錯誤"
-    },
-    {
-      "slug": "taiwan-electricity-price-no-hike-2026q4",
-      "kind": "report",
-      "category": "地方選舉",
-      "title": "10月至12月全國平均電價維持3.7823元，沒有調漲",
-      "description": "經濟部已在9月底決議暫不調整，目前電價沒有調漲",
-      "date": "2026-09-23",
-      "image": {
-        "src": "/images/covers/4324-1.jpg",
-        "alt": "經濟部已在9月底決議暫不調整，目前電價沒有調漲"
-      },
-      "tag": "環境能源",
-      "tone": "magenta",
-      "verdict": "錯誤"
-    },
-    {
-      "slug": "tree-brown-root-rot-treatment-no-concrete-needed",
-      "kind": "report",
-      "category": "地方選舉",
-      "title": "樹木染褐根病，不需要用水泥封樹穴",
-      "description": "樹木若染褐根病，正確作法是完整移除病根、配合殺菌，並不需要覆蓋水泥",
-      "date": "2026-09-21",
-      "image": {
-        "src": "/images/covers/4322-1.jpg",
-        "alt": "樹木若染褐根病，正確作法是完整移除病根、配合殺菌，並不需要覆蓋水泥"
-      },
-      "tag": "政治與政策",
-      "tone": "cyan",
-      "verdict": "錯誤"
-    },
-    {
-      "slug": "china-xiamen-bridge-does-not-reach-kinmen",
-      "kind": "report",
-      "category": "地方選舉",
-      "title": "中國廈金大橋僅能連結廈門兩島，無法直通金門",
-      "description": "僅能連結廈門兩島，無法直通金門",
-      "date": "2026-09-03",
-      "image": {
-        "src": "/images/covers/4300-1.jpg",
-        "alt": "僅能連結廈門兩島，無法直通金門"
-      },
-      "tag": "政治與政策",
-      "tone": "magenta",
-      "verdict": "錯誤"
-    },
-    {
-      "slug": "taiwan-2026-election-voting-notice-ballots-guide",
-      "kind": "guide",
-      "category": "選舉工具箱",
-      "title": "【2026選舉查知識】選前準備篇：選票與通知單的那些事",
-      "description": "選前準備篇：選票與通知單的那些事",
-      "date": "2026-10-13",
-      "image": {
-        "src": "/images/covers/election-prepare.png",
-        "alt": "選前準備篇：選票與通知單的那些事"
-      },
-      "tag": "選舉工具箱",
-      "tone": "cyan"
-    },
-    {
-      "slug": "deepfake-pledge",
-      "kind": "analysis",
-      "category": "深偽倡議",
-      "title": "維護選舉公平，拒絕深偽造假",
-      "description": "因應深偽內容在全球選舉帶來的風險，台灣事實查核中心與MyGoPen、Cofacts等查核組織共同發起倡議，呼籲政黨、候選人與競選團隊拒絕使用深偽內容攻擊政治對手。",
-      "date": null,
-      "image": null,
-      "tag": "自律公約倡議",
-      "tone": "cyan"
-    },
-    {
-      "slug": "reject-deepfake-election-disinformation-self-regulation-charter",
-      "kind": "analysis",
-      "category": "深偽倡議",
-      "title": "「維護選舉公平，拒絕深偽造假」自律公約",
-      "description": "台灣事實查核中心倡議：政治人物承諾不以AI深偽攻擊對手。",
-      "date": "2026-10-21",
-      "image": null,
-      "tag": "選舉工具箱",
-      "tone": "cyan"
-    },
-    {
-      "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover",
-      "kind": "report",
-      "category": "地方選舉",
-      "title": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成",
-      "description": "網傳封面圖經AI編輯變造，《時代雜誌》最新一期封面人物為美國太平洋司令部司令",
-      "date": "2026-10-12",
-      "image": {
-        "src": "/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg",
-        "alt": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成"
-      },
-      "tag": "政治與政策",
-      "tone": "magenta",
-      "verdict": "錯誤"
-    },
-    {
-      "slug": "five-star-flag-fine-2020-proposal-not-passed",
-      "kind": "report",
-      "category": "地方選舉",
-      "title": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過",
-      "description": "曾有立委於2020年提案修法，但並未完成三讀",
-      "date": "2026-10-12",
-      "image": {
-        "src": "/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg",
-        "alt": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過"
-      },
-      "tag": "政治與政策",
-      "tone": "cyan",
-      "verdict": "部分錯誤"
     },
     {
       "slug": "2026-taiwan-election-polling-station-supervision-guide",
@@ -347,6 +247,331 @@
       },
       "tag": "選舉工具箱",
       "tone": "magenta"
+    },
+    {
+      "slug": "lai-hui-yuan-manipulated-video-sparks-confrontation-facts",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "立委賴惠員致歉影片遭美妝特效變造，激化對立討論",
+      "description": "民進黨籍立委賴惠員10月14日因評論台北101董事長賈永婕服裝，引發大眾熱議後，賴惠員拍攝影片致歉並承諾檢討。網路接著流傳一段「立委賴惠員致歉」影片，但畫面中人像臉部帶著濃妝，引發網友討論。經影像鑑識專家分析，網傳影片經過美妝特效後製，並非原始真實畫面。",
+      "date": "2026-10-15",
+      "image": {
+        "src": "/images/covers/lai-hui-yuan-manipulated-video-sparks-confrontation-facts.jpg",
+        "alt": "立委賴惠員致歉影片遭美妝特效變造，激化對立討論"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "taiwan-2026-election-voting-notice-ballots-guide",
+      "kind": "guide",
+      "category": "選舉工具箱",
+      "title": "【2026選舉查知識】選前準備篇：選票與通知單的那些事",
+      "description": "選前準備篇：選票與通知單的那些事",
+      "date": "2026-10-13",
+      "image": {
+        "src": "/images/covers/election-prepare.png",
+        "alt": "選前準備篇：選票與通知單的那些事"
+      },
+      "tag": "選舉工具箱",
+      "tone": "cyan"
+    },
+    {
+      "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成",
+      "description": "網傳封面圖經AI編輯變造，《時代雜誌》最新一期封面人物為美國太平洋司令部司令",
+      "date": "2026-10-12",
+      "image": {
+        "src": "/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg",
+        "alt": "網傳圖片「洋流登上時代雜誌封面」是真實照片經AI編輯而成"
+      },
+      "tag": "政治與政策",
+      "tone": "magenta",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "five-star-flag-fine-2020-proposal-not-passed",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過",
+      "description": "曾有立委於2020年提案修法，但並未完成三讀",
+      "date": "2026-10-12",
+      "image": {
+        "src": "/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg",
+        "alt": "網傳「舉五星旗罰5萬」是2020年的立委修法提案，最終並未三讀通過"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "部分錯誤"
+    },
+    {
+      "slug": "2400-billion-drone-budget-not-yet-allocated-misleading-claim",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "2400億無人機預算尚未編列、執行，網傳「砸2400億無人機掛零」圖卡引人誤解",
+      "description": "近期流傳「砸2400億無人機掛零」圖卡，宣稱「驗收連兩次不及格、全台測試場僅1處能用」，將2400億預算與無人機現況連結。經查證，2400億預算尚未編列，跟所提事件無關。",
+      "date": "2026-09-29",
+      "image": {
+        "src": "/images/covers/2400-billion-drone-budget-not-yet-allocated-misleading-claim.jpg",
+        "alt": "2400億無人機預算尚未編列、執行，網傳「砸2400億無人機掛零」圖卡引人誤解"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "taiwan-electricity-price-no-hike-2026q4",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "10月至12月全國平均電價維持3.7823元，沒有調漲",
+      "description": "經濟部已在9月底決議暫不調整，目前電價沒有調漲",
+      "date": "2026-09-23",
+      "image": {
+        "src": "/images/covers/4324-1.jpg",
+        "alt": "經濟部已在9月底決議暫不調整，目前電價沒有調漲"
+      },
+      "tag": "環境能源",
+      "tone": "magenta",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "tree-brown-root-rot-treatment-no-concrete-needed",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "樹木染褐根病，不需要用水泥封樹穴",
+      "description": "樹木若染褐根病，正確作法是完整移除病根、配合殺菌，並不需要覆蓋水泥",
+      "date": "2026-09-21",
+      "image": {
+        "src": "/images/covers/4322-1.jpg",
+        "alt": "樹木若染褐根病，正確作法是完整移除病根、配合殺菌，並不需要覆蓋水泥"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "fake-infographic-26-chinese-spouses-running-for-chief",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「26名中配參選里長」圖卡的參選人照片是AI生成 內容多處錯誤",
+      "description": "參選人照片是AI生成，內容夾雜多處錯誤資訊",
+      "date": "2026-09-08",
+      "image": {
+        "src": "/images/covers/4306-1.jpg",
+        "alt": "參選人照片是AI生成，內容夾雜多處錯誤資訊"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "china-xiamen-bridge-does-not-reach-kinmen",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "中國廈金大橋僅能連結廈門兩島，無法直通金門",
+      "description": "僅能連結廈門兩島，無法直通金門",
+      "date": "2026-09-03",
+      "image": {
+        "src": "/images/covers/4300-1.jpg",
+        "alt": "僅能連結廈門兩島，無法直通金門"
+      },
+      "tag": "政治與政策",
+      "tone": "magenta",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "overseas-china-rally-falsely-attributed-to-kmt",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網路謠言張冠李戴，將中國在美僑團主辦的活動錯稱為國民黨主辦",
+      "description": "近期社群平台流傳兩段影片，發文者宣稱影片內容是中國國民黨在洛杉磯舉辦宴會，卻播放中共國歌。查證可知，這是中國在美僑團主辦的孫中山先生紀念活動，並非中國國民黨舉辦。",
+      "date": "2026-08-26",
+      "image": {
+        "src": "/images/covers/overseas-china-rally-falsely-attributed-to-kmt.jpg",
+        "alt": "網路謠言張冠李戴，將中國在美僑團主辦的活動錯稱為國民黨主辦"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "taipei-police-suicides-2024",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「北市4個月6警輕生」是錯誤訊息，挪用2024年新聞混淆視聽",
+      "description": "近期網路流傳一張新聞擷圖，指稱4個月內已經有6名台北市的員警輕生；經查，這是2024年的新聞，而且文中的數據是指全台灣的狀況，不是單指台北市。",
+      "date": "2026-08-24",
+      "image": {
+        "src": "/images/covers/taipei-police-suicides-2024.jpg",
+        "alt": "網傳「北市4個月6警輕生」是錯誤訊息，挪用2024年新聞混淆視聽"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "nanzih-scaffolding-collapse-hankuang-unrelated-facts",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "楠梓鷹架倒塌與漢光演習無關，實為外牆工程事故",
+      "description": "漢光42號演習自8月5號展開。網路流傳一段鷹架倒塌影片，宣稱漢光演習每天都在出包。經查證，這是高雄楠梓電子公司外牆拉皮工程，營建廠商疏於固定、導致鷹架倒塌，與漢光演習無關。",
+      "date": "2026-08-10",
+      "image": {
+        "src": "/images/covers/nanzih-scaffolding-collapse-hankuang-unrelated-facts.jpg",
+        "alt": "楠梓鷹架倒塌與漢光演習無關，實為外牆工程事故"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "oil-inspection-data-comparison",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「台北、台中、台南、高雄油品檢驗次數」圖卡，數據有誤且基期不一致，難直接比較",
+      "description": "近期網路社群流傳一張比較4縣市政府油品抽驗次數的圖卡，但比較年限和基準紊亂，例如台北沒有食用油脂精煉廠卻被納入比較、台中僅呈現中聯抽檢一件，高雄僅呈現台糖油廠的數據，台南又列出全部油廠稽查數據，單憑圖卡無法釐清全貌。",
+      "date": "2026-08-07",
+      "image": {
+        "src": "/images/covers/oil-inspection-data-comparison.jpg",
+        "alt": "網傳「台北、台中、台南、高雄油品檢驗次數」圖卡，數據有誤且基期不一致，難直接比較"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "false-claim-court-confirmed-taisugar-sold-carcinogen-contaminated-cooking-oil",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「法院證實台糖販售苯駢芘超標沙拉油」，是錯誤解讀台中地院新聞稿",
+      "description": "油品安全爭議延燒，台糖是否隱匿未通報成為新議題。近期網路流傳一支影片，稱「台中地方法院證實台糖販售苯駢芘超標的油品」。經查證，台糖發現中聯粗油的苯駢芘含量超標，立即拒收，目前台糖油品並無苯駢芘超標問題，網傳影片誤讀台中地院新聞稿。",
+      "date": "2026-08-07",
+      "image": {
+        "src": "/images/covers/false-claim-court-confirmed-taisugar-sold-carcinogen-contaminated-cooking-oil.jpg",
+        "alt": "網傳「法院證實台糖販售苯駢芘超標沙拉油」，是錯誤解讀台中地院新聞稿"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "tfda-food-safety-budget-not-98-percent-office-building-claim-false",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "食藥署沒有拿食安預算98.5%去蓋大樓",
+      "description": "近期流傳立委質詢畫面，質疑食安預算有98.5%都在蓋大樓，食安檢驗預算僅約1200萬。經查證，今年食藥署實驗大樓預算約占食安預算3成，食品檢驗經費超過6億。",
+      "date": "2026-07-31",
+      "image": {
+        "src": "/images/covers/tfda-food-safety-budget-not-98-percent-office-building-claim-false.jpg",
+        "alt": "食藥署沒有拿食安預算98.5%去蓋大樓"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "gaomei-wetland-environmental-safety-facts-clarified",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "高美濕地被誤傳棄置戴奧辛廢棄物",
+      "description": "中聯油脂案延燒，網路流傳圖卡宣稱「全台灣最毒的地方在台中」，顯示高美濕地及中聯油脂公司間有戴奧辛棄置處。實際上，高美濕地周圍雖曾被違法棄置廢棄物，但並未測出戴奧辛；棄置地點也與中聯公司有一段距離。",
+      "date": "2026-07-31",
+      "image": {
+        "src": "/images/covers/gaomei-wetland-environmental-safety-facts-clarified.jpg",
+        "alt": "高美濕地被誤傳棄置戴奧辛廢棄物"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "taiwan-july-25-food-safety-rally-media-coverage",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "7月25日凱道反毒油集會多家媒體均有報導",
+      "description": "中聯油脂案延燒，國民黨7月25日號召群眾於凱達格蘭大道舉行「我是人，我反毒台」集會，社群平台流傳訊息並搭配凱道空拍圖，宣稱集會未獲媒體報導。這是片面說法，台灣多家媒體均有報導當天集會情況。",
+      "date": "2026-07-27",
+      "image": {
+        "src": "/images/covers/taiwan-july-25-food-safety-rally-media-coverage.jpg",
+        "alt": "7月25日凱道反毒油集會多家媒體均有報導"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "tainan-wastewater-old-video-ai-card-rumor",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「台南排廢水是舊影像」圖卡，是以AI生成的錯誤訊息",
+      "description": "近日有台南議員參選人發布影片抨擊曾文溪口周邊出現大片深色水體，隨後有粉專發布圖卡指出「台南排廢水」影像是移花接木凱米颱風舊影像。經查證，近期曾文溪口確實出現不明深色水體，網傳影像與2024年凱米颱風無關。",
+      "date": "2026-07-17",
+      "image": {
+        "src": "/images/covers/tainan-wastewater-old-video-ai-card-rumor.jpg",
+        "alt": "網傳「台南排廢水是舊影像」圖卡，是以AI生成的錯誤訊息"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "tainan-black-water-drone-ban-fake-news",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "台江國家公園自2018年起即規定空拍須事先申請，沒有因近期「黑水」爭議臨時禁飛",
+      "description": "近日台南城西掩埋場周邊的曾文溪口出現大片深色水體，隨後網路流傳訊息指出，深色水體出現後，台南市府就將該區域變為無人機禁飛區。經查，該地點位於台江國家公園內，並非禁航區，但2018年起因生態保護原因，規定該區域空拍須先提出申請，並非近期新規定。",
+      "date": "2026-07-15",
+      "image": {
+        "src": "/images/covers/tainan-black-water-drone-ban-fake-news.jpg",
+        "alt": "台江國家公園自2018年起即規定空拍須事先申請，沒有因近期「黑水」爭議臨時禁飛"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "taipei-shishang-road-tree-removal-claim-missing-context-replanting-plan",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「台北士商路路樹遭砍」訊息不完整，未來將改種其他樹種",
+      "description": "近日流傳台北市士商路整排路樹攔腰砍斷照片，引發網友質疑。經查證，遭砍路樹位於私人土地，為私有路樹。因配合附近商場整修，經台北市府同意，進行樹種變更。",
+      "date": "2026-07-08",
+      "image": {
+        "src": "/images/covers/taipei-shishang-road-tree-removal-claim-missing-context-replanting-plan.jpg",
+        "alt": "網傳「台北士商路路樹遭砍」訊息不完整，未來將改種其他樹種"
+      },
+      "tag": "環境能源",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "neihu-flooding-dagouxi-detention-basin-unrelated",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "內湖文德路、金龍路等路段大水與大溝溪園區滯洪設施無關",
+      "description": "6月25日受颱風外圍環流影響，台北內湖多處發生積淹水。隨後社群平台流傳影片並搭配文字指出，內湖淹水是因水利工程處未及時開啟內湖大溝溪生態治水園區閘門，積水漫過路面後才緊急開閘。經查，內湖大溝溪園區閘門與內湖主要淹水區域分屬不同排水系統，兩者互不影響。",
+      "date": "2026-07-03",
+      "image": {
+        "src": "/images/covers/neihu-flooding-dagouxi-detention-basin-unrelated.jpg",
+        "alt": "內湖文德路、金龍路等路段大水與大溝溪園區滯洪設施無關"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "deepfake-pledge",
+      "kind": "analysis",
+      "category": "深偽倡議",
+      "title": "維護選舉公平，拒絕深偽造假",
+      "description": "因應深偽內容在全球選舉帶來的風險，台灣事實查核中心與MyGoPen、Cofacts等查核組織共同發起倡議，呼籲政黨、候選人與競選團隊拒絕使用深偽內容攻擊政治對手。",
+      "date": null,
+      "image": null,
+      "tag": "自律公約倡議",
+      "tone": "cyan"
     }
   ],
   "sections": {
@@ -358,13 +583,25 @@
       ],
       "items": [
         {
+          "slug": "puma-shen-grandfather-battle-rumor"
+        },
+        {
           "slug": "qiaohu-island-poll-six-municipal-elections-dpp-lead-fabricated"
         },
         {
           "slug": "cheng-chao-hsin-wife-lin-hsin-yi-same-name-different-person"
         },
         {
-          "slug": "fake-infographic-26-chinese-spouses-running-for-chief"
+          "slug": "lai-hui-yuan-manipulated-video-sparks-confrontation-facts"
+        },
+        {
+          "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover"
+        },
+        {
+          "slug": "five-star-flag-fine-2020-proposal-not-passed"
+        },
+        {
+          "slug": "2400-billion-drone-budget-not-yet-allocated-misleading-claim"
         },
         {
           "slug": "taiwan-electricity-price-no-hike-2026q4"
@@ -373,13 +610,46 @@
           "slug": "tree-brown-root-rot-treatment-no-concrete-needed"
         },
         {
+          "slug": "fake-infographic-26-chinese-spouses-running-for-chief"
+        },
+        {
           "slug": "china-xiamen-bridge-does-not-reach-kinmen"
         },
         {
-          "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover"
+          "slug": "overseas-china-rally-falsely-attributed-to-kmt"
         },
         {
-          "slug": "five-star-flag-fine-2020-proposal-not-passed"
+          "slug": "taipei-police-suicides-2024"
+        },
+        {
+          "slug": "nanzih-scaffolding-collapse-hankuang-unrelated-facts"
+        },
+        {
+          "slug": "oil-inspection-data-comparison"
+        },
+        {
+          "slug": "false-claim-court-confirmed-taisugar-sold-carcinogen-contaminated-cooking-oil"
+        },
+        {
+          "slug": "tfda-food-safety-budget-not-98-percent-office-building-claim-false"
+        },
+        {
+          "slug": "gaomei-wetland-environmental-safety-facts-clarified"
+        },
+        {
+          "slug": "taiwan-july-25-food-safety-rally-media-coverage"
+        },
+        {
+          "slug": "tainan-wastewater-old-video-ai-card-rumor"
+        },
+        {
+          "slug": "tainan-black-water-drone-ban-fake-news"
+        },
+        {
+          "slug": "taipei-shishang-road-tree-removal-claim-missing-context-replanting-plan"
+        },
+        {
+          "slug": "neihu-flooding-dagouxi-detention-basin-unrelated"
         }
       ]
     },

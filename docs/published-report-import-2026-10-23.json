@@ -1,0 +1,669 @@
+{
+  "sources": [
+    "https://tfc-taiwan.org.tw/fact-check-reports/puma-shen-grandfather-battle-rumor/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/lai-hui-yuan-manipulated-video-sparks-confrontation-facts/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/2400-billion-drone-budget-not-yet-allocated-misleading-claim/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/overseas-china-rally-falsely-attributed-to-kmt/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/taipei-police-suicides-2024/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/nanzih-scaffolding-collapse-hankuang-unrelated-facts/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/oil-inspection-data-comparison/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/false-claim-court-confirmed-taisugar-sold-carcinogen-contaminated-cooking-oil/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/tfda-food-safety-budget-not-98-percent-office-building-claim-false/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/gaomei-wetland-environmental-safety-facts-clarified/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/taiwan-july-25-food-safety-rally-media-coverage/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/tainan-wastewater-old-video-ai-card-rumor/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/tainan-black-water-drone-ban-fake-news/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/taipei-shishang-road-tree-removal-claim-missing-context-replanting-plan/",
+    "https://tfc-taiwan.org.tw/fact-check-reports/neihu-flooding-dagouxi-detention-basin-unrelated/"
+  ],
+  "reports": [
+    {
+      "slug": "puma-shen-grandfather-battle-rumor",
+      "title": "網傳「沈伯洋的爺爺打過古寧頭、八二三戰役」是移花接木訊息",
+      "published": "2026-10-21",
+      "updated": "2026-10-21",
+      "reportId": "4364",
+      "reporter": "宋思彤",
+      "editor": "陳偉婷",
+      "images": 4,
+      "bodyCharacters": 1339,
+      "summaryParagraphs": 6
+    },
+    {
+      "slug": "lai-hui-yuan-manipulated-video-sparks-confrontation-facts",
+      "title": "立委賴惠員致歉影片遭美妝特效變造，激化對立討論",
+      "published": "2026-10-15",
+      "updated": "2026-10-15",
+      "reportId": "4356",
+      "reporter": "邱劭安",
+      "editor": "陳偉婷",
+      "images": 4,
+      "bodyCharacters": 1048,
+      "summaryParagraphs": 4
+    },
+    {
+      "slug": "2400-billion-drone-budget-not-yet-allocated-misleading-claim",
+      "title": "2400億無人機預算尚未編列、執行，網傳「砸2400億無人機掛零」圖卡引人誤解",
+      "published": "2026-09-29",
+      "updated": "2026-09-29",
+      "reportId": "4335",
+      "reporter": "許雲凱、邱劭安",
+      "editor": "陳偉婷",
+      "images": 2,
+      "bodyCharacters": 1183,
+      "summaryParagraphs": 6
+    },
+    {
+      "slug": "overseas-china-rally-falsely-attributed-to-kmt",
+      "title": "網路謠言張冠李戴，將中國在美僑團主辦的活動錯稱為國民黨主辦",
+      "published": "2026-08-26",
+      "updated": "2026-08-26",
+      "reportId": "4286",
+      "reporter": "何蕙安",
+      "editor": "陳偉婷",
+      "images": 5,
+      "bodyCharacters": 1830,
+      "summaryParagraphs": 4
+    },
+    {
+      "slug": "taipei-police-suicides-2024",
+      "title": "網傳「北市4個月6警輕生」是錯誤訊息，挪用2024年新聞混淆視聽",
+      "published": "2026-08-24",
+      "updated": "2026-08-24",
+      "reportId": "4279",
+      "reporter": "宋思彤",
+      "editor": "陳偉婷",
+      "images": 2,
+      "bodyCharacters": 1036,
+      "summaryParagraphs": 5
+    },
+    {
+      "slug": "nanzih-scaffolding-collapse-hankuang-unrelated-facts",
+      "title": "楠梓鷹架倒塌與漢光演習無關，實為外牆工程事故",
+      "published": "2026-08-10",
+      "updated": "2026-08-10",
+      "reportId": "4262",
+      "reporter": "邱劭安",
+      "editor": "陳偉婷",
+      "images": 2,
+      "bodyCharacters": 441,
+      "summaryParagraphs": 5
+    },
+    {
+      "slug": "oil-inspection-data-comparison",
+      "title": "網傳「台北、台中、台南、高雄油品檢驗次數」圖卡，數據有誤且基期不一致，難直接比較",
+      "published": "2026-08-07",
+      "updated": "2026-08-07",
+      "reportId": "4258",
+      "reporter": "宋思彤",
+      "editor": "陳偉婷",
+      "images": 4,
+      "bodyCharacters": 1330,
+      "summaryParagraphs": 7
+    },
+    {
+      "slug": "false-claim-court-confirmed-taisugar-sold-carcinogen-contaminated-cooking-oil",
+      "title": "網傳「法院證實台糖販售苯駢芘超標沙拉油」，是錯誤解讀台中地院新聞稿",
+      "published": "2026-08-07",
+      "updated": "2026-08-07",
+      "reportId": "4256",
+      "reporter": "曾慧雯",
+      "editor": "陳偉婷",
+      "images": 2,
+      "bodyCharacters": 1262,
+      "summaryParagraphs": 6
+    },
+    {
+      "slug": "tfda-food-safety-budget-not-98-percent-office-building-claim-false",
+      "title": "食藥署沒有拿食安預算98.5%去蓋大樓",
+      "published": "2026-07-31",
+      "updated": "2026-08-05",
+      "reportId": "4252",
+      "reporter": "許雲凱",
+      "editor": "陳偉婷",
+      "images": 5,
+      "bodyCharacters": 1401,
+      "summaryParagraphs": 6
+    },
+    {
+      "slug": "gaomei-wetland-environmental-safety-facts-clarified",
+      "title": "高美濕地被誤傳棄置戴奧辛廢棄物",
+      "published": "2026-07-31",
+      "updated": "2026-07-31",
+      "reportId": "4251",
+      "reporter": "邱劭安",
+      "editor": "陳偉婷",
+      "images": 3,
+      "bodyCharacters": 939,
+      "summaryParagraphs": 5
+    },
+    {
+      "slug": "taiwan-july-25-food-safety-rally-media-coverage",
+      "title": "7月25日凱道反毒油集會多家媒體均有報導",
+      "published": "2026-07-27",
+      "updated": "2026-07-27",
+      "reportId": "4244",
+      "reporter": "邱劭安",
+      "editor": "何蕙安",
+      "images": 3,
+      "bodyCharacters": 464,
+      "summaryParagraphs": 4
+    },
+    {
+      "slug": "tainan-wastewater-old-video-ai-card-rumor",
+      "title": "網傳「台南排廢水是舊影像」圖卡，是以AI生成的錯誤訊息",
+      "published": "2026-07-17",
+      "updated": "2026-07-24",
+      "reportId": "4232",
+      "reporter": "邱劭安",
+      "editor": "陳偉婷",
+      "images": 6,
+      "bodyCharacters": 1145,
+      "summaryParagraphs": 9
+    },
+    {
+      "slug": "tainan-black-water-drone-ban-fake-news",
+      "title": "台江國家公園自2018年起即規定空拍須事先申請，沒有因近期「黑水」爭議臨時禁飛",
+      "published": "2026-07-15",
+      "updated": "2026-07-17",
+      "reportId": "4231",
+      "reporter": "邱劭安",
+      "editor": "陳偉婷",
+      "images": 4,
+      "bodyCharacters": 1270,
+      "summaryParagraphs": 8
+    },
+    {
+      "slug": "taipei-shishang-road-tree-removal-claim-missing-context-replanting-plan",
+      "title": "網傳「台北士商路路樹遭砍」訊息不完整，未來將改種其他樹種",
+      "published": "2026-07-08",
+      "updated": "2026-07-08",
+      "reportId": "4222",
+      "reporter": "許雲凱",
+      "editor": "陳偉婷",
+      "images": 7,
+      "bodyCharacters": 1792,
+      "summaryParagraphs": 6
+    },
+    {
+      "slug": "neihu-flooding-dagouxi-detention-basin-unrelated",
+      "title": "內湖文德路、金龍路等路段大水與大溝溪園區滯洪設施無關",
+      "published": "2026-07-03",
+      "updated": "2026-07-03",
+      "reportId": "4216",
+      "reporter": "邱劭安",
+      "editor": "何蕙安",
+      "images": 5,
+      "bodyCharacters": 2369,
+      "summaryParagraphs": 6
+    }
+  ],
+  "images": [
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4364-2.jpg",
+      "path": "/images/imported/42d4f162b257a7286652d4cec9a5db86b77b76929b7fb43591a0c88359071043.jpg",
+      "sha256": "42d4f162b257a7286652d4cec9a5db86b77b76929b7fb43591a0c88359071043",
+      "bytes": 160453,
+      "width": 2048,
+      "height": 1152
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4364-3.jpg",
+      "path": "/images/imported/a2b29f866270eb9b28ba2952c49105258b469ffa06d2ed1df5571db4b29b028c.jpg",
+      "sha256": "a2b29f866270eb9b28ba2952c49105258b469ffa06d2ed1df5571db4b29b028c",
+      "bytes": 138097,
+      "width": 2048,
+      "height": 1152
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4364-4.jpg",
+      "path": "/images/imported/588f3d165717617c0881fcb4b1b038b3c4fbeb0b34a706e3f29df4f51e6e57b4.jpg",
+      "sha256": "588f3d165717617c0881fcb4b1b038b3c4fbeb0b34a706e3f29df4f51e6e57b4",
+      "bytes": 89507,
+      "width": 2048,
+      "height": 1152
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4364-1.jpg",
+      "path": "/images/covers/puma-shen-grandfather-battle-rumor.jpg",
+      "sha256": "a816db8b9e226df10d6439768946170fbbb1a8b92672d0bf6977461f3d41313d",
+      "bytes": 84702,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4356-2.jpg",
+      "path": "/images/imported/af65705474270ad1f69b7689f6c36890d1cdac89c0ae315b3708b919122c6d7a.jpg",
+      "sha256": "af65705474270ad1f69b7689f6c36890d1cdac89c0ae315b3708b919122c6d7a",
+      "bytes": 91082,
+      "width": 1320,
+      "height": 1046
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4356-3.jpg",
+      "path": "/images/imported/f84ceb82f1ab528d11aea10040d0a7bb2dcdb40e56a737bee11fa830657416d7.jpg",
+      "sha256": "f84ceb82f1ab528d11aea10040d0a7bb2dcdb40e56a737bee11fa830657416d7",
+      "bytes": 152504,
+      "width": 1500,
+      "height": 1599
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4356-4.jpg",
+      "path": "/images/imported/4ed70cc4bbe11c31f21e9fc0c7c50dca65356eadc87694877be70c8481d6ef62.jpg",
+      "sha256": "4ed70cc4bbe11c31f21e9fc0c7c50dca65356eadc87694877be70c8481d6ef62",
+      "bytes": 72744,
+      "width": 1700,
+      "height": 980
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4356-1.jpg",
+      "path": "/images/covers/lai-hui-yuan-manipulated-video-sparks-confrontation-facts.jpg",
+      "sha256": "4e2c16025aaa163085a9699c15a5948b1eb715907ee8306c6525c7b136797b03",
+      "bytes": 31349,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/09/4335-1.jpg",
+      "path": "/images/imported/64393893cd4732eebcec3b59c6c2887a7432bff168f0055eb03d22401295bc1f.jpg",
+      "sha256": "64393893cd4732eebcec3b59c6c2887a7432bff168f0055eb03d22401295bc1f",
+      "bytes": 58923,
+      "width": 905,
+      "height": 568
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/09/4335-0.jpg",
+      "path": "/images/covers/2400-billion-drone-budget-not-yet-allocated-misleading-claim.jpg",
+      "sha256": "fcb3c50db5570b505fe7ba12cfc8174de593be3f5f57bdb170252a7c9fa53ae1",
+      "bytes": 25539,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4286-2.jpg",
+      "path": "/images/imported/4c3128d9935ad910515a2e0faa27bd1fdacdc43a1e6d9ff445808b793ee57dea.jpg",
+      "sha256": "4c3128d9935ad910515a2e0faa27bd1fdacdc43a1e6d9ff445808b793ee57dea",
+      "bytes": 125259,
+      "width": 1600,
+      "height": 623
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4286-3.jpg",
+      "path": "/images/imported/f38b7e71ceb1817e1f4d24118611f734c2a582e001c34d17f085462db0353520.jpg",
+      "sha256": "f38b7e71ceb1817e1f4d24118611f734c2a582e001c34d17f085462db0353520",
+      "bytes": 60566,
+      "width": 1280,
+      "height": 666
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4286-4.jpg",
+      "path": "/images/imported/20add8f7a90b4b6eaaf390077f6af68d428978c55cfa7505b53a5296d55dd9fe.jpg",
+      "sha256": "20add8f7a90b4b6eaaf390077f6af68d428978c55cfa7505b53a5296d55dd9fe",
+      "bytes": 97340,
+      "width": 1500,
+      "height": 1000
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4286-5.jpg",
+      "path": "/images/imported/921a4c07dfd29ddac5cc5767a3ac71549205c376d3fd6eace0019c2e692de34d.jpg",
+      "sha256": "921a4c07dfd29ddac5cc5767a3ac71549205c376d3fd6eace0019c2e692de34d",
+      "bytes": 81911,
+      "width": 1242,
+      "height": 790
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4286-1.jpg",
+      "path": "/images/covers/overseas-china-rally-falsely-attributed-to-kmt.jpg",
+      "sha256": "24af0134dc78457938d44e0e0b90c2531b03aa36bdfa49c7b46fc37c6ffee384",
+      "bytes": 33190,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4279-2.jpg",
+      "path": "/images/imported/6f173057eb5a3b18acffdaf4edf89979b44b686a271c1a258b6b03f886b43fea.jpg",
+      "sha256": "6f173057eb5a3b18acffdaf4edf89979b44b686a271c1a258b6b03f886b43fea",
+      "bytes": 58294,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4279-1.jpg",
+      "path": "/images/covers/taipei-police-suicides-2024.jpg",
+      "sha256": "8e616f7d0827e2be492732b03e1bf323620251cf784768477f9c4c13712c392a",
+      "bytes": 61140,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4262-2.jpg",
+      "path": "/images/imported/5e84c9a01b3488e8db26455bcb40479f3687939402083065395f7cec3defa582.jpg",
+      "sha256": "5e84c9a01b3488e8db26455bcb40479f3687939402083065395f7cec3defa582",
+      "bytes": 85317,
+      "width": 1440,
+      "height": 948
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4262-1.jpg",
+      "path": "/images/covers/nanzih-scaffolding-collapse-hankuang-unrelated-facts.jpg",
+      "sha256": "d4d1d083372e7e51ed596bee55a8bd63811d4a19c1eee6e834b3c020b280806c",
+      "bytes": 53196,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4258-2.jpg",
+      "path": "/images/imported/72950ffe2e2a61443250dea78deb148fbc7478721a54a7b439d87026bfcfb59e.jpg",
+      "sha256": "72950ffe2e2a61443250dea78deb148fbc7478721a54a7b439d87026bfcfb59e",
+      "bytes": 66672,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4258-3.jpg",
+      "path": "/images/imported/10260feab184da81e599445609ce0fc43716d47143a925f255bbed21e7ffde49.jpg",
+      "sha256": "10260feab184da81e599445609ce0fc43716d47143a925f255bbed21e7ffde49",
+      "bytes": 125965,
+      "width": 1999,
+      "height": 1839
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4258-4.jpg",
+      "path": "/images/imported/91a9bf46e6be4e8eea9b0f965d1145f4e503bb887e828d26319df48760e761e8.jpg",
+      "sha256": "91a9bf46e6be4e8eea9b0f965d1145f4e503bb887e828d26319df48760e761e8",
+      "bytes": 44112,
+      "width": 1049,
+      "height": 540
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4257-1-1.jpg",
+      "path": "/images/covers/oil-inspection-data-comparison.jpg",
+      "sha256": "006c1c945bc2d4bd9b15b7f6f3b4735f01a722c87b05f44ddc8878f523404e15",
+      "bytes": 36505,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4256_2.jpg",
+      "path": "/images/imported/d8be7ed6b19328ae66038c590c9e17f9d5f18e29e0e38748174de508cbb6e303.jpg",
+      "sha256": "d8be7ed6b19328ae66038c590c9e17f9d5f18e29e0e38748174de508cbb6e303",
+      "bytes": 49480,
+      "width": 543,
+      "height": 858
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4256_3.jpg",
+      "path": "/images/covers/false-claim-court-confirmed-taisugar-sold-carcinogen-contaminated-cooking-oil.jpg",
+      "sha256": "e13a9ee5ccaea182f7c9802dccfd759353e2c4838f01cae8e28caa48728aa67f",
+      "bytes": 88181,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4252-1.jpg",
+      "path": "/images/imported/727add81547703f87e34b083229bc98ba251e1b9007c9b2b7fe0b334ec5f24d2.jpg",
+      "sha256": "727add81547703f87e34b083229bc98ba251e1b9007c9b2b7fe0b334ec5f24d2",
+      "bytes": 91403,
+      "width": 1150,
+      "height": 567
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4252-4.jpg",
+      "path": "/images/imported/6f1fe27064937d65ed8612d3db9a9a7d3fa2c4603a4e42e4034beb5a556748a6.jpg",
+      "sha256": "6f1fe27064937d65ed8612d3db9a9a7d3fa2c4603a4e42e4034beb5a556748a6",
+      "bytes": 72266,
+      "width": 939,
+      "height": 580
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4252-2.jpg",
+      "path": "/images/imported/9c43e9bd1cee68fa5a56769474aa358e7a669e324c1d7dfbf290fe0f95643a84.jpg",
+      "sha256": "9c43e9bd1cee68fa5a56769474aa358e7a669e324c1d7dfbf290fe0f95643a84",
+      "bytes": 74138,
+      "width": 1026,
+      "height": 651
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/08/4252-5.jpg",
+      "path": "/images/imported/806d25a7312e6485b8f721a5b0d22de698ec946007f8a2c26fff1b947a604ac5.jpg",
+      "sha256": "806d25a7312e6485b8f721a5b0d22de698ec946007f8a2c26fff1b947a604ac5",
+      "bytes": 60507,
+      "width": 665,
+      "height": 833
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4252-0.jpg",
+      "path": "/images/covers/tfda-food-safety-budget-not-98-percent-office-building-claim-false.jpg",
+      "sha256": "7b3c3bcdf90c2a0064d8ed6c2aa8cda6dde520db8e61a7f16dca3aa79824c8ed",
+      "bytes": 28875,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4251-2.jpg",
+      "path": "/images/imported/61e9e1b653da7cde7310fc008e0f731602c57e2064ec46ec3a49176b05ddac10.jpg",
+      "sha256": "61e9e1b653da7cde7310fc008e0f731602c57e2064ec46ec3a49176b05ddac10",
+      "bytes": 51658,
+      "width": 1700,
+      "height": 958
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4251-3.jpg",
+      "path": "/images/imported/d00979258b7584e30d6c67ccac560a60dad7d9a365f39021623508352aaaf250.jpg",
+      "sha256": "d00979258b7584e30d6c67ccac560a60dad7d9a365f39021623508352aaaf250",
+      "bytes": 74510,
+      "width": 1141,
+      "height": 1080
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4251-1.jpg",
+      "path": "/images/covers/gaomei-wetland-environmental-safety-facts-clarified.jpg",
+      "sha256": "a517cb1e45a587e260d5830d4840eb1516a9bb3e3b063331187836e3d1e882fe",
+      "bytes": 22561,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4244-2.jpg",
+      "path": "/images/imported/65d7c9567c4f0544c2f3533c8ec03ec841cb06fc3443fac19e6f2aa981a95bf4.jpg",
+      "sha256": "65d7c9567c4f0544c2f3533c8ec03ec841cb06fc3443fac19e6f2aa981a95bf4",
+      "bytes": 117365,
+      "width": 1920,
+      "height": 805
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4244-3.jpg",
+      "path": "/images/imported/dcbb0c4c5d89b018af5ca69ac18e4c2ae2dde6a08bbc9e5e05f806cbaf3c41f2.jpg",
+      "sha256": "dcbb0c4c5d89b018af5ca69ac18e4c2ae2dde6a08bbc9e5e05f806cbaf3c41f2",
+      "bytes": 118643,
+      "width": 1159,
+      "height": 1074
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4244-1.jpg",
+      "path": "/images/covers/taiwan-july-25-food-safety-rally-media-coverage.jpg",
+      "sha256": "cecf10dae005b11ab2030cbe6216f41648110557ee6236c88981ecbe16722eb6",
+      "bytes": 94522,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4232-2-1.jpg",
+      "path": "/images/imported/625338149b06489738b4650a26fa8f542b25bebae3842f42627ed7114e4f68ba.jpg",
+      "sha256": "625338149b06489738b4650a26fa8f542b25bebae3842f42627ed7114e4f68ba",
+      "bytes": 47914,
+      "width": 677,
+      "height": 711
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4232-3.jpg",
+      "path": "/images/imported/963a188a2e989a3b56fee2183d143c38b1d233ffe40b5401e1badb3953a03298.jpg",
+      "sha256": "963a188a2e989a3b56fee2183d143c38b1d233ffe40b5401e1badb3953a03298",
+      "bytes": 123936,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4232-4.gif",
+      "path": "/images/imported/d2a75a0f3001df3c651bbe16412ef32f627c63979dd357b7d1f0111b74b9ef39.gif",
+      "sha256": "d2a75a0f3001df3c651bbe16412ef32f627c63979dd357b7d1f0111b74b9ef39",
+      "bytes": 1264646,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4232-5.jpg",
+      "path": "/images/imported/bb35476d2c317058c3bef2769adea77a9f2da4c176d2f421fa9cb7a8ae9998aa.jpg",
+      "sha256": "bb35476d2c317058c3bef2769adea77a9f2da4c176d2f421fa9cb7a8ae9998aa",
+      "bytes": 93442,
+      "width": 1615,
+      "height": 1064
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4232-6.jpg",
+      "path": "/images/imported/b53ea258a428e4dc23f8ff2dd694b950fee270a53d694b7d1ebe7b6e2438f271.jpg",
+      "sha256": "b53ea258a428e4dc23f8ff2dd694b950fee270a53d694b7d1ebe7b6e2438f271",
+      "bytes": 17721,
+      "width": 670,
+      "height": 722
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4232-1.jpg",
+      "path": "/images/covers/tainan-wastewater-old-video-ai-card-rumor.jpg",
+      "sha256": "0e25bbd6da33761029f87bc642fa5ac4c9dfb82d585614972ea02fbca4340cdc",
+      "bytes": 63341,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4231-2.jpg",
+      "path": "/images/imported/4d868c5435c91ac680489f344639fb6673b74b4ef6a6268e9f31309a46a18922.jpg",
+      "sha256": "4d868c5435c91ac680489f344639fb6673b74b4ef6a6268e9f31309a46a18922",
+      "bytes": 78480,
+      "width": 1656,
+      "height": 900
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4231-3.jpg",
+      "path": "/images/imported/837ab98a9f48e0cbd24f57eefe55bd7a016d1d12a6680c48996b4d6ee18d94fb.jpg",
+      "sha256": "837ab98a9f48e0cbd24f57eefe55bd7a016d1d12a6680c48996b4d6ee18d94fb",
+      "bytes": 128237,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4231-4.jpg",
+      "path": "/images/imported/44f13710e98ffe27363451916b155575acb9c136c97810c3759ed6e24d7ee4bd.jpg",
+      "sha256": "44f13710e98ffe27363451916b155575acb9c136c97810c3759ed6e24d7ee4bd",
+      "bytes": 74480,
+      "width": 1553,
+      "height": 1018
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4231-1.jpg",
+      "path": "/images/covers/tainan-black-water-drone-ban-fake-news.jpg",
+      "sha256": "7c32710f2de0804bb42ac3644b10dc359aa272dfb4f92050e734f9baef5fa291",
+      "bytes": 68032,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4222-1.jpg",
+      "path": "/images/imported/a5c044f18668c2634cd4a1b21673429da34b74bfb518e13d9e9ec49929ae2f3b.jpg",
+      "sha256": "a5c044f18668c2634cd4a1b21673429da34b74bfb518e13d9e9ec49929ae2f3b",
+      "bytes": 80268,
+      "width": 1173,
+      "height": 556
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4222-4.jpg",
+      "path": "/images/imported/9debea99447a8af996313de2db2078515a8e4e8edab3e7a30618992e7f4b6dbb.jpg",
+      "sha256": "9debea99447a8af996313de2db2078515a8e4e8edab3e7a30618992e7f4b6dbb",
+      "bytes": 120268,
+      "width": 1162,
+      "height": 532
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4222-2.jpg",
+      "path": "/images/imported/419af2b8498a50aff9bef6b08edd94c28ebbb494bc17ad2504c85b53cd4dea20.jpg",
+      "sha256": "419af2b8498a50aff9bef6b08edd94c28ebbb494bc17ad2504c85b53cd4dea20",
+      "bytes": 87610,
+      "width": 1089,
+      "height": 678
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4222-3.jpg",
+      "path": "/images/imported/972a67e342cf2a0b96dbf503c3cdef1a2e961507055c70329271af44dc6ef0cf.jpg",
+      "sha256": "972a67e342cf2a0b96dbf503c3cdef1a2e961507055c70329271af44dc6ef0cf",
+      "bytes": 100286,
+      "width": 1155,
+      "height": 616
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4222-5.jpg",
+      "path": "/images/imported/ccad0d27a993f2e9b4f38ef165792c45ca2992383ac2735a59e7f991cbd1d97a.jpg",
+      "sha256": "ccad0d27a993f2e9b4f38ef165792c45ca2992383ac2735a59e7f991cbd1d97a",
+      "bytes": 61291,
+      "width": 883,
+      "height": 559
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4222-6.jpg",
+      "path": "/images/imported/20d3095784a1756ab6b78410f15bef11362fbb6510f66683012917be1123bda3.jpg",
+      "sha256": "20d3095784a1756ab6b78410f15bef11362fbb6510f66683012917be1123bda3",
+      "bytes": 62378,
+      "width": 932,
+      "height": 655
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4222-0.jpg",
+      "path": "/images/covers/taipei-shishang-road-tree-removal-claim-missing-context-replanting-plan.jpg",
+      "sha256": "b391f92f1162a70e73aede3090c6946eadf148d27aa80ecc4b63a84e0571702d",
+      "bytes": 88948,
+      "width": 1040,
+      "height": 1040
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4216-2.jpg",
+      "path": "/images/imported/f42cb0a0551da878c409cf0e9419d2f4b20300945796646ffd1d086e22dd5408.jpg",
+      "sha256": "f42cb0a0551da878c409cf0e9419d2f4b20300945796646ffd1d086e22dd5408",
+      "bytes": 66616,
+      "width": 1487,
+      "height": 872
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4216-3.jpg",
+      "path": "/images/imported/e8e0d287e2ecd98118818d6482e273715f2f375e94ba33e8c07d3afc9f087c6f.jpg",
+      "sha256": "e8e0d287e2ecd98118818d6482e273715f2f375e94ba33e8c07d3afc9f087c6f",
+      "bytes": 118302,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4216-4.jpg",
+      "path": "/images/imported/cc80c8b6077d733978a48aab6506c2c8a0c802f7a0ca5bda9670f69d5dcad59c.jpg",
+      "sha256": "cc80c8b6077d733978a48aab6506c2c8a0c802f7a0ca5bda9670f69d5dcad59c",
+      "bytes": 124197,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4216-5.jpg",
+      "path": "/images/imported/02cf9a3c89a912f7e56f4cb369fcf91b64e359fa927d34b41388a76761c4d3de.jpg",
+      "sha256": "02cf9a3c89a912f7e56f4cb369fcf91b64e359fa927d34b41388a76761c4d3de",
+      "bytes": 133451,
+      "width": 1244,
+      "height": 1072
+    },
+    {
+      "url": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/07/4216-1.jpg",
+      "path": "/images/covers/neihu-flooding-dagouxi-detention-basin-unrelated.jpg",
+      "sha256": "94eeb037c9df6d11c499df476e5e8fe5d135c7c7d011153757865f0095bd1b85",
+      "bytes": 26431,
+      "width": 1040,
+      "height": 1040
+    }
+  ],
+  "datePolicy": "Visible publication/update dates preserved.",
+  "presentation": "Report template hides source appendix; summaries have trimmed paragraph edges. Video embeds are retained as links to their original video."
+}

@@ -1,0 +1,352 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "taiwan-july-25-food-safety-rally-media-coverage",
+  "kind": "report",
+  "category": "地方選舉",
+  "title": "7月25日凱道反毒油集會多家媒體均有報導",
+  "finding": "多家媒體均有報導",
+  "verdict": "錯誤",
+  "tags": [
+    "錯誤",
+    "政治與政策"
+  ],
+  "published": "2026-07-27",
+  "updated": "2026-07-27",
+  "reportId": "4244",
+  "reporter": "邱劭安",
+  "editor": "何蕙安",
+  "image": {
+    "src": "/images/covers/taiwan-july-25-food-safety-rally-media-coverage.jpg",
+    "alt": "7月25日凱道反毒油集會多家媒體均有報導"
+  },
+  "imageCaption": "7月25日凱道反毒油集會多家媒體均有報導",
+  "summaryPoints": [
+    "中聯油脂案延燒，國民黨7月25日號召群眾於凱達格蘭大道舉行「我是人，我反毒台」集會，社群平台流傳訊息並搭配凱道空拍圖，宣稱集會未獲媒體報導。這是片面說法，台灣多家媒體均有報導當天集會情況。",
+    "傳言圖片引用自國民黨立委7月25日貼文，壹蘋新聞網及ETtoday均有引用此張照片報導。",
+    "此外，公視新聞網、三立、自由時報、鏡週刊、中天新聞、中時新聞網、TVBS、聯合報等媒體，均有報導7月25日集會人潮已超過景福門周邊。",
+    "傳言錯稱7月25日凱道集會沒有任何媒體報導，但當天有多家台灣媒體報導活動，因此為「錯誤」訊息。"
+  ],
+  "summaryBlocks": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "中聯油脂案延燒，國民黨7月25日號召群眾於凱達格蘭大道舉行「我是人，我反毒台」集會，社群平台流傳訊息並搭配凱道空拍圖，宣稱集會未獲媒體報導。這是片面說法，台灣多家媒體均有報導當天集會情況。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "傳言圖片引用自國民黨立委7月25日貼文，壹蘋新聞網及ETtoday均有引用此張照片報導。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "此外，公視新聞網、三立、自由時報、鏡週刊、中天新聞、中時新聞網、TVBS、聯合報等媒體，均有報導7月25日集會人潮已超過景福門周邊。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "傳言錯稱7月25日凱道集會沒有任何媒體報導，但當天有多家台灣媒體報導活動，因此為「錯誤」訊息。"
+        }
+      ]
+    }
+  ],
+  "summaryClose": "",
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "中聯油脂油品致癌物超標案風波未平，國民黨7月25日在凱達格蘭大道舉行「我是人，我反毒台」集會。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "隨後，社群平台流傳訊息宣稱，「聽說有個國家自稱是民主國家，街頭發生抗議遊行，卻沒有新聞報導」，貼文搭配一張人潮包圍景福門的空拍照片。另有傳言版本宣稱，該張照片沒有任何媒體報導。"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "/images/imported/65d7c9567c4f0544c2f3533c8ec03ec841cb06fc3443fac19e6f2aa981a95bf4.jpg",
+          "alt": "網傳訊息擷圖"
+        },
+        "caption": "網傳訊息擷圖"
+      }
+    ],
+    "paragraphs": [
+      "中聯油脂油品致癌物超標案風波未平，國民黨7月25日在凱達格蘭大道舉行「我是人，我反毒台」集會。",
+      "隨後，社群平台流傳訊息宣稱，「聽說有個國家自稱是民主國家，街頭發生抗議遊行，卻沒有新聞報導」，貼文搭配一張人潮包圍景福門的空拍照片。另有傳言版本宣稱，該張照片沒有任何媒體報導。"
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "查核點：傳言說法是真的嗎？",
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "bold": true,
+              "text": "多家媒體均有報導7月25日集會人潮空拍畫面"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "將網傳圖片透過Google以圖反搜，找到國民黨立委羅智強7月25日"
+            },
+            {
+              "href": "https://www.facebook.com/debatelo/posts/pfbid02Zzx69z6XJr2aTUGQkEHK1NiTcEHjE21RepamokncxmbT27NToQZbgu3BGrpeoewal",
+              "text": "Facebook貼文"
+            },
+            {
+              "text": "，可知照片為7月25日凱道集會空拍畫面。進一步透過Google反搜，可見"
+            },
+            {
+              "href": "https://news.nextapple.com/politics/20260725/62965D056E85E53E40B4F7A5DD3DCD16",
+              "text": "壹蘋新聞網"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://www.ettoday.net/amp/3207784",
+              "text": "ETtoday"
+            },
+            {
+              "text": "等媒體也有引用羅智強的照片進行報導。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/dcbb0c4c5d89b018af5ca69ac18e4c2ae2dde6a08bbc9e5e05f806cbaf3c41f2.jpg",
+            "alt": "多家媒體均有報導7/25凱道集會"
+          },
+          "caption": "多家媒體均有報導7/25凱道集會"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "透過關鍵字檢索網路，可見"
+            },
+            {
+              "href": "https://www.setn.com/news/1878335",
+              "text": "三立"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://news.ltn.com.tw/news/politics/breakingnews/5518379",
+              "text": "自由時報"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://www.mirrormedia.mg/story/20260725edi036",
+              "text": "鏡週刊"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://ctinews.com/news/items/MyWkwlglW6",
+              "text": "中天新聞"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://www.chinatimes.com/realtimenews/20260726000732-260407?chdtv",
+              "text": "中時新聞網"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://news.tvbs.com.tw/politics/3267876",
+              "text": "TVBS"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://udn.com/news/story/124948/9650783",
+              "text": "聯合報"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://youtu.be/Hfq-K9qJrRo?si=r98JZYjbxPoBH7et&t=6",
+              "text": "公視新聞網"
+            },
+            {
+              "text": "（0:06秒處）等媒體皆有報導集會事件及呈現相關畫面， 顯示當天集會人潮從凱道延伸至景福門周邊。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "此外，多家媒體包括"
+            },
+            {
+              "href": "https://www.youtube.com/watch?v=XXa5wIKNlok",
+              "text": "三立"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://www.youtube.com/watch?v=6PFO2BVCXwo",
+              "text": "民視"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://www.youtube.com/watch?v=u9lbIgkbyA8",
+              "text": "鏡新聞"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://www.youtube.com/watch?v=PolTuNba2Yw",
+              "text": "壹電視"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://www.youtube.com/watch?v=eazizNrtw-k",
+              "text": "華視"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://www.youtube.com/watch?v=pCWbRBpOXZY",
+              "text": "東森"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://www.youtube.com/watch?v=6WwCV6STuZg",
+              "text": "台視"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://www.youtube.com/watch?v=-viHk-KMEQ4",
+              "text": "TVBS"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://www.youtube.com/watch?v=twXvdipsnUY",
+              "text": "中視"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "href": "https://www.youtube.com/watch?v=RjJmXCeugFw",
+              "text": "中天"
+            },
+            {
+              "text": "等，都有在7月25日直播凱道的集會情況。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "YouTube video player",
+              "href": "https://www.youtube.com/watch?v=XXa5wIKNlok"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "YouTube video player",
+              "href": "https://www.youtube.com/watch?v=RjJmXCeugFw"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "YouTube video player",
+              "href": "https://www.youtube.com/watch?v=eazizNrtw-k"
+            }
+          ]
+        }
+      ],
+      "paragraphs": [
+        "將網傳圖片透過Google以圖反搜，找到國民黨立委羅智強7月25日Facebook貼文，可知照片為7月25日凱道集會空拍畫面。進一步透過Google反搜，可見壹蘋新聞網、ETtoday等媒體也有引用羅智強的照片進行報導。",
+        "透過關鍵字檢索網路，可見三立、自由時報、鏡週刊、中天新聞、中時新聞網、TVBS、聯合報、公視新聞網（0:06秒處）等媒體皆有報導集會事件及呈現相關畫面， 顯示當天集會人潮從凱道延伸至景福門周邊。",
+        "此外，多家媒體包括三立、民視、鏡新聞、壹電視、華視、東森、台視、TVBS、中視、中天等，都有在7月25日直播凱道的集會情況。",
+        "YouTube video player",
+        "YouTube video player",
+        "YouTube video player"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "原始查核報告（台灣事實查核中心）",
+      "href": "https://tfc-taiwan.org.tw/fact-check-reports/taiwan-july-25-food-safety-rally-media-coverage/",
+      "note": "本頁保留原文內容、署名、引用連結與圖片。"
+    }
+  ],
+  "relatedSlugs": [],
+  "seo": {
+    "title": "7月25日凱道反毒油集會多家媒體均有報導｜台灣事實查核中心 2026 選舉工具箱",
+    "description": "中聯油脂案延燒，國民黨7月25日號召群眾於凱達格蘭大道舉行「我是人，我反毒台」集會，社群平台流傳訊息並搭配凱道空拍圖，宣稱集會未獲媒體報導。這是片面說法，台灣多家媒體均有報導當天集會情況。",
+    "image": {
+      "src": "/images/covers/taiwan-july-25-food-safety-rally-media-coverage.jpg",
+      "alt": "7月25日凱道反毒油集會多家媒體均有報導",
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
+    },
+    "noindex": false,
+    "authorType": "Person"
+  }
+}

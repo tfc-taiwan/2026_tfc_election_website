@@ -1,0 +1,410 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "tainan-wastewater-old-video-ai-card-rumor",
+  "kind": "report",
+  "category": "地方選舉",
+  "title": "網傳「台南排廢水是舊影像」圖卡，是以AI生成的錯誤訊息",
+  "finding": "該圖卡以AI生成，夾雜錯誤資訊。近日台南曾文溪口附近確實出現不明深色水體，並非凱米颱風舊事件",
+  "verdict": "錯誤",
+  "tags": [
+    "錯誤",
+    "政治與政策"
+  ],
+  "published": "2026-07-17",
+  "updated": "2026-07-24",
+  "reportId": "4232",
+  "reporter": "邱劭安",
+  "editor": "陳偉婷",
+  "image": {
+    "src": "/images/covers/tainan-wastewater-old-video-ai-card-rumor.jpg",
+    "alt": "網傳「台南排廢水是舊影像」圖卡，是以AI生成的錯誤訊息"
+  },
+  "imageCaption": "網傳「台南排廢水是舊影像」圖卡，是以AI生成的錯誤訊息",
+  "summaryPoints": [
+    "近日有台南議員參選人發布影片抨擊曾文溪口周邊出現大片深色水體，隨後有粉專發布圖卡指出「台南排廢水」影像是移花接木凱米颱風舊影像。經查證，近期曾文溪口確實出現不明深色水體，網傳影像與2024年凱米颱風無關。",
+    "一、網傳圖卡深色水體影像，出自台南市議員參選人2026年7月10日發布影片，影片0分32秒處的空拍視角與傳言圖卡內容完全相符，影片拍攝於「曾文溪左岸青草崙堤防1號」。",
+    "經詢問當地里長並比對衛星空拍影像可知，巴威颱風來襲前，該處堤防確實有出現深色水體，並非虛假事件，也無挪用舊圖。",
+    "二、傳言圖卡引用公視報導擷圖意圖佐證這是舊照，但比對公視新聞網原始報導可知，該報導從未出現網傳黑色水體空拍視角。",
+    "進一步比對也可發現，網傳圖片出現多處疑點：擷圖公視新聞網卻出現公視電視台Logo、新聞標題與原始報導不符、新聞頁面版型也與公視新聞網不同。",
+    "三、以AI偵測工具顯示，網傳圖卡是由Google AI生成，夾雜錯誤資訊。",
+    "台南曾文溪口近期確實出現深色水體，影像為2026年7月拍攝，並非挪用2024年凱米颱風的舊圖。因此，為「錯誤」訊息。",
+    "【查核聲明】本報告僅針對「曾文溪口出現深色水體後，該區域被改劃為無人機禁飛區」說法進行查證，深色水體成因非本報告查核之範疇。",
+    "延伸閱讀：台江國家公園自2018年起即規定空拍須事先申請，沒有因近期「黑水」爭議臨時禁飛"
+  ],
+  "summaryBlocks": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "近日有台南議員參選人發布影片抨擊曾文溪口周邊出現大片深色水體，隨後有粉專發布圖卡指出「台南排廢水」影像是移花接木凱米颱風舊影像。經查證，近期曾文溪口確實出現不明深色水體，網傳影像與2024年凱米颱風無關。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "一、網傳圖卡深色水體影像，出自台南市議員參選人2026年7月10日發布影片，影片0分32秒處的空拍視角與傳言圖卡內容完全相符，影片拍攝於「曾文溪左岸青草崙堤防1號」。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "經詢問當地里長並比對衛星空拍影像可知，巴威颱風來襲前，該處堤防確實有出現深色水體，並非虛假事件，也無挪用舊圖。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "二、傳言圖卡引用公視報導擷圖意圖佐證這是舊照，但比對公視新聞網原始報導可知，該報導從未出現網傳黑色水體空拍視角。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "進一步比對也可發現，網傳圖片出現多處疑點：擷圖公視新聞網卻出現公視電視台Logo、新聞標題與原始報導不符、新聞頁面版型也與公視新聞網不同。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "三、以AI偵測工具顯示，網傳圖卡是由Google AI生成，夾雜錯誤資訊。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "台南曾文溪口近期確實出現深色水體，影像為2026年7月拍攝，並非挪用2024年凱米颱風的舊圖。因此，為「錯誤」訊息。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "【查核聲明】本報告僅針對「曾文溪口出現深色水體後，該區域被改劃為無人機禁飛區」說法進行查證，深色水體成因非本報告查核之範疇。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "延伸閱讀："
+        },
+        {
+          "href": "https://tfc-taiwan.org.tw/fact-check-reports/tainan-black-water-drone-ban-fake-news/",
+          "text": "台江國家公園自2018年起即規定空拍須事先申請，沒有因近期「黑水」爭議臨時禁飛"
+        }
+      ]
+    }
+  ],
+  "summaryClose": "",
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "台南城西掩埋場周邊潮汐溝及曾文溪口近日出現大片深色水體，有議員參選人抨擊台南市政府所營運的垃圾掩埋場流出污水，連日引發討論。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "隨後網路流傳訊息並搭配一圖卡，宣稱「這次巴威颱風流傳的『台南排廢水』影像，實際上是2024年的凱米颱風舊圖移花接木」。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "這張圖卡由多張擷圖組成，包含「深色水體」的網路討論、宣稱這是2024年7月凱米颱風舊圖，並引用公視新聞網「曾文水庫洩洪還沙於河」報導佐證。"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "/images/imported/625338149b06489738b4650a26fa8f542b25bebae3842f42627ed7114e4f68ba.jpg",
+          "alt": "網傳訊息擷圖"
+        },
+        "caption": "網傳訊息擷圖"
+      }
+    ],
+    "paragraphs": [
+      "台南城西掩埋場周邊潮汐溝及曾文溪口近日出現大片深色水體，有議員參選人抨擊台南市政府所營運的垃圾掩埋場流出污水，連日引發討論。",
+      "隨後網路流傳訊息並搭配一圖卡，宣稱「這次巴威颱風流傳的『台南排廢水』影像，實際上是2024年的凱米颱風舊圖移花接木」。",
+      "這張圖卡由多張擷圖組成，包含「深色水體」的網路討論、宣稱這是2024年7月凱米颱風舊圖，並引用公視新聞網「曾文水庫洩洪還沙於河」報導佐證。"
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "查核點：台南深色廢水影像是凱米颱風舊圖嗎？",
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "bold": true,
+              "text": "曾文溪左岸提防近期確實曾出現深色水體，並非凱米颱風舊圖"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "（一）以圖反搜並比對傳言圖卡，深色水體影像應是來自台南市議員參選人"
+            },
+            {
+              "href": "https://www.youtube.com/watch?v=SF-h-dgs9x4",
+              "text": "2026年7月10日"
+            },
+            {
+              "text": "發布的影片，影片0分32秒處的空拍視角與傳言圖卡內容完全相符。該影片拍攝位置位於「曾文溪左岸青草崙堤防1號」。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "該處位於台南市安南區，城西里里長嚴文正7月17日接受查核記者採訪時表示，巴威颱風來襲前，該處堤防確實有出現深色水體。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "（二）台南市政府7月13日"
+            },
+            {
+              "href": "https://www.facebook.com/tainantoday/videos/1962837047727405",
+              "text": "記者會"
+            },
+            {
+              "text": "中，環保局並未否認曾文溪口左岸堤防出現黑水一事。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "台南市環保局長許仁澤說明，曾文溪河口潮汐溝水色變深褐色，可能與潮汐擾動、有機質沖刷、植物殘體分解及藻類腐敗等天然因素有關，僅憑水色無法判定污染，已委託嘉南藥理大學進行第三方採樣檢驗，後續將公布分析結果。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/963a188a2e989a3b56fee2183d143c38b1d233ffe40b5401e1badb3953a03298.jpg",
+            "alt": "「深色水體」非2024年凱米颱風影像，網傳畫面與2026年7月議員參選人影片相符"
+          },
+          "caption": "「深色水體」非2024年凱米颱風影像，網傳畫面與2026年7月議員參選人影片相符"
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "（三）查核記者比對"
+            },
+            {
+              "href": "https://browser.dataspace.copernicus.eu/?zoom=16&lat=23.04636&lng=120.07211&themeId=DEFAULT-THEME&visualizationUrl=U2FsdGVkX19H20dxa9S%2F6g7En%2FKmLk3GaG0Tfz3ps%2F1Ou6ueUEqfzsgjF5m2ZyT07zFwSG2ght7KPchDWT3B124QZbCAVYCmemgifxtwj2DJyklsp87i%2FPlFdMM66%2Bgt&datasetId=S2_L2A_CDAS&fromTime=2026-06-23T00%3A00%3A00.000Z&toTime=2026-06-23T23%3A59%3A59.999Z&layerId=1_TRUE_COLOR&demSource3D=%22MAPZEN%22&cloudCoverage=30&dateMode=SINGLE",
+              "text": "2026年6月23日"
+            },
+            {
+              "text": "及"
+            },
+            {
+              "href": "https://browser.dataspace.copernicus.eu/?zoom=16&lat=23.04636&lng=120.07211&themeId=DEFAULT-THEME&visualizationUrl=U2FsdGVkX18JgelnE%2F99QqeHiQwb0y4SUXQpkShs3LDyl8wjJW75Gko67UH%2FRACnqFB9dFukJ7N5YcMYtitLtW0Ye%2B71tbI4VMCJQ4ZFEU%2BRjjcRU%2FFzeAGtIpI8JlfV&datasetId=S2_L2A_CDAS&fromTime=2026-07-08T00%3A00%3A00.000Z&toTime=2026-07-08T23%3A59%3A59.999Z&layerId=1_TRUE_COLOR&demSource3D=%22MAPZEN%22&cloudCoverage=30&dateMode=SINGLE",
+              "text": "2026年7月8日"
+            },
+            {
+              "text": "哥白尼衛星影像畫面，可見巴威颱風來襲前、7月8日青草崙堤防外沙灘確實出現黑色水體。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/d2a75a0f3001df3c651bbe16412ef32f627c63979dd357b7d1f0111b74b9ef39.gif",
+            "alt": "哥白尼衛星影像顯示，7月8日青草崙堤防外沙灘出現黑色水體"
+          },
+          "caption": "哥白尼衛星影像顯示，7月8日青草崙堤防外沙灘出現黑色水體"
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "bold": true,
+              "text": "公視2024年「曾文水庫洩洪還砂於河」報導影片，沒有出現傳言的空拍視角"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "傳言圖卡出現公視報導擷圖，意圖證明黑水畫面出自舊報導。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "但是，以關鍵字「曾文水庫洩洪還沙於河」檢索網路，可查到《公視新聞網》"
+            },
+            {
+              "href": "https://news.pts.org.tw/article/714931",
+              "text": "2024年9月16日"
+            },
+            {
+              "text": "報導「曾文水庫洩洪逾5億噸水 『還沙於河』補充出海口沙源」報導，提到凱米颱風後，加上南台灣持續降雨，曾文水庫洩洪超過5億噸水，並將淤沙沖往下游和出海口，間接改善了些微的沙源流失。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "不過，該則公視報導"
+            },
+            {
+              "href": "https://www.youtube.com/watch?v=GMdmYB1Uezo&t=2s",
+              "text": "影片"
+            },
+            {
+              "text": "並沒有出現傳言圖卡宣稱的空拍視角。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "bold": true,
+              "text": "網傳公視新聞網站版面樣式及YT頻道Logo，均與現實不符"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "經比對真實《公視新聞網》"
+            },
+            {
+              "href": "https://news.pts.org.tw/article/714931",
+              "text": "網頁"
+            },
+            {
+              "text": "與"
+            },
+            {
+              "href": "https://web.archive.org/web/20240918000100/https://news.pts.org.tw/",
+              "text": "2024年網頁備份"
+            },
+            {
+              "text": "，也可發現網傳圖卡上的公視新聞擷圖與現實不符：擷圖是"
+            },
+            {
+              "href": "https://news.pts.org.tw/about",
+              "text": "公視新聞網站"
+            },
+            {
+              "text": "，卻出現"
+            },
+            {
+              "href": "https://info-material.pts.org.tw/logo/panton_l.jpg",
+              "text": "公視電視台Logo"
+            },
+            {
+              "text": "；網頁版型也與真實的公視新聞網不同、報導標題也不同。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "以AI生成內容偵測工具Google SynthID 偵測，結果顯示網傳圖卡是由Google AI生成。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/bb35476d2c317058c3bef2769adea77a9f2da4c176d2f421fa9cb7a8ae9998aa.jpg",
+            "alt": "網傳圖卡公視網站版面及YT頻道Logo 均與現實不符"
+          },
+          "caption": "網傳圖卡公視網站版面及YT頻道Logo 均與現實不符"
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/b53ea258a428e4dc23f8ff2dd694b950fee270a53d694b7d1ebe7b6e2438f271.jpg",
+            "alt": "Google SynthID 偵測，結果顯示網傳圖卡是由Google AI生成"
+          },
+          "caption": "Google SynthID 偵測，結果顯示網傳圖卡是由Google AI生成"
+        }
+      ],
+      "paragraphs": [
+        "（一）以圖反搜並比對傳言圖卡，深色水體影像應是來自台南市議員參選人2026年7月10日發布的影片，影片0分32秒處的空拍視角與傳言圖卡內容完全相符。該影片拍攝位置位於「曾文溪左岸青草崙堤防1號」。",
+        "該處位於台南市安南區，城西里里長嚴文正7月17日接受查核記者採訪時表示，巴威颱風來襲前，該處堤防確實有出現深色水體。",
+        "（二）台南市政府7月13日記者會中，環保局並未否認曾文溪口左岸堤防出現黑水一事。",
+        "台南市環保局長許仁澤說明，曾文溪河口潮汐溝水色變深褐色，可能與潮汐擾動、有機質沖刷、植物殘體分解及藻類腐敗等天然因素有關，僅憑水色無法判定污染，已委託嘉南藥理大學進行第三方採樣檢驗，後續將公布分析結果。",
+        "（三）查核記者比對2026年6月23日及2026年7月8日哥白尼衛星影像畫面，可見巴威颱風來襲前、7月8日青草崙堤防外沙灘確實出現黑色水體。",
+        "傳言圖卡出現公視報導擷圖，意圖證明黑水畫面出自舊報導。",
+        "但是，以關鍵字「曾文水庫洩洪還沙於河」檢索網路，可查到《公視新聞網》2024年9月16日報導「曾文水庫洩洪逾5億噸水 『還沙於河』補充出海口沙源」報導，提到凱米颱風後，加上南台灣持續降雨，曾文水庫洩洪超過5億噸水，並將淤沙沖往下游和出海口，間接改善了些微的沙源流失。",
+        "不過，該則公視報導影片並沒有出現傳言圖卡宣稱的空拍視角。",
+        "經比對真實《公視新聞網》網頁與2024年網頁備份，也可發現網傳圖卡上的公視新聞擷圖與現實不符：擷圖是公視新聞網站，卻出現公視電視台Logo；網頁版型也與真實的公視新聞網不同、報導標題也不同。",
+        "以AI生成內容偵測工具Google SynthID 偵測，結果顯示網傳圖卡是由Google AI生成。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "原始查核報告（台灣事實查核中心）",
+      "href": "https://tfc-taiwan.org.tw/fact-check-reports/tainan-wastewater-old-video-ai-card-rumor/",
+      "note": "本頁保留原文內容、署名、引用連結與圖片。"
+    }
+  ],
+  "relatedSlugs": [],
+  "seo": {
+    "title": "網傳「台南排廢水是舊影像」圖卡，是以AI生成的錯誤訊息｜台灣事實查核中心 2026 選舉工具箱",
+    "description": "近日有台南議員參選人發布影片抨擊曾文溪口周邊出現大片深色水體，隨後有粉專發布圖卡指出「台南排廢水」影像是移花接木凱米颱風舊影像。經查證，近期曾文溪口確實出現不明深色水體，網傳影像與2024年凱米颱風無關。",
+    "image": {
+      "src": "/images/covers/tainan-wastewater-old-video-ai-card-rumor.jpg",
+      "alt": "網傳「台南排廢水是舊影像」圖卡，是以AI生成的錯誤訊息",
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
+    },
+    "noindex": false,
+    "authorType": "Person"
+  }
+}
