@@ -151,6 +151,20 @@
   },
   "stories": [
     {
+      "slug": "tfc-mygopen-cofacts-ai-deepfake-pledge",
+      "kind": "analysis",
+      "category": "深偽倡議",
+      "title": "台灣事實查核中心、MyGoPen、Cofacts發起「拒絕AI深偽造假」自律公約",
+      "description": "台灣事實查核教育基金會（台灣事實查核中心）串連 MyGoPen 與 Cofacts 三大查核組織，共同發布「維護選舉公平，拒絕AI深偽造假」自律公約，呼籲政黨、候選人及競選團隊承諾遵守「二不二要」原則。",
+      "date": "2026-10-29",
+      "image": {
+        "src": "/images/imported/7b06c21e66e8c79a7e0387019937b064a9017fae14137540a8f0235241cb9152.jpg",
+        "alt": "台灣事實查核中心、MyGoPen、Cofacts發起「拒絕AI深偽造假」自律公約"
+      },
+      "tag": "自律公約倡議",
+      "tone": "cyan"
+    },
+    {
       "slug": "reject-deepfake-election-disinformation-self-regulation-charter",
       "kind": "analysis",
       "category": "深偽倡議",
@@ -781,7 +795,9 @@
             "台灣事實查核中心與媒體、公民團體攜手倡議：政治人物承諾不以AI深偽攻擊對手"
           ],
           "tag": "自律公約倡議",
-          "tone": "cyan"
+          "tone": "cyan",
+          "cta": "點我閱讀",
+          "href": "/reports/tfc-mygopen-cofacts-ai-deepfake-pledge"
         },
         {
           "id": "debate",
