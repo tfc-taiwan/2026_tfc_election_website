@@ -605,31 +605,6 @@
               }
             ]
           ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "bold": true,
-              "text": "台灣事實查核中心「台灣九合一選舉事實查核與資訊專區」網址："
-            },
-            {
-              "text": "\n"
-            },
-            {
-              "bold": true,
-              "href": "https://tfc-taiwan.org.tw/election2026",
-              "text": "https://tfc-taiwan.org.tw/election2026"
-            }
-          ]
-        },
-        {
-          "type": "image",
-          "image": {
-            "src": "/images/imported/e7c5d0f28d2d3cc6e97931c522c9d5b7480efe411e0bf510f508f54a7930221d.jpg",
-            "alt": "選舉專區網址： 台灣九合一選舉事實查核與資訊專區"
-          },
-          "caption": "選舉專區網址： 台灣九合一選舉事實查核與資訊專區"
         }
       ],
       "paragraphs": [
@@ -639,21 +614,12 @@
         "共同發起組織",
         "響應組織",
         "（截至記者會當日，共有9家民間及產業組織響應）",
-        "台灣事實查核聯盟緊急事件應對機制媒體夥伴：",
-        "台灣事實查核中心「台灣九合一選舉事實查核與資訊專區」網址：\nhttps://tfc-taiwan.org.tw/election2026"
+        "台灣事實查核聯盟緊急事件應對機制媒體夥伴："
       ]
     }
   ],
-  "sources": [
-    {
-      "label": "原文：台灣事實查核中心",
-      "href": "https://tfc-taiwan.org.tw/tfc-mygopen-cofacts-ai-deepfake-pledge/",
-      "note": "原文發佈與更新日期：2026-10-29。"
-    }
-  ],
-  "relatedSlugs": [
-    "reject-deepfake-election-disinformation-self-regulation-charter"
-  ],
+  "sources": [],
+  "relatedSlugs": [],
   "seo": {
     "title": "台灣事實查核中心、MyGoPen、Cofacts發起「拒絕AI深偽造假」自律公約｜2026 選舉工具箱",
     "description": "台灣事實查核教育基金會（台灣事實查核中心）串連 MyGoPen 與 Cofacts 三大查核組織，共同發布「維護選舉公平，拒絕AI深偽造假」自律公約，呼籲政黨、候選人及競選團隊承諾遵守「二不二要」原則。",
