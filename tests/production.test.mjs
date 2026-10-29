@@ -80,6 +80,15 @@ test('built static pages contain body content and unique head metadata', async (
       assert.ok(!html.includes('這項倡議在做什麼'));
       assert.ok(!html.includes('對外時程是什麼'));
       assert.ok(html.includes('資料來源與說明'));
+      const organizations = JSON.parse(await readFile('data/reports/reject-deepfake-election-disinformation-self-regulation-charter.json', 'utf8')).organizationGroups;
+      assert.deepEqual(organizations.map(group => group.organizations.length), [3, 9]);
+      const founders = html.indexOf('id="co-initiating-organizations"');
+      const supporters = html.indexOf('id="supporting-organizations"');
+      assert.ok(founders > 0 && supporters > founders && html.indexOf('id="sources"') > supporters);
+      for (const group of organizations) for (const organization of group.organizations) {
+        assert.ok(html.includes(organization.name));
+        assert.ok(html.includes(`src="${organization.logo.src}"`));
+      }
     } else if (path === 'reports/taiwan-2026-election-voting-notice-ballots-guide/index.html') {
       assert.ok(html.includes('guide-body'));
       assert.ok(!html.includes('id="verification"'));

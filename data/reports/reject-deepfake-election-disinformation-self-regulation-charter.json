@@ -536,5 +536,106 @@
   "presentation": {
     "showReportMetadata": false,
     "showSummary": false
-  }
+  },
+  "organizationGroups": [
+    {
+      "id": "co-initiating-organizations",
+      "title": "共同發起組織",
+      "organizations": [
+        {
+          "name": "台灣事實查核教育基金會（台灣事實查核中心）",
+          "logo": {
+            "src": "/images/organizations/tfc-2ac41291c0f1.png",
+            "alt": "台灣事實查核教育基金會（台灣事實查核中心） Logo"
+          }
+        },
+        {
+          "name": "MyGoPen",
+          "logo": {
+            "src": "/images/organizations/mygopen-1cba177e521e.png",
+            "alt": "MyGoPen Logo"
+          }
+        },
+        {
+          "name": "Cofacts",
+          "logo": {
+            "src": "/images/organizations/cofacts-f4808a2beec8.png",
+            "alt": "Cofacts Logo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "supporting-organizations",
+      "title": "響應組織",
+      "description": "（截至記者會當日，共有9家民間及產業組織響應）",
+      "organizations": [
+        {
+          "name": "財團法人民間司法改革基金會",
+          "logo": {
+            "src": "/images/organizations/judicial-reform-da47071e4686.png",
+            "alt": "財團法人民間司法改革基金會 Logo"
+          }
+        },
+        {
+          "name": "中華民國衛星廣播電視事業商業同業公會",
+          "logo": {
+            "src": "/images/organizations/stba-d957f7a90e3d.png",
+            "alt": "中華民國衛星廣播電視事業商業同業公會 Logo"
+          }
+        },
+        {
+          "name": "台灣網路新聞自律聯盟",
+          "logo": {
+            "src": "/images/organizations/tason-a17d1aa69087.png",
+            "alt": "台灣網路新聞自律聯盟 Logo"
+          }
+        },
+        {
+          "name": "台灣新聞記者協會",
+          "logo": {
+            "src": "/images/organizations/taiwan-journalists-05ace6d04159.png",
+            "alt": "台灣新聞記者協會 Logo"
+          },
+          "logoLayout": "wide"
+        },
+        {
+          "name": "卓越新聞獎基金會",
+          "logo": {
+            "src": "/images/organizations/excellent-journalism-553025f20c8a.png",
+            "alt": "卓越新聞獎基金會 Logo"
+          }
+        },
+        {
+          "name": "台灣媒體觀察教育基金會",
+          "logo": {
+            "src": "/images/organizations/media-watch-e7b1ff0a5f40.png",
+            "alt": "台灣媒體觀察教育基金會 Logo"
+          }
+        },
+        {
+          "name": "臺灣網路治理論壇",
+          "logo": {
+            "src": "/images/organizations/twigf-da115d9eda8b.png",
+            "alt": "臺灣網路治理論壇 Logo"
+          },
+          "logoLayout": "wide"
+        },
+        {
+          "name": "社團法人中華民國自主學習促進會",
+          "logo": {
+            "src": "/images/organizations/self-directed-learning-4f2df4937640.png",
+            "alt": "社團法人中華民國自主學習促進會 Logo"
+          }
+        },
+        {
+          "name": "半導體科研青年論壇",
+          "logo": {
+            "src": "/images/organizations/semiconductor-youth-9ce7fd4f8ce8.png",
+            "alt": "半導體科研青年論壇 Logo"
+          }
+        }
+      ]
+    }
+  ]
 }

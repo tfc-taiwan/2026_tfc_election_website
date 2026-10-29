@@ -118,6 +118,10 @@ export const reportSchema = z.object({
   presentation: z.object({ showReportMetadata: z.boolean().optional(), showSummary: z.boolean().optional() }).optional(),
   background: section, checkSections: z.array(section).min(1),
   supplementarySections: z.array(section).optional(),
+  organizationGroups: z.array(z.object({
+    id: slug, title: text, description: text.optional(),
+    organizations: z.array(z.object({ name: text, logo: image, logoLayout: z.enum(['standard', 'wide']).optional() })).min(1),
+  })).optional(),
   sources: z.array(z.object({ label: text, note: text, href: z.url().refine(value => value.startsWith('https://')).optional() })), relatedSlugs: z.array(slug),
 }).superRefine(validateArticleFields);
 

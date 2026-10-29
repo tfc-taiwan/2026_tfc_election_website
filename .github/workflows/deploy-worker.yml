@@ -28,6 +28,7 @@ jobs:
       - run: npm run build
       - run: npm run test:production
       - run: node scripts/verify-initiative-layout.mjs
+      - run: node scripts/verify-organization-layout.mjs
       - run: npm run build:worker:preview
       - uses: actions/upload-artifact@v4
         if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/review/v10-infographic-galleries' || github.ref == 'refs/heads/review/v11-local-preview') && github.event_name != 'pull_request'

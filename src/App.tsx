@@ -467,6 +467,14 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
     <section className="article-section" id="verification"><h2>{report.kind === 'report' ? '查核' : '深入解析'}</h2>{report.checkSections.map(section => <section className="check-section" key={section.id} id={section.id}><h3>{section.title}</h3><SectionContent section={section} /></section>)}</section>
     {!!report.supplementarySections?.length && <section className="article-section" id="supplementary"><h2>補充資料</h2>{report.supplementarySections.map(section => <section className="check-section" key={section.id} id={section.id}><h3>{section.title}</h3><SectionContent section={section} /></section>)}</section>}
     </>}
+    {!!report.organizationGroups?.length && <div className="article-organizations">{report.organizationGroups.map(group => <section className="article-section organization-group" id={group.id} aria-labelledby={`${group.id}-heading`} key={group.id}>
+      <h2 id={`${group.id}-heading`}>{group.title}</h2>
+      {group.description && <p className="organization-description">{group.description}</p>}
+      <ul className="organization-grid" role="list">{group.organizations.map(organization => <li className="organization-card" key={organization.name}>
+        <div className={`organization-logo${organization.logoLayout === 'wide' ? ' organization-logo-wide' : ''}`}><img src={publicPath(organization.logo.src)} alt="" loading="lazy" decoding="async" /></div>
+        <span className="organization-name">{organization.name}</span>
+      </li>)}</ul>
+    </section>)}</div>}
     {showSources && <section className="article-section article-sources" id="sources"><h2>資料來源與說明</h2><ul>{report.sources.map(source => <li key={source.label}><strong>{source.href ? <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label} ↗</a> : source.label}</strong><p>{source.note}</p></li>)}</ul></section>}
     {report.kind === 'report' && <aside className="verdict-legend" aria-label="查核結果說明"><p>查核結果說明：</p><ul>{['錯誤', '部分錯誤', '事實釐清', '正確'].map((label, index) => <li key={label}><span className={`legend-dot verdict-${index}`} />{label}</li>)}</ul></aside>}
     {related.length > 0 && <section className="related-reports"><h2>{report.kind === 'report' ? '相關查核報告' : '延伸閱讀'}</h2><div className="related-grid">{related.map(story => <StoryCard key={story.slug} story={story} compact />)}</div></section>}

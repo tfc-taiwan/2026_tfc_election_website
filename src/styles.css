@@ -913,3 +913,24 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 
 .pending-gallery-list { display: flex; flex-wrap: wrap; gap: 12px; padding: 0; margin-top: 20px; list-style: none; }
 .pending-gallery-list li { padding: 12px 16px; border: 1px solid var(--ink-10); border-radius: var(--radius-md); color: var(--brand-blue); }
+
+/* Charter organizations: keep supplied marks intact and names readable at every width. */
+.article-organizations { margin-top: 64px; padding-top: 8px; border-top: 1px solid var(--ink-10); }
+.organization-group + .organization-group { margin-top: 48px; }
+.organization-group .organization-description { margin: -8px 0 24px; font-size: 16px; line-height: 1.7; text-align: left; color: var(--ink-70); }
+.organization-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.organization-card { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 24px 16px 20px; border: 1px solid var(--ink-10); border-radius: 10px; background: #fff; }
+.organization-logo { width: 100%; height: 176px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.organization-logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.organization-logo-wide img { width: 100%; max-width: 230px; height: auto; }
+.organization-name { max-width: 100%; color: var(--brand-dark); font-size: 15px; font-weight: 600; line-height: 1.65; text-align: center; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .organization-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  #co-initiating-organizations .organization-grid { grid-template-columns: minmax(0, 1fr); }
+  #co-initiating-organizations .organization-card { padding: 24px; }
+  #co-initiating-organizations .organization-logo { height: 168px; }
+  #co-initiating-organizations .organization-name { font-size: 16px; }
+  .organization-card { padding: 16px 10px; gap: 12px; }
+  .organization-logo { height: 120px; }
+  .organization-name { font-size: 14px; }
+}
