@@ -545,7 +545,7 @@
         {
           "name": "台灣事實查核教育基金會（台灣事實查核中心）",
           "logo": {
-            "src": "/images/organizations/tfc-2ac41291c0f1.png",
+            "src": "/images/organizations/tfc-484ffb4ad33f.png",
             "alt": "台灣事實查核教育基金會（台灣事實查核中心） Logo"
           }
         },
@@ -568,7 +568,7 @@
     {
       "id": "supporting-organizations",
       "title": "響應組織",
-      "description": "（截至記者會當日，共有9家民間及產業組織響應）",
+      "description": "截至10月29日，共有9家民間及產業組織響應",
       "organizations": [
         {
           "name": "財團法人民間司法改革基金會",
