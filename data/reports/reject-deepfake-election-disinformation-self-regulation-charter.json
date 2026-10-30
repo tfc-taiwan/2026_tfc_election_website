@@ -3,11 +3,11 @@
   "isMock": false,
   "slug": "reject-deepfake-election-disinformation-self-regulation-charter",
   "seo": {
-    "title": "「維護選舉公平，拒絕深偽造假」自律公約｜2026 選舉工具箱",
+    "title": "維護選舉公平，拒絕AI深偽造假｜自律公約｜2026 選舉工具箱",
     "description": "台灣事實查核中心倡議：政治人物承諾不以AI深偽攻擊對手。",
     "image": {
       "src": "/images/og/home.png",
-      "alt": "2026 選舉工具箱：維護選舉公平，拒絕深偽造假自律公約",
+      "alt": "2026 選舉工具箱：維護選舉公平，拒絕AI深偽造假｜自律公約",
       "width": 1200,
       "height": 630,
       "type": "image/png"
@@ -17,7 +17,7 @@
   },
   "kind": "analysis",
   "category": "深偽倡議",
-  "title": "「維護選舉公平，拒絕深偽造假」自律公約",
+  "title": "維護選舉公平，拒絕AI深偽造假｜自律公約",
   "finding": "台灣事實查核中心倡議：政治人物承諾不以AI深偽攻擊對手。",
   "tags": [
     "選舉工具箱"
