@@ -87,7 +87,8 @@ test('provided covers match reports while unfilled dates stay absent', () => {
   assert.equal(standaloneCard?.group.cards.length, 5);
   for (const story of data.stories) {
     const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${story.slug}.json`), 'utf8')));
-    assert.deepEqual(report.image, story.image);
+    if (!report.bodySections) assert.deepEqual(report.image, story.image);
+    if (story.image?.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${story.image.src}`))); 
     if (story.image) assert.equal(report.seo.image.src, story.image.src);
     const sections = [report.background, ...report.checkSections, ...(report.supplementarySections ?? []), ...(report.bodySections ?? [])];
     for (const section of sections) for (const block of section.blocks ?? []) {
@@ -166,4 +167,16 @@ test('debate report preserves the source verdict and evidence links with the deb
   assert.equal(report.sources.length, 0);
   assert.deepEqual(report.bodySections!.map(section => section.title), ['說明', '補充資料', '資料來源']);
   assert.equal(report.presentation?.showSummary, false);
+});
+
+test('imported debate reports use source featured images for cards and sharing while preserving opening artwork', () => {
+  const imported = JSON.parse(readFileSync(resolve(root, 'docs/debate-report-import-2026-10-31.json'), 'utf8')).reports;
+  for (const item of imported) {
+    const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${item.slug}.json`), 'utf8')));
+    const story = data.stories.find(story => story.slug === item.slug)!;
+    assert.equal(story.image?.src, item.featuredImage.src);
+    assert.equal(report.seo.image.src, item.featuredImage.src);
+    assert.equal(report.image?.src, item.images[0].src);
+    assert.notEqual(story.image?.src, report.image?.src);
+  }
 });

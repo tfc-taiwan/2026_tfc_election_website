@@ -36,6 +36,9 @@ try {
     assert.equal(await page.locator('.listing-grid .story-card').nth(0).locator('.verdict-label').count(), 0);
     assert.equal(await page.locator('.listing-grid .story-card').nth(1).locator('.verdict-label').count(), 0);
     assert.deepEqual(await page.locator('.listing-grid .story-card').evaluateAll(cards => cards.map(card => card.getAttribute('href'))), [...pins, ...reports.map(story => story.slug)].map(slug => `/reports/${slug}`));
+    const listingImages = page.locator('.listing-grid .story-card img');
+    await listingImages.evaluateAll(images => Promise.all(images.map(image => { image.loading = 'eager'; return image.decode(); })));
+    assert.deepEqual(await listingImages.evaluateAll(images => images.map(image => image.getAttribute('src'))), [...pins, ...reports.map(story => story.slug)].map(slug => data.stories.find(story => story.slug === slug).image.src));
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px listing overflow`);
     if ([390, 1440].includes(width)) await page.screenshot({ path: `/tmp/debate-listing-${width}.png`, fullPage: true });
     for (const slug of [...pins, ...reports.map(story => story.slug)]) {
