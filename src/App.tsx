@@ -1,7 +1,7 @@
 import { reportAliases } from './report-aliases';
 import React, { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, NavLink, Navigate, Route, Routes, useLocation, useParams, useSearchParams } from 'react-router-dom';
-import { DataError, daysUntil, getListings, getReport, searchStories, youtubeVideoId, type ContentBlock, type Info, type Listings, type Report, type Story } from './data';
+import { DataError, daysUntil, getListings, getReport, listingStories, youtubeVideoId, type ContentBlock, type Info, type Listings, type Report, type Story } from './data';
 import { buildSeo, siteRootFor, syncSeoHead, type PageStatus } from './seo';
 import { publicPath } from './paths';
 import { infographicPath, resolveInfographic } from './infographics';
@@ -377,7 +377,7 @@ function ListingsPage({ data }: { data: Listings }) {
   const category = data.sections.reports.categories.includes(requestedCategory as typeof data.sections.reports.categories[number]) ? requestedCategory! : '全部';
   const [visible, setVisible] = useState(LISTING_PAGE_SIZE);
   useEffect(() => setVisible(LISTING_PAGE_SIZE), [query, category]);
-  const stories = searchStories(query ? data.stories : data.stories.filter(story => story.kind === 'report'), query, category);
+  const stories = listingStories(data, query, category);
   function update(key: string, value: string) { const next = new URLSearchParams(params); if (value && value !== '全部') next.set(key, value); else next.delete(key); setParams(next); }
   return <section className="listing-page section-padding grid-texture"><PageSeo data={data} />
     <nav className="breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><span>{query ? '搜尋結果' : '查核報告'}</span></nav>
@@ -446,11 +446,13 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
   const { context } = useContext(RenderContext);
   if (report.initiativeContent) return <InitiativePage report={report} />;
   const isGuide = report.kind === 'guide' || report.category === '選舉工具箱';
+  const listingCategory = report.kind !== 'report' && report.category && data.sections.reports.categories.includes(report.category) ? report.category : null;
+  const categoryPath = listingCategory ? `/reports?category=${encodeURIComponent(listingCategory)}` : null;
   const showSources = report.kind !== 'report' && report.sources.length > 0;
   const related = report.relatedSlugs.flatMap(slug => data.stories.find(story => story.slug === slug) ?? []);
   const kind = report.kind === 'report' ? '查核報告' : report.kind === 'analysis' ? '資訊操弄解析' : report.category === '選舉工具箱' ? '選舉工具箱' : '查核學堂';
   return <article className="report-page">
-    <nav className="breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><Link to={report.kind === 'report' ? '/reports' : report.kind === 'analysis' ? '/#analysis' : isGuide ? '/#process' : '/#learning'}>{kind}</Link>{report.category && report.category !== kind && <><span aria-hidden="true">／</span><span>{report.category}</span></>}</nav>
+    <nav className="breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><Link to={categoryPath ?? (report.kind === 'report' ? '/reports' : report.kind === 'analysis' ? '/#analysis' : isGuide ? '/#process' : '/#learning')}>{listingCategory ?? kind}</Link>{!listingCategory && report.category && report.category !== kind && <><span aria-hidden="true">／</span><span>{report.category}</span></>}</nav>
     <div className="article-tags">{report.tags.map(tag => <span className={`tag ${tag === report.verdict ? `verdict-tag ${verdictClass(tag)}` : 'topic-tag'}`} key={tag}>{tag}</span>)}</div>
     <h1>{report.title}</h1>{!isGuide && <p className="article-finding">{report.finding}</p>}
     <div className="article-meta">{report.published && <span><strong>發佈：</strong><time dateTime={report.published}>{report.published}</time></span>}{!isGuide && <>{report.updated && <span><strong>更新：</strong><time dateTime={report.updated}>{report.updated}</time></span>}{report.presentation?.showReportMetadata !== false && <><span><strong>報告編號：</strong>{report.reportId}</span><span><strong>查核記者：</strong>{report.reporter}</span><span><strong>責任編輯：</strong>{report.editor}</span></>}</>}</div>
@@ -478,7 +480,7 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
     {showSources && <section className="article-section article-sources" id="sources"><h2>資料來源與說明</h2><ul>{report.sources.map(source => <li key={source.label}><strong>{source.href ? <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label} ↗</a> : source.label}</strong><p>{source.note}</p></li>)}</ul></section>}
     {report.kind === 'report' && <aside className="verdict-legend" aria-label="查核結果說明"><p>查核結果說明：</p><ul>{['錯誤', '部分錯誤', '事實釐清', '正確'].map((label, index) => <li key={label}><span className={`legend-dot verdict-${index}`} />{label}</li>)}</ul></aside>}
     {related.length > 0 && <section className="related-reports"><h2>{report.kind === 'report' ? '相關查核報告' : '延伸閱讀'}</h2><div className="related-grid">{related.map(story => <StoryCard key={story.slug} story={story} compact />)}</div></section>}
-    <Link className="back-link" to={isGuide ? '/#process' : '/reports'}>{isGuide ? '← 返回選舉工具箱' : '← 返回完整報告列表'}</Link>
+    <Link className="back-link" to={categoryPath ?? (isGuide ? '/#process' : '/reports')}>{listingCategory ? `← 返回${listingCategory}` : isGuide ? '← 返回選舉工具箱' : '← 返回完整報告列表'}</Link>
   </article>;
 }
 

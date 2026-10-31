@@ -151,6 +151,34 @@
   },
   "stories": [
     {
+      "slug": "2026-taipei-mayoral-debate-fact-check-summary",
+      "kind": "guide",
+      "category": "辯論會查核",
+      "title": "2026台北市長首場辯論會查核總說明",
+      "description": "台灣事實查核中心說明台北市長首場辯論會的查核範圍、證據標準及選題原則，協助選民掌握正確資訊。",
+      "date": "2026-10-30",
+      "image": {
+        "src": "/images/imported/ff51a1e991fb20577c1f8cc0a4e94bb7cf1d809c54ddb637c30a71c19bea4cab.jpg",
+        "alt": "2026台北市長首場辯論會查核總說明"
+      },
+      "tag": "辯論會說明",
+      "tone": "cyan"
+    },
+    {
+      "slug": "2026-taipei-mayoral-debate-fact-check-results",
+      "kind": "guide",
+      "category": "辯論會查核",
+      "title": "2026台北市長首場辯論會查核結果說明",
+      "description": "說明辯論會查核結果的兩大類、7種情境及使用原則，呈現候選人發言與查證資料的關係。",
+      "date": "2026-10-30",
+      "image": {
+        "src": "/images/imported/4e17a6e976e1e2fc20a25bffbdbbf7bfbb75b0e0af4d3cb9905c4c5811ce1940.jpg",
+        "alt": "2026台北市長首場辯論會查核結果說明"
+      },
+      "tag": "辯論會說明",
+      "tone": "cyan"
+    },
+    {
       "slug": "tfc-mygopen-cofacts-ai-deepfake-pledge",
       "kind": "analysis",
       "category": "深偽倡議",
@@ -665,6 +693,10 @@
         {
           "slug": "neihu-flooding-dagouxi-detention-basin-unrelated"
         }
+      ],
+      "pinnedSlugs": [
+        "2026-taipei-mayoral-debate-fact-check-summary",
+        "2026-taipei-mayoral-debate-fact-check-results"
       ]
     },
     "analyses": {

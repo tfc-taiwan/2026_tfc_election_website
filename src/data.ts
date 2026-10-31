@@ -65,7 +65,7 @@ export const listingsSchema = z.object({
   stories: z.array(story).min(1),
   sections: z.object({
     initiative: z.object({ title: text, description: text, content: initiativeContentSchema.optional(), featuredSlug: slug.optional() }).optional(),
-    reports: z.object({ title: text, categories: z.array(category).min(1), items: z.array(z.object({ slug, title: text.optional() })) }),
+    reports: z.object({ title: text, categories: z.array(category).min(1), items: z.array(z.object({ slug, title: text.optional() })), pinnedSlugs: z.array(slug).optional() }),
     analyses: z.object({ title: text, description: text, slugs: z.array(slug) }),
     shorts: z.object({ title: text, description: text, items: z.array(z.object({ title: text, url: youtubeUrl })).min(1) }).optional(),
     infographics: z.object({ pendingItems: z.array(z.object({ slug, title: text, count: z.number().int().positive() })).optional(), title: text, description: text, slugs: z.array(slug), items: z.array(z.object({ slug, title: text, description: text.optional(), cards: z.array(z.object({ image, caption: text })).min(1) })).optional() }).optional(),
@@ -77,6 +77,11 @@ export const listingsSchema = z.object({
   }),
 }).superRefine((value, ctx) => {
   const reportSlugs = value.sections.reports.items.map(item => item.slug);
+  const pinned = value.sections.reports.pinnedSlugs ?? [];
+  if (new Set(pinned).size !== pinned.length || pinned.some(slug => {
+    const story = value.stories.find(story => story.slug === slug);
+    return !story?.category || !value.sections.reports.categories.includes(story.category);
+  })) ctx.addIssue({ code: 'custom', path: ['sections', 'reports', 'pinnedSlugs'], message: '置頂文章不可重複，且必須屬於有效的報告列表分類' });
   if (new Set(reportSlugs).size !== reportSlugs.length) {
     ctx.addIssue({ code: 'custom', path: ['sections', 'reports', 'items'], message: '首頁查核報告不可重複' });
   }
@@ -162,4 +167,14 @@ export function searchStories(stories: Story[], query: string, categoryFilter = 
   const terms = query.trim().normalize('NFKC').toLocaleLowerCase().split(/\s+/).filter(Boolean);
   return stories.filter(story => (categoryFilter === '全部' || story.category === categoryFilter) &&
     terms.every(term => `${story.title} ${story.description} ${story.tag} ${story.category ?? ''}`.normalize('NFKC').toLocaleLowerCase().includes(term)));
+}
+
+/** Editorial pins appear only in their category; search still filters every result. */
+export function listingStories(data: Listings, query = '', categoryFilter = '全部'): Story[] {
+  const pinned = (data.sections.reports.pinnedSlugs ?? []).filter(slug =>
+    data.stories.some(story => story.slug === slug && story.category === categoryFilter));
+  const ranks = new Map(pinned.map((slug, index) => [slug, index]));
+  const candidates = data.stories.filter(story => query.trim() || story.kind === 'report' || ranks.has(story.slug));
+  return searchStories(candidates, query, categoryFilter).sort((a, b) =>
+    (ranks.get(a.slug) ?? pinned.length) - (ranks.get(b.slug) ?? pinned.length));
 }

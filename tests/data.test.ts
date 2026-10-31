@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { daysUntil, listingsSchema, reportSchema, searchStories, youtubeVideoId } from '../src/data.ts';
+import { daysUntil, listingsSchema, reportSchema, searchStories, listingStories, youtubeVideoId } from '../src/data.ts';
 import { resolveInfographic } from '../src/infographics.ts';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -72,7 +72,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 30);
+  assert.equal(data.stories.length, 32);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 24);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
@@ -122,4 +122,31 @@ test('standalone infographic cards resolve without inventing an article', () => 
   const selected = resolveInfographic(data, path);
   assert.equal(selected?.story, null);
   assert.equal(selected?.group.cards.length, 5);
+});
+
+test('category pins keep explanatory articles ahead of new reports without leaking into other lists', () => {
+  const pins = data.sections.reports.pinnedSlugs!;
+  const sample = structuredClone(data);
+  const futureReport = { ...sample.stories.find(story => story.kind === 'report')!, slug: 'new-debate-report', category: '辯論會查核' as const, date: '2026-11-01' };
+  sample.stories = [futureReport, ...[...sample.stories].reverse()];
+  assert.deepEqual(listingStories(sample, '', '辯論會查核').slice(0, 3).map(story => story.slug), [...pins, futureReport.slug]);
+  assert.ok(listingStories(sample).every(story => story.kind === 'report'));
+  assert.ok(listingStories(sample, '', '地方選舉').every(story => story.category === '地方選舉' && !pins.includes(story.slug)));
+  assert.deepEqual(listingStories(sample, '查核結果說明', '辯論會查核').map(story => story.slug), [pins[1]]);
+  assert.equal(listingStories(sample, 'absolutely-no-match', '辯論會查核').length, 0);
+  for (const slug of pins) {
+    const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${slug}.json`), 'utf8')));
+    assert.equal(report.kind, 'guide');
+    assert.equal(report.verdict, undefined);
+    assert.equal(report.presentation?.showReportMetadata, false);
+    assert.equal(report.presentation?.showSummary, false);
+  }
+});
+
+test('listing pins reject duplicates and missing articles', () => {
+  const invalid = structuredClone(data);
+  invalid.sections.reports.pinnedSlugs = ['missing-article'];
+  assert.equal(listingsSchema.safeParse(invalid).success, false);
+  invalid.sections.reports.pinnedSlugs = Array(2).fill(data.sections.reports.pinnedSlugs![0]);
+  assert.equal(listingsSchema.safeParse(invalid).success, false);
 });

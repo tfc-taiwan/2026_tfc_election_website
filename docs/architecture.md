@@ -19,6 +19,7 @@ Worker 在同網域子路徑提供檔案，不讓瀏覽器跳到 `workers.dev`�
 ## 資料與頁面
 
 - `data/listings.json`：首頁各區塊、卡片、導覽、SEO；`sections.infographics.items` 是圖卡組與每張圖的圖片、替代文字、說明，首頁預覽、lightbox 與圖卡專頁皆讀同一處。每張圖卡的穩定網址為 `/election2026/infographics/<slug>/<從 1 開始的張數>`，分享只使用專頁網址，不分享圖片檔網址。Web Share API 僅傳 `url`，避免系統「複製」把說明文字接在網址後面；Worker 將此前誤產生的連結轉回正確圖卡。
+- `sections.reports.pinnedSlugs`：依陣列順序置頂文章；僅在文章所屬分類顯示，非查核說明文章不會混入「全部」報告列表。搜尋仍依關鍵字篩選，新增同分類報告會排在置頂文章之後。
 - `data/reports/<slug>.json`：每篇查核、解析或教學的完整正文與 SEO。一篇一檔，`slug` 與列表對應。
 - React 依 JSON 渲染；建置時同一組元件預先產生每條文章網址的 HTML，讓首次請求、分享預覽、無 JavaScript 閱讀都可取得正文。
 - 圖片放 `public/images/`；JSON 仍使用 `/images/...` 作為來源格式，呈現層將它轉換為部署前綴下的網址。
