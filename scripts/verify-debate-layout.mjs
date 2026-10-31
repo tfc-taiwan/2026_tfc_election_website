@@ -6,6 +6,7 @@ import { chromium } from 'playwright';
 const data = JSON.parse(await readFile('data/listings.json', 'utf8'));
 const pins = data.sections.reports.pinnedSlugs;
 const category = data.stories.find(story => story.slug === pins[0]).category;
+const reports = data.stories.filter(story => story.kind === 'report' && story.category === category);
 const categoryPath = `/reports?category=${encodeURIComponent(category)}`;
 const server = spawn(process.execPath, ['server.mjs'], { env: { ...process.env, PORT: '0', HOST: '127.0.0.1' }, stdio: ['ignore', 'pipe', 'inherit'] });
 let browser;
@@ -31,14 +32,24 @@ try {
     await page.getByRole('button', { name: category, exact: true }).click();
     await page.evaluate(() => document.fonts.ready);
     assert.deepEqual(await page.locator('.listing-grid .story-card').evaluateAll(cards => cards.slice(0, 2).map(card => card.getAttribute('href'))), pins.map(slug => `/reports/${slug}`));
-    assert.equal(await page.locator('.listing-grid .verdict-label').count(), 0);
+    assert.equal(await page.locator('.listing-grid .story-card').nth(0).locator('.verdict-label').count(), 0);
+    assert.equal(await page.locator('.listing-grid .story-card').nth(1).locator('.verdict-label').count(), 0);
+    assert.deepEqual(await page.locator('.listing-grid .story-card').evaluateAll(cards => cards.map(card => card.getAttribute('href'))), [...pins, ...reports.map(story => story.slug)].map(slug => `/reports/${slug}`));
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px listing overflow`);
     if ([390, 1440].includes(width)) await page.screenshot({ path: `/tmp/debate-listing-${width}.png`, fullPage: true });
-    for (const slug of pins) {
+    for (const slug of [...pins, ...reports.map(story => story.slug)]) {
       await page.goto(`${origin}/reports/${slug}`, { waitUntil: 'networkidle' });
       await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].map(img => { img.loading = 'eager'; return img.decode(); })); });
       assert.equal(await page.locator('h1').textContent(), data.stories.find(story => story.slug === slug).title);
-      assert.equal(await page.locator('.article-summary').count(), 0);
+      const report = reports.find(story => story.slug === slug);
+      assert.equal(await page.locator('.article-summary').count(), report ? 1 : 0);
+      if (report) {
+        assert.equal(await page.locator('.article-finding').textContent(), `查證結果：${report.verdict}`);
+        assert.equal(await page.locator('.verdict-legend ul').count(), 0);
+        assert.equal(await page.locator('.verdict-legend a').getAttribute('href'), `/reports/${pins[1]}`);
+        assert.equal(await page.locator('#sources').count(), 0);
+        assert.equal(await page.locator('#additional-context ul a').count(), 4);
+      }
       assert.ok(!(await page.locator('.article-meta').textContent()).includes('報告編號'));
       assert.equal(await page.locator('.back-link').getAttribute('href'), categoryPath);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px article overflow`);

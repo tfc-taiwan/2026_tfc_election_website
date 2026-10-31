@@ -12,7 +12,7 @@ const shareImage = image.extend({
   type: z.enum(['image/png', 'image/jpeg', 'image/webp']),
 });
 const pageSeo = z.object({ title: text, description: text, image: shareImage, noindex: z.boolean().default(false) });
-const status = z.enum(['錯誤', '部分錯誤', '事實釐清', '正確']);
+const status = z.enum(['錯誤', '部分錯誤', '事實釐清', '正確', '與所查資料相符']);
 const category = z.enum(['地方選舉', '深偽倡議', '公投議題', '辯論會查核', '選舉工具箱']);
 function validateArticleFields(value: { kind: string; category?: string; verdict?: string }, ctx: z.RefinementCtx) {
   if (value.kind === 'report' && !value.category) ctx.addIssue({ code: 'custom', path: ['category'], message: '查核報告須填主題；非查核文章可留白' });
@@ -117,7 +117,7 @@ export const reportSchema = z.object({
   version: z.literal(1), isMock: z.boolean(), slug,
   seo: pageSeo.extend({ authorType: z.enum(['Person', 'Organization']) }),
   kind: z.enum(['report', 'analysis', 'guide']), category: category.optional(), title: text, finding: text,
-  verdict: status.optional(), tags: z.array(text),
+  verdict: status.optional(), verdictGuideSlug: slug.optional(), tags: z.array(text),
   published: date.nullable(), updated: date.nullable(), reportId: text, reporter: text, editor: text,
   image: image.nullable(), imageCaption: text, summaryPoints: z.array(text).min(1), summaryClose: z.string(), summaryBlocks: z.array(contentBlockSchema).min(1).optional(),
   presentation: z.object({ showReportMetadata: z.boolean().optional(), showSummary: z.boolean().optional() }).optional(),

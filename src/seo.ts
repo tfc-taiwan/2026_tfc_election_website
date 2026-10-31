@@ -82,7 +82,7 @@ export function buildSeo(data: Listings, location: string, report: Report | null
     graph.push({ '@type': 'Organization', ...publisher, name: data.site.name, alternateName: data.site.englishName, url: siteRoot });
     graph.push({ '@type': 'WebSite', ...website, name: data.site.title, url: siteRoot, inLanguage: data.seo.language, publisher });
     graph.push({ '@type': isListing ? 'CollectionPage' : 'WebPage', '@id': `${canonical}#webpage`, url: canonical, name: title, description, inLanguage: data.seo.language, isPartOf: website, ...(infographic ? { primaryImageOfPage: { '@id': `${canonical}#image` } } : {}) });
-    const listingCategory = report?.kind !== 'report' && report?.category && data.sections.reports.categories.includes(report.category) ? report.category : null;
+    const listingCategory = (report?.kind !== 'report' || report?.verdictGuideSlug) && report?.category && data.sections.reports.categories.includes(report.category) ? report.category : null;
     if (isListing || report || infographic) {
       const items = [{ '@type': 'ListItem', position: 1, name: '首頁', item: siteRoot },
         { '@type': 'ListItem', position: 2, name: listingCategory ?? (infographic ? '圖卡懶人包' : report?.kind === 'analysis' ? '資訊操弄解析' : report?.kind === 'guide' ? '查核學堂' : '查核報告'), item: listingCategory ? `${siteRootFor(data, context)}/reports?category=${encodeURIComponent(listingCategory)}` : infographic ? `${siteRoot}#infographics` : report?.kind === 'analysis' ? `${siteRoot}#analysis` : report?.kind === 'guide' ? `${siteRoot}#learning` : `${siteRootFor(data, context)}/reports` }];

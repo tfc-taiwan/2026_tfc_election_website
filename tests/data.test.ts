@@ -72,7 +72,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 32);
+  assert.equal(data.stories.length, 33);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 24);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
@@ -149,4 +149,19 @@ test('listing pins reject duplicates and missing articles', () => {
   assert.equal(listingsSchema.safeParse(invalid).success, false);
   invalid.sections.reports.pinnedSlugs = Array(2).fill(data.sections.reports.pinnedSlugs![0]);
   assert.equal(listingsSchema.safeParse(invalid).success, false);
+});
+
+test('debate report preserves the source verdict and evidence links with the debate result guide', () => {
+  const slug = 'mainland-spouses-speech-rights-in-taiwan-claim';
+  const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${slug}.json`), 'utf8')));
+  assert.equal(report.kind, 'report');
+  assert.equal(report.verdict, '與所查資料相符');
+  assert.equal(report.finding, '查證結果：與所查資料相符');
+  assert.equal(report.verdictGuideSlug, data.sections.reports.pinnedSlugs![1]);
+  const evidence = report.supplementarySections!.flatMap(section => section.blocks ?? []).filter(block => block.type === 'list');
+  assert.equal(evidence.length, 1);
+  assert.equal(evidence[0].items.length, 4);
+  assert.ok(evidence[0].items.every(item => item.some(part => part.href?.startsWith('https://'))));
+  assert.equal(report.presentation?.showReportMetadata, false);
+  assert.equal(report.sources.length, 0);
 });

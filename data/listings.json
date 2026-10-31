@@ -151,6 +151,21 @@
   },
   "stories": [
     {
+      "slug": "mainland-spouses-speech-rights-in-taiwan-claim",
+      "kind": "report",
+      "category": "辯論會查核",
+      "title": "蔣萬安質疑：沈伯洋過去曾說「大陸配偶取得台灣居留，他們的言論自由，與一般民眾不同」？",
+      "description": "沈伯洋曾針對「亞亞案」的武統言論發表言論自由觀點。他認為「敵國配偶」與台灣國民的言論自由保障起點不同，前者應受更嚴格限制，並以比例原則及當前國際安全情勢作為判斷條件。",
+      "date": "2026-10-31",
+      "image": {
+        "src": "/images/imported/f29eac897ccfee31d914c20f0503ebcc383614361006ab951d135ff1b3129ec3.jpg",
+        "alt": "蔣萬安質疑：沈伯洋過去曾說「大陸配偶取得台灣居留，他們的言論自由，與一般民眾不同」？"
+      },
+      "tag": "辯論會查核",
+      "tone": "cyan",
+      "verdict": "與所查資料相符"
+    },
+    {
       "slug": "2026-taipei-mayoral-debate-fact-check-summary",
       "kind": "guide",
       "category": "辯論會查核",
