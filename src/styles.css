@@ -937,3 +937,6 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 
 /* Imported articles retain their original section and subheading order. */
 .source-body h4 { margin: 0 0 24px; font-size: clamp(18px, 2vw, 21px); line-height: 1.8; }
+
+.source-body .article-content li { white-space: pre-line; }
+.source-body .article-content p { white-space: pre-line; }

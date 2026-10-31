@@ -1,0 +1,638 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "taipei-school-lunch-food-poisoning-and-safety-inspection-claims",
+  "kind": "report",
+  "category": "辯論會查核",
+  "title": "蔣萬安說：「你（沈伯洋）剛提到很多問題…其實我們推動營養午餐，免費不是等於品質打折…金華國中在內很多學校，是大規模的食物中毒，但是事實證明，事後的檢查都完全合格」？",
+  "finding": "查證結果：部分與所查資料不符",
+  "verdict": "部分與所查資料不符",
+  "verdictGuideSlug": "2026-taipei-mayoral-debate-fact-check-results",
+  "tags": [
+    "部分與所查資料不符",
+    "辯論會查核"
+  ],
+  "published": "2026-10-31",
+  "updated": "2026-10-31",
+  "reportId": "taipei-school-lunch-food-poisoning-and-safety-inspection-claims",
+  "reporter": "台灣事實查核中心",
+  "editor": "台灣事實查核中心",
+  "image": {
+    "src": "/images/imported/87f1ee87ec61953e9114437ddf5415f42417c4c4adec6c359ea39c227635a172.jpg",
+    "alt": "蔣萬安說：「你（沈伯洋）剛提到很多問題…其實我們推動營養午餐，免費不是等於品質打折…金華國中在內很多學校，是大規模的食物中毒，但是事實證明，事後的檢查都完全合格」？"
+  },
+  "imageCaption": "蔣萬安說：「你（沈伯洋）剛提到很多問題…其實我們推動營養午餐，免費不是等於品質打折…金華國中在內很多學校，是大規模的食物中毒，但是事實證明，事後的檢查都完全合格」？",
+  "summaryPoints": [
+    "經市府採檢，延平中學檢驗結果尚未公布，另成淵高中熱食部便當檢出金黃色葡萄球菌腸毒素B，其餘4校餐點或食材檢驗結果皆為合格，但金華國中採檢有爭議。"
+  ],
+  "summaryClose": "",
+  "presentation": {
+    "showReportMetadata": false,
+    "showSummary": false
+  },
+  "background": {
+    "id": "explanation",
+    "title": "說明",
+    "paragraphs": [
+      "截至10月31日辯論會當日，台北市9至10月期間，共有6間學校餐點傳出疑似食安問題，包括：成淵高中國中部（9月7日）、金華國中（9月23日）、景興國小（9月23日）、民族國小（9月24日）、延平中學（10月7日）、天母國中（10月15日）。"
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "level": 4,
+        "content": [
+          {
+            "text": "查證結果：部分與所查資料不符",
+            "bold": true
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 4,
+        "content": [
+          {
+            "text": "經市府採檢，延平中學檢驗結果尚未公布，另成淵高中熱食部便當檢出金黃色葡萄球菌腸毒素B，其餘4校餐點或食材檢驗結果皆為合格，但金華國中採檢有爭議。",
+            "bold": true
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "截至10月31日辯論會當日，台北市9至10月期間，共有6間學校餐點傳出疑似食安問題，包括：成淵高中國中部（"
+          },
+          {
+            "text": "9月7日",
+            "href": "https://health.gov.taipei/News_Content.aspx?n=4F01EBDF8F61F315&sms=72544237BBE4C5F6&s=27105732CFA2BEAA"
+          },
+          {
+            "text": "）、金華國中（"
+          },
+          {
+            "text": "9月23日",
+            "href": "https://health.gov.taipei/News_Content.aspx?n=BB5A41BA1E6CA260&sms=72544237BBE4C5F6&s=6C8E42D2A96900DB"
+          },
+          {
+            "text": "）、景興國小（"
+          },
+          {
+            "text": "9月23日",
+            "href": "https://health.gov.taipei/News_Content.aspx?n=BB5A41BA1E6CA260&sms=72544237BBE4C5F6&s=6C8E42D2A96900DB"
+          },
+          {
+            "text": "）、民族國小（"
+          },
+          {
+            "text": "9月24日",
+            "href": "https://health.gov.taipei/News_Content.aspx?n=BB5A41BA1E6CA260&sms=72544237BBE4C5F6&s=6C8E42D2A96900DB"
+          },
+          {
+            "text": "）、延平中學（"
+          },
+          {
+            "text": "10月7日",
+            "href": "https://www.cna.com.tw/news/aloc/202610070164.aspx"
+          },
+          {
+            "text": "）、天母國中（"
+          },
+          {
+            "text": "10月15日",
+            "href": "https://www.doe.gov.taipei/News_Content.aspx?n=B3DDF0458F0FFC11&sms=72544237BBE4C5F6&s=C58BC8FB95F1C735"
+          },
+          {
+            "text": "）。"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "成淵高中國中部：9月7日87名學生在食用學校熱食部供應的餐食後，陸續發生腹瀉疑似食品中毒症狀。衛生局採樣留樣便當後，檢出金黃色葡萄球菌腸毒素B，開罰18萬元。"
+            }
+          ]
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "金華國中：9月23日台北市議員簡舒培指出，金華國中9月4日有老師和學生食用營養午餐的鮮味小卷後，出現多人腹瀉、嘔吐等症狀。她也質疑，學校直到9月12日家長會才向家長說明，午餐樣本因過了兩天已經丟棄，沒有樣本可以採檢。"
+            },
+            {
+              "text": "\n"
+            },
+            {
+              "text": "\n"
+            },
+            {
+              "text": "同日（23號）下午，教育局表示，金華國中確實曾於9月11日接獲一名學生反應9月4日曾發生腹瀉但未就醫，另有2名學生分別於9月11、13日通報身體不是，但症狀不同，並於9月10日就醫，經診斷與食物中毒無關。"
+            },
+            {
+              "text": "\n"
+            },
+            {
+              "text": "\n"
+            },
+            {
+              "text": "9月28日金華國中校長黃啟清表示，沒有所謂的集體食物中毒、也沒有所謂的學校被動處理，學校跟教育局的說法始終是一致的。"
+            },
+            {
+              "text": "\n"
+            },
+            {
+              "text": "\n"
+            },
+            {
+              "text": "金華國中案因通報時間差，沒有當日午餐樣本可採檢，有送驗同批號小卷。"
+            },
+            {
+              "text": "\n"
+            },
+            {
+              "text": "\n"
+            },
+            {
+              "text": "10月2日台北市教育局指出，針對議員指稱學校因食用小卷發生集體食物中毒及身體不適等情形，日前送驗的同批號小卷食材檢驗報告已出爐，該批食材除供應金華國中外，也供應民族國小、景興國小等多所學校，結果「均屬正常」。"
+            }
+          ]
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "景興國小、民族國小：衛生局於24、25日接獲兩校通報疑似食物中毒事件，衛生局隨即辦理食品衛生查核及餐點抽驗，結果均顯示符合規定。"
+            }
+          ]
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "延平中學：衛生局10月7日接獲通報，約21人腸胃不適或發燒，已將留樣食物送驗，但不排除感冒或諾羅病毒喘染。截至10月31日，查詢教育局、衛生局及媒體報導，尚無公開檢驗結果。"
+            }
+          ]
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "items": [
+          [
+            {
+              "text": "天母國中：該校10月15日8人出現不適，主要症狀為口腔麻癢；針對10月15日當日學校午餐留樣進行檢驗，結果為合格。"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "evidence-sources",
+      "title": "資料來源",
+      "paragraphs": [
+        "台北市衛生局9月18日新聞稿 成淵高中熱食部留樣便當檢驗出爐 衛生局重罰18萬元台北市議員簡舒培9月23日Facebook貼文《中央社》9月24日 北市金華國中食安事件　教育局重申依流程確認非食品中毒《中央社》9月29日金華國中營養午餐爭議　校長再度說明、簡舒培質疑被拍片台北市教育局10月2日新聞稿 北市教育局公布結果 小卷檢驗結果出爐「均正常」 景興國小第一時間啟動應變《中央社》10月7日 北市延平中學餐食採樣送驗　民族與景興國小案排除校餐所致台北市衛生局10月7日新聞稿 北市校園餐點抽驗出爐 金華國中、景興國小、民族國小等校檢驗均合格台北市教育局10月30日新聞稿 北市府說明天母國中午餐檢驗結果　推動六大精進作為強化校園食安台北市政府10月21日新聞稿 蔣萬安赴議會專案報告　強化校園食安、疫病防治及長者財物管理　加速推動臺北AI發展台北市教育局9月23日新聞稿 金華國中並無集體食物中毒 教育局駁斥不實指控已翻車"
+      ],
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "台北市衛生局9月18日"
+              },
+              {
+                "text": "新聞稿",
+                "href": "https://health.gov.taipei/News_Content.aspx?n=4F01EBDF8F61F315&sms=72544237BBE4C5F6&s=27105732CFA2BEAA"
+              },
+              {
+                "text": " 成淵高中熱食部留樣便當檢驗出爐 衛生局重罰18萬元"
+              }
+            ],
+            [
+              {
+                "text": "台北市議員簡舒培9月23日"
+              },
+              {
+                "text": "Facebook貼文",
+                "href": "https://www.facebook.com/justmatchtaipei/posts/pfbid02rF3u3q39D4UTmWkmcdhHh98eLehuR6jWjpSNZZhm3crdgvPNx8UNkatwqHhJLGh8l"
+              }
+            ],
+            [
+              {
+                "text": "《中央社》9月24日 "
+              },
+              {
+                "text": "北市金華國中食安事件　教育局重申依流程確認非食品中毒",
+                "href": "https://www.cna.com.tw/news/aloc/202609240284.aspx"
+              }
+            ],
+            [
+              {
+                "text": "《中央社》9月29日"
+              },
+              {
+                "text": "金華國中營養午餐爭議　校長再度說明、簡舒培質疑被拍片",
+                "href": "https://www.cna.com.tw/news/aloc/202609290139.aspx"
+              }
+            ],
+            [
+              {
+                "text": "台北市教育局10月2日"
+              },
+              {
+                "text": "新聞稿",
+                "href": "https://www.doe.gov.taipei/News_Content.aspx?n=B3DDF0458F0FFC11&sms=72544237BBE4C5F6&s=455033C0CA729464"
+              },
+              {
+                "text": " 北市教育局公布結果 小卷檢驗結果出爐「均正常」 景興國小第一時間啟動應變"
+              }
+            ],
+            [
+              {
+                "text": "《中央社》10月7日 "
+              },
+              {
+                "text": "北市延平中學餐食採樣送驗　民族與景興國小案排除校餐所致",
+                "href": "https://www.cna.com.tw/news/aloc/202610070164.aspx"
+              }
+            ],
+            [
+              {
+                "text": "台北市衛生局10月7日"
+              },
+              {
+                "text": "新聞稿",
+                "href": "https://health.gov.taipei/News_Content.aspx?n=BB5A41BA1E6CA260&sms=72544237BBE4C5F6&s=6C8E42D2A96900DB"
+              },
+              {
+                "text": " 北市校園餐點抽驗出爐 金華國中、景興國小、民族國小等校檢驗均合格"
+              }
+            ],
+            [
+              {
+                "text": "台北市教育局10月30日"
+              },
+              {
+                "text": "新聞稿",
+                "href": "https://www.doe.gov.taipei/News_Content.aspx?n=B3DDF0458F0FFC11&sms=72544237BBE4C5F6&s=C58BC8FB95F1C735"
+              },
+              {
+                "text": " 北市府說明天母國中午餐檢驗結果　推動六大精進作為強化校園食安"
+              }
+            ],
+            [
+              {
+                "text": "台北市政府10月21日"
+              },
+              {
+                "text": "新聞稿",
+                "href": "https://www.gov.taipei/News_Content.aspx?n=2044902FC839D045&sms=72544237BBE4C5F6&s=21B58B89B1A80DB7"
+              },
+              {
+                "text": " 蔣萬安赴議會專案報告　強化校園食安、疫病防治及長者財物管理　加速推動臺北AI發展"
+              }
+            ],
+            [
+              {
+                "text": "台北市教育局9月23日"
+              },
+              {
+                "text": "新聞稿",
+                "href": "https://www.doe.gov.taipei/News_Content.aspx?n=B3DDF0458F0FFC11&sms=72544237BBE4C5F6&s=BEF8280DE6D9A2AF"
+              },
+              {
+                "text": " 金華國中並無集體食物中毒 教育局駁斥不實指控已翻車"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "bodySections": [
+    {
+      "id": "explanation",
+      "title": "說明",
+      "paragraphs": [
+        "截至10月31日辯論會當日，台北市9至10月期間，共有6間學校餐點傳出疑似食安問題，包括：成淵高中國中部（9月7日）、金華國中（9月23日）、景興國小（9月23日）、民族國小（9月24日）、延平中學（10月7日）、天母國中（10月15日）。"
+      ],
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "text": "查證結果：部分與所查資料不符",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "text": "經市府採檢，延平中學檢驗結果尚未公布，另成淵高中熱食部便當檢出金黃色葡萄球菌腸毒素B，其餘4校餐點或食材檢驗結果皆為合格，但金華國中採檢有爭議。",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "截至10月31日辯論會當日，台北市9至10月期間，共有6間學校餐點傳出疑似食安問題，包括：成淵高中國中部（"
+            },
+            {
+              "text": "9月7日",
+              "href": "https://health.gov.taipei/News_Content.aspx?n=4F01EBDF8F61F315&sms=72544237BBE4C5F6&s=27105732CFA2BEAA"
+            },
+            {
+              "text": "）、金華國中（"
+            },
+            {
+              "text": "9月23日",
+              "href": "https://health.gov.taipei/News_Content.aspx?n=BB5A41BA1E6CA260&sms=72544237BBE4C5F6&s=6C8E42D2A96900DB"
+            },
+            {
+              "text": "）、景興國小（"
+            },
+            {
+              "text": "9月23日",
+              "href": "https://health.gov.taipei/News_Content.aspx?n=BB5A41BA1E6CA260&sms=72544237BBE4C5F6&s=6C8E42D2A96900DB"
+            },
+            {
+              "text": "）、民族國小（"
+            },
+            {
+              "text": "9月24日",
+              "href": "https://health.gov.taipei/News_Content.aspx?n=BB5A41BA1E6CA260&sms=72544237BBE4C5F6&s=6C8E42D2A96900DB"
+            },
+            {
+              "text": "）、延平中學（"
+            },
+            {
+              "text": "10月7日",
+              "href": "https://www.cna.com.tw/news/aloc/202610070164.aspx"
+            },
+            {
+              "text": "）、天母國中（"
+            },
+            {
+              "text": "10月15日",
+              "href": "https://www.doe.gov.taipei/News_Content.aspx?n=B3DDF0458F0FFC11&sms=72544237BBE4C5F6&s=C58BC8FB95F1C735"
+            },
+            {
+              "text": "）。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "成淵高中國中部：9月7日87名學生在食用學校熱食部供應的餐食後，陸續發生腹瀉疑似食品中毒症狀。衛生局採樣留樣便當後，檢出金黃色葡萄球菌腸毒素B，開罰18萬元。"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "金華國中：9月23日台北市議員簡舒培指出，金華國中9月4日有老師和學生食用營養午餐的鮮味小卷後，出現多人腹瀉、嘔吐等症狀。她也質疑，學校直到9月12日家長會才向家長說明，午餐樣本因過了兩天已經丟棄，沒有樣本可以採檢。"
+              },
+              {
+                "text": "\n"
+              },
+              {
+                "text": "\n"
+              },
+              {
+                "text": "同日（23號）下午，教育局表示，金華國中確實曾於9月11日接獲一名學生反應9月4日曾發生腹瀉但未就醫，另有2名學生分別於9月11、13日通報身體不是，但症狀不同，並於9月10日就醫，經診斷與食物中毒無關。"
+              },
+              {
+                "text": "\n"
+              },
+              {
+                "text": "\n"
+              },
+              {
+                "text": "9月28日金華國中校長黃啟清表示，沒有所謂的集體食物中毒、也沒有所謂的學校被動處理，學校跟教育局的說法始終是一致的。"
+              },
+              {
+                "text": "\n"
+              },
+              {
+                "text": "\n"
+              },
+              {
+                "text": "金華國中案因通報時間差，沒有當日午餐樣本可採檢，有送驗同批號小卷。"
+              },
+              {
+                "text": "\n"
+              },
+              {
+                "text": "\n"
+              },
+              {
+                "text": "10月2日台北市教育局指出，針對議員指稱學校因食用小卷發生集體食物中毒及身體不適等情形，日前送驗的同批號小卷食材檢驗報告已出爐，該批食材除供應金華國中外，也供應民族國小、景興國小等多所學校，結果「均屬正常」。"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "景興國小、民族國小：衛生局於24、25日接獲兩校通報疑似食物中毒事件，衛生局隨即辦理食品衛生查核及餐點抽驗，結果均顯示符合規定。"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "延平中學：衛生局10月7日接獲通報，約21人腸胃不適或發燒，已將留樣食物送驗，但不排除感冒或諾羅病毒喘染。截至10月31日，查詢教育局、衛生局及媒體報導，尚無公開檢驗結果。"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "天母國中：該校10月15日8人出現不適，主要症狀為口腔麻癢；針對10月15日當日學校午餐留樣進行檢驗，結果為合格。"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evidence-sources",
+      "title": "資料來源",
+      "paragraphs": [
+        "台北市衛生局9月18日新聞稿 成淵高中熱食部留樣便當檢驗出爐 衛生局重罰18萬元台北市議員簡舒培9月23日Facebook貼文《中央社》9月24日 北市金華國中食安事件　教育局重申依流程確認非食品中毒《中央社》9月29日金華國中營養午餐爭議　校長再度說明、簡舒培質疑被拍片台北市教育局10月2日新聞稿 北市教育局公布結果 小卷檢驗結果出爐「均正常」 景興國小第一時間啟動應變《中央社》10月7日 北市延平中學餐食採樣送驗　民族與景興國小案排除校餐所致台北市衛生局10月7日新聞稿 北市校園餐點抽驗出爐 金華國中、景興國小、民族國小等校檢驗均合格台北市教育局10月30日新聞稿 北市府說明天母國中午餐檢驗結果　推動六大精進作為強化校園食安台北市政府10月21日新聞稿 蔣萬安赴議會專案報告　強化校園食安、疫病防治及長者財物管理　加速推動臺北AI發展台北市教育局9月23日新聞稿 金華國中並無集體食物中毒 教育局駁斥不實指控已翻車"
+      ],
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "台北市衛生局9月18日"
+              },
+              {
+                "text": "新聞稿",
+                "href": "https://health.gov.taipei/News_Content.aspx?n=4F01EBDF8F61F315&sms=72544237BBE4C5F6&s=27105732CFA2BEAA"
+              },
+              {
+                "text": " 成淵高中熱食部留樣便當檢驗出爐 衛生局重罰18萬元"
+              }
+            ],
+            [
+              {
+                "text": "台北市議員簡舒培9月23日"
+              },
+              {
+                "text": "Facebook貼文",
+                "href": "https://www.facebook.com/justmatchtaipei/posts/pfbid02rF3u3q39D4UTmWkmcdhHh98eLehuR6jWjpSNZZhm3crdgvPNx8UNkatwqHhJLGh8l"
+              }
+            ],
+            [
+              {
+                "text": "《中央社》9月24日 "
+              },
+              {
+                "text": "北市金華國中食安事件　教育局重申依流程確認非食品中毒",
+                "href": "https://www.cna.com.tw/news/aloc/202609240284.aspx"
+              }
+            ],
+            [
+              {
+                "text": "《中央社》9月29日"
+              },
+              {
+                "text": "金華國中營養午餐爭議　校長再度說明、簡舒培質疑被拍片",
+                "href": "https://www.cna.com.tw/news/aloc/202609290139.aspx"
+              }
+            ],
+            [
+              {
+                "text": "台北市教育局10月2日"
+              },
+              {
+                "text": "新聞稿",
+                "href": "https://www.doe.gov.taipei/News_Content.aspx?n=B3DDF0458F0FFC11&sms=72544237BBE4C5F6&s=455033C0CA729464"
+              },
+              {
+                "text": " 北市教育局公布結果 小卷檢驗結果出爐「均正常」 景興國小第一時間啟動應變"
+              }
+            ],
+            [
+              {
+                "text": "《中央社》10月7日 "
+              },
+              {
+                "text": "北市延平中學餐食採樣送驗　民族與景興國小案排除校餐所致",
+                "href": "https://www.cna.com.tw/news/aloc/202610070164.aspx"
+              }
+            ],
+            [
+              {
+                "text": "台北市衛生局10月7日"
+              },
+              {
+                "text": "新聞稿",
+                "href": "https://health.gov.taipei/News_Content.aspx?n=BB5A41BA1E6CA260&sms=72544237BBE4C5F6&s=6C8E42D2A96900DB"
+              },
+              {
+                "text": " 北市校園餐點抽驗出爐 金華國中、景興國小、民族國小等校檢驗均合格"
+              }
+            ],
+            [
+              {
+                "text": "台北市教育局10月30日"
+              },
+              {
+                "text": "新聞稿",
+                "href": "https://www.doe.gov.taipei/News_Content.aspx?n=B3DDF0458F0FFC11&sms=72544237BBE4C5F6&s=C58BC8FB95F1C735"
+              },
+              {
+                "text": " 北市府說明天母國中午餐檢驗結果　推動六大精進作為強化校園食安"
+              }
+            ],
+            [
+              {
+                "text": "台北市政府10月21日"
+              },
+              {
+                "text": "新聞稿",
+                "href": "https://www.gov.taipei/News_Content.aspx?n=2044902FC839D045&sms=72544237BBE4C5F6&s=21B58B89B1A80DB7"
+              },
+              {
+                "text": " 蔣萬安赴議會專案報告　強化校園食安、疫病防治及長者財物管理　加速推動臺北AI發展"
+              }
+            ],
+            [
+              {
+                "text": "台北市教育局9月23日"
+              },
+              {
+                "text": "新聞稿",
+                "href": "https://www.doe.gov.taipei/News_Content.aspx?n=B3DDF0458F0FFC11&sms=72544237BBE4C5F6&s=BEF8280DE6D9A2AF"
+              },
+              {
+                "text": " 金華國中並無集體食物中毒 教育局駁斥不實指控已翻車"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [],
+  "relatedSlugs": [],
+  "seo": {
+    "title": "蔣萬安說：「你（沈伯洋）剛提到很多問題…其實我們推動營養午餐，免費不是等於品質打折…金華國中在內很多學校，是大規模的食物中毒，但是事實證明，事後的檢查都完全合格」？｜2026 選舉工具箱",
+    "description": "經市府採檢，延平中學檢驗結果尚未公布，另成淵高中熱食部便當檢出金黃色葡萄球菌腸毒素B，其餘4校餐點或食材檢驗結果皆為合格，但金華國中採檢有爭議。",
+    "image": {
+      "src": "/images/imported/87f1ee87ec61953e9114437ddf5415f42417c4c4adec6c359ea39c227635a172.jpg",
+      "alt": "蔣萬安說：「你（沈伯洋）剛提到很多問題…其實我們推動營養午餐，免費不是等於品質打折…金華國中在內很多學校，是大規模的食物中毒，但是事實證明，事後的檢查都完全合格」？",
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
+    },
+    "noindex": false,
+    "authorType": "Organization"
+  }
+}

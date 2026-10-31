@@ -72,7 +72,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 33);
+  assert.equal(data.stories.length, 42);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 24);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
@@ -89,7 +89,7 @@ test('provided covers match reports while unfilled dates stay absent', () => {
     const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${story.slug}.json`), 'utf8')));
     assert.deepEqual(report.image, story.image);
     if (story.image) assert.equal(report.seo.image.src, story.image.src);
-    const sections = [report.background, ...report.checkSections, ...(report.supplementarySections ?? [])];
+    const sections = [report.background, ...report.checkSections, ...(report.supplementarySections ?? []), ...(report.bodySections ?? [])];
     for (const section of sections) for (const block of section.blocks ?? []) {
       if (block.type === 'image' && block.image.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${block.image.src}`)));
     }

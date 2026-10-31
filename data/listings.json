@@ -151,6 +151,141 @@
   },
   "stories": [
     {
+      "slug": "tree-canopy-loss-private-land-development-claim",
+      "kind": "report",
+      "category": "辯論會查核",
+      "title": "蔣萬安說：「樹冠減少不等於砍樹，……這整個分析的報告裡面，絕大部分都是屬於私人用地的開發」？",
+      "description": "蔣萬安稱「樹冠減少不等於市府砍樹」，在科學概念上正確；但目前尚無公開的資料證實「絕大部分都是私人用地開發」。",
+      "date": "2026-10-31",
+      "image": {
+        "src": "/images/imported/1793471276fdfe5c8ec184e9d56be7ef010ab7226fab81e721eb992eae80294c.jpg",
+        "alt": "蔣萬安說：「樹冠減少不等於砍樹，……這整個分析的報告裡面，絕大部分都是屬於私人用地的開發」？"
+      },
+      "tag": "辯論會查核",
+      "tone": "cyan",
+      "verdict": "部分資料相符，但尚待更多證據驗證"
+    },
+    {
+      "slug": "taipei-urban-renewal-7599-zero-construction-claim",
+      "kind": "report",
+      "category": "辯論會查核",
+      "title": "沈伯洋說：「都更7599專案，現在動工的數量是零，沒有辦法動工」？",
+      "description": "公辦都更7599專案目前沒有動工案件，今年8月、9月有兩個計畫完成7599程序，向建商簽約。",
+      "date": "2026-10-31",
+      "image": {
+        "src": "/images/imported/f384dbf1d9ec36c31dd786ff76f60e975b6d54954df80a0c070589fe153b65d1.jpg",
+        "alt": "沈伯洋說：「都更7599專案，現在動工的數量是零，沒有辦法動工」？"
+      },
+      "tag": "辯論會查核",
+      "tone": "cyan",
+      "verdict": "資料雖符合，但僅提供部分資訊，無法瞭解全貌"
+    },
+    {
+      "slug": "taipei-free-school-lunch-bidding-failures-and-fresh-milk-redemption-rates-claim",
+      "kind": "report",
+      "category": "辯論會查核",
+      "title": "沈伯洋說：「免費的營養午餐喊了口號，開學前還頻頻流標，有些學校險些斷炊；生生有鮮乳的兌換率一直往下，弱勢的領取率還偏低」？",
+      "description": "今年營養午餐招標時程確實較慢，8月底才全數完成招標作業；2025年「生生有鮮乳」的兌換率在計劃後期呈現下降趨勢，弱勢學生的兌換率也低於整體兌換率。",
+      "date": "2026-10-31",
+      "image": {
+        "src": "/images/imported/4ee91790669d64e84afcc598811ff5eb8df173660420b54a7ce5ecbb54656647.jpg",
+        "alt": "沈伯洋說：「免費的營養午餐喊了口號，開學前還頻頻流標，有些學校險些斷炊；生生有鮮乳的兌換率一直往下，弱勢的領取率還偏低」？"
+      },
+      "tag": "辯論會查核",
+      "tone": "cyan",
+      "verdict": "與所查資料相符"
+    },
+    {
+      "slug": "taipei-school-lunch-food-poisoning-and-safety-inspection-claims",
+      "kind": "report",
+      "category": "辯論會查核",
+      "title": "蔣萬安說：「你（沈伯洋）剛提到很多問題…其實我們推動營養午餐，免費不是等於品質打折…金華國中在內很多學校，是大規模的食物中毒，但是事實證明，事後的檢查都完全合格」？",
+      "description": "經市府採檢，延平中學檢驗結果尚未公布，另成淵高中熱食部便當檢出金黃色葡萄球菌腸毒素B，其餘4校餐點或食材檢驗結果皆為合格，但金華國中採檢有爭議。",
+      "date": "2026-10-31",
+      "image": {
+        "src": "/images/imported/87f1ee87ec61953e9114437ddf5415f42417c4c4adec6c359ea39c227635a172.jpg",
+        "alt": "蔣萬安說：「你（沈伯洋）剛提到很多問題…其實我們推動營養午餐，免費不是等於品質打折…金華國中在內很多學校，是大規模的食物中毒，但是事實證明，事後的檢查都完全合格」？"
+      },
+      "tag": "辯論會查核",
+      "tone": "cyan",
+      "verdict": "部分與所查資料不符"
+    },
+    {
+      "slug": "polam-cuisine-case-evidence-collection-and-33-inspectors-claim",
+      "kind": "report",
+      "category": "辯論會查核",
+      "title": "蔣萬安說：「寶林茶室案發生第一時間，同仁非常機警採集了生物跡證，才讓寶林跑不了，我們也增加33名稽查人力，成立食因性疾病檢驗組」？",
+      "description": "2024年台北市寶林茶室食品中毒案造成35人中毒、6人死亡。台北市政府雖採集關鍵檢體並於事後增派稽查人力，但監察院認定市府未及時稽查、阻斷問題食品供應，也未採集可疑食材及餐點檢體，錯失採樣時機，導致病原菌來源至今未明，因而糾正市府。",
+      "date": "2026-10-31",
+      "image": {
+        "src": "/images/imported/62a871c5a52d9d90361bc41aa7aded49716c70230c4694053e0671f3839ad39f.jpg",
+        "alt": "蔣萬安說：「寶林茶室案發生第一時間，同仁非常機警採集了生物跡證，才讓寶林跑不了，我們也增加33名稽查人力，成立食因性疾病檢驗組」？"
+      },
+      "tag": "辯論會查核",
+      "tone": "cyan",
+      "verdict": "資料雖符合，但僅提供部分資訊，無法瞭解全貌"
+    },
+    {
+      "slug": "taipei-smoke-free-city-mayor-claim-check",
+      "kind": "report",
+      "category": "辯論會查核",
+      "title": "蔣萬安說：率先推動無菸城市政策，市民的正向評價接近9成？",
+      "description": "台北市研考會5月針對2處無菸城市試辦區進行民調，確實滿意度達9成，但這是針對兩處試辦場所、不是針對無菸城市政策。另一份研考會9月進行的民調，有53％認為邊走邊吸菸有減少，也無法驗證滿意度達9成的說法。",
+      "date": "2026-10-31",
+      "image": {
+        "src": "/images/imported/276be2829ed4f7bd910f00b264f41a604144235e90fb0669afc1ccdfdf9c9878.jpg",
+        "alt": "蔣萬安說：率先推動無菸城市政策，市民的正向評價接近9成？"
+      },
+      "tag": "辯論會查核",
+      "tone": "cyan",
+      "verdict": "資料符合，但推論過於簡化"
+    },
+    {
+      "slug": "chiang-taipei-debt-reduction-40-billion-facts",
+      "kind": "report",
+      "category": "辯論會查核",
+      "title": "蔣萬安說：這四年當中，非常重視的施政原則，四年下來，臺北市總共減債超過了400億，是六都第一？",
+      "description": "台北市府於2022年12月底至今年9月底，公共債務減少近430億元，且減債金額確實是六都最多，與蔣萬安所述資料相符",
+      "date": "2026-10-31",
+      "image": {
+        "src": "/images/imported/d613c685076009a35fef6a21cedefae0966beab9678d49630eab5c0a57e2b11f.jpg",
+        "alt": "蔣萬安說：這四年當中，非常重視的施政原則，四年下來，臺北市總共減債超過了400億，是六都第一？"
+      },
+      "tag": "辯論會查核",
+      "tone": "cyan",
+      "verdict": "與所查資料相符"
+    },
+    {
+      "slug": "shen-bo-yang-twin-city-forum-claim-check",
+      "kind": "report",
+      "category": "辯論會查核",
+      "title": "蔣萬安質疑：沈伯洋曾說「雙城論壇是統戰滲透的破口」；現在卻改口「願意保留既有的交流框架」？",
+      "description": "沈伯洋今年4月曾稱雙城論壇不必要、很多時候造成滲透破口。10月回應相關提問時則表示，可保留既有行政框架，在無政治前提、具有實益且做好風險控管的條件下交流。",
+      "date": "2026-10-31",
+      "image": {
+        "src": "/images/imported/f07697a02f453efe6552661e2c889d7cb7b8b9bc5737ca94c34541d70021ba04.jpg",
+        "alt": "蔣萬安質疑：沈伯洋曾說「雙城論壇是統戰滲透的破口」；現在卻改口「願意保留既有的交流框架」？"
+      },
+      "tag": "辯論會查核",
+      "tone": "cyan",
+      "verdict": "與所查資料相符"
+    },
+    {
+      "slug": "chiang-questions-puma-shen-national-identity-claims",
+      "kind": "report",
+      "category": "辯論會查核",
+      "title": "蔣萬安質疑：「中華民國是類殖民體制，需要制憲解決、希望以後台北有獨立公投…這些話是誰說的」？",
+      "description": "沈伯洋2014年曾在臉書提過類似言論，當時是評論江宜樺「中華民國不需要獨立公投」、以及連勝文「台北市如果噴出石油」的說法。",
+      "date": "2026-10-31",
+      "image": {
+        "src": "/images/imported/4d11114236def1f2535374f693cef3daaab937e90f79b399696a8ae400d654fc.jpg",
+        "alt": "蔣萬安質疑：「中華民國是類殖民體制，需要制憲解決、希望以後台北有獨立公投…這些話是誰說的」？"
+      },
+      "tag": "辯論會查核",
+      "tone": "cyan",
+      "verdict": "資料符合，但僅提供部分資訊，無法瞭解全貌"
+    },
+    {
       "slug": "mainland-spouses-speech-rights-in-taiwan-claim",
       "kind": "report",
       "category": "辯論會查核",

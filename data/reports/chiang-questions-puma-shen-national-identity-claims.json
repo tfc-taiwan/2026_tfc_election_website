@@ -1,0 +1,318 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "chiang-questions-puma-shen-national-identity-claims",
+  "kind": "report",
+  "category": "辯論會查核",
+  "title": "蔣萬安質疑：「中華民國是類殖民體制，需要制憲解決、希望以後台北有獨立公投…這些話是誰說的」？",
+  "finding": "查證結果：資料符合，但僅提供部分資訊，無法瞭解全貌",
+  "verdict": "資料符合，但僅提供部分資訊，無法瞭解全貌",
+  "verdictGuideSlug": "2026-taipei-mayoral-debate-fact-check-results",
+  "tags": [
+    "資料符合，但僅提供部分資訊，無法瞭解全貌",
+    "辯論會查核"
+  ],
+  "published": "2026-10-31",
+  "updated": "2026-10-31",
+  "reportId": "chiang-questions-puma-shen-national-identity-claims",
+  "reporter": "台灣事實查核中心",
+  "editor": "台灣事實查核中心",
+  "image": {
+    "src": "/images/imported/4d11114236def1f2535374f693cef3daaab937e90f79b399696a8ae400d654fc.jpg",
+    "alt": "蔣萬安質疑：「中華民國是類殖民體制，需要制憲解決、希望以後台北有獨立公投…這些話是誰說的」？"
+  },
+  "imageCaption": "蔣萬安質疑：「中華民國是類殖民體制，需要制憲解決、希望以後台北有獨立公投…這些話是誰說的」？",
+  "summaryPoints": [
+    "沈伯洋2014年曾在臉書提過類似言論，當時是評論江宜樺「中華民國不需要獨立公投」、以及連勝文「台北市如果噴出石油」的說法。"
+  ],
+  "summaryClose": "",
+  "presentation": {
+    "showReportMetadata": false,
+    "showSummary": false
+  },
+  "background": {
+    "id": "explanation",
+    "title": "說明",
+    "paragraphs": [
+      "這兩段發言都出自於沈伯洋2014年9月20日的臉書貼文，但是對應的是不同的新聞事件，所做出的評論。",
+      "2014年9月，蘇格蘭舉行獨立公投，最終以55.3%不同意作收。時任行政院長江宜樺在立院接受質詢時表示，中華民國在台灣是一個主權獨立的國家，不需要獨立公投。",
+      "沈伯洋以此作出評論，他表示同意江宜樺的說法，因為台灣已經是獨立國家，反而需要的是制憲，把「中華民國這個類殖民體制徹底改寫」。",
+      "另外一段發言，則是回應連勝文在競選台北市長選舉期間，接受專訪時強調「財源的重要性」，連勝文舉例：台北市如果噴出石油，他會弄得比汶萊更好。",
+      "沈伯洋是以連勝文的發言為基礎，稱如果真的噴出石油，「不獨立豈不可惜」，並說：「希望以後有台北獨立公投，這樣ROC國會可以拼過半，兩全其美」。"
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "level": 4,
+        "content": [
+          {
+            "text": "查證結果：資料符合，但僅提供部分資訊，無法瞭解全貌"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 4,
+        "content": [
+          {
+            "text": "沈伯洋2014年曾在臉書提過類似言論，當時是評論江宜樺「中華民國不需要獨立公投」、以及連勝文「台北市如果噴出石油」的說法。",
+            "bold": true
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "這兩段發言都出自於沈伯洋2014年9月20日的"
+          },
+          {
+            "text": "臉書貼文",
+            "href": "https://www.facebook.com/pumashen/posts/pfbid0Aokm4NmWsE3mWzL3YVkD44F34KL4zdZLTGno3UPNkjw2A5eqwfEN8JmU1XMw6q7vl?locale=zh_TW"
+          },
+          {
+            "text": "，但是對應的是不同的新聞事件，所做出的評論。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "2014年9月，蘇格蘭舉行獨立公投，最終以55.3%不同意作收。時任行政院長江宜樺在立院接受質詢時"
+          },
+          {
+            "text": "表示",
+            "href": "https://www.ly.gov.tw/EngPages/Detail.aspx?nodeid=4989&pid=30356"
+          },
+          {
+            "text": "，中華民國在台灣是一個主權獨立的國家，不需要獨立公投。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "沈伯洋以此作出評論，他表示同意江宜樺的說法，因為台灣已經是獨立國家，反而需要的是制憲，把「中華民國這個類殖民體制徹底改寫」。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "另外一段發言，則是回應連勝文在競選台北市長選舉期間，接受專訪時強調「財源的重要性」，連勝文舉例：台北市如果"
+          },
+          {
+            "text": "噴出石油",
+            "href": "https://www.ettoday.net/news/20140726/382563.htm"
+          },
+          {
+            "text": "，他會弄得比汶萊更好。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "沈伯洋是以連勝文的發言為基礎，稱如果真的噴出石油，「不獨立豈不可惜」，並說：「希望以後有台北獨立公投，這樣ROC國會可以拼過半，兩全其美」。"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "/images/imported/d41809a507b9cdbab3b8c7a5c6484728aa40d31cd884c1381da75cb2bad47140.jpg",
+          "alt": "蔣萬安質疑：「中華民國是類殖民體制，需要制憲解決、希望以後台北有獨立公投…這些話是誰說的」？：內文圖片2"
+        }
+      }
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "evidence-sources",
+      "title": "資料來源",
+      "paragraphs": [
+        "沈伯洋2014/09/20臉書貼文江揆：台灣不需要獨立公投連式幽默？ 連勝文：北市噴石油，我會做得比汶萊好 – 政治"
+      ],
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "沈伯洋2014/09/20臉書貼文",
+                "href": "https://www.facebook.com/pumashen/posts/pfbid0Aokm4NmWsE3mWzL3YVkD44F34KL4zdZLTGno3UPNkjw2A5eqwfEN8JmU1XMw6q7vl?locale=zh_TW"
+              }
+            ],
+            [
+              {
+                "text": "江揆：台灣不需要獨立公投",
+                "href": "https://www.ly.gov.tw/EngPages/Detail.aspx?nodeid=4989&pid=30356"
+              }
+            ],
+            [
+              {
+                "text": "連式幽默？ 連勝文：北市噴石油，我會做得比汶萊好 – 政治",
+                "href": "https://www.ettoday.net/news/20140726/382563.htm"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "bodySections": [
+    {
+      "id": "explanation",
+      "title": "說明",
+      "paragraphs": [
+        "這兩段發言都出自於沈伯洋2014年9月20日的臉書貼文，但是對應的是不同的新聞事件，所做出的評論。",
+        "2014年9月，蘇格蘭舉行獨立公投，最終以55.3%不同意作收。時任行政院長江宜樺在立院接受質詢時表示，中華民國在台灣是一個主權獨立的國家，不需要獨立公投。",
+        "沈伯洋以此作出評論，他表示同意江宜樺的說法，因為台灣已經是獨立國家，反而需要的是制憲，把「中華民國這個類殖民體制徹底改寫」。",
+        "另外一段發言，則是回應連勝文在競選台北市長選舉期間，接受專訪時強調「財源的重要性」，連勝文舉例：台北市如果噴出石油，他會弄得比汶萊更好。",
+        "沈伯洋是以連勝文的發言為基礎，稱如果真的噴出石油，「不獨立豈不可惜」，並說：「希望以後有台北獨立公投，這樣ROC國會可以拼過半，兩全其美」。"
+      ],
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "text": "查證結果：資料符合，但僅提供部分資訊，無法瞭解全貌"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "text": "沈伯洋2014年曾在臉書提過類似言論，當時是評論江宜樺「中華民國不需要獨立公投」、以及連勝文「台北市如果噴出石油」的說法。",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "這兩段發言都出自於沈伯洋2014年9月20日的"
+            },
+            {
+              "text": "臉書貼文",
+              "href": "https://www.facebook.com/pumashen/posts/pfbid0Aokm4NmWsE3mWzL3YVkD44F34KL4zdZLTGno3UPNkjw2A5eqwfEN8JmU1XMw6q7vl?locale=zh_TW"
+            },
+            {
+              "text": "，但是對應的是不同的新聞事件，所做出的評論。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "2014年9月，蘇格蘭舉行獨立公投，最終以55.3%不同意作收。時任行政院長江宜樺在立院接受質詢時"
+            },
+            {
+              "text": "表示",
+              "href": "https://www.ly.gov.tw/EngPages/Detail.aspx?nodeid=4989&pid=30356"
+            },
+            {
+              "text": "，中華民國在台灣是一個主權獨立的國家，不需要獨立公投。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "沈伯洋以此作出評論，他表示同意江宜樺的說法，因為台灣已經是獨立國家，反而需要的是制憲，把「中華民國這個類殖民體制徹底改寫」。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "另外一段發言，則是回應連勝文在競選台北市長選舉期間，接受專訪時強調「財源的重要性」，連勝文舉例：台北市如果"
+            },
+            {
+              "text": "噴出石油",
+              "href": "https://www.ettoday.net/news/20140726/382563.htm"
+            },
+            {
+              "text": "，他會弄得比汶萊更好。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "沈伯洋是以連勝文的發言為基礎，稱如果真的噴出石油，「不獨立豈不可惜」，並說：「希望以後有台北獨立公投，這樣ROC國會可以拼過半，兩全其美」。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/d41809a507b9cdbab3b8c7a5c6484728aa40d31cd884c1381da75cb2bad47140.jpg",
+            "alt": "蔣萬安質疑：「中華民國是類殖民體制，需要制憲解決、希望以後台北有獨立公投…這些話是誰說的」？：內文圖片2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "evidence-sources",
+      "title": "資料來源",
+      "paragraphs": [
+        "沈伯洋2014/09/20臉書貼文江揆：台灣不需要獨立公投連式幽默？ 連勝文：北市噴石油，我會做得比汶萊好 – 政治"
+      ],
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "沈伯洋2014/09/20臉書貼文",
+                "href": "https://www.facebook.com/pumashen/posts/pfbid0Aokm4NmWsE3mWzL3YVkD44F34KL4zdZLTGno3UPNkjw2A5eqwfEN8JmU1XMw6q7vl?locale=zh_TW"
+              }
+            ],
+            [
+              {
+                "text": "江揆：台灣不需要獨立公投",
+                "href": "https://www.ly.gov.tw/EngPages/Detail.aspx?nodeid=4989&pid=30356"
+              }
+            ],
+            [
+              {
+                "text": "連式幽默？ 連勝文：北市噴石油，我會做得比汶萊好 – 政治",
+                "href": "https://www.ettoday.net/news/20140726/382563.htm"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [],
+  "relatedSlugs": [],
+  "seo": {
+    "title": "蔣萬安質疑：「中華民國是類殖民體制，需要制憲解決、希望以後台北有獨立公投…這些話是誰說的」？｜2026 選舉工具箱",
+    "description": "沈伯洋2014年曾在臉書提過類似言論，當時是評論江宜樺「中華民國不需要獨立公投」、以及連勝文「台北市如果噴出石油」的說法。",
+    "image": {
+      "src": "/images/imported/4d11114236def1f2535374f693cef3daaab937e90f79b399696a8ae400d654fc.jpg",
+      "alt": "蔣萬安質疑：「中華民國是類殖民體制，需要制憲解決、希望以後台北有獨立公投…這些話是誰說的」？",
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
+    },
+    "noindex": false,
+    "authorType": "Organization"
+  }
+}

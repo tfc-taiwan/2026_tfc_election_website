@@ -1,0 +1,516 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "taipei-smoke-free-city-mayor-claim-check",
+  "kind": "report",
+  "category": "辯論會查核",
+  "title": "蔣萬安說：率先推動無菸城市政策，市民的正向評價接近9成？",
+  "finding": "查證結果：資料符合，但推論過於簡化",
+  "verdict": "資料符合，但推論過於簡化",
+  "verdictGuideSlug": "2026-taipei-mayoral-debate-fact-check-results",
+  "tags": [
+    "資料符合，但推論過於簡化",
+    "辯論會查核"
+  ],
+  "published": "2026-10-31",
+  "updated": "2026-10-31",
+  "reportId": "taipei-smoke-free-city-mayor-claim-check",
+  "reporter": "台灣事實查核中心",
+  "editor": "台灣事實查核中心",
+  "image": {
+    "src": "/images/imported/276be2829ed4f7bd910f00b264f41a604144235e90fb0669afc1ccdfdf9c9878.jpg",
+    "alt": "蔣萬安說：率先推動無菸城市政策，市民的正向評價接近9成？"
+  },
+  "imageCaption": "蔣萬安說：率先推動無菸城市政策，市民的正向評價接近9成？",
+  "summaryPoints": [
+    "台北市研考會5月針對2處無菸城市試辦區進行民調，確實滿意度達9成，但這是針對兩處試辦場所、不是針對無菸城市政策。另一份研考會9月進行的民調，有53％認為邊走邊吸菸有減少，也無法驗證滿意度達9成的說法。"
+  ],
+  "summaryClose": "",
+  "presentation": {
+    "showReportMetadata": false,
+    "showSummary": false
+  },
+  "background": {
+    "id": "explanation",
+    "title": "說明",
+    "paragraphs": [
+      "台北市研考會5月針對2處無菸城市試辦區進行民調，確實滿意度達9成，但這是針對兩處試辦場所、不是針對無菸城市政策。另一份研考會9月進行的民調，有53％認為邊走邊吸菸有減少，也無法驗證滿意度達9成的說法。",
+      "台北市研考會今年5月7日曾公布「年貨大街、台北燈節西門燈區推無菸示範 逾9成市民滿意」新聞稿，其指出，市民對於市府大型活動場域推行「無菸環境」措施高度肯定，滿意度均突破9成。",
+      "新聞稿指出，對於年貨大街與台北燈節展區的無菸環境作法分別獲得91.0%及92.3%的市民表示滿意 ，且有高達96.2% 的市民支持於大型活動或人潮較多公共場所採取相同管理方式 ，顯示市民對無菸環境已形成高度社會共識 。",
+      "檢視「11503民調結果」，該民調主要是對上述兩環境的無菸示範，以電話進行調查，調查日期為今年3月6日、7日，對於新聞稿所述高達96.2%市民支持大型活動採擴大無菸環境管理，非常支持80.8%、有點支持15.4%。",
+      "對於無菸城市，另一份北市府於今年9月公布的民調，該民調於7月28日至31日執行調查，主要是調查市民是否得知台北市「行走不吸菸、吸菸需在指定區」措施，以及有無到過指定吸煙區、邊走邊吸菸情況有無減少等政策的感受度。",
+      "且依據該民調之問題，「依您實際觀察，設置指定吸菸區或吸菸室後，該區周邊邊走邊吸菸的情形有沒有減少？ 」，回答「明顯減少 23.4%」「有一些減少 29.6%」，合計53％認為邊走邊吸菸有減少。該民調問的是民眾的觀察感受，並不是滿意度調查。",
+      "依據自由時報、聯合報報導，台北市議會民政委員會在會議中、現場考察，皆有發現吸菸區政策執行疑慮，包括維護人力、設置範圍等。",
+      "台北市議會5月22日定期大會，蔣萬安曾針對「無菸城市」專案報告，各黨市議員對政策規劃都有提出質疑。議員秦慧珠質疑（1：04：41），無菸城市今年底規劃完成，但研考會未提出具體規劃方案；議員洪婉臻（1：10：28）質詢指出，接到許多民眾陳情指出，雖然北市有推行負壓式仍有不少民眾無視，在旁邊吸菸；議員陳宥丞呼籲（1：19：29），不要讓吸菸城市成為半套政策，現行部分開放式柵欄吸菸區不太會被民眾使用，以及應於各公家機關設置負壓吸菸區等。"
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "level": 4,
+        "content": [
+          {
+            "text": "查證結果：",
+            "bold": true
+          },
+          {
+            "text": "資料符合，但推論過於簡化"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "台北市研考會5月針對2處無菸城市試辦區進行民調，確實滿意度達9成，但這是針對兩處試辦場所、不是針對無菸城市政策。另一份研考會9月進行的民調，有53％認為邊走邊吸菸有減少，也無法驗證滿意度達9成的說法。",
+            "bold": true
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "台北市研考會今年5月7日曾公布「"
+          },
+          {
+            "text": "年貨大街、台北燈節西門燈區推無菸示範 逾9成市民滿意」",
+            "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzcxL3JlbGZpbGUvMTAxNjIvOTU3MzQzMy9kMjE3NTg1MC1hZWYwLTRlNzEtYjgxYi1mMzlmOTFlMDk1ODkucGRm&n=MTE1LjXlubTosqjlpKfooZfjgIHlj7DljJfnh4jnr4Dopb%2fploDnh4jljYDmjqjnhKHoj7jnpLrnr4Qg6YC%2b5Lmd5oiQ5biC5rCR5ru%2f5oSPLnBkZg%3d%3d&icon=..pdf"
+          },
+          {
+            "text": "新聞稿，其指出，市民對於市府大型活動場域推行「無菸環境」措施高度肯定，滿意度均突破9成。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "新聞稿指出，對於年貨大街與台北燈節展區的無菸環境作法分別獲得91.0%及92.3%的市民表示滿意 ，且"
+          },
+          {
+            "text": "有高達96.2% 的市民支持於大型活動或人潮較多公共場所採取相同管理方式 ",
+            "bold": true
+          },
+          {
+            "text": "，顯示市民對無菸環境已形成高度社會共識 。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "檢視「"
+          },
+          {
+            "text": "11503民調結果",
+            "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzcxL3JlbGZpbGUvNDc3OTcvOTU3MzM4Ny82MDk2YzEwYy1jMjVhLTRlNjAtOTJhYi0yNGEzNjFkN2ZiNmUucGRm&n=MTE1MDPmsJHoqr%2fntZDmnpwucGRm&icon=..pdf"
+          },
+          {
+            "text": "」，該民調主要是對上述兩環境的無菸示範，以電話進行調查，調查日期為今年3月6日、7日，對於新聞稿所述"
+          },
+          {
+            "text": "高達96.2%市民支持大型活動採擴大無菸環境管理，非常支持80.8%、有點支持15.4%。",
+            "bold": true
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "對於無菸城市，另一份北市府於今年9月公布的"
+          },
+          {
+            "text": "民調",
+            "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzcxL3JlbGZpbGUvNDc3OTcvOTU3MzM4Ny81NGJmNWJlOC1lMjNlLTQ5MjgtYjJjMC1hZmU2ZmYxODhjMjMucGRm&n=MTE1MDfmsJHoqr%2fntZDmnpwucGRm&icon=..pdf"
+          },
+          {
+            "text": "，該民調於7月28日至31日執行調查，主要是調查市民是否得知台北市「行走不吸菸、吸菸需在指定區」措施，以及有無到過指定吸煙區、邊走邊吸菸情況有無減少等政策的感受度。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "且依據該民調之問題，「依您實際觀察，設置指定吸菸區或吸菸室後，該區周邊邊走邊吸菸的情形有沒有減少？ 」，回答「明顯減少 23.4%」「有一些減少 29.6%」，合計53％認為邊走邊吸菸有減少。該民調問的是民眾的觀察感受，並不是滿意度調查。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "依據"
+          },
+          {
+            "text": "自由時報",
+            "href": "https://news.ltn.com.tw/news/politics/breakingnews/5442144"
+          },
+          {
+            "text": "、"
+          },
+          {
+            "text": "聯合報",
+            "href": "https://udn.com/news/story/7323/9739182"
+          },
+          {
+            "text": "報導，台北市議會民政委員會在會議中、現場考察，皆有發現吸菸區政策執行疑慮，包括維護人力、設置範圍等。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "台北市議會5月22日定期大會",
+            "href": "https://www.youtube.com/live/PuvsgKNr2-s?si=vxjea1wq-7OvIJAi"
+          },
+          {
+            "text": "，蔣萬安曾針對「無菸城市」專案報告，各黨市議員對政策規劃都有提出質疑。議員秦慧珠質疑（"
+          },
+          {
+            "text": "1：04：41",
+            "href": "https://www.youtube.com/watch?v=PuvsgKNr2-s&t=3881s"
+          },
+          {
+            "text": "），無菸城市今年底規劃完成，但研考會未提出具體規劃方案；議員洪婉臻（"
+          },
+          {
+            "text": "1：10：28",
+            "href": "https://youtu.be/PuvsgKNr2-s?t=4228"
+          },
+          {
+            "text": "）質詢指出，接到許多民眾陳情指出，雖然北市有推行負壓式仍有不少民眾無視，在旁邊吸菸；議員陳宥丞呼籲（"
+          },
+          {
+            "text": "1：19：29",
+            "href": "https://youtu.be/PuvsgKNr2-s?t=4769"
+          },
+          {
+            "text": "），不要讓吸菸城市成為半套政策，現行部分開放式柵欄吸菸區不太會被民眾使用，以及應於各公家機關設置負壓吸菸區等。"
+          }
+        ]
+      }
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "evidence-sources",
+      "title": "資料來源",
+      "paragraphs": [
+        "台北市研考會「11503民調結果」、「115年7月市政建設民意調查」",
+        "自由時報",
+        "聯合報",
+        "中視台北市議會5月22日定期大會直播"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "台北市研考會「"
+            },
+            {
+              "text": "11503民調結果",
+              "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzcxL3JlbGZpbGUvNDc3OTcvOTU3MzM4Ny82MDk2YzEwYy1jMjVhLTRlNjAtOTJhYi0yNGEzNjFkN2ZiNmUucGRm&n=MTE1MDPmsJHoqr%2fntZDmnpwucGRm&icon=..pdf"
+            },
+            {
+              "text": "」、「"
+            },
+            {
+              "text": "115年7月市政建設民意調查",
+              "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzcxL3JlbGZpbGUvNDc3OTcvOTU3MzM4Ny81NGJmNWJlOC1lMjNlLTQ5MjgtYjJjMC1hZmU2ZmYxODhjMjMucGRm&n=MTE1MDfmsJHoqr%2fntZDmnpwucGRm&icon=..pdf"
+            },
+            {
+              "text": "」"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "自由時報",
+              "href": "https://news.ltn.com.tw/news/politics/breakingnews/5442144"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "聯合報",
+              "href": "https://udn.com/news/story/7323/9739182"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "中視"
+            },
+            {
+              "text": "台北市議會5月22日定期大會",
+              "href": "https://www.youtube.com/live/PuvsgKNr2-s?si=vxjea1wq-7OvIJAi"
+            },
+            {
+              "text": "直播"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bodySections": [
+    {
+      "id": "explanation",
+      "title": "說明",
+      "paragraphs": [
+        "台北市研考會5月針對2處無菸城市試辦區進行民調，確實滿意度達9成，但這是針對兩處試辦場所、不是針對無菸城市政策。另一份研考會9月進行的民調，有53％認為邊走邊吸菸有減少，也無法驗證滿意度達9成的說法。",
+        "台北市研考會今年5月7日曾公布「年貨大街、台北燈節西門燈區推無菸示範 逾9成市民滿意」新聞稿，其指出，市民對於市府大型活動場域推行「無菸環境」措施高度肯定，滿意度均突破9成。",
+        "新聞稿指出，對於年貨大街與台北燈節展區的無菸環境作法分別獲得91.0%及92.3%的市民表示滿意 ，且有高達96.2% 的市民支持於大型活動或人潮較多公共場所採取相同管理方式 ，顯示市民對無菸環境已形成高度社會共識 。",
+        "檢視「11503民調結果」，該民調主要是對上述兩環境的無菸示範，以電話進行調查，調查日期為今年3月6日、7日，對於新聞稿所述高達96.2%市民支持大型活動採擴大無菸環境管理，非常支持80.8%、有點支持15.4%。",
+        "對於無菸城市，另一份北市府於今年9月公布的民調，該民調於7月28日至31日執行調查，主要是調查市民是否得知台北市「行走不吸菸、吸菸需在指定區」措施，以及有無到過指定吸煙區、邊走邊吸菸情況有無減少等政策的感受度。",
+        "且依據該民調之問題，「依您實際觀察，設置指定吸菸區或吸菸室後，該區周邊邊走邊吸菸的情形有沒有減少？ 」，回答「明顯減少 23.4%」「有一些減少 29.6%」，合計53％認為邊走邊吸菸有減少。該民調問的是民眾的觀察感受，並不是滿意度調查。",
+        "依據自由時報、聯合報報導，台北市議會民政委員會在會議中、現場考察，皆有發現吸菸區政策執行疑慮，包括維護人力、設置範圍等。",
+        "台北市議會5月22日定期大會，蔣萬安曾針對「無菸城市」專案報告，各黨市議員對政策規劃都有提出質疑。議員秦慧珠質疑（1：04：41），無菸城市今年底規劃完成，但研考會未提出具體規劃方案；議員洪婉臻（1：10：28）質詢指出，接到許多民眾陳情指出，雖然北市有推行負壓式仍有不少民眾無視，在旁邊吸菸；議員陳宥丞呼籲（1：19：29），不要讓吸菸城市成為半套政策，現行部分開放式柵欄吸菸區不太會被民眾使用，以及應於各公家機關設置負壓吸菸區等。"
+      ],
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "text": "查證結果：",
+              "bold": true
+            },
+            {
+              "text": "資料符合，但推論過於簡化"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "台北市研考會5月針對2處無菸城市試辦區進行民調，確實滿意度達9成，但這是針對兩處試辦場所、不是針對無菸城市政策。另一份研考會9月進行的民調，有53％認為邊走邊吸菸有減少，也無法驗證滿意度達9成的說法。",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "台北市研考會今年5月7日曾公布「"
+            },
+            {
+              "text": "年貨大街、台北燈節西門燈區推無菸示範 逾9成市民滿意」",
+              "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzcxL3JlbGZpbGUvMTAxNjIvOTU3MzQzMy9kMjE3NTg1MC1hZWYwLTRlNzEtYjgxYi1mMzlmOTFlMDk1ODkucGRm&n=MTE1LjXlubTosqjlpKfooZfjgIHlj7DljJfnh4jnr4Dopb%2fploDnh4jljYDmjqjnhKHoj7jnpLrnr4Qg6YC%2b5Lmd5oiQ5biC5rCR5ru%2f5oSPLnBkZg%3d%3d&icon=..pdf"
+            },
+            {
+              "text": "新聞稿，其指出，市民對於市府大型活動場域推行「無菸環境」措施高度肯定，滿意度均突破9成。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "新聞稿指出，對於年貨大街與台北燈節展區的無菸環境作法分別獲得91.0%及92.3%的市民表示滿意 ，且"
+            },
+            {
+              "text": "有高達96.2% 的市民支持於大型活動或人潮較多公共場所採取相同管理方式 ",
+              "bold": true
+            },
+            {
+              "text": "，顯示市民對無菸環境已形成高度社會共識 。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "檢視「"
+            },
+            {
+              "text": "11503民調結果",
+              "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzcxL3JlbGZpbGUvNDc3OTcvOTU3MzM4Ny82MDk2YzEwYy1jMjVhLTRlNjAtOTJhYi0yNGEzNjFkN2ZiNmUucGRm&n=MTE1MDPmsJHoqr%2fntZDmnpwucGRm&icon=..pdf"
+            },
+            {
+              "text": "」，該民調主要是對上述兩環境的無菸示範，以電話進行調查，調查日期為今年3月6日、7日，對於新聞稿所述"
+            },
+            {
+              "text": "高達96.2%市民支持大型活動採擴大無菸環境管理，非常支持80.8%、有點支持15.4%。",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "對於無菸城市，另一份北市府於今年9月公布的"
+            },
+            {
+              "text": "民調",
+              "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzcxL3JlbGZpbGUvNDc3OTcvOTU3MzM4Ny81NGJmNWJlOC1lMjNlLTQ5MjgtYjJjMC1hZmU2ZmYxODhjMjMucGRm&n=MTE1MDfmsJHoqr%2fntZDmnpwucGRm&icon=..pdf"
+            },
+            {
+              "text": "，該民調於7月28日至31日執行調查，主要是調查市民是否得知台北市「行走不吸菸、吸菸需在指定區」措施，以及有無到過指定吸煙區、邊走邊吸菸情況有無減少等政策的感受度。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "且依據該民調之問題，「依您實際觀察，設置指定吸菸區或吸菸室後，該區周邊邊走邊吸菸的情形有沒有減少？ 」，回答「明顯減少 23.4%」「有一些減少 29.6%」，合計53％認為邊走邊吸菸有減少。該民調問的是民眾的觀察感受，並不是滿意度調查。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "依據"
+            },
+            {
+              "text": "自由時報",
+              "href": "https://news.ltn.com.tw/news/politics/breakingnews/5442144"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "text": "聯合報",
+              "href": "https://udn.com/news/story/7323/9739182"
+            },
+            {
+              "text": "報導，台北市議會民政委員會在會議中、現場考察，皆有發現吸菸區政策執行疑慮，包括維護人力、設置範圍等。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "台北市議會5月22日定期大會",
+              "href": "https://www.youtube.com/live/PuvsgKNr2-s?si=vxjea1wq-7OvIJAi"
+            },
+            {
+              "text": "，蔣萬安曾針對「無菸城市」專案報告，各黨市議員對政策規劃都有提出質疑。議員秦慧珠質疑（"
+            },
+            {
+              "text": "1：04：41",
+              "href": "https://www.youtube.com/watch?v=PuvsgKNr2-s&t=3881s"
+            },
+            {
+              "text": "），無菸城市今年底規劃完成，但研考會未提出具體規劃方案；議員洪婉臻（"
+            },
+            {
+              "text": "1：10：28",
+              "href": "https://youtu.be/PuvsgKNr2-s?t=4228"
+            },
+            {
+              "text": "）質詢指出，接到許多民眾陳情指出，雖然北市有推行負壓式仍有不少民眾無視，在旁邊吸菸；議員陳宥丞呼籲（"
+            },
+            {
+              "text": "1：19：29",
+              "href": "https://youtu.be/PuvsgKNr2-s?t=4769"
+            },
+            {
+              "text": "），不要讓吸菸城市成為半套政策，現行部分開放式柵欄吸菸區不太會被民眾使用，以及應於各公家機關設置負壓吸菸區等。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "evidence-sources",
+      "title": "資料來源",
+      "paragraphs": [
+        "台北市研考會「11503民調結果」、「115年7月市政建設民意調查」",
+        "自由時報",
+        "聯合報",
+        "中視台北市議會5月22日定期大會直播"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "台北市研考會「"
+            },
+            {
+              "text": "11503民調結果",
+              "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzcxL3JlbGZpbGUvNDc3OTcvOTU3MzM4Ny82MDk2YzEwYy1jMjVhLTRlNjAtOTJhYi0yNGEzNjFkN2ZiNmUucGRm&n=MTE1MDPmsJHoqr%2fntZDmnpwucGRm&icon=..pdf"
+            },
+            {
+              "text": "」、「"
+            },
+            {
+              "text": "115年7月市政建設民意調查",
+              "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzcxL3JlbGZpbGUvNDc3OTcvOTU3MzM4Ny81NGJmNWJlOC1lMjNlLTQ5MjgtYjJjMC1hZmU2ZmYxODhjMjMucGRm&n=MTE1MDfmsJHoqr%2fntZDmnpwucGRm&icon=..pdf"
+            },
+            {
+              "text": "」"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "自由時報",
+              "href": "https://news.ltn.com.tw/news/politics/breakingnews/5442144"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "聯合報",
+              "href": "https://udn.com/news/story/7323/9739182"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "中視"
+            },
+            {
+              "text": "台北市議會5月22日定期大會",
+              "href": "https://www.youtube.com/live/PuvsgKNr2-s?si=vxjea1wq-7OvIJAi"
+            },
+            {
+              "text": "直播"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [],
+  "relatedSlugs": [],
+  "seo": {
+    "title": "蔣萬安說：率先推動無菸城市政策，市民的正向評價接近9成？｜2026 選舉工具箱",
+    "description": "台北市研考會5月針對2處無菸城市試辦區進行民調，確實滿意度達9成，但這是針對兩處試辦場所、不是針對無菸城市政策。另一份研考會9月進行的民調，有53％認為邊走邊吸菸有減少，也無法驗證滿意度達9成的說法。",
+    "image": {
+      "src": "/images/imported/276be2829ed4f7bd910f00b264f41a604144235e90fb0669afc1ccdfdf9c9878.jpg",
+      "alt": "蔣萬安說：率先推動無菸城市政策，市民的正向評價接近9成？",
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
+    },
+    "noindex": false,
+    "authorType": "Organization"
+  }
+}

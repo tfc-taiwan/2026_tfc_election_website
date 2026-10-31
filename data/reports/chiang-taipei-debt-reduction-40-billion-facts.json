@@ -1,0 +1,482 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "chiang-taipei-debt-reduction-40-billion-facts",
+  "kind": "report",
+  "category": "辯論會查核",
+  "title": "蔣萬安說：這四年當中，非常重視的施政原則，四年下來，臺北市總共減債超過了400億，是六都第一？",
+  "finding": "查證結果：與所查資料相符",
+  "verdict": "與所查資料相符",
+  "verdictGuideSlug": "2026-taipei-mayoral-debate-fact-check-results",
+  "tags": [
+    "與所查資料相符",
+    "辯論會查核"
+  ],
+  "published": "2026-10-31",
+  "updated": "2026-10-31",
+  "reportId": "chiang-taipei-debt-reduction-40-billion-facts",
+  "reporter": "台灣事實查核中心",
+  "editor": "台灣事實查核中心",
+  "image": {
+    "src": "/images/imported/d613c685076009a35fef6a21cedefae0966beab9678d49630eab5c0a57e2b11f.jpg",
+    "alt": "蔣萬安說：這四年當中，非常重視的施政原則，四年下來，臺北市總共減債超過了400億，是六都第一？"
+  },
+  "imageCaption": "蔣萬安說：這四年當中，非常重視的施政原則，四年下來，臺北市總共減債超過了400億，是六都第一？",
+  "summaryPoints": [
+    "台北市府於2022年12月底至今年9月底，公共債務減少近430億元，且減債金額確實是六都最多，與蔣萬安所述資料相符"
+  ],
+  "summaryClose": "",
+  "presentation": {
+    "showReportMetadata": false,
+    "showSummary": false
+  },
+  "background": {
+    "id": "explanation",
+    "title": "說明",
+    "paragraphs": [
+      "依台北市財政局今年5月22日「北市雙冠王! 營利事業銷售額連4年成長創新高 4年減債400億元達標」新聞稿，內文提及，北市府今年5月執行債務還本106億元，債務未償餘額實際數由111年底的898億元下降至498億元，蔣萬安上任迄今累計減債金額達400億元，是全國地方政府之冠。",
+      "台北市財政局財務管理科資料之「臺北市政府債務未償餘額(實際數)趨勢圖」，其顯示111年至115年9月的債務未償金額，從898億降至468億元，與上述新聞稿大致符合（除去115年統計月份不同）。由財務部國庫署「最新地方政府債務鐘」點進台北市，顯示截至115年9月底止，1年以上公共債務未償餘額為468億元。",
+      "台灣事實查核中心2020年曾查核高雄市之負債，專家表示，地方政府負債的資料可分為：一年以上未償債務、短期債務（一年以下）、自償性債務，但依《公共債務法》第五條規定，「自償性債務」不算在公共債務法的規範之內。",
+      "查核記者查核台北市政府公共債務公開資訊，以蔣萬安擔任台北市長期間（2022年12月-2026年12月）為計算區間。並以公開資訊最新時間，2026年9月「一年以上未償債務」、「短期債務」，「自償性債務部分」三者相加，和2022年12月蔣萬兒剛上任台北市長的的數字相較。",
+      "根據台北市財政局資料，截至2022年12月底，「一年以上未償債務」為89,800,000,000元、短期債務為0元、自償性債務為47,423,094,408元；截至2026年9月底，「一年以上未償債務」為46,800,000,000元、短期債務為0元，自償性債務為59,550,315,123元。",
+      "蔣任內減債是否為六都第一？",
+      "依據財政部國庫署公布的「截至111年12月底止各級政府公共債務統計表」的六都公共債務（一年以上+短期），對比財務部國庫署「最新地方政府債務鐘」最新的公共債務對比（僅台南市統計至10月6日，其餘為9月底），高雄市減債約246億元、新北市約244億元、台中市約170億元、台南市約273億元、桃園市期間債務幾乎相同。"
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "level": 4,
+        "content": [
+          {
+            "text": "查證結果：與所查資料相符"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 4,
+        "content": [
+          {
+            "text": "台北市府於2022年12月底至今年9月底，公共債務減少近430億元，且減債金額確實是六都最多，與蔣萬安所述資料相符",
+            "bold": true
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "依台北市財政局今年5月22日"
+          },
+          {
+            "text": "「北市雙冠王! 營利事業銷售額連4年成長創新高 4年減債400億元達標」新聞稿",
+            "href": "https://dof.gov.taipei/News_Content.aspx?n=133E08708C6AB0EA&s=0B9EA96AA4F01629&sms=72544237BBE4C5F6&utm_source=chatgpt.com"
+          },
+          {
+            "text": "，內文提及，北市府今年5月執行債務還本106億元，債務未償餘額實際數由111年底的898億元下降至498億元，蔣萬安上任迄今累計減債金額達400億元，是全國地方政府之冠。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "台北市財政局"
+          },
+          {
+            "text": "財務管理科資料",
+            "href": "https://dof.gov.taipei/Content_List.aspx?n=6789F97D2E2677C3"
+          },
+          {
+            "text": "之「"
+          },
+          {
+            "text": "臺北市政府債務未償餘額(實際數)趨勢圖",
+            "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzA0L3JlbGZpbGUvNDI1NDIvNzU4MTUwMS8xOWRmN2VkNS0xZTFlLTQ0MGMtOTAzNS0zYzg4NGVmMjc0ZTMucGRm&n=ODgtMTE15bm05bqm6Ie65YyX5biC5pS%2f5bqc5YK15YuZ5pyq5YSf6aSY6aGN77yI5a%2bm6Zqb5pW477yJ6Lao5Yui5ZyWMTE1MDkucGRm&icon=.pdf"
+          },
+          {
+            "text": "」，其顯示111年至115年9月的債務未償金額，從898億降至468億元，與上述新聞稿大致符合（除去115年統計月份不同）。由財務部國庫署「"
+          },
+          {
+            "text": "最新地方政府債務鐘",
+            "href": "https://www.nta.gov.tw/singlehtml/1618?cntId=nta_10408_1618"
+          },
+          {
+            "text": "」點進台北市，顯示截至115年9月底止，1年以上公共債務未償餘額為468億元。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "台灣事實查核中心2020年曾"
+          },
+          {
+            "text": "查核高雄市之負債",
+            "href": "https://tfc-taiwan.org.tw/fact-check-reports/migration-4051/"
+          },
+          {
+            "text": "，專家表示，地方政府負債的資料可分為：一年以上未償債務、短期債務（一年以下）、自償性債務，但依《"
+          },
+          {
+            "text": "公共債務法",
+            "href": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0360033"
+          },
+          {
+            "text": "》第五條規定，「自償性債務」不算在公共債務法的規範之內。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "查核記者查核台北市政府公共債務"
+          },
+          {
+            "text": "公開資訊",
+            "href": "https://data.taipei/dataset/detail?id=6b81314e-e309-491d-9369-e5309f99b1b3"
+          },
+          {
+            "text": "，以蔣萬安擔任台北市長期間（2022年12月-2026年12月）為計算區間。並以公開資訊最新時間，2026年9月「一年以上未償債務」、「短期債務」，「自償性債務部分」三者相加，和2022年12月蔣萬兒剛上任台北市長的的數字相較。"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "根據台北市財政局資料，截至2022年12月底，「一年以上未償債務」為89,800,000,000元、短期債務為0元、自償性債務為47,423,094,408元；截至2026年9月底，「一年以上未償債務」為46,800,000,000元、短期債務為0元，自償性債務為59,550,315,123元。"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "/images/imported/7f7114fcfdc4f7210ace65baf3405e75341d45f7ee70b0a6aca3a5c0601f672b.png",
+          "alt": "蔣萬安說：這四年當中，非常重視的施政原則，四年下來，臺北市總共減債超過了400億，是六都第一？：內文圖片2"
+        }
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "蔣任內減債是否為六都第一？",
+            "bold": true
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "依據財政部國庫署公布的「截至111年12月底止各級政府公共債務統計表」的六都公共債務（一年以上+短期），對比財務部國庫署「"
+          },
+          {
+            "text": "最新地方政府債務鐘",
+            "href": "https://www.nta.gov.tw/singlehtml/1618?cntId=nta_10408_1618"
+          },
+          {
+            "text": "」最新的公共債務對比（僅台南市統計至10月6日，其餘為9月底），高雄市減債約246億元、新北市約244億元、台中市約170億元、台南市約273億元、桃園市期間債務幾乎相同。"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "/images/imported/fc8be4c4953eae164aa8267d87118fcc62887cc80dfeee600052a543687a06b0.jpg",
+          "alt": "蔣萬安說：這四年當中，非常重視的施政原則，四年下來，臺北市總共減債超過了400億，是六都第一？：內文圖片3"
+        }
+      }
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "evidence-sources",
+      "title": "資料來源",
+      "paragraphs": [
+        "「北市雙冠王! 營利事業銷售額連4年成長創新高 4年減債400億元達標」新聞稿財務管理科資料臺北市政府債務未償餘額(實際數)趨勢圖財務部國庫署「最新地方政府債務鐘」台北市政府公共債務公開資訊"
+      ],
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "「北市雙冠王! 營利事業銷售額連4年成長創新高 4年減債400億元達標」新聞稿",
+                "href": "https://dof.gov.taipei/News_Content.aspx?n=133E08708C6AB0EA&s=0B9EA96AA4F01629&sms=72544237BBE4C5F6&utm_source=chatgpt.com"
+              }
+            ],
+            [
+              {
+                "text": "財務管理科資料",
+                "href": "https://dof.gov.taipei/Content_List.aspx?n=6789F97D2E2677C3"
+              }
+            ],
+            [
+              {
+                "text": "臺北市政府債務未償餘額(實際數)趨勢圖",
+                "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzA0L3JlbGZpbGUvNDI1NDIvNzU4MTUwMS8xOWRmN2VkNS0xZTFlLTQ0MGMtOTAzNS0zYzg4NGVmMjc0ZTMucGRm&n=ODgtMTE15bm05bqm6Ie65YyX5biC5pS%2f5bqc5YK15YuZ5pyq5YSf6aSY6aGN77yI5a%2bm6Zqb5pW477yJ6Lao5Yui5ZyWMTE1MDkucGRm&icon=.pdf"
+              }
+            ],
+            [
+              {
+                "text": "財務部國庫署「"
+              },
+              {
+                "text": "最新地方政府債務鐘",
+                "href": "https://www.nta.gov.tw/singlehtml/1618?cntId=nta_10408_1618"
+              },
+              {
+                "text": "」"
+              }
+            ],
+            [
+              {
+                "text": "台北市政府公共債務"
+              },
+              {
+                "text": "公開資訊",
+                "href": "https://data.taipei/dataset/detail?id=6b81314e-e309-491d-9369-e5309f99b1b3"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "bodySections": [
+    {
+      "id": "explanation",
+      "title": "說明",
+      "paragraphs": [
+        "依台北市財政局今年5月22日「北市雙冠王! 營利事業銷售額連4年成長創新高 4年減債400億元達標」新聞稿，內文提及，北市府今年5月執行債務還本106億元，債務未償餘額實際數由111年底的898億元下降至498億元，蔣萬安上任迄今累計減債金額達400億元，是全國地方政府之冠。",
+        "台北市財政局財務管理科資料之「臺北市政府債務未償餘額(實際數)趨勢圖」，其顯示111年至115年9月的債務未償金額，從898億降至468億元，與上述新聞稿大致符合（除去115年統計月份不同）。由財務部國庫署「最新地方政府債務鐘」點進台北市，顯示截至115年9月底止，1年以上公共債務未償餘額為468億元。",
+        "台灣事實查核中心2020年曾查核高雄市之負債，專家表示，地方政府負債的資料可分為：一年以上未償債務、短期債務（一年以下）、自償性債務，但依《公共債務法》第五條規定，「自償性債務」不算在公共債務法的規範之內。",
+        "查核記者查核台北市政府公共債務公開資訊，以蔣萬安擔任台北市長期間（2022年12月-2026年12月）為計算區間。並以公開資訊最新時間，2026年9月「一年以上未償債務」、「短期債務」，「自償性債務部分」三者相加，和2022年12月蔣萬兒剛上任台北市長的的數字相較。",
+        "根據台北市財政局資料，截至2022年12月底，「一年以上未償債務」為89,800,000,000元、短期債務為0元、自償性債務為47,423,094,408元；截至2026年9月底，「一年以上未償債務」為46,800,000,000元、短期債務為0元，自償性債務為59,550,315,123元。",
+        "蔣任內減債是否為六都第一？",
+        "依據財政部國庫署公布的「截至111年12月底止各級政府公共債務統計表」的六都公共債務（一年以上+短期），對比財務部國庫署「最新地方政府債務鐘」最新的公共債務對比（僅台南市統計至10月6日，其餘為9月底），高雄市減債約246億元、新北市約244億元、台中市約170億元、台南市約273億元、桃園市期間債務幾乎相同。"
+      ],
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "text": "查證結果：與所查資料相符"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "content": [
+            {
+              "text": "台北市府於2022年12月底至今年9月底，公共債務減少近430億元，且減債金額確實是六都最多，與蔣萬安所述資料相符",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "依台北市財政局今年5月22日"
+            },
+            {
+              "text": "「北市雙冠王! 營利事業銷售額連4年成長創新高 4年減債400億元達標」新聞稿",
+              "href": "https://dof.gov.taipei/News_Content.aspx?n=133E08708C6AB0EA&s=0B9EA96AA4F01629&sms=72544237BBE4C5F6&utm_source=chatgpt.com"
+            },
+            {
+              "text": "，內文提及，北市府今年5月執行債務還本106億元，債務未償餘額實際數由111年底的898億元下降至498億元，蔣萬安上任迄今累計減債金額達400億元，是全國地方政府之冠。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "台北市財政局"
+            },
+            {
+              "text": "財務管理科資料",
+              "href": "https://dof.gov.taipei/Content_List.aspx?n=6789F97D2E2677C3"
+            },
+            {
+              "text": "之「"
+            },
+            {
+              "text": "臺北市政府債務未償餘額(實際數)趨勢圖",
+              "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzA0L3JlbGZpbGUvNDI1NDIvNzU4MTUwMS8xOWRmN2VkNS0xZTFlLTQ0MGMtOTAzNS0zYzg4NGVmMjc0ZTMucGRm&n=ODgtMTE15bm05bqm6Ie65YyX5biC5pS%2f5bqc5YK15YuZ5pyq5YSf6aSY6aGN77yI5a%2bm6Zqb5pW477yJ6Lao5Yui5ZyWMTE1MDkucGRm&icon=.pdf"
+            },
+            {
+              "text": "」，其顯示111年至115年9月的債務未償金額，從898億降至468億元，與上述新聞稿大致符合（除去115年統計月份不同）。由財務部國庫署「"
+            },
+            {
+              "text": "最新地方政府債務鐘",
+              "href": "https://www.nta.gov.tw/singlehtml/1618?cntId=nta_10408_1618"
+            },
+            {
+              "text": "」點進台北市，顯示截至115年9月底止，1年以上公共債務未償餘額為468億元。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "台灣事實查核中心2020年曾"
+            },
+            {
+              "text": "查核高雄市之負債",
+              "href": "https://tfc-taiwan.org.tw/fact-check-reports/migration-4051/"
+            },
+            {
+              "text": "，專家表示，地方政府負債的資料可分為：一年以上未償債務、短期債務（一年以下）、自償性債務，但依《"
+            },
+            {
+              "text": "公共債務法",
+              "href": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0360033"
+            },
+            {
+              "text": "》第五條規定，「自償性債務」不算在公共債務法的規範之內。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "查核記者查核台北市政府公共債務"
+            },
+            {
+              "text": "公開資訊",
+              "href": "https://data.taipei/dataset/detail?id=6b81314e-e309-491d-9369-e5309f99b1b3"
+            },
+            {
+              "text": "，以蔣萬安擔任台北市長期間（2022年12月-2026年12月）為計算區間。並以公開資訊最新時間，2026年9月「一年以上未償債務」、「短期債務」，「自償性債務部分」三者相加，和2022年12月蔣萬兒剛上任台北市長的的數字相較。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "根據台北市財政局資料，截至2022年12月底，「一年以上未償債務」為89,800,000,000元、短期債務為0元、自償性債務為47,423,094,408元；截至2026年9月底，「一年以上未償債務」為46,800,000,000元、短期債務為0元，自償性債務為59,550,315,123元。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/7f7114fcfdc4f7210ace65baf3405e75341d45f7ee70b0a6aca3a5c0601f672b.png",
+            "alt": "蔣萬安說：這四年當中，非常重視的施政原則，四年下來，臺北市總共減債超過了400億，是六都第一？：內文圖片2"
+          }
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "蔣任內減債是否為六都第一？",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "依據財政部國庫署公布的「截至111年12月底止各級政府公共債務統計表」的六都公共債務（一年以上+短期），對比財務部國庫署「"
+            },
+            {
+              "text": "最新地方政府債務鐘",
+              "href": "https://www.nta.gov.tw/singlehtml/1618?cntId=nta_10408_1618"
+            },
+            {
+              "text": "」最新的公共債務對比（僅台南市統計至10月6日，其餘為9月底），高雄市減債約246億元、新北市約244億元、台中市約170億元、台南市約273億元、桃園市期間債務幾乎相同。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "/images/imported/fc8be4c4953eae164aa8267d87118fcc62887cc80dfeee600052a543687a06b0.jpg",
+            "alt": "蔣萬安說：這四年當中，非常重視的施政原則，四年下來，臺北市總共減債超過了400億，是六都第一？：內文圖片3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "evidence-sources",
+      "title": "資料來源",
+      "paragraphs": [
+        "「北市雙冠王! 營利事業銷售額連4年成長創新高 4年減債400億元達標」新聞稿財務管理科資料臺北市政府債務未償餘額(實際數)趨勢圖財務部國庫署「最新地方政府債務鐘」台北市政府公共債務公開資訊"
+      ],
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            [
+              {
+                "text": "「北市雙冠王! 營利事業銷售額連4年成長創新高 4年減債400億元達標」新聞稿",
+                "href": "https://dof.gov.taipei/News_Content.aspx?n=133E08708C6AB0EA&s=0B9EA96AA4F01629&sms=72544237BBE4C5F6&utm_source=chatgpt.com"
+              }
+            ],
+            [
+              {
+                "text": "財務管理科資料",
+                "href": "https://dof.gov.taipei/Content_List.aspx?n=6789F97D2E2677C3"
+              }
+            ],
+            [
+              {
+                "text": "臺北市政府債務未償餘額(實際數)趨勢圖",
+                "href": "https://www-ws.gov.taipei/Download.ashx?u=LzAwMS9VcGxvYWQvMzA0L3JlbGZpbGUvNDI1NDIvNzU4MTUwMS8xOWRmN2VkNS0xZTFlLTQ0MGMtOTAzNS0zYzg4NGVmMjc0ZTMucGRm&n=ODgtMTE15bm05bqm6Ie65YyX5biC5pS%2f5bqc5YK15YuZ5pyq5YSf6aSY6aGN77yI5a%2bm6Zqb5pW477yJ6Lao5Yui5ZyWMTE1MDkucGRm&icon=.pdf"
+              }
+            ],
+            [
+              {
+                "text": "財務部國庫署「"
+              },
+              {
+                "text": "最新地方政府債務鐘",
+                "href": "https://www.nta.gov.tw/singlehtml/1618?cntId=nta_10408_1618"
+              },
+              {
+                "text": "」"
+              }
+            ],
+            [
+              {
+                "text": "台北市政府公共債務"
+              },
+              {
+                "text": "公開資訊",
+                "href": "https://data.taipei/dataset/detail?id=6b81314e-e309-491d-9369-e5309f99b1b3"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [],
+  "relatedSlugs": [],
+  "seo": {
+    "title": "蔣萬安說：這四年當中，非常重視的施政原則，四年下來，臺北市總共減債超過了400億，是六都第一？｜2026 選舉工具箱",
+    "description": "台北市府於2022年12月底至今年9月底，公共債務減少近430億元，且減債金額確實是六都最多，與蔣萬安所述資料相符",
+    "image": {
+      "src": "/images/imported/d613c685076009a35fef6a21cedefae0966beab9678d49630eab5c0a57e2b11f.jpg",
+      "alt": "蔣萬安說：這四年當中，非常重視的施政原則，四年下來，臺北市總共減債超過了400億，是六都第一？",
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
+    },
+    "noindex": false,
+    "authorType": "Organization"
+  }
+}

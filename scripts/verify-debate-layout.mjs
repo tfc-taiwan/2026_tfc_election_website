@@ -7,6 +7,7 @@ const data = JSON.parse(await readFile('data/listings.json', 'utf8'));
 const pins = data.sections.reports.pinnedSlugs;
 const category = data.stories.find(story => story.slug === pins[0]).category;
 const reports = data.stories.filter(story => story.kind === 'report' && story.category === category);
+const expectedReports = new Map(await Promise.all(reports.map(async story => [story.slug, JSON.parse(await readFile(`data/reports/${story.slug}.json`, 'utf8'))])));
 const categoryPath = `/reports?category=${encodeURIComponent(category)}`;
 const server = spawn(process.execPath, ['server.mjs'], { env: { ...process.env, PORT: '0', HOST: '127.0.0.1' }, stdio: ['ignore', 'pipe', 'inherit'] });
 let browser;
@@ -44,21 +45,25 @@ try {
       const report = reports.find(story => story.slug === slug);
       assert.equal(await page.locator('.article-summary').count(), 0);
       if (report) {
-        assert.equal(await page.locator('#explanation h4').first().textContent(), `查證結果：${report.verdict}`);
-        assert.deepEqual(await page.locator('.source-body h2').allTextContents(), ['說明', '補充資料', '資料來源']);
+        assert.equal((await page.locator('#explanation h4').first().textContent()).replace(/\s+/g, ''), `查證結果：${report.verdict}`.replace(/\s+/g, ''));
+        const expected = expectedReports.get(slug);
+        assert.deepEqual(await page.locator('.source-body h2').allTextContents(), expected.bodySections.map(section => section.title));
         assert.equal(await page.locator('#verification, #summary-heading, .article-finding').count(), 0);
-        assert.equal(await page.locator('.source-body h3').count(), 0);
+        assert.equal(await page.locator('.source-body h3').count(), expected.bodySections.flatMap(section => section.blocks).filter(block => block.type === 'heading' && block.level === 3).length);
         assert.equal(await page.locator('.verdict-legend ul').count(), 0);
         assert.equal(await page.locator('.verdict-legend').count(), 0);
         assert.equal(await page.locator('#sources').count(), 0);
-        assert.equal(await page.locator('#evidence-sources ul a').count(), 4);
+        const evidence = expected.bodySections.find(section => section.id === 'evidence-sources');
+        const expectedLinks = [...new Set(evidence.blocks.flatMap(block => block.type === 'list' ? block.items.flat() : block.content ?? []).flatMap(part => part.href ?? []))].sort();
+        const actualLinks = await page.locator('#evidence-sources a').evaluateAll(links => [...new Set(links.map(link => link.getAttribute('href')))].sort());
+        assert.deepEqual(actualLinks, expectedLinks);
       }
       assert.ok(!(await page.locator('.article-meta').textContent()).includes('報告編號'));
       assert.equal(await page.locator('.back-link').getAttribute('href'), categoryPath);
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px article overflow`);
       if (width === 390) await page.screenshot({ path: `/tmp/${slug}-390.png`, fullPage: true });
     }
-    console.log(`Verified debate pins and both article pages at ${width}px: correct order, links, decoded images, no report metadata or overflow.`);
+    console.log(`Verified debate pins and all ${pins.length + reports.length} article pages at ${width}px: correct order, links, decoded images, no report metadata or overflow.`);
     await page.close();
   }
 } finally {
