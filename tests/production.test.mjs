@@ -42,13 +42,17 @@ test('built static pages contain body content and unique head metadata', async (
     assert.ok(!html.includes('<!--app-html-->'));
     assert.match(html, /<h1[^>]*>[\s\S]+?<\/h1>/);
     const story = source.stories.find(story => `reports/${story.slug}/index.html` === path);
+    const sourceArticle = story ? JSON.parse(await readFile(`data/reports/${story.slug}.json`, 'utf8')) : null;
     if (story?.kind === 'report') {
       assert.ok(!html.includes('id="sources"'), path);
       assert.ok(!html.includes('href="#sources"'), path);
       assert.ok(!html.includes('資料來源與說明'), path);
       const summary = html.match(/<section class="article-summary"[\s\S]*?<\/section>/)?.[0];
-      assert.ok(summary, path);
-      for (const paragraph of summary.matchAll(/<p>([\s\S]*?)<\/p>/g)) {
+      if (sourceArticle.bodySections) {
+        assert.ok(!summary && html.includes('class="article-section source-body"'), path);
+        assert.deepEqual([...html.matchAll(/<section class="guide-section"[^>]*><h2>([^<]+)<\/h2>/g)].map(match => match[1]), sourceArticle.bodySections.map(section => section.title));
+      } else assert.ok(summary, path);
+      for (const paragraph of (summary ?? '').matchAll(/<p>([\s\S]*?)<\/p>/g)) {
         const text = paragraph[1].replace(/<[^>]*>/g, '');
         assert.equal(text, text.trim(), `Extra blank lines around summary text: ${path}`);
       }
@@ -93,7 +97,7 @@ test('built static pages contain body content and unique head metadata', async (
       assert.ok(html.includes('guide-body'));
       assert.ok(!html.includes('id="verification"'));
       assert.ok(html.includes('<strong>寄送時間：</strong>'));
-    } else if (source.stories.find(story => `reports/${story.slug}/index.html` === path)?.kind === 'guide') { assert.ok(html.includes('guide-body')); } else if (path !== 'index.html' && path !== 'reports/index.html') assert.match(html, /<article class="report-page">[\s\S]+?id="verification"/);
+    } else if (sourceArticle?.bodySections) { assert.ok(html.includes('source-body')); } else if (source.stories.find(story => `reports/${story.slug}/index.html` === path)?.kind === 'guide') { assert.ok(html.includes('guide-body')); } else if (path !== 'index.html' && path !== 'reports/index.html') assert.match(html, /<article class="report-page">[\s\S]+?id="verification"/);
   }
 });
 

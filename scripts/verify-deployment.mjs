@@ -41,17 +41,18 @@ for (let attempt = 0; attempt < 6; attempt++) {
     for (const story of local.stories) {
       const html = await (await request(`reports/${story.slug}`)).text();
       assert.ok(html.includes('<h1'), `Missing article HTML: ${story.slug}`);
+      const expectedArticle = JSON.parse(await readFile(`data/reports/${story.slug}.json`, 'utf8'));
       if (story.kind === 'report') {
         assert.ok(!html.includes('id="sources"') && !html.includes('href="#sources"'), `Report still shows source section: ${story.slug}`);
         const summary = html.match(/<section class="article-summary"[\s\S]*?<\/section>/)?.[0];
-        assert.ok(summary, `Missing report summary: ${story.slug}`);
-        for (const paragraph of summary.matchAll(/<p>([\s\S]*?)<\/p>/g)) {
+        if (expectedArticle.bodySections) assert.ok(!summary && html.includes('class="article-section source-body"'), `Missing original body layout: ${story.slug}`);
+        else assert.ok(summary, `Missing report summary: ${story.slug}`);
+        for (const paragraph of (summary ?? '').matchAll(/<p>([\s\S]*?)<\/p>/g)) {
           const text = paragraph[1].replace(/<[^>]*>/g, '');
           assert.equal(text, text.trim(), `Extra blank lines in report summary: ${story.slug}`);
         }
       }
       const article = await (await request(`data/reports/${story.slug}.json`)).json();
-      const expectedArticle = JSON.parse(await readFile(`data/reports/${story.slug}.json`, 'utf8'));
       collectImages(expectedArticle);
       assert.deepEqual(article, expectedArticle, `Deployed article differs: ${story.slug}`);
       if (story.image?.src.startsWith('/images/')) await request(story.image.src.slice(1));

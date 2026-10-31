@@ -158,10 +158,12 @@ test('debate report preserves the source verdict and evidence links with the deb
   assert.equal(report.verdict, '與所查資料相符');
   assert.equal(report.finding, '查證結果：與所查資料相符');
   assert.equal(report.verdictGuideSlug, data.sections.reports.pinnedSlugs![1]);
-  const evidence = report.supplementarySections!.flatMap(section => section.blocks ?? []).filter(block => block.type === 'list');
+  const evidence = report.bodySections!.flatMap(section => section.blocks ?? []).filter(block => block.type === 'list');
   assert.equal(evidence.length, 1);
   assert.equal(evidence[0].items.length, 4);
   assert.ok(evidence[0].items.every(item => item.some(part => part.href?.startsWith('https://'))));
   assert.equal(report.presentation?.showReportMetadata, false);
   assert.equal(report.sources.length, 0);
+  assert.deepEqual(report.bodySections!.map(section => section.title), ['說明', '補充資料', '資料來源']);
+  assert.equal(report.presentation?.showSummary, false);
 });

@@ -934,3 +934,6 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
   .organization-logo { height: 120px; }
   .organization-name { font-size: 14px; }
 }
+
+/* Imported articles retain their original section and subheading order. */
+.source-body h4 { margin: 0 0 24px; font-size: clamp(18px, 2vw, 21px); line-height: 1.8; }

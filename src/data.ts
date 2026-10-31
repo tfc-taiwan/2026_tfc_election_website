@@ -122,6 +122,7 @@ export const reportSchema = z.object({
   image: image.nullable(), imageCaption: text, summaryPoints: z.array(text).min(1), summaryClose: z.string(), summaryBlocks: z.array(contentBlockSchema).min(1).optional(),
   presentation: z.object({ showReportMetadata: z.boolean().optional(), showSummary: z.boolean().optional() }).optional(),
   background: section, checkSections: z.array(section).min(1),
+  bodySections: z.array(section).min(1).optional(),
   supplementarySections: z.array(section).optional(),
   organizationGroups: z.array(z.object({
     id: slug, title: text, description: text.optional(),

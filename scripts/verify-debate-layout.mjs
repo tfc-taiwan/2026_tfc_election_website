@@ -42,13 +42,16 @@ try {
       await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].map(img => { img.loading = 'eager'; return img.decode(); })); });
       assert.equal(await page.locator('h1').textContent(), data.stories.find(story => story.slug === slug).title);
       const report = reports.find(story => story.slug === slug);
-      assert.equal(await page.locator('.article-summary').count(), report ? 1 : 0);
+      assert.equal(await page.locator('.article-summary').count(), 0);
       if (report) {
-        assert.equal(await page.locator('.article-finding').textContent(), `查證結果：${report.verdict}`);
+        assert.equal(await page.locator('#explanation h4').first().textContent(), `查證結果：${report.verdict}`);
+        assert.deepEqual(await page.locator('.source-body h2').allTextContents(), ['說明', '補充資料', '資料來源']);
+        assert.equal(await page.locator('#verification, #summary-heading, .article-finding').count(), 0);
+        assert.equal(await page.locator('.source-body h3').count(), 0);
         assert.equal(await page.locator('.verdict-legend ul').count(), 0);
-        assert.equal(await page.locator('.verdict-legend a').getAttribute('href'), `/reports/${pins[1]}`);
+        assert.equal(await page.locator('.verdict-legend').count(), 0);
         assert.equal(await page.locator('#sources').count(), 0);
-        assert.equal(await page.locator('#additional-context ul a').count(), 4);
+        assert.equal(await page.locator('#evidence-sources ul a').count(), 4);
       }
       assert.ok(!(await page.locator('.article-meta').textContent()).includes('報告編號'));
       assert.equal(await page.locator('.back-link').getAttribute('href'), categoryPath);
