@@ -151,6 +151,51 @@
   },
   "stories": [
     {
+      "slug": "outdated-claim-kmt-blocked-military-pension-bill",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「本週國民黨擋下軍人效忠中共取消退休金法案」，是過時資訊，並非近期事件",
+      "description": "各大社群今年10月中旬流傳圖卡，稱「台灣軍人若效忠中共將取消退休金的法案，在本週被國民黨擋下」。經查，網傳圖片於2025年5月即流傳，並非近期事件。目前立法院有3案約束現役軍人效忠敵人的修法草案，正在審理中。",
+      "date": "2026-10-28",
+      "image": {
+        "src": "/images/imported/76f17b71b7f52bebb75dde2766d2824a071d68421acac4649f8f1c818b12a583.jpg",
+        "alt": "網傳「本週國民黨擋下軍人效忠中共取消退休金法案」，是過時資訊，並非近期事件"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "chiang-wan-an-aides-did-not-scold-citizens",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "蔣萬安隨行人員沒有喝斥民眾「市長講話，吵什麼」",
+      "description": "近期網路流傳畫面，指出台北市長蔣萬安接受採訪時，隨行團隊喝斥民眾「市長講話，吵什麼」。經詢問在場媒體並比對直播影片，這段話並非現場工作人員所說，聲音是出自於現場攝影記者群。",
+      "date": "2026-11-02",
+      "image": {
+        "src": "/images/imported/1d34bc09e6176c99432a4fd2030d42a5f6c8639ac471aa82caaf22f62a23a3d0.jpg",
+        "alt": "蔣萬安隨行人員沒有喝斥民眾「市長講話，吵什麼」"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "black-bear-academy-subsidies-before-shen-po-yang-became-legislator",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「黑熊學院補助沈伯洋未迴避」？ 目前查得補助案均在沈伯洋就任立委前核定或公告",
+      "description": "網路近期流傳，台北市長候選人沈伯洋在立委期間，其妻曾心慧擔任「黑熊社會企業公司」董事長，接受政府預算補助，質疑沈任職立委期間涉及違反利益迴避。經查證，沈伯洋就任立委後一個月，其妻即正式卸任董事長。查詢目前可得的公開資料，黑熊學院2024年取得的政府補助，核定日早於沈伯洋就任立委之前。",
+      "date": "2026-11-02",
+      "image": {
+        "src": "/images/imported/91767d6e2c499212d2e11708631925b3a1228f707e70e58606c0d7c527e121f5.jpg",
+        "alt": "網傳「黑熊學院補助沈伯洋未迴避」？ 目前查得補助案均在沈伯洋就任立委前核定或公告"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
       "slug": "tree-canopy-loss-private-land-development-claim",
       "kind": "report",
       "category": "辯論會查核",
@@ -775,6 +820,15 @@
       ],
       "items": [
         {
+          "slug": "outdated-claim-kmt-blocked-military-pension-bill"
+        },
+        {
+          "slug": "chiang-wan-an-aides-did-not-scold-citizens"
+        },
+        {
+          "slug": "black-bear-academy-subsidies-before-shen-po-yang-became-legislator"
+        },
+        {
           "slug": "puma-shen-grandfather-battle-rumor"
         },
         {
@@ -989,8 +1043,8 @@
           "content": [
             "現任台北市長蔣萬安與立法委員沈伯洋將進行辯論，TFC 當日也將關注辯論即時狀況。"
           ],
-      "cta": "點我看更多",
-      "href": "/reports?category=%E8%BE%AF%E8%AB%96%E6%9C%83%E6%9F%A5%E6%A0%B8",
+          "cta": "點我看更多",
+          "href": "/reports?category=%E8%BE%AF%E8%AB%96%E6%9C%83%E6%9F%A5%E6%A0%B8",
           "tag": "即時查核",
           "tone": "cyan"
         },
