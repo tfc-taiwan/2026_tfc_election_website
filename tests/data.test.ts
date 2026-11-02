@@ -116,6 +116,8 @@ test('deepfake pledge overview has paragraph breaks and a working full article r
 test('learning guide and community activity use the requested destinations and label', () => {
   assert.equal(data.sections.learning.resources?.find(item => item.title === '選舉訊息繁雜，三大正確資訊管道報你知')?.href, '/reports/reliable-taiwan-election-information-channels-explained');
   assert.equal(data.sections.activities.items.find(item => item.id === 'community')?.tag, '共同維護資訊生態');
+  assert.equal(data.sections.activities.items.find(item => item.id === 'debate')?.cta, '點我看更多');
+  assert.equal(data.sections.activities.items.find(item => item.id === 'debate')?.href, '/reports?category=%E8%BE%AF%E8%AB%96%E6%9C%83%E6%9F%A5%E6%A0%B8');
 });
 
 test('standalone infographic cards resolve without inventing an article', () => {
@@ -142,6 +144,14 @@ test('category pins keep explanatory articles ahead of new reports without leaki
     assert.equal(report.presentation?.showReportMetadata, false);
     assert.equal(report.presentation?.showSummary, false);
   }
+});
+
+test('homepage debate section can show the pinned explanations before debate fact-check reports', () => {
+  const debateStories = listingStories(data, '', '辯論會查核');
+  assert.equal(debateStories.length, data.stories.filter(story => story.category === '辯論會查核').length);
+  assert.deepEqual(debateStories.slice(0, 2).map(story => story.slug), data.sections.reports.pinnedSlugs);
+  assert.ok(debateStories.every(story => story.category === '辯論會查核'));
+  assert.ok(debateStories.slice(2).every(story => story.kind === 'report'));
 });
 
 test('listing pins reject duplicates and missing articles', () => {
