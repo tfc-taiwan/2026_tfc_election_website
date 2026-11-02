@@ -332,6 +332,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
     const story = stories.find(value => value.slug === item.slug);
     return story ? [{ ...story, title: item.title ?? story.title }] : [];
   });
+  const debateStories = listingStories(data, '', '辯論會查核');
 
   return <>
     <PageSeo data={data} />
@@ -344,6 +345,11 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
       <Carousel stories={homeReports} label={sections.reports.title}
         heading={<h2 id="latest-title">{sections.reports.title}</h2>}
         footer={<Link className="pill-button section-more" to="/reports">查看全部查核報告<Icon name="arrow" size={16} /></Link>} />
+    </section>}
+    {!!debateStories.length && <section className="reports-section section-padding" id="debate" aria-labelledby="debate-title">
+      <Carousel stories={debateStories} label="辯論會查核"
+        heading={<h2 id="debate-title">辯論會查核</h2>}
+        footer={<Link className="pill-button section-more" to={`/reports?category=${encodeURIComponent('辯論會查核')}`}>查看全部辯論會查核<Icon name="arrow" size={16} /></Link>} />
     </section>}
     {sections.initiative && <section className="initiative-section section-padding" id="initiative" aria-labelledby="initiative-title">{sections.initiative.content ? <InitiativePanel title={sections.initiative.title} page={sections.initiative.content} description={sections.initiative.description} isMock={data.isMock} embedded /> : <><h2 id="initiative-title">{sections.initiative.title}</h2><p>{sections.initiative.description}</p></>}</section>}
     {!!sections.analyses.slugs.length && <section className="analysis-section section-padding" id="analysis" aria-labelledby="analysis-title">

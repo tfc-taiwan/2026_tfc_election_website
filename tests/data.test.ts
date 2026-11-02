@@ -144,6 +144,14 @@ test('category pins keep explanatory articles ahead of new reports without leaki
   }
 });
 
+test('homepage debate section can show the pinned explanations before debate fact-check reports', () => {
+  const debateStories = listingStories(data, '', '辯論會查核');
+  assert.equal(debateStories.length, data.stories.filter(story => story.category === '辯論會查核').length);
+  assert.deepEqual(debateStories.slice(0, 2).map(story => story.slug), data.sections.reports.pinnedSlugs);
+  assert.ok(debateStories.every(story => story.category === '辯論會查核'));
+  assert.ok(debateStories.slice(2).every(story => story.kind === 'report'));
+});
+
 test('listing pins reject duplicates and missing articles', () => {
   const invalid = structuredClone(data);
   invalid.sections.reports.pinnedSlugs = ['missing-article'];

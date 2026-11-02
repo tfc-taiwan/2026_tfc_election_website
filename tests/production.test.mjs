@@ -58,6 +58,14 @@ test('built static pages contain body content and unique head metadata', async (
       }
     }
     if (path === 'index.html') {
+      const debateSection = html.slice(html.indexOf('id="debate"'), html.indexOf('</section>', html.indexOf('id="debate"')));
+      assert.ok(debateSection.includes('<h2 id="debate-title">辯論會查核</h2>'));
+      assert.ok(debateSection.includes('2026台北市長首場辯論會查核總說明'));
+      assert.ok(debateSection.includes('2026台北市長首場辯論會查核結果說明'));
+      assert.ok(debateSection.includes('經市府採檢，成淵高中'));
+      assert.ok(html.indexOf('id="latest"') < html.indexOf('id="debate"'));
+      assert.ok(html.indexOf('id="debate"') < html.indexOf('id="initiative"'));
+      assert.ok(debateSection.includes('查看全部辯論會查核'));
       const intro = html.match(/class="pledge-description pledge-description-embedded">([\s\S]*?)<\/div>/)?.[1];
       assert.ok(intro && !intro.includes('本公約並非要求各界停止使用 AI'));
       const note = html.match(/<p class="pledge-principles-note">([\s\S]*?)<\/p>/)?.[1];
