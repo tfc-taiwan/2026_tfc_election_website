@@ -58,6 +58,9 @@ test('built static pages contain body content and unique head metadata', async (
       }
     }
     if (path === 'index.html') {
+      const latestSection = html.slice(html.indexOf('id="latest"'), html.indexOf('id="debate"'));
+      assert.ok(latestSection.includes('查看全部查核報告'));
+      assert.ok(latestSection.includes('href="/reports?category=%E5%9C%B0%E6%96%B9%E9%81%B8%E8%88%89"'));
       const debateSection = html.slice(html.indexOf('id="debate"'), html.indexOf('</section>', html.indexOf('id="debate"')));
       assert.ok(debateSection.includes('<h2 id="debate-title">辯論會查核</h2>'));
       assert.ok(debateSection.includes('2026台北市長首場辯論會查核總說明'));
@@ -66,6 +69,11 @@ test('built static pages contain body content and unique head metadata', async (
       assert.ok(html.indexOf('id="latest"') < html.indexOf('id="debate"'));
       assert.ok(html.indexOf('id="debate"') < html.indexOf('id="initiative"'));
       assert.ok(debateSection.includes('查看全部辯論會查核'));
+      const activitiesSection = html.slice(html.indexOf('id="activities"'));
+      assert.ok(activitiesSection.includes('【首都之爭】台北市長辯論會查核'));
+      assert.ok(activitiesSection.includes('href="/reports?category=%E8%BE%AF%E8%AB%96%E6%9C%83%E6%9F%A5%E6%A0%B8"'));
+      assert.ok(activitiesSection.includes('點我看更多'));
+      assert.ok(!activitiesSection.includes('追蹤社群'));
       const intro = html.match(/class="pledge-description pledge-description-embedded">([\s\S]*?)<\/div>/)?.[1];
       assert.ok(intro && !intro.includes('本公約並非要求各界停止使用 AI'));
       const note = html.match(/<p class="pledge-principles-note">([\s\S]*?)<\/p>/)?.[1];

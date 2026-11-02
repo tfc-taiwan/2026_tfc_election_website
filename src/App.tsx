@@ -344,7 +344,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
     {!!homeReports.length && <section className="reports-section section-padding" id="latest" aria-labelledby="latest-title">
       <Carousel stories={homeReports} label={sections.reports.title}
         heading={<h2 id="latest-title">{sections.reports.title}</h2>}
-        footer={<Link className="pill-button section-more" to="/reports">查看全部查核報告<Icon name="arrow" size={16} /></Link>} />
+        footer={<Link className="pill-button section-more" to="/reports?category=%E5%9C%B0%E6%96%B9%E9%81%B8%E8%88%89">查看全部查核報告<Icon name="arrow" size={16} /></Link>} />
     </section>}
     {!!debateStories.length && <section className="reports-section section-padding" id="debate" aria-labelledby="debate-title">
       <Carousel stories={debateStories} label="辯論會查核"

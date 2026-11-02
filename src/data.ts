@@ -41,7 +41,7 @@ const story = z.object({
   slug, kind: z.enum(['report', 'analysis', 'guide']), category: category.optional(), title: text,
   description: text, date: date.nullable(), image: image.nullable(), tag: text, tone, verdict: status.optional(),
 }).superRefine(validateArticleFields);
-const editorialLink = z.string().refine(value => /^https:\/\//.test(value) || /^\/reports\/[a-z0-9-]+$/.test(value), 'Use HTTPS or a local article URL');
+const editorialLink = z.string().refine(value => /^https:\/\//.test(value) || /^\/reports(?:\/[a-z0-9-]+)?(?:\?category=[^&#]+)?$/.test(value), 'Use HTTPS or a local report/category URL');
 const info = z.object({ id: slug, title: text, description: text, content: z.array(text).min(1), href: editorialLink.optional() });
 
 const initiativeContentSchema = z.object({

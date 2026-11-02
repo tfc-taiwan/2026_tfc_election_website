@@ -116,6 +116,8 @@ test('deepfake pledge overview has paragraph breaks and a working full article r
 test('learning guide and community activity use the requested destinations and label', () => {
   assert.equal(data.sections.learning.resources?.find(item => item.title === '選舉訊息繁雜，三大正確資訊管道報你知')?.href, '/reports/reliable-taiwan-election-information-channels-explained');
   assert.equal(data.sections.activities.items.find(item => item.id === 'community')?.tag, '共同維護資訊生態');
+  assert.equal(data.sections.activities.items.find(item => item.id === 'debate')?.cta, '點我看更多');
+  assert.equal(data.sections.activities.items.find(item => item.id === 'debate')?.href, '/reports?category=%E8%BE%AF%E8%AB%96%E6%9C%83%E6%9F%A5%E6%A0%B8');
 });
 
 test('standalone infographic cards resolve without inventing an article', () => {
