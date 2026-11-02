@@ -41,13 +41,14 @@ export function buildSeo(data: Listings, location: string, report: Report | null
   const isArticle = path.startsWith('/reports/');
   const infographic = resolveInfographic(data, path);
   const isQuery = isListing && (url.searchParams.has('q') || url.searchParams.has('category'));
+  const categoryImage = url.searchParams.get('category') === '辯論會查核' ? data.seo.reportCategoryImages?.['辯論會查核'] : undefined;
   const missing = status === 'not-found' || (!['/', '/reports'].includes(path) && !isArticle && !infographic);
   const page = infographic ? {
     title: `${infographic.group.title}｜圖卡 ${infographic.number}/${infographic.group.cards.length}｜${data.site.name}`,
     description: `${infographic.card.caption}。${infographic.story?.description ?? infographic.group.description ?? infographic.group.title}`,
     image: { src: `/images/og/cards/${infographic.group.slug}-${infographic.number}.png`, alt: infographic.card.image.alt, width: 1200, height: 630, type: 'image/png' },
     noindex: data.seo.home.noindex || !infographic.story,
-  } : report?.seo ?? (isListing ? data.seo.reports : data.seo.home);
+  } : report?.seo ?? (isListing ? (categoryImage ? { ...data.seo.reports, image: categoryImage } : data.seo.reports) : data.seo.home);
   const title = missing ? `找不到頁面｜${data.site.name}` : status === 'error' ? `資料暫時無法載入｜${data.site.name}` : isQuery ? `搜尋與篩選結果｜${data.site.name}` : status === 'loading' ? `載入內容中｜${data.site.name}` : page.title;
   const description = missing ? '找不到這個頁面，請回到首頁或查核報告列表。' : status === 'error' ? '資料暫時無法載入，請稍後重試。' : page.description;
   const ready = status === 'ready' && !missing && (!isArticle || !!report);

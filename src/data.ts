@@ -56,7 +56,7 @@ export const listingsSchema = z.object({
   version: z.literal(1), isMock: z.boolean(),
   seo: z.object({
     siteUrl: z.url().nullable(), language: text, locale: text,
-    home: pageSeo, reports: pageSeo,
+    home: pageSeo, reports: pageSeo, reportCategoryImages: z.partialRecord(category, shareImage).optional(),
   }),
   site: z.object({ name: text, englishName: text, title: text, notice: text, footer: text, donationUrl: z.url().startsWith('https://').default('https://tfc-taiwan.oen.tw/'), socialLinks: z.array(socialLink).min(1) }),
   navigation: z.array(z.object({ label: text, href: z.string().regex(/^\/(?:#[-a-z]+|reports)?$/), children: z.array(z.object({ label: text, href: z.string().regex(/^\/(?:#[-a-z]+|reports)?$/) })).optional() })),

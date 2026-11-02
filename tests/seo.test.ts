@@ -35,6 +35,21 @@ test('each article gets its own canonical, description, share image, author, dat
   }
 });
 
+test('homepage and debate category use their supplied OG images without changing other report categories', async () => {
+  const home = buildSeo(data, '/', null, context);
+  const debate = buildSeo(data, `/reports?category=${encodeURIComponent('辯論會查核')}`, null, context);
+  const localElection = buildSeo(data, `/reports?category=${encodeURIComponent('地方選舉')}`, null, context);
+  assert.equal(get(home, 'og:image'), `${context.siteUrl}/images/og/election-home.png`);
+  assert.equal(get(debate, 'og:image'), `${context.siteUrl}/images/og/debate-check.png`);
+  assert.equal(get(localElection, 'og:image'), new URL(data.seo.reports.image.src, context.siteUrl).href);
+  for (const image of [data.seo.home.image!, data.seo.reportCategoryImages!['辯論會查核']!]) {
+    const metadata = await sharp(readFileSync(resolve('public', `.${image.src}`))).metadata();
+    assert.equal(metadata.width, 1200);
+    assert.equal(metadata.height, 630);
+    assert.equal(metadata.format, 'png');
+  }
+});
+
 test('mock mode remains noindex even with a public origin, and does not advertise mock URLs', () => {
   const mock = structuredClone(data); mock.isMock = true;
   assert.equal(buildSeo(mock, '/', null, context).robots, 'noindex, nofollow');
