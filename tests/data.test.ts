@@ -79,9 +79,20 @@ test('provided covers match reports while unfilled dates stay absent', () => {
   assert.equal(data.stories.find(story => story.slug === 'five-star-flag-fine-2020-proposal-not-passed')?.image?.src, '/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg');
   assert.equal(data.stories.find(story => story.slug === 'deepfake-pledge')?.image, null);
   assert.deepEqual(data.sections.infographics?.slugs, [
-    'china-xiamen-bridge-does-not-reach-kinmen',
+    'ten-ng-voting-behaviors-part-1',
+    'ten-ng-voting-behaviors-part-2',
+    'avoid-candidate-masks-when-voting',
     'taiwan-immigrant-stat-misread-cumulative-data-hoax-explained',
   ]);
+  for (const [slug, count] of [
+    ['ten-ng-voting-behaviors-part-1', 7],
+    ['ten-ng-voting-behaviors-part-2', 7],
+    ['avoid-candidate-masks-when-voting', 5],
+  ]) {
+    const group = data.sections.infographics?.items?.find(item => item.slug === slug);
+    assert.equal(group?.cards.length, count);
+    assert.deepEqual(group?.cards.map(card => card.image.src), Array.from({ length: count }, (_, index) => `/images/${slug}-${index + 1}.jpg`));
+  }
   const standaloneCard = resolveInfographic(data, '/infographics/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained/1');
   assert.equal(standaloneCard?.story, null);
   assert.equal(standaloneCard?.group.cards.length, 5);
