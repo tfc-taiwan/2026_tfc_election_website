@@ -10,7 +10,7 @@
     "辯論會說明"
   ],
   "published": "2026-10-30",
-  "updated": "2026-10-30",
+  "updated": "2026-11-03",
   "reportId": "2026-taipei-mayoral-debate-fact-check-summary",
   "reporter": "台灣事實查核中心",
   "editor": "台灣事實查核中心",
@@ -179,8 +179,7 @@
       "title": "五、公開查核結果，接受外界檢驗",
       "paragraphs": [
         "查核中心將依查證進度發布查核報告，提供讀者檢視發言內容、查核依據及結果。",
-        "若報告有疏漏，或後續取得新的重要證據，歡迎外界提供資料與指正。查核中心將依更正原則進行查證，必要時修正報告並刊登更新說明。",
-        "延伸觀看「台灣九合一選舉事實查核與資訊專區」： https://tfc-taiwan.org.tw/election2026"
+        "若報告有疏漏，或後續取得新的重要證據，歡迎外界提供資料與指正。查核中心將依更正原則進行查證，必要時修正報告並刊登更新說明。"
       ],
       "blocks": [
         {
@@ -196,18 +195,6 @@
           "content": [
             {
               "text": "若報告有疏漏，或後續取得新的重要證據，歡迎外界提供資料與指正。查核中心將依更正原則進行查證，必要時修正報告並刊登更新說明。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "content": [
-            {
-              "text": "延伸觀看「台灣九合一選舉事實查核與資訊專區」： "
-            },
-            {
-              "text": "https://tfc-taiwan.org.tw/election2026",
-              "href": "https://tfc-taiwan.org.tw/election2026"
             }
           ]
         }
@@ -230,5 +217,64 @@
     },
     "noindex": false,
     "authorType": "Organization"
-  }
+  },
+  "supplementarySections": [
+    {
+      "id": "debate-team",
+      "title": "【辯論會查核團隊】",
+      "paragraphs": [
+        "查核記者：曾慧雯、許雲凱、邱劭安、宋思彤、蔡雯如、伍斯帖",
+        "圖卡/社群編輯：蔡詠全",
+        "圖卡校對：陳柏樺",
+        "總編輯：陳偉婷",
+        "延伸觀看「台灣九合一選舉事實查核與資訊專區」： https://tfc-taiwan.org.tw/election2026"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "查核記者：曾慧雯、許雲凱、邱劭安、宋思彤、蔡雯如、伍斯帖"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "圖卡/社群編輯：蔡詠全"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "圖卡校對：陳柏樺"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "總編輯：陳偉婷"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "延伸觀看「台灣九合一選舉事實查核與資訊專區」： "
+            },
+            {
+              "text": "https://tfc-taiwan.org.tw/election2026",
+              "href": "https://tfc-taiwan.org.tw/election2026"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
