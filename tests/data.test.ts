@@ -84,15 +84,15 @@ test('provided covers match reports while unfilled dates stay absent', () => {
     'avoid-candidate-masks-when-voting',
     'taiwan-immigrant-stat-misread-cumulative-data-hoax-explained',
   ]);
-  for (const [slug, count] of [
-    ['ten-ng-voting-behaviors-part-1', 7],
-    ['ten-ng-voting-behaviors-part-2', 7],
-    ['avoid-candidate-masks-when-voting', 5],
-  ]) {
-    const group = data.sections.infographics?.items?.find(item => item.slug === slug);
-    assert.equal(group?.cards.length, count);
-    assert.deepEqual(group?.cards.map(card => card.image.src), Array.from({ length: count }, (_, index) => `/images/${slug}-${index + 1}.jpg`));
-  }
+  const upper = data.sections.infographics?.items?.find(item => item.slug === 'ten-ng-voting-behaviors-part-1');
+  assert.equal(upper?.cards.length, 7);
+  assert.deepEqual(upper?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/ten-ng-voting-behaviors-part-1-${index + 1}.jpg`));
+  const lower = data.sections.infographics?.items?.find(item => item.slug === 'ten-ng-voting-behaviors-part-2');
+  assert.equal(lower?.cards.length, 7);
+  assert.deepEqual(lower?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/ten-ng-voting-behaviors-part-2-${index + 1}.jpg`));
+  const masks = data.sections.infographics?.items?.find(item => item.slug === 'avoid-candidate-masks-when-voting');
+  assert.equal(masks?.cards.length, 5);
+  assert.deepEqual(masks?.cards.map(card => card.image.src), Array.from({ length: 5 }, (_, index) => `/images/avoid-candidate-masks-when-voting-${index + 1}.jpg`));
   const standaloneCard = resolveInfographic(data, '/infographics/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained/1');
   assert.equal(standaloneCard?.story, null);
   assert.equal(standaloneCard?.group.cards.length, 5);
