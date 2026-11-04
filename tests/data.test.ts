@@ -82,7 +82,7 @@ test('provided covers match reports while unfilled dates stay absent', () => {
     'ten-ng-voting-behaviors-part-1',
     'ten-ng-voting-behaviors-part-2',
     'avoid-candidate-masks-when-voting',
-    'taiwan-immigrant-stat-misread-cumulative-data-hoax-explained',
+    'four-types-election-rigging-rumors-debunked-facts',
   ]);
   const upper = data.sections.infographics?.items?.find(item => item.slug === 'ten-ng-voting-behaviors-part-1');
   assert.equal(upper?.cards.length, 7);
@@ -93,9 +93,13 @@ test('provided covers match reports while unfilled dates stay absent', () => {
   const masks = data.sections.infographics?.items?.find(item => item.slug === 'avoid-candidate-masks-when-voting');
   assert.equal(masks?.cards.length, 5);
   assert.deepEqual(masks?.cards.map(card => card.image.src), Array.from({ length: 5 }, (_, index) => `/images/avoid-candidate-masks-when-voting-${index + 1}.jpg`));
-  const standaloneCard = resolveInfographic(data, '/infographics/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained/1');
+  const newGallery = data.sections.infographics?.items?.find(item => item.slug === 'four-types-election-rigging-rumors-debunked-facts');
+  assert.equal(newGallery?.title, '4種作票謠言樣態');
+  assert.equal(newGallery?.cards.length, 7);
+  assert.deepEqual(newGallery?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/four-types-election-rigging-rumors-debunked-facts-${index + 1}.jpg`));
+  const standaloneCard = resolveInfographic(data, '/infographics/four-types-election-rigging-rumors-debunked-facts/1');
   assert.equal(standaloneCard?.story, null);
-  assert.equal(standaloneCard?.group.cards.length, 5);
+  assert.equal(standaloneCard?.group.cards.length, 7);
   for (const story of data.stories) {
     const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${story.slug}.json`), 'utf8')));
     if (!report.bodySections) assert.deepEqual(report.image, story.image);
@@ -132,10 +136,10 @@ test('learning guide and community activity use the requested destinations and l
 });
 
 test('standalone infographic cards resolve without inventing an article', () => {
-  const path = '/infographics/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained/1';
+  const path = '/infographics/four-types-election-rigging-rumors-debunked-facts/1';
   const selected = resolveInfographic(data, path);
   assert.equal(selected?.story, null);
-  assert.equal(selected?.group.cards.length, 5);
+  assert.equal(selected?.group.cards.length, 7);
 });
 
 test('category pins keep explanatory articles ahead of new reports without leaking into other lists', () => {
