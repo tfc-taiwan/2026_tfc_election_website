@@ -49,6 +49,34 @@ test('all listing references resolve to unique, matching report files and local 
   for (const story of data.stories.filter(story => story.kind === 'report')) assert.ok(data.sections.reports.categories.includes(story.category!));
 });
 
+test('new referendum report, corrected lunch report, pinned short, activities, and debate card heights are ready', () => {
+  const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
+  assert.equal(data.sections.reports.items[0]?.slug, referendumSlug);
+  const referendum = data.stories.find(story => story.slug === referendumSlug)!;
+  assert.equal(referendum.title, '網傳「1128有5大公投案」是錯誤資訊，公投僅「廢除非核家園」一案');
+  assert.equal(referendum.verdict, '錯誤');
+  const referendumReport = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${referendumSlug}.json`), 'utf8')));
+  assert.equal(referendumReport.reportId, '4380');
+  assert.ok(referendumReport.bodySections?.some(section => section.title === '補充資料'));
+
+  const lunchSlug = 'taipei-free-school-lunch-bidding-failures-and-fresh-milk-redemption-rates-claim';
+  const lunch = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${lunchSlug}.json`), 'utf8')));
+  assert.equal(lunch.updated, '2026-11-04');
+  assert.ok(lunch.summaryPoints[0].includes('「生生喝鮮奶」'));
+  assert.ok(lunch.background.paragraphs.some(paragraph => paragraph.includes('正確政策名稱應是「生生喝鮮奶」')));
+  assert.ok(lunch.bodySections?.[0].paragraphs.some(paragraph => paragraph.startsWith('〖更新說明 2026/11/04〗')));
+
+  assert.equal(data.sections.shorts?.items[0]?.title, 'AI混淆選民認知？民間發起「自律公約」');
+  assert.equal(youtubeVideoId(data.sections.shorts!.items[0].url), 'vwcqSl8G5gQ');
+  const timed = data.sections.activities.items.filter(item => ['deepfake-press-conference', 'debate', 'election-rumor-script-talk-2026-11-12', 'election-day', 'post-election-rumor-review-2026-12-04'].includes(item.id));
+  assert.deepEqual(timed.map(item => item.dateLabel), ['10/29', '10/31', '11/12', '11/28', '12/4']);
+  assert.ok(timed.slice(2).every(item => item.tag === '線上分享會' || item.id === 'election-day'));
+  assert.ok(timed.filter(item => item.tag === '線上分享會').every(item => item.cta === '詳情在這' && item.href === 'https://tfc-taiwan.oen.tw/events/3LdBgtonf8yq8wZEgupj7JZVNR8'));
+
+  const css = readFileSync(resolve(root, 'src/styles.css'), 'utf8');
+  assert.match(css, /#debate \.story-card h3[^}]*-webkit-line-clamp:\s*4/);
+});
+
 test('YouTube watch, short and youtu.be links resolve to embed ids', () => {
   assert.equal(youtubeVideoId('https://www.youtube.com/watch?v=63hT8oS83Vo'), '63hT8oS83Vo');
   assert.equal(youtubeVideoId('https://www.youtube.com/shorts/63hT8oS83Vo'), '63hT8oS83Vo');
@@ -72,7 +100,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 45);
+  assert.equal(data.stories.length, 46);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 24);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');

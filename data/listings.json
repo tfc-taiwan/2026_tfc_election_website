@@ -160,6 +160,21 @@
   },
   "stories": [
     {
+      "slug": "1128-referendum-fake-news-nuclear-free-policy",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「1128有5大公投案」是錯誤資訊，公投僅「廢除非核家園」一案",
+      "description": "九合一選舉將至，網傳11月28日投票日有5項公投，分別是鞭刑公投、反廢死公投、重啟核電公投、移轉投票公投、交通罰鍰公投。經查，今年成立公投案僅有「廢除非核家園」一案，網傳圖卡擷自舊新聞所統整各政黨可能提出的公投案，並非最新資訊。",
+      "date": "2026-11-03",
+      "image": {
+        "src": "/images/og/election-home.png",
+        "alt": "2026 選舉工具箱與投票箱插畫"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
       "slug": "black-bear-academy-subsidies-before-shen-po-yang-became-legislator",
       "kind": "report",
       "category": "地方選舉",
@@ -239,7 +254,7 @@
       "kind": "report",
       "category": "辯論會查核",
       "title": "沈伯洋說：「免費的營養午餐喊了口號，開學前還頻頻流標，有些學校險些斷炊；生生有鮮乳的兌換率一直往下，弱勢的領取率還偏低」？",
-      "description": "今年營養午餐招標時程確實較慢，8月底才全數完成招標作業；2025年「生生有鮮乳」的兌換率在計劃後期呈現下降趨勢，弱勢學生的兌換率也低於整體兌換率。",
+      "description": "今年營養午餐招標時程確實較慢，8月底才全數完成招標作業；2025年「生生喝鮮奶」的兌換率在計畫後期呈現下降趨勢，弱勢學生的兌換率也低於整體兌換率。",
       "date": "2026-10-31",
       "image": {
         "src": "/images/imported/4fed492bce4b8e0efdad8c52eced5dda140210fce93fbbe4b2968b4fa57b9f89.jpg",
@@ -829,6 +844,9 @@
       ],
       "items": [
         {
+          "slug": "1128-referendum-fake-news-nuclear-free-policy"
+        },
+        {
           "slug": "black-bear-academy-subsidies-before-shen-po-yang-became-legislator"
         },
         {
@@ -921,6 +939,10 @@
       "title": "60秒短影音闢謠",
       "description": "戳破謠言動態，快速掌握查證方法與資訊判讀重點！",
       "items": [
+        {
+          "title": "AI混淆選民認知？民間發起「自律公約」",
+          "url": "https://youtube.com/shorts/vwcqSl8G5gQ?si=MeJDLyYWtxgM1AFX"
+        },
         {
           "title": "紙箱票匭方便作票？破解選舉老謠言！",
           "url": "https://www.youtube.com/shorts/kXQ61YShNXo"
@@ -1058,6 +1080,19 @@
           "tone": "cyan"
         },
         {
+          "id": "election-rumor-script-talk-2026-11-12",
+          "dateLabel": "11/12",
+          "tag": "線上分享會",
+          "title": "查核祕笈：選舉謠言劇本解密",
+          "description": "為何透明票箱、隱形墨水謠言一再出現？選舉謠言有劇本？帶你一網打盡",
+          "content": [
+            "為何透明票箱、隱形墨水謠言一再出現？選舉謠言有劇本？帶你一網打盡"
+          ],
+          "cta": "詳情在這",
+          "tone": "cyan",
+          "href": "https://tfc-taiwan.oen.tw/events/3LdBgtonf8yq8wZEgupj7JZVNR8"
+        },
+        {
           "id": "election-day",
           "dateLabel": "11/28",
           "title": "【投票日】闢謠選務謠言，守護台灣民主",
@@ -1069,6 +1104,19 @@
           "href": "https://tfc-taiwan.org.tw/",
           "tag": "即時查核",
           "tone": "cyan"
+        },
+        {
+          "id": "post-election-rumor-review-2026-12-04",
+          "dateLabel": "12/4",
+          "tag": "線上分享會",
+          "title": "選後覆盤：選戰謠言瞄準誰？",
+          "description": "本次選舉發生了什麼事？是否有哪些謠言出現？一起討論釐清！",
+          "content": [
+            "本次選舉發生了什麼事？是否有哪些謠言出現？一起討論釐清！"
+          ],
+          "cta": "詳情在這",
+          "tone": "cyan",
+          "href": "https://tfc-taiwan.oen.tw/events/3LdBgtonf8yq8wZEgupj7JZVNR8"
         },
         {
           "id": "community",
