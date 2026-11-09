@@ -160,11 +160,41 @@
   },
   "stories": [
     {
+      "slug": "referendum-approval-threshold-valid-votes",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「公投不領票，通過門檻會變高」？",
+      "description": "公投通過門檻在於有效票，不領票不會提高門檻。",
+      "date": "2026-11-06",
+      "image": {
+        "src": "/images/imported/a72f2a963011bbbb13f1b24af799048dd85bd80dc73d987e47131b44a0b77de4.jpg",
+        "alt": "網傳「公投可以不領票，否則會提高通過門檻」的訊息圖卡"
+      },
+      "tag": "公投議題",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "taiwan-2024-presidential-election-vote-counting-marking-error-corrected",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「開票『開3畫2』，選務人員遭收買」？",
+      "description": "彰化縣第418投票所發生劃記錯誤，經現場民眾提醒後立即更正，最後票數核對無誤。",
+      "date": "2026-11-06",
+      "image": {
+        "src": "/images/imported/11919bc5291b62e9ad357fdf5b8bb8bdd334581f39819f979593541fca34c82d.jpg",
+        "alt": "網傳「開票開3畫2、選務人員遭收買」的訊息圖卡"
+      },
+      "tag": "選舉資訊",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
       "slug": "1128-referendum-fake-news-nuclear-free-policy",
       "kind": "report",
       "category": "地方選舉",
-      "title": "網傳「1128有5大公投案」是錯誤資訊，公投僅「廢除非核家園」一案",
-      "description": "九合一選舉將至，網傳11月28日投票日有5項公投，分別是鞭刑公投、反廢死公投、重啟核電公投、移轉投票公投、交通罰鍰公投。經查，今年成立公投案僅有「廢除非核家園」一案，網傳圖卡擷自舊新聞所統整各政黨可能提出的公投案，並非最新資訊。",
+      "title": "網傳「11月28日有5項公投案要表決」？",
+      "description": "九合一選舉將至，網傳11月28日投票日有5項公投；經查，今年成立公投案僅有「廢除非核家園」一案。",
       "date": "2026-11-03",
       "image": {
         "src": "/images/imported/be73442c8716771a34c27a985bef0badc98b357be521d5d9668184a55d369594.jpg",
