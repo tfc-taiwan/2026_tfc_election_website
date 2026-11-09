@@ -49,7 +49,7 @@ test('all listing references resolve to unique, matching report files and local 
   for (const story of data.stories.filter(story => story.kind === 'report')) assert.ok(data.sections.reports.categories.includes(story.category!));
 });
 
-test('new referendum report, corrected lunch report, pinned short, activities, and debate card heights are ready', () => {
+test('three imported fact-check reports preserve their source copy, alongside homepage updates', () => {
   assert.deepEqual(data.sections.reports.items.slice(0, 2).map(item => item.slug), [
     'referendum-approval-threshold-valid-votes',
     'taiwan-2024-presidential-election-vote-counting-marking-error-corrected',
@@ -57,11 +57,15 @@ test('new referendum report, corrected lunch report, pinned short, activities, a
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
   assert.equal(data.sections.reports.items[2]?.slug, referendumSlug);
   const referendum = data.stories.find(story => story.slug === referendumSlug)!;
-  assert.equal(referendum.title, '網傳「1128有5大公投案」是錯誤資訊，公投僅「廢除非核家園」一案');
+  assert.equal(referendum.title, '網傳「11月28日有5項公投案要表決」？');
   assert.equal(referendum.verdict, '錯誤');
   const referendumReport = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${referendumSlug}.json`), 'utf8')));
   assert.equal(referendumReport.reportId, '4380');
-  assert.ok(referendumReport.bodySections?.some(section => section.title === '補充資料'));
+  assert.equal(referendumReport.title, '網傳「11月28日有5項公投案要表決」？');
+  assert.equal(referendumReport.finding, '僅有「廢除非核家園」一案需公投');
+  assert.deepEqual(referendumReport.bodySections, undefined);
+  assert.deepEqual(referendumReport.sources, []);
+  assert.ok(referendumReport.supplementarySections?.some(section => section.title === '補充資料'));
 
   const newReportSlugs = [
     'referendum-approval-threshold-valid-votes',
@@ -70,11 +74,15 @@ test('new referendum report, corrected lunch report, pinned short, activities, a
   const newReports = newReportSlugs.map(slug => reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${slug}.json`), 'utf8'))));
   assert.deepEqual(newReports.map(report => report.reportId), ['4386', '4387']);
   assert.deepEqual(newReports.map(report => report.published), ['2026-11-06', '2026-11-06']);
-  assert.ok(newReports.every(report => report.sources[0]?.href?.startsWith('https://tfc-taiwan.org.tw/fact-check-reports/')));
   assert.ok(newReports.every(report => /^\/images\/imported\/[a-f0-9]{64}\.jpg$/.test(report.image?.src ?? '')));
-  assert.equal(newReports[0].bodySections?.find(section => section.id === 'check')?.paragraphs.length, 5);
-  assert.ok(newReports[0].bodySections?.find(section => section.id === 'check')?.paragraphs.some(paragraph => paragraph.includes('四分之一以上')));
-  assert.ok(newReports[1].bodySections?.find(section => section.id === 'check')?.paragraphs.some(paragraph => paragraph.includes('有效票782票，無效票1票')));
+  assert.ok(newReports.every(report => report.sources.length === 0 && !report.bodySections));
+  assert.equal(newReports[0].title, '網傳「公投不領票，通過門檻會變高」？');
+  assert.equal(newReports[0].finding, '公投通過門檻在於有效票，不領票不會提高門檻。');
+  assert.ok(newReports[0].summaryPoints[0].includes('有效同意票達投票權人總額四分之一以上'));
+  assert.ok(newReports[0].checkSections[0].paragraphs.some(paragraph => paragraph.includes('有效同意票達投票權人總額四分之一以上')));
+  assert.equal(newReports[1].title, '網傳「開票『開3畫2』，選務人員遭收買」？');
+  assert.equal(newReports[1].finding, '當場發現劃記有誤並更正票數，傳言刻意誤導、暗示作票');
+  assert.ok(newReports[1].checkSections[0].paragraphs.some(paragraph => paragraph.includes('有效票782票，無效票1票，發出票數783票')));
   assert.ok(newReports.every(report => report.background.blocks?.some(block => block.type === 'image' && block.image.src.startsWith('/images/imported/'))));
 
   const lunchSlug = 'taipei-free-school-lunch-bidding-failures-and-fresh-milk-redemption-rates-claim';
