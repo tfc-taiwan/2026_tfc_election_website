@@ -51,7 +51,11 @@ test('all listing references resolve to unique, matching report files and local 
 
 test('new referendum report, corrected lunch report, pinned short, activities, and debate card heights are ready', () => {
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
-  assert.equal(data.sections.reports.items[0]?.slug, referendumSlug);
+  assert.deepEqual(data.sections.reports.items.slice(0, 3).map(item => item.slug), [
+    'referendum-approval-threshold-valid-votes',
+    'taiwan-2024-presidential-election-vote-counting-marking-error-corrected',
+    referendumSlug,
+  ]);
   const referendum = data.stories.find(story => story.slug === referendumSlug)!;
   assert.equal(referendum.title, '網傳「11月28日有5項公投案要表決」？');
   assert.equal(referendum.verdict, '錯誤');
