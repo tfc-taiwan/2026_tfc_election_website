@@ -31,6 +31,7 @@ try {
     await page.route('**/*', route => new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
     await page.goto(origin + '/reports', { waitUntil: 'networkidle' });
     await page.getByRole('button', { name: category, exact: true }).click();
+    await page.waitForURL(url => url.searchParams.get('category') === category);
     await page.evaluate(() => document.fonts.ready);
     assert.deepEqual(await page.locator('.listing-grid .story-card').evaluateAll(cards => cards.slice(0, 2).map(card => card.getAttribute('href'))), pins.map(slug => `/reports/${slug}`));
     assert.equal(await page.locator('.listing-grid .story-card').nth(0).locator('.verdict-label').count(), 0);
