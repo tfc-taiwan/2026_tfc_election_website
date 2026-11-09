@@ -50,14 +50,27 @@ test('all listing references resolve to unique, matching report files and local 
 });
 
 test('new referendum report, corrected lunch report, pinned short, activities, and debate card heights are ready', () => {
+  assert.deepEqual(data.sections.reports.items.slice(0, 2).map(item => item.slug), [
+    'referendum-approval-threshold-valid-votes',
+    'taiwan-2024-presidential-election-vote-counting-marking-error-corrected',
+  ]);
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
-  assert.equal(data.sections.reports.items[0]?.slug, referendumSlug);
+  assert.equal(data.sections.reports.items[2]?.slug, referendumSlug);
   const referendum = data.stories.find(story => story.slug === referendumSlug)!;
   assert.equal(referendum.title, '網傳「1128有5大公投案」是錯誤資訊，公投僅「廢除非核家園」一案');
   assert.equal(referendum.verdict, '錯誤');
   const referendumReport = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${referendumSlug}.json`), 'utf8')));
   assert.equal(referendumReport.reportId, '4380');
   assert.ok(referendumReport.bodySections?.some(section => section.title === '補充資料'));
+
+  const newReportSlugs = [
+    'referendum-approval-threshold-valid-votes',
+    'taiwan-2024-presidential-election-vote-counting-marking-error-corrected',
+  ];
+  const newReports = newReportSlugs.map(slug => reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${slug}.json`), 'utf8'))));
+  assert.deepEqual(newReports.map(report => report.reportId), ['4386', '4387']);
+  assert.deepEqual(newReports.map(report => report.published), ['2026-11-06', '2026-11-06']);
+  assert.ok(newReports.every(report => report.sources[0]?.href?.startsWith('https://tfc-taiwan.org.tw/fact-check-reports/')));
 
   const lunchSlug = 'taipei-free-school-lunch-bidding-failures-and-fresh-milk-redemption-rates-claim';
   const lunch = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${lunchSlug}.json`), 'utf8')));
@@ -100,7 +113,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 46);
+  assert.equal(data.stories.length, 48);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 24);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');

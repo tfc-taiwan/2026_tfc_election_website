@@ -160,6 +160,30 @@
   },
   "stories": [
     {
+      "slug": "referendum-approval-threshold-valid-votes",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "公投通過門檻在於有效票數，不領票不會影響門檻",
+      "description": "公投通過門檻與有效同意票有關，不領公投票不會提高門檻；選民可選擇部分領票，但經註記後不能再次進入投票所。",
+      "date": "2026-11-06",
+      "image": null,
+      "tag": "公投議題",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "taiwan-2024-presidential-election-vote-counting-marking-error-corrected",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "「開3畫2」影片是2024總統大選開票劃記錯誤，當場發現失誤已更正票數",
+      "description": "影片拍到彰化第418投票所記票員一度劃記錯誤，經現場民眾提醒後立即更正，最後票數核對無誤；傳言暗示遭收買，易生誤解。",
+      "date": "2026-11-06",
+      "image": null,
+      "tag": "選舉資訊",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
       "slug": "1128-referendum-fake-news-nuclear-free-policy",
       "kind": "report",
       "category": "地方選舉",
@@ -843,6 +867,12 @@
         "辯論會查核"
       ],
       "items": [
+        {
+          "slug": "referendum-approval-threshold-valid-votes"
+        },
+        {
+          "slug": "taiwan-2024-presidential-election-vote-counting-marking-error-corrected"
+        },
         {
           "slug": "1128-referendum-fake-news-nuclear-free-policy"
         },

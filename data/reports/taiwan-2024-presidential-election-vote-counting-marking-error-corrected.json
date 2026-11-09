@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "taiwan-2024-presidential-election-vote-counting-marking-error-corrected",
+  "seo": {
+    "title": "「開3畫2」影片是2024總統大選開票劃記錯誤，當場發現失誤已更正票數｜2026 選舉工具箱",
+    "description": "影片拍到彰化第418投票所記票員一度劃記錯誤，經現場民眾提醒後立即更正，最後票數核對無誤；傳言暗示遭收買，易生誤解。",
+    "image": {
+      "src": "/images/og/election-home.png",
+      "alt": "「開3畫2」影片是2024總統大選開票劃記錯誤，當場發現失誤已更正票數",
+      "width": 1200,
+      "height": 630,
+      "type": "image/png"
+    },
+    "noindex": false,
+    "authorType": "Person"
+  },
+  "kind": "report",
+  "category": "地方選舉",
+  "title": "「開3畫2」影片是2024總統大選開票劃記錯誤，當場發現失誤已更正票數",
+  "finding": "網傳影片省略劃記錯誤當場即已更正的情況，並暗示選務人員遭收買，屬刻意誤導的錯誤訊息。",
+  "verdict": "錯誤",
+  "tags": [
+    "選舉資訊"
+  ],
+  "published": "2026-11-06",
+  "updated": "2026-11-06",
+  "reportId": "4387",
+  "reporter": "許雲凱",
+  "editor": "陳偉婷",
+  "image": null,
+  "imageCaption": "完整查核內容請見原始報告。",
+  "summaryPoints": [
+    "近期流傳「收買選務人員」影片，聲稱2024年總統大選開票「開3畫2」，將3號候選人得票劃記為2號。查核中心指出，影片拍攝於彰化市第418投票所；當時記票員確曾劃錯，但經民眾提醒後立即修正，後續票數核對無誤才送出。",
+    "傳言只擷取片段畫面，省略更正過程並暗示選務人員遭收買，因此為易生誤解的錯誤訊息。"
+  ],
+  "summaryClose": "",
+  "presentation": {
+    "showReportMetadata": true,
+    "showSummary": true
+  },
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "paragraphs": [
+      "近期網路流傳2024年總統大選開票影片，指稱「開3畫2」及「收買選務人員」。影片內容為唱票員喊出3號候選人得票，記票員一度劃記在2號候選人欄位。"
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "影片拍攝於2024年總統大選彰化市第418投票所",
+      "paragraphs": [
+        "該投票所位於彰化市台鳳里廣鳳宮，影片拍攝時間為2024年1月13日，當時正在進行總統大選開票。"
+      ]
+    },
+    {
+      "id": "check-2",
+      "title": "劃記錯誤當場發現並更正，票數核對後送出",
+      "paragraphs": [
+        "彰化縣選委會及兩位政黨推薦監察員均表示，記票員一度劃錯，經現場民眾提醒後立即修正，最後票數核對無誤。"
+      ]
+    },
+    {
+      "id": "check-3",
+      "title": "網傳片段省略更正情況",
+      "paragraphs": [
+        "投票所結果為柯文哲、吳欣盈263票，賴清德、蕭美琴249票，侯友宜、趙少康270票；傳言未呈現當場更正情形，並將疏失暗示為遭收買。"
+      ]
+    }
+  ],
+  "bodySections": [
+    {
+      "id": "check",
+      "title": "查核",
+      "paragraphs": [
+        "該投票所位於彰化市台鳳里廣鳳宮，影片拍攝時間為2024年1月13日，當時正在進行總統大選開票。",
+        "彰化縣選委會及兩位政黨推薦監察員均表示，記票員一度劃錯，經現場民眾提醒後立即修正，最後票數核對無誤。",
+        "投票所結果為柯文哲、吳欣盈263票，賴清德、蕭美琴249票，侯友宜、趙少康270票；傳言未呈現當場更正情形，並將疏失暗示為遭收買。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "台灣事實查核中心原始查核報告",
+      "note": "查看完整查核內容與資料來源",
+      "href": "https://tfc-taiwan.org.tw/fact-check-reports/taiwan-2024-presidential-election-vote-counting-marking-error-corrected/"
+    }
+  ],
+  "relatedSlugs": []
+}

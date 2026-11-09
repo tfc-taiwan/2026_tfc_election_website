@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "referendum-approval-threshold-valid-votes",
+  "seo": {
+    "title": "公投通過門檻在於有效票數，不領票不會影響門檻｜2026 選舉工具箱",
+    "description": "公投通過門檻與有效同意票有關，不領公投票不會提高門檻；選民可選擇部分領票，但經註記後不能再次進入投票所。",
+    "image": {
+      "src": "/images/og/election-home.png",
+      "alt": "公投通過門檻在於有效票數，不領票不會影響門檻",
+      "width": 1200,
+      "height": 630,
+      "type": "image/png"
+    },
+    "noindex": false,
+    "authorType": "Person"
+  },
+  "kind": "report",
+  "category": "地方選舉",
+  "title": "公投通過門檻在於有效票數，不領票不會影響門檻",
+  "finding": "公投通過門檻與有效票數有關，不領公投票不會提高門檻。傳言曲解門檻規定並引用與現況不符的談話，為錯誤訊息。",
+  "verdict": "錯誤",
+  "tags": [
+    "公投議題"
+  ],
+  "published": "2026-11-06",
+  "updated": "2026-11-06",
+  "reportId": "4386",
+  "reporter": "蔡雯如",
+  "editor": "陳偉婷",
+  "image": null,
+  "imageCaption": "完整查核內容請見原始報告。",
+  "summaryPoints": [
+    "九合一選舉和公投將至，網路流傳不領公投票可以讓通過門檻變高。查核中心指出，公投通過須有效同意票多於不同意票，且有效同意票達投票權人總額四分之一以上；不領票不會改變有效票門檻。",
+    "民眾可選擇不領公投票，但經投票所人員註記後，離開投票所便不能再次進入投票。傳言引用「開票到凌晨」的談話時，原先是假設有3案公投；今年11月28日僅有一案。"
+  ],
+  "summaryClose": "",
+  "presentation": {
+    "showReportMetadata": true,
+    "showSummary": true
+  },
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "paragraphs": [
+      "九合一選舉和公投將至，網路近期流傳貼文呼籲不領公投票，並稱此舉可以提高公投通過門檻、增加開票效率。"
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "公投通過門檻與有效票數有關",
+      "paragraphs": [
+        "公投須同時符合「有效同意票數多於不同意票」及「有效同意票達投票權人總額四分之一以上」兩項條件。不領公投票不會改變有效票數門檻。"
+      ]
+    },
+    {
+      "id": "check-2",
+      "title": "民眾可以選擇不領公投票",
+      "paragraphs": [
+        "依投開票所作業程序，選民如只領取部分選舉票，工作人員會在名冊註記並告知離開後不得再次進入投票所。"
+      ]
+    },
+    {
+      "id": "check-3",
+      "title": "「開票到凌晨」說法以有3項公投案為前提",
+      "paragraphs": [
+        "中選會主委先前談及開票時間時，是以公投案有3案為前提；11月28日實際僅有一項公投案。"
+      ]
+    }
+  ],
+  "bodySections": [
+    {
+      "id": "check",
+      "title": "查核",
+      "paragraphs": [
+        "公投須同時符合「有效同意票數多於不同意票」及「有效同意票達投票權人總額四分之一以上」兩項條件。不領公投票不會改變有效票數門檻。",
+        "依投開票所作業程序，選民如只領取部分選舉票，工作人員會在名冊註記並告知離開後不得再次進入投票所。",
+        "中選會主委先前談及開票時間時，是以公投案有3案為前提；11月28日實際僅有一項公投案。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "台灣事實查核中心原始查核報告",
+      "note": "查看完整查核內容與資料來源",
+      "href": "https://tfc-taiwan.org.tw/fact-check-reports/referendum-approval-threshold-valid-votes/"
+    }
+  ],
+  "relatedSlugs": []
+}
