@@ -71,6 +71,11 @@ test('new referendum report, corrected lunch report, pinned short, activities, a
   assert.deepEqual(newReports.map(report => report.reportId), ['4386', '4387']);
   assert.deepEqual(newReports.map(report => report.published), ['2026-11-06', '2026-11-06']);
   assert.ok(newReports.every(report => report.sources[0]?.href?.startsWith('https://tfc-taiwan.org.tw/fact-check-reports/')));
+  assert.ok(newReports.every(report => /^\/images\/imported\/[a-f0-9]{64}\.jpg$/.test(report.image?.src ?? '')));
+  assert.equal(newReports[0].bodySections?.find(section => section.id === 'check')?.paragraphs.length, 5);
+  assert.ok(newReports[0].bodySections?.find(section => section.id === 'check')?.paragraphs.some(paragraph => paragraph.includes('四分之一以上')));
+  assert.ok(newReports[1].bodySections?.find(section => section.id === 'check')?.paragraphs.some(paragraph => paragraph.includes('有效票782票，無效票1票')));
+  assert.ok(newReports.every(report => report.background.blocks?.some(block => block.type === 'image' && block.image.src.startsWith('/images/imported/'))));
 
   const lunchSlug = 'taipei-free-school-lunch-bidding-failures-and-fresh-milk-redemption-rates-claim';
   const lunch = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${lunchSlug}.json`), 'utf8')));

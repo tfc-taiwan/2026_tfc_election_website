@@ -164,9 +164,12 @@
       "kind": "report",
       "category": "地方選舉",
       "title": "公投通過門檻在於有效票數，不領票不會影響門檻",
-      "description": "公投通過門檻與有效同意票有關，不領公投票不會提高門檻；選民可選擇部分領票，但經註記後不能再次進入投票所。",
+      "description": "公投通過門檻在於有效同意票；選民不領公投票不會提高通過門檻。",
       "date": "2026-11-06",
-      "image": null,
+      "image": {
+        "src": "/images/imported/a72f2a963011bbbb13f1b24af799048dd85bd80dc73d987e47131b44a0b77de4.jpg",
+        "alt": "網傳「公投可以不領票，否則會提高通過門檻」的訊息圖卡"
+      },
       "tag": "公投議題",
       "tone": "cyan",
       "verdict": "錯誤"
@@ -175,10 +178,13 @@
       "slug": "taiwan-2024-presidential-election-vote-counting-marking-error-corrected",
       "kind": "report",
       "category": "地方選舉",
-      "title": "「開3畫2」影片是2024總統大選開票劃記錯誤，當場發現失誤已更正票數",
-      "description": "影片拍到彰化第418投票所記票員一度劃記錯誤，經現場民眾提醒後立即更正，最後票數核對無誤；傳言暗示遭收買，易生誤解。",
+      "title": "網傳「開3畫2」影片為2024總統大選開票劃記錯誤，當場發現失誤已更正票數",
+      "description": "彰化第418投票所記票員一度劃記錯誤，經民眾提醒後立即更正，最後票數核對無誤。",
       "date": "2026-11-06",
-      "image": null,
+      "image": {
+        "src": "/images/imported/11919bc5291b62e9ad357fdf5b8bb8bdd334581f39819f979593541fca34c82d.jpg",
+        "alt": "網傳「開票開3畫2、選務人員遭收買」的訊息圖卡"
+      },
       "tag": "選舉資訊",
       "tone": "cyan",
       "verdict": "錯誤"
