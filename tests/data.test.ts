@@ -57,7 +57,7 @@ test('new referendum report, corrected lunch report, pinned short, activities, a
   assert.equal(referendum.verdict, '錯誤');
   const referendumReport = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${referendumSlug}.json`), 'utf8')));
   assert.equal(referendumReport.reportId, '4380');
-  assert.ok(referendumReport.bodySections?.some(section => section.title === '補充資料'));
+  assert.ok(referendumReport.supplementarySections?.some(section => section.title === '補充資料'));
 
   const lunchSlug = 'taipei-free-school-lunch-bidding-failures-and-fresh-milk-redemption-rates-claim';
   const lunch = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${lunchSlug}.json`), 'utf8')));
