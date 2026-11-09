@@ -53,7 +53,7 @@ test('new referendum report, corrected lunch report, pinned short, activities, a
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
   assert.equal(data.sections.reports.items[0]?.slug, referendumSlug);
   const referendum = data.stories.find(story => story.slug === referendumSlug)!;
-  assert.equal(referendum.title, '網傳「1128有5大公投案」是錯誤資訊，公投僅「廢除非核家園」一案');
+  assert.equal(referendum.title, '網傳「11月28日有5項公投案要表決」？');
   assert.equal(referendum.verdict, '錯誤');
   const referendumReport = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${referendumSlug}.json`), 'utf8')));
   assert.equal(referendumReport.reportId, '4380');
