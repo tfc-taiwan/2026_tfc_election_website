@@ -141,7 +141,8 @@ test('provided covers match reports while unfilled dates stay absent', () => {
       assert.equal(report.background.blocks?.find(block => block.type === 'image')?.image.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4380-2-1024x675.jpg');
     }
     if (story.image?.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${story.image.src}`))); 
-    if (story.image) assert.equal(report.seo.image.src, story.image.src);
+    if (story.image && report.slug !== '1128-referendum-fake-news-nuclear-free-policy') assert.equal(report.seo.image.src, story.image.src);
+    if (report.slug === '1128-referendum-fake-news-nuclear-free-policy') assert.equal(report.seo.image.src, report.image?.src);
     const sections = [report.background, ...report.checkSections, ...(report.supplementarySections ?? []), ...(report.bodySections ?? [])];
     for (const section of sections) for (const block of section.blocks ?? []) {
       if (block.type === 'image' && block.image.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${block.image.src}`)));
