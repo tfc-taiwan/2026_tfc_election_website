@@ -458,7 +458,7 @@ function ArticleBody({ report, data }: { report: Report; data: Listings }) {
   const related = report.relatedSlugs.flatMap(slug => data.stories.find(story => story.slug === slug) ?? []);
   const verdictGuide = data.stories.find(story => story.slug === report.verdictGuideSlug);
   const kind = report.kind === 'report' ? '查核報告' : report.kind === 'analysis' ? '資訊操弄解析' : report.category === '選舉工具箱' ? '選舉工具箱' : '查核學堂';
-  return <article className={`report-page report-${report.slug}`}>
+  return <article className="report-page" data-report-slug={report.slug}>
     <nav className="breadcrumbs" aria-label="麵包屑"><Link to="/">首頁</Link><span aria-hidden="true">／</span><Link to={categoryPath ?? (report.kind === 'report' ? '/reports' : report.kind === 'analysis' ? '/#analysis' : isGuide ? '/#process' : '/#learning')}>{listingCategory ?? kind}</Link>{!listingCategory && report.category && report.category !== kind && <><span aria-hidden="true">／</span><span>{report.category}</span></>}</nav>
     <div className="article-tags">{report.tags.map(tag => <span className={`tag ${tag === report.verdict ? `verdict-tag ${verdictClass(tag)}` : 'topic-tag'}`} key={tag}>{tag}</span>)}</div>
     <h1>{report.title}</h1>{!isGuide && !report.bodySections && <p className="article-finding">{report.finding}</p>}

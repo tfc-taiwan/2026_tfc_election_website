@@ -941,4 +941,4 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 
 .source-body .article-content li { white-space: pre-line; }
 .source-body .article-content p { white-space: pre-line; }
-.report-referendum-approval-threshold-valid-votes .article-section .article-content > figure { max-width: 480px; }
+[data-report-slug="referendum-approval-threshold-valid-votes"] .article-section .article-content > figure { max-width: 480px; }
