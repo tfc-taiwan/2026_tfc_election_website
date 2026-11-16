@@ -63,6 +63,8 @@ test('new referendum report, corrected lunch report, pinned short, activities, a
   assert.equal(chiang.presentation?.showSummary, true);
   assert.equal(chiang.bodySections, undefined);
   assert.equal(chiang.summaryBlocks?.length, chiang.summaryPoints.length);
+  assert.equal(chiang.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-0.jpg');
+  assert.equal(chiang.background.blocks?.find(block => block.type === 'image')?.image.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-2.jpg');
   for (const section of chiang.checkSections) {
     assert.ok(!section.blocks?.some(block => block.type === 'heading' && block.level === 3 && block.content.map(part => part.text).join('') === section.title));
   }
