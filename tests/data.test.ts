@@ -49,6 +49,39 @@ test('all listing references resolve to unique, matching report files and local 
   for (const story of data.stories.filter(story => story.kind === 'report')) assert.ok(data.sections.reports.categories.includes(story.category!));
 });
 
+test('new referendum report, corrected lunch report, pinned short, activities, and debate card heights are ready', () => {
+  const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
+  assert.deepEqual(data.sections.reports.items.slice(0, 3).map(item => item.slug), [
+    'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading',
+    'referendum-approval-threshold-valid-votes',
+    'taiwan-2024-presidential-election-vote-counting-marking-error-corrected',
+  ]);
+  assert.equal(data.stories.find(story => story.slug === 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-0.jpg');
+  const referendum = data.stories.find(story => story.slug === referendumSlug)!;
+  assert.equal(referendum.title, '網傳「11月28日有5項公投案要表決」？');
+  assert.equal(referendum.verdict, '錯誤');
+  const referendumReport = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${referendumSlug}.json`), 'utf8')));
+  assert.equal(referendumReport.reportId, '4380');
+  assert.ok(referendumReport.supplementarySections?.some(section => section.title === '補充資料'));
+
+  const lunchSlug = 'taipei-free-school-lunch-bidding-failures-and-fresh-milk-redemption-rates-claim';
+  const lunch = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${lunchSlug}.json`), 'utf8')));
+  assert.equal(lunch.updated, '2026-11-04');
+  assert.ok(lunch.summaryPoints[0].includes('「生生喝鮮奶」'));
+  assert.ok(lunch.background.paragraphs.some(paragraph => paragraph.includes('正確政策名稱應是「生生喝鮮奶」')));
+  assert.ok(lunch.bodySections?.[0].paragraphs.some(paragraph => paragraph.startsWith('〖更新說明 2026/11/04〗')));
+
+  assert.equal(data.sections.shorts?.items[0]?.title, 'AI混淆選民認知？民間發起「自律公約」');
+  assert.equal(youtubeVideoId(data.sections.shorts!.items[0].url), 'vwcqSl8G5gQ');
+  const timed = data.sections.activities.items.filter(item => ['deepfake-press-conference', 'debate', 'election-rumor-script-talk-2026-11-12', 'election-day', 'post-election-rumor-review-2026-12-04'].includes(item.id));
+  assert.deepEqual(timed.map(item => item.dateLabel), ['10/29', '10/31', '11/12', '11/28', '12/4']);
+  assert.ok(timed.slice(2).every(item => item.tag === '線上分享會' || item.id === 'election-day'));
+  assert.ok(timed.filter(item => item.tag === '線上分享會').every(item => item.cta === '詳情在這' && item.href === 'https://tfc-taiwan.oen.tw/events/3LdBgtonf8yq8wZEgupj7JZVNR8'));
+
+  const css = readFileSync(resolve(root, 'src/styles.css'), 'utf8');
+  assert.match(css, /#debate \.story-card h3[^}]*-webkit-line-clamp:\s*4/);
+});
+
 test('YouTube watch, short and youtu.be links resolve to embed ids', () => {
   assert.equal(youtubeVideoId('https://www.youtube.com/watch?v=63hT8oS83Vo'), '63hT8oS83Vo');
   assert.equal(youtubeVideoId('https://www.youtube.com/shorts/63hT8oS83Vo'), '63hT8oS83Vo');
@@ -72,24 +105,45 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 46);
+  assert.equal(data.stories.length, 49);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 24);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
   assert.equal(data.stories.find(story => story.slug === 'five-star-flag-fine-2020-proposal-not-passed')?.image?.src, '/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg');
   assert.equal(data.stories.find(story => story.slug === 'deepfake-pledge')?.image, null);
   assert.deepEqual(data.sections.infographics?.slugs, [
-    'china-xiamen-bridge-does-not-reach-kinmen',
-    'taiwan-immigrant-stat-misread-cumulative-data-hoax-explained',
+    'ten-ng-voting-behaviors-part-1',
+    'ten-ng-voting-behaviors-part-2',
+    'avoid-candidate-masks-when-voting',
+    'four-types-election-rigging-rumors-debunked-facts',
   ]);
-  const standaloneCard = resolveInfographic(data, '/infographics/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained/1');
+  const upper = data.sections.infographics?.items?.find(item => item.slug === 'ten-ng-voting-behaviors-part-1');
+  assert.equal(upper?.cards.length, 7);
+  assert.deepEqual(upper?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/ten-ng-voting-behaviors-part-1-${index + 1}.jpg`));
+  const lower = data.sections.infographics?.items?.find(item => item.slug === 'ten-ng-voting-behaviors-part-2');
+  assert.equal(lower?.cards.length, 7);
+  assert.deepEqual(lower?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/ten-ng-voting-behaviors-part-2-${index + 1}.jpg`));
+  const masks = data.sections.infographics?.items?.find(item => item.slug === 'avoid-candidate-masks-when-voting');
+  assert.equal(masks?.cards.length, 5);
+  assert.deepEqual(masks?.cards.map(card => card.image.src), Array.from({ length: 5 }, (_, index) => `/images/avoid-candidate-masks-when-voting-${index + 1}.jpg`));
+  const newGallery = data.sections.infographics?.items?.find(item => item.slug === 'four-types-election-rigging-rumors-debunked-facts');
+  assert.equal(newGallery?.title, '4種作票謠言樣態');
+  assert.equal(newGallery?.cards.length, 7);
+  assert.deepEqual(newGallery?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/four-types-election-rigging-rumors-debunked-facts-${index + 1}.jpg`));
+  const standaloneCard = resolveInfographic(data, '/infographics/four-types-election-rigging-rumors-debunked-facts/1');
   assert.equal(standaloneCard?.story, null);
-  assert.equal(standaloneCard?.group.cards.length, 5);
+  assert.equal(standaloneCard?.group.cards.length, 7);
   for (const story of data.stories) {
     const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${story.slug}.json`), 'utf8')));
-    if (!report.bodySections) assert.deepEqual(report.image, story.image);
+    if (!report.bodySections && report.slug !== '1128-referendum-fake-news-nuclear-free-policy') assert.deepEqual(report.image, story.image);
+    if (report.slug === '1128-referendum-fake-news-nuclear-free-policy') {
+      assert.equal(report.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4380_5.jpg');
+      assert.equal(report.image?.alt, '網傳「2026年五大公投案」圖卡，標示錯誤');
+      assert.equal(report.background.blocks?.find(block => block.type === 'image')?.image.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4380-2-1024x675.jpg');
+    }
     if (story.image?.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${story.image.src}`))); 
-    if (story.image) assert.equal(report.seo.image.src, story.image.src);
+    if (story.image && report.slug !== '1128-referendum-fake-news-nuclear-free-policy') assert.equal(report.seo.image.src, story.image.src);
+    if (report.slug === '1128-referendum-fake-news-nuclear-free-policy') assert.equal(report.seo.image.src, report.image?.src);
     const sections = [report.background, ...report.checkSections, ...(report.supplementarySections ?? []), ...(report.bodySections ?? [])];
     for (const section of sections) for (const block of section.blocks ?? []) {
       if (block.type === 'image' && block.image.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${block.image.src}`)));
@@ -121,10 +175,10 @@ test('learning guide and community activity use the requested destinations and l
 });
 
 test('standalone infographic cards resolve without inventing an article', () => {
-  const path = '/infographics/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained/1';
+  const path = '/infographics/four-types-election-rigging-rumors-debunked-facts/1';
   const selected = resolveInfographic(data, path);
   assert.equal(selected?.story, null);
-  assert.equal(selected?.group.cards.length, 5);
+  assert.equal(selected?.group.cards.length, 7);
 });
 
 test('category pins keep explanatory articles ahead of new reports without leaking into other lists', () => {
