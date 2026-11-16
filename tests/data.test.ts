@@ -57,6 +57,15 @@ test('new referendum report, corrected lunch report, pinned short, activities, a
     'taiwan-2024-presidential-election-vote-counting-marking-error-corrected',
   ]);
   assert.equal(data.stories.find(story => story.slug === 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-0.jpg');
+  const chiangSlug = 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading';
+  const chiang = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${chiangSlug}.json`), 'utf8')));
+  assert.equal(chiang.presentation?.showReportMetadata, true);
+  assert.equal(chiang.presentation?.showSummary, true);
+  assert.equal(chiang.bodySections, undefined);
+  assert.equal(chiang.summaryBlocks?.length, chiang.summaryPoints.length);
+  for (const section of chiang.checkSections) {
+    assert.ok(!section.blocks?.some(block => block.type === 'heading' && block.level === 3 && block.content.map(part => part.text).join('') === section.title));
+  }
   const referendum = data.stories.find(story => story.slug === referendumSlug)!;
   assert.equal(referendum.title, '網傳「11月28日有5項公投案要表決」？');
   assert.equal(referendum.verdict, '錯誤');
@@ -135,7 +144,7 @@ test('provided covers match reports while unfilled dates stay absent', () => {
   assert.equal(standaloneCard?.group.cards.length, 7);
   for (const story of data.stories) {
     const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${story.slug}.json`), 'utf8')));
-    if (!report.bodySections && report.slug !== '1128-referendum-fake-news-nuclear-free-policy') assert.deepEqual(report.image, story.image);
+    if (!report.bodySections && !['1128-referendum-fake-news-nuclear-free-policy', 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading'].includes(report.slug)) assert.deepEqual(report.image, story.image);
     if (report.slug === '1128-referendum-fake-news-nuclear-free-policy') {
       assert.equal(report.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4380_5.jpg');
       assert.equal(report.image?.alt, '網傳「2026年五大公投案」圖卡，標示錯誤');
