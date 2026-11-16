@@ -9,22 +9,13 @@
       "title": "2026 選舉工具箱｜地方選舉與公投查核專區 - 台灣事實查核中心",
       "description": "台灣事實查核中心「2026選舉工具箱」，掌握九合一選舉與公投的即時查核報告、破解常見謠言，以及查核中心發起的「拒絕深偽造假自律倡議」。拒絕資訊操弄！看懂訊息，做出知情的選擇。",
       "image": {
-        "src": "/images/og/election-home.png",
+        "src": "/images/og/election-home-5bb8d0d19f69.png",
         "alt": "2026 選舉工具箱｜台灣九合一選舉事實查核與資訊專區",
         "width": 1200,
         "height": 630,
         "type": "image/png"
       },
       "noindex": false
-    },
-    "reportCategoryImages": {
-      "辯論會查核": {
-        "src": "/images/og/debate-check.png",
-        "alt": "2026 台北市長候選人辯論會查核",
-        "width": 1200,
-        "height": 630,
-        "type": "image/png"
-      }
     },
     "reports": {
       "title": "查核報告列表｜台灣事實查核中心 2026 選舉工具箱",
@@ -160,60 +151,30 @@
   },
   "stories": [
     {
-      "slug": "referendum-approval-threshold-valid-votes",
+      "slug": "chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading",
       "kind": "report",
       "category": "地方選舉",
-      "title": "網傳「公投不領票，通過門檻會變高」？",
-      "description": "公投通過門檻在於有效票，不領票不會提高門檻。",
-      "date": "2026-11-06",
+      "title": "網傳「蔣萬安反對前瞻預算」照片，實為2017年杯葛前瞻計畫條例草案，與輝達預算無關",
+      "description": "近日流傳台北市長蔣萬安站上會議桌影像，聲稱2017年時任立委蔣萬安在立院阻擋給輝達（NVIDIA）的補助預算。經查證，當時蔣萬安杯葛的是前瞻計畫條例草案，不是預算；而且補助輝達預算是2021年才編列。",
+      "date": "2026-11-13",
       "image": {
-        "src": "/images/imported/a72f2a963011bbbb13f1b24af799048dd85bd80dc73d987e47131b44a0b77de4.jpg",
-        "alt": "網傳「公投可以不領票，否則會提高通過門檻」的訊息圖卡"
-      },
-      "tag": "公投議題",
-      "tone": "cyan",
-      "verdict": "錯誤"
-    },
-    {
-      "slug": "taiwan-2024-presidential-election-vote-counting-marking-error-corrected",
-      "kind": "report",
-      "category": "地方選舉",
-      "title": "網傳「開票『開3畫2』，選務人員遭收買」？",
-      "description": "彰化縣第418投票所發生劃記錯誤，經現場民眾提醒後立即更正，最後票數核對無誤。",
-      "date": "2026-11-06",
-      "image": {
-        "src": "/images/imported/11919bc5291b62e9ad357fdf5b8bb8bdd334581f39819f979593541fca34c82d.jpg",
-        "alt": "網傳「開票開3畫2、選務人員遭收買」的訊息圖卡"
-      },
-      "tag": "選舉資訊",
-      "tone": "cyan",
-      "verdict": "錯誤"
-    },
-    {
-      "slug": "1128-referendum-fake-news-nuclear-free-policy",
-      "kind": "report",
-      "category": "地方選舉",
-      "title": "網傳「11月28日有5項公投案要表決」？",
-      "description": "九合一選舉將至，網傳11月28日投票日有5項公投；經查，今年成立公投案僅有「廢除非核家園」一案。",
-      "date": "2026-11-03",
-      "image": {
-        "src": "/images/imported/be73442c8716771a34c27a985bef0badc98b357be521d5d9668184a55d369594.jpg",
-        "alt": "網傳「2026年五大公投案」圖卡，標示錯誤"
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-0.jpg",
+        "alt": "網傳「蔣萬安反對前瞻預算」照片，實為2017年杯葛前瞻計畫條例草案，與輝達預算無關"
       },
       "tag": "政治與政策",
       "tone": "cyan",
       "verdict": "錯誤"
     },
     {
-      "slug": "black-bear-academy-subsidies-before-shen-po-yang-became-legislator",
+      "slug": "outdated-claim-kmt-blocked-military-pension-bill",
       "kind": "report",
       "category": "地方選舉",
-      "title": "網傳「黑熊學院補助沈伯洋未迴避」？ 目前查得補助案均在沈伯洋就任立委前核定或公告",
-      "description": "網路近期流傳，台北市長候選人沈伯洋在立委期間，其妻曾心慧擔任「黑熊社會企業公司」董事長，接受政府預算補助，質疑沈任職立委期間涉及違反利益迴避。經查證，沈伯洋就任立委後一個月，其妻即正式卸任董事長。查詢目前可得的公開資料，黑熊學院2024年取得的政府補助，核定日早於沈伯洋就任立委之前。",
-      "date": "2026-11-02",
+      "title": "網傳「本週國民黨擋下軍人效忠中共取消退休金法案」，是過時資訊，並非近期事件",
+      "description": "各大社群今年10月中旬流傳圖卡，稱「台灣軍人若效忠中共將取消退休金的法案，在本週被國民黨擋下」。經查，網傳圖片於2025年5月即流傳，並非近期事件。目前立法院有3案約束現役軍人效忠敵人的修法草案，正在審理中。",
+      "date": "2026-10-28",
       "image": {
-        "src": "/images/imported/91767d6e2c499212d2e11708631925b3a1228f707e70e58606c0d7c527e121f5.jpg",
-        "alt": "網傳「黑熊學院補助沈伯洋未迴避」？ 目前查得補助案均在沈伯洋就任立委前核定或公告"
+        "src": "/images/imported/76f17b71b7f52bebb75dde2766d2824a071d68421acac4649f8f1c818b12a583.jpg",
+        "alt": "網傳「本週國民黨擋下軍人效忠中共取消退休金法案」，是過時資訊，並非近期事件"
       },
       "tag": "政治與政策",
       "tone": "cyan",
@@ -235,15 +196,15 @@
       "verdict": "錯誤"
     },
     {
-      "slug": "outdated-claim-kmt-blocked-military-pension-bill",
+      "slug": "black-bear-academy-subsidies-before-shen-po-yang-became-legislator",
       "kind": "report",
       "category": "地方選舉",
-      "title": "網傳「本週國民黨擋下軍人效忠中共取消退休金法案」，是過時資訊，並非近期事件",
-      "description": "各大社群今年10月中旬流傳圖卡，稱「台灣軍人若效忠中共將取消退休金的法案，在本週被國民黨擋下」。經查，網傳圖片於2025年5月即流傳，並非近期事件。目前立法院有3案約束現役軍人效忠敵人的修法草案，正在審理中。",
-      "date": "2026-10-28",
+      "title": "網傳「黑熊學院補助沈伯洋未迴避」？ 目前查得補助案均在沈伯洋就任立委前核定或公告",
+      "description": "網路近期流傳，台北市長候選人沈伯洋在立委期間，其妻曾心慧擔任「黑熊社會企業公司」董事長，接受政府預算補助，質疑沈任職立委期間涉及違反利益迴避。經查證，沈伯洋就任立委後一個月，其妻即正式卸任董事長。查詢目前可得的公開資料，黑熊學院2024年取得的政府補助，核定日早於沈伯洋就任立委之前。",
+      "date": "2026-11-02",
       "image": {
-        "src": "/images/imported/76f17b71b7f52bebb75dde2766d2824a071d68421acac4649f8f1c818b12a583.jpg",
-        "alt": "網傳「本週國民黨擋下軍人效忠中共取消退休金法案」，是過時資訊，並非近期事件"
+        "src": "/images/imported/91767d6e2c499212d2e11708631925b3a1228f707e70e58606c0d7c527e121f5.jpg",
+        "alt": "網傳「黑熊學院補助沈伯洋未迴避」？ 目前查得補助案均在沈伯洋就任立委前核定或公告"
       },
       "tag": "政治與政策",
       "tone": "cyan",
@@ -284,7 +245,7 @@
       "kind": "report",
       "category": "辯論會查核",
       "title": "沈伯洋說：「免費的營養午餐喊了口號，開學前還頻頻流標，有些學校險些斷炊；生生有鮮乳的兌換率一直往下，弱勢的領取率還偏低」？",
-      "description": "今年營養午餐招標時程確實較慢，8月底才全數完成招標作業；2025年「生生喝鮮奶」的兌換率在計畫後期呈現下降趨勢，弱勢學生的兌換率也低於整體兌換率。",
+      "description": "今年營養午餐招標時程確實較慢，8月底才全數完成招標作業；2025年「生生有鮮乳」的兌換率在計劃後期呈現下降趨勢，弱勢學生的兌換率也低於整體兌換率。",
       "date": "2026-10-31",
       "image": {
         "src": "/images/imported/4fed492bce4b8e0efdad8c52eced5dda140210fce93fbbe4b2968b4fa57b9f89.jpg",
@@ -299,7 +260,7 @@
       "kind": "report",
       "category": "辯論會查核",
       "title": "蔣萬安說：「你（沈伯洋）剛提到很多問題…其實我們推動營養午餐，免費不是等於品質打折…金華國中在內很多學校，是大規模的食物中毒，但是事實證明，事後的檢查都完全合格」？",
-      "description": "經市府採檢，成淵高中（國中部）熱食部便當檢出金黃色葡萄球菌腸毒素B，其餘5校餐點或食材檢驗結果皆為合格，但金華國中採檢有爭議。",
+      "description": "經市府採檢，成淵高中（國中部）熱食部便當檢出金黃色葡萄球菌腸毒素B，其餘5校餐點或食材檢驗結果皆為合格，但金華國中採檢有爭議，延平中學採檢報告僅告知家長，並未公開。",
       "date": "2026-10-31",
       "image": {
         "src": "/images/imported/8891689784630420b24d50f6bf0bc089724faeedf6e61815f5255f1ddcfdc790.jpg",
@@ -874,22 +835,16 @@
       ],
       "items": [
         {
-          "slug": "referendum-approval-threshold-valid-votes"
+          "slug": "chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading"
         },
         {
-          "slug": "taiwan-2024-presidential-election-vote-counting-marking-error-corrected"
-        },
-        {
-          "slug": "1128-referendum-fake-news-nuclear-free-policy"
-        },
-        {
-          "slug": "black-bear-academy-subsidies-before-shen-po-yang-became-legislator"
+          "slug": "outdated-claim-kmt-blocked-military-pension-bill"
         },
         {
           "slug": "chiang-wan-an-aides-did-not-scold-citizens"
         },
         {
-          "slug": "outdated-claim-kmt-blocked-military-pension-bill"
+          "slug": "black-bear-academy-subsidies-before-shen-po-yang-became-legislator"
         },
         {
           "slug": "puma-shen-grandfather-battle-rumor"
@@ -976,14 +931,6 @@
       "description": "戳破謠言動態，快速掌握查證方法與資訊判讀重點！",
       "items": [
         {
-          "title": "AI混淆選民認知？民間發起「自律公約」",
-          "url": "https://youtube.com/shorts/vwcqSl8G5gQ?si=MeJDLyYWtxgM1AFX"
-        },
-        {
-          "title": "「開3畫2」選務人員遭收買？老謠言！當場發現有誤並更正票數",
-          "url": "https://youtube.com/shorts/Vs5Iz5IOQnQ?si=jabi2QbCPsjr-sxd"
-        },
-        {
           "title": "紙箱票匭方便作票？破解選舉老謠言！",
           "url": "https://www.youtube.com/shorts/kXQ61YShNXo"
         },
@@ -994,6 +941,10 @@
         {
           "title": "中選會能操控開票？防弊機制一次看懂！",
           "url": "https://www.youtube.com/shorts/dRvQRVwKLFY"
+        },
+        {
+          "title": "台北砍樹路段跟中國模擬攻台路線一模一樣？傳言說法穿鑿附會",
+          "url": "https://www.youtube.com/shorts/vnj3INJwcNU"
         }
       ]
     },
@@ -1116,19 +1067,6 @@
           "tone": "cyan"
         },
         {
-          "id": "election-rumor-script-talk-2026-11-12",
-          "dateLabel": "11/12",
-          "tag": "線上分享會",
-          "title": "查核祕笈：選舉謠言劇本解密",
-          "description": "為何透明票箱、隱形墨水謠言一再出現？選舉謠言有劇本？帶你一網打盡",
-          "content": [
-            "為何透明票箱、隱形墨水謠言一再出現？選舉謠言有劇本？帶你一網打盡"
-          ],
-          "cta": "詳情在這",
-          "tone": "cyan",
-          "href": "https://tfc-taiwan.oen.tw/events/3LdBgtonf8yq8wZEgupj7JZVNR8"
-        },
-        {
           "id": "election-day",
           "dateLabel": "11/28",
           "title": "【投票日】闢謠選務謠言，守護台灣民主",
@@ -1140,19 +1078,6 @@
           "href": "https://tfc-taiwan.org.tw/",
           "tag": "即時查核",
           "tone": "cyan"
-        },
-        {
-          "id": "post-election-rumor-review-2026-12-04",
-          "dateLabel": "12/4",
-          "tag": "線上分享會",
-          "title": "選後覆盤：選戰謠言瞄準誰？",
-          "description": "本次選舉發生了什麼事？是否有哪些謠言出現？一起討論釐清！",
-          "content": [
-            "本次選舉發生了什麼事？是否有哪些謠言出現？一起討論釐清！"
-          ],
-          "cta": "詳情在這",
-          "tone": "cyan",
-          "href": "https://tfc-taiwan.oen.tw/events/3LdBgtonf8yq8wZEgupj7JZVNR8"
         },
         {
           "id": "community",
@@ -1284,219 +1209,91 @@
     },
     "infographics": {
       "slugs": [
-        "ten-ng-voting-behaviors-part-1",
-        "ten-ng-voting-behaviors-part-2",
-        "avoid-candidate-masks-when-voting",
-        "four-types-election-rigging-rumors-debunked-facts"
+        "china-xiamen-bridge-does-not-reach-kinmen",
+        "taiwan-immigrant-stat-misread-cumulative-data-hoax-explained"
       ],
       "items": [
         {
-          "slug": "ten-ng-voting-behaviors-part-1",
-          "title": "十大NG投票行為（上）",
-          "description": "查小喵出任務｜十大NG投票行為（上）圖卡。",
+          "slug": "china-xiamen-bridge-does-not-reach-kinmen",
+          "title": "中國廈金大橋僅能連結廈門兩島，無法直通金門",
+          "description": "釐清廈金大橋的實際施工資訊，以及是否能直通金門。",
           "cards": [
             {
               "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-1-1.jpg",
-                "alt": "十大NG投票行為（上）圖卡，第 1 張"
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-1.jpg",
+                "alt": "廈金大橋查核圖卡，第 1 張"
               },
-              "caption": "十大NG投票行為（上）｜第 1 張"
+              "caption": "廈金大橋查核圖卡｜第 1 張"
             },
             {
               "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-1-2.jpg",
-                "alt": "十大NG投票行為（上）圖卡，第 2 張"
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-2.jpg",
+                "alt": "廈金大橋查核圖卡，第 2 張"
               },
-              "caption": "十大NG投票行為（上）｜第 2 張"
+              "caption": "廈金大橋查核圖卡｜第 2 張"
             },
             {
               "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-1-3.jpg",
-                "alt": "十大NG投票行為（上）圖卡，第 3 張"
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-3.jpg",
+                "alt": "廈金大橋查核圖卡，第 3 張"
               },
-              "caption": "十大NG投票行為（上）｜第 3 張"
+              "caption": "廈金大橋查核圖卡｜第 3 張"
             },
             {
               "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-1-4.jpg",
-                "alt": "十大NG投票行為（上）圖卡，第 4 張"
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-4.jpg",
+                "alt": "廈金大橋查核圖卡，第 4 張"
               },
-              "caption": "十大NG投票行為（上）｜第 4 張"
+              "caption": "廈金大橋查核圖卡｜第 4 張"
             },
             {
               "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-1-5.jpg",
-                "alt": "十大NG投票行為（上）圖卡，第 5 張"
+                "src": "/images/china-xiamen-bridge-does-not-reach-kinmen-5.jpg",
+                "alt": "廈金大橋查核圖卡，第 5 張"
               },
-              "caption": "十大NG投票行為（上）｜第 5 張"
-            },
-            {
-              "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-1-6.jpg",
-                "alt": "十大NG投票行為（上）圖卡，第 6 張"
-              },
-              "caption": "十大NG投票行為（上）｜第 6 張"
-            },
-            {
-              "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-1-7.jpg",
-                "alt": "十大NG投票行為（上）圖卡，第 7 張"
-              },
-              "caption": "十大NG投票行為（上）｜第 7 張"
+              "caption": "廈金大橋查核圖卡｜第 5 張"
             }
           ]
         },
         {
-          "slug": "ten-ng-voting-behaviors-part-2",
-          "title": "十大NG投票行為（下）",
-          "description": "查小喵出任務｜十大NG投票行為（下）圖卡。",
+          "slug": "taiwan-immigrant-stat-misread-cumulative-data-hoax-explained",
+          "title": "近 3 年在台定居中國人暴增？挪用累計 39 年數據偷換概念的謠言",
+          "description": "圖卡整理網傳定居人口說法與累計年數的脈絡。",
           "cards": [
             {
               "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-2-1.jpg",
-                "alt": "十大NG投票行為（下）圖卡，第 1 張"
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-1.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 1 張"
               },
-              "caption": "十大NG投票行為（下）｜第 1 張"
+              "caption": "在台定居中國人數據查核圖卡｜第 1 張"
             },
             {
               "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-2-2.jpg",
-                "alt": "十大NG投票行為（下）圖卡，第 2 張"
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-2.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 2 張"
               },
-              "caption": "十大NG投票行為（下）｜第 2 張"
+              "caption": "在台定居中國人數據查核圖卡｜第 2 張"
             },
             {
               "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-2-3.jpg",
-                "alt": "十大NG投票行為（下）圖卡，第 3 張"
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-3.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 3 張"
               },
-              "caption": "十大NG投票行為（下）｜第 3 張"
+              "caption": "在台定居中國人數據查核圖卡｜第 3 張"
             },
             {
               "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-2-4.jpg",
-                "alt": "十大NG投票行為（下）圖卡，第 4 張"
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-4.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 4 張"
               },
-              "caption": "十大NG投票行為（下）｜第 4 張"
+              "caption": "在台定居中國人數據查核圖卡｜第 4 張"
             },
             {
               "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-2-5.jpg",
-                "alt": "十大NG投票行為（下）圖卡，第 5 張"
+                "src": "/images/taiwan-immigrant-stat-misread-cumulative-data-hoax-explained-5.jpg",
+                "alt": "在台定居中國人數據查核圖卡，第 5 張"
               },
-              "caption": "十大NG投票行為（下）｜第 5 張"
-            },
-            {
-              "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-2-6.jpg",
-                "alt": "十大NG投票行為（下）圖卡，第 6 張"
-              },
-              "caption": "十大NG投票行為（下）｜第 6 張"
-            },
-            {
-              "image": {
-                "src": "/images/ten-ng-voting-behaviors-part-2-7.jpg",
-                "alt": "十大NG投票行為（下）圖卡，第 7 張"
-              },
-              "caption": "十大NG投票行為（下）｜第 7 張"
-            }
-          ]
-        },
-        {
-          "slug": "avoid-candidate-masks-when-voting",
-          "title": "投票避免配戴候選人口罩",
-          "description": "投票期間避免配戴含有候選人資訊的口罩，維護投票秩序與秘密投票。",
-          "cards": [
-            {
-              "image": {
-                "src": "/images/avoid-candidate-masks-when-voting-1.jpg",
-                "alt": "投票避免配戴候選人口罩圖卡，第 1 張"
-              },
-              "caption": "投票避免配戴候選人口罩｜第 1 張"
-            },
-            {
-              "image": {
-                "src": "/images/avoid-candidate-masks-when-voting-2.jpg",
-                "alt": "投票避免配戴候選人口罩圖卡，第 2 張"
-              },
-              "caption": "投票避免配戴候選人口罩｜第 2 張"
-            },
-            {
-              "image": {
-                "src": "/images/avoid-candidate-masks-when-voting-3.jpg",
-                "alt": "投票避免配戴候選人口罩圖卡，第 3 張"
-              },
-              "caption": "投票避免配戴候選人口罩｜第 3 張"
-            },
-            {
-              "image": {
-                "src": "/images/avoid-candidate-masks-when-voting-4.jpg",
-                "alt": "投票避免配戴候選人口罩圖卡，第 4 張"
-              },
-              "caption": "投票避免配戴候選人口罩｜第 4 張"
-            },
-            {
-              "image": {
-                "src": "/images/avoid-candidate-masks-when-voting-5.jpg",
-                "alt": "投票避免配戴候選人口罩圖卡，第 5 張"
-              },
-              "caption": "投票避免配戴候選人口罩｜第 5 張"
-            }
-          ]
-        },
-        {
-          "slug": "four-types-election-rigging-rumors-debunked-facts",
-          "title": "4種作票謠言樣態",
-          "description": "掌握常見的四種作票謠言樣態，認識以選務制度、流程或個案誤導民眾的說法。",
-          "cards": [
-            {
-              "image": {
-                "src": "/images/four-types-election-rigging-rumors-debunked-facts-1.jpg",
-                "alt": "4種作票謠言樣態圖卡，第 1 張"
-              },
-              "caption": "4種作票謠言樣態｜第 1 張"
-            },
-            {
-              "image": {
-                "src": "/images/four-types-election-rigging-rumors-debunked-facts-2.jpg",
-                "alt": "4種作票謠言樣態圖卡，第 2 張"
-              },
-              "caption": "4種作票謠言樣態｜第 2 張"
-            },
-            {
-              "image": {
-                "src": "/images/four-types-election-rigging-rumors-debunked-facts-3.jpg",
-                "alt": "4種作票謠言樣態圖卡，第 3 張"
-              },
-              "caption": "4種作票謠言樣態｜第 3 張"
-            },
-            {
-              "image": {
-                "src": "/images/four-types-election-rigging-rumors-debunked-facts-4.jpg",
-                "alt": "4種作票謠言樣態圖卡，第 4 張"
-              },
-              "caption": "4種作票謠言樣態｜第 4 張"
-            },
-            {
-              "image": {
-                "src": "/images/four-types-election-rigging-rumors-debunked-facts-5.jpg",
-                "alt": "4種作票謠言樣態圖卡，第 5 張"
-              },
-              "caption": "4種作票謠言樣態｜第 5 張"
-            },
-            {
-              "image": {
-                "src": "/images/four-types-election-rigging-rumors-debunked-facts-6.jpg",
-                "alt": "4種作票謠言樣態圖卡，第 6 張"
-              },
-              "caption": "4種作票謠言樣態｜第 6 張"
-            },
-            {
-              "image": {
-                "src": "/images/four-types-election-rigging-rumors-debunked-facts-7.jpg",
-                "alt": "4種作票謠言樣態圖卡，第 7 張"
-              },
-              "caption": "4種作票謠言樣態｜第 7 張"
+              "caption": "在台定居中國人數據查核圖卡｜第 5 張"
             }
           ]
         }
