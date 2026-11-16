@@ -160,6 +160,21 @@
   },
   "stories": [
     {
+      "slug": "chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「蔣萬安反對前瞻預算」照片，實為2017年杯葛前瞻計畫條例草案，與輝達預算無關",
+      "description": "近日流傳台北市長蔣萬安站上會議桌影像，聲稱2017年時任立委蔣萬安在立院阻擋給輝達（NVIDIA）的補助預算。經查證，當時蔣萬安杯葛的是前瞻計畫條例草案，不是預算；而且補助輝達預算是2021年才編列。",
+      "date": "2026-11-13",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-0.jpg",
+        "alt": "網傳「蔣萬安反對前瞻預算」照片，實為2017年杯葛前瞻計畫條例草案，與輝達預算無關"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
       "slug": "referendum-approval-threshold-valid-votes",
       "kind": "report",
       "category": "地方選舉",
@@ -873,6 +888,9 @@
         "辯論會查核"
       ],
       "items": [
+        {
+          "slug": "chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading"
+        },
         {
           "slug": "referendum-approval-threshold-valid-votes"
         },

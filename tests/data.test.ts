@@ -52,10 +52,22 @@ test('all listing references resolve to unique, matching report files and local 
 test('new referendum report, corrected lunch report, pinned short, activities, and debate card heights are ready', () => {
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
   assert.deepEqual(data.sections.reports.items.slice(0, 3).map(item => item.slug), [
+    'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading',
     'referendum-approval-threshold-valid-votes',
     'taiwan-2024-presidential-election-vote-counting-marking-error-corrected',
-    referendumSlug,
   ]);
+  assert.equal(data.stories.find(story => story.slug === 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-0.jpg');
+  const chiangSlug = 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading';
+  const chiang = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${chiangSlug}.json`), 'utf8')));
+  assert.equal(chiang.presentation?.showReportMetadata, true);
+  assert.equal(chiang.presentation?.showSummary, true);
+  assert.equal(chiang.bodySections, undefined);
+  assert.equal(chiang.summaryBlocks?.length, chiang.summaryPoints.length);
+  assert.equal(chiang.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-0.jpg');
+  assert.equal(chiang.background.blocks?.find(block => block.type === 'image')?.image.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-2.jpg');
+  for (const section of chiang.checkSections) {
+    assert.ok(!section.blocks?.some(block => block.type === 'heading' && block.level === 3 && block.content.map(part => part.text).join('') === section.title));
+  }
   const referendum = data.stories.find(story => story.slug === referendumSlug)!;
   assert.equal(referendum.title, '網傳「11月28日有5項公投案要表決」？');
   assert.equal(referendum.verdict, '錯誤');
@@ -104,7 +116,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 48);
+  assert.equal(data.stories.length, 49);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 24);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
@@ -134,7 +146,7 @@ test('provided covers match reports while unfilled dates stay absent', () => {
   assert.equal(standaloneCard?.group.cards.length, 7);
   for (const story of data.stories) {
     const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${story.slug}.json`), 'utf8')));
-    if (!report.bodySections && report.slug !== '1128-referendum-fake-news-nuclear-free-policy') assert.deepEqual(report.image, story.image);
+    if (!report.bodySections && !['1128-referendum-fake-news-nuclear-free-policy', 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading'].includes(report.slug)) assert.deepEqual(report.image, story.image);
     if (report.slug === '1128-referendum-fake-news-nuclear-free-policy') {
       assert.equal(report.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4380_5.jpg');
       assert.equal(report.image?.alt, '網傳「2026年五大公投案」圖卡，標示錯誤');
