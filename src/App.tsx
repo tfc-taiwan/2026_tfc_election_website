@@ -324,7 +324,7 @@ function InfographicPage({ data }: { data: Listings }) {
 function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => void }) {
   const { now, context } = useContext(RenderContext);
   const { hero, sections, stories } = data;
-  const [script, setScript] = useState<string | null>(sections.scripts.items[0]?.id ?? null);
+  const [script, setScript] = useState<string | null>(null);
   const [today, setToday] = useState(() => new Date(now));
   useEffect(() => { setToday(new Date()); const timer = window.setInterval(() => setToday(new Date()), 60_000); return () => clearInterval(timer); }, []);
   const pick = (slugs: string[]) => slugs.flatMap(slug => stories.find(story => story.slug === slug) ?? []);
