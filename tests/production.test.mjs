@@ -204,7 +204,10 @@ test('publishing configuration indexes real content only, including sitemap and 
   const html = await (await fetch(base + '/reports/fake-infographic-26-chinese-spouses-running-for-chief')).text();
   assert.ok(html.includes('content="index, follow, max-image-preview:large"'));
   const xml = await (await fetch(base + '/sitemap.xml')).text();
-  assert.equal((xml.match(/<loc>/g) || []).length, source.stories.length + 1);
+  const publishedInfographicCards = (source.sections.infographics?.items ?? [])
+    .filter(group => source.stories.some(story => story.slug === group.slug))
+    .reduce((count, group) => count + group.cards.length, 0);
+  assert.equal((xml.match(/<loc>/g) || []).length, source.stories.length + 1 + publishedInfographicCards);
   assert.ok(!xml.includes('/infographics/china-xiamen-bridge-does-not-reach-kinmen/1'));
   assert.ok(xml.includes('https://election.example.org/reports/fake-infographic-26-chinese-spouses-running-for-chief'));
   assert.ok(!xml.includes('/reports/deepfake-pledge</loc>'));
