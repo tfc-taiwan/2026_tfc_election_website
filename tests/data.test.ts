@@ -123,6 +123,8 @@ test('provided covers match reports while unfilled dates stay absent', () => {
   assert.equal(data.stories.find(story => story.slug === 'five-star-flag-fine-2020-proposal-not-passed')?.image?.src, '/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg');
   assert.equal(data.stories.find(story => story.slug === 'deepfake-pledge')?.image, null);
   assert.deepEqual(data.sections.infographics?.slugs, [
+    'reliable-taiwan-election-information-channels-explained',
+    'referendum-essential-knowledge',
     'ten-ng-voting-behaviors-part-1',
     'ten-ng-voting-behaviors-part-2',
     'avoid-candidate-masks-when-voting',
