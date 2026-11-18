@@ -123,11 +123,19 @@ test('provided covers match reports while unfilled dates stay absent', () => {
   assert.equal(data.stories.find(story => story.slug === 'five-star-flag-fine-2020-proposal-not-passed')?.image?.src, '/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg');
   assert.equal(data.stories.find(story => story.slug === 'deepfake-pledge')?.image, null);
   assert.deepEqual(data.sections.infographics?.slugs, [
+    'reliable-taiwan-election-information-channels-explained',
+    'referendum-essential-knowledge',
     'ten-ng-voting-behaviors-part-1',
     'ten-ng-voting-behaviors-part-2',
     'avoid-candidate-masks-when-voting',
     'four-types-election-rigging-rumors-debunked-facts',
   ]);
+  const informationChannels = data.sections.infographics?.items?.[0];
+  assert.equal(informationChannels?.title, '三大選舉資訊管道');
+  assert.deepEqual(informationChannels?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/reliable-election-information-channels-portrait-${index + 1}.png`));
+  const referendumKnowledge = data.sections.infographics?.items?.[1];
+  assert.equal(referendumKnowledge?.title, '公投必備知識');
+  assert.deepEqual(referendumKnowledge?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/referendum-essential-knowledge-${index + 1}.png`));
   const upper = data.sections.infographics?.items?.find(item => item.slug === 'ten-ng-voting-behaviors-part-1');
   assert.equal(upper?.cards.length, 7);
   assert.deepEqual(upper?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/ten-ng-voting-behaviors-part-1-${index + 1}.jpg`));

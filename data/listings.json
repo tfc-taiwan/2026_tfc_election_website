@@ -1302,12 +1302,126 @@
     },
     "infographics": {
       "slugs": [
+        "reliable-taiwan-election-information-channels-explained",
+        "referendum-essential-knowledge",
         "ten-ng-voting-behaviors-part-1",
         "ten-ng-voting-behaviors-part-2",
         "avoid-candidate-masks-when-voting",
         "four-types-election-rigging-rumors-debunked-facts"
       ],
       "items": [
+        {
+          "slug": "reliable-taiwan-election-information-channels-explained",
+          "title": "三大選舉資訊管道",
+          "description": "三大選舉資訊管道圖卡，共 7 張。",
+          "cards": [
+            {
+              "image": {
+                "src": "/images/reliable-election-information-channels-portrait-1.png",
+                "alt": "三大選舉資訊管道圖卡，第 1 張"
+              },
+              "caption": "三大選舉資訊管道｜第 1 張"
+            },
+            {
+              "image": {
+                "src": "/images/reliable-election-information-channels-portrait-2.png",
+                "alt": "三大選舉資訊管道圖卡，第 2 張"
+              },
+              "caption": "三大選舉資訊管道｜第 2 張"
+            },
+            {
+              "image": {
+                "src": "/images/reliable-election-information-channels-portrait-3.png",
+                "alt": "三大選舉資訊管道圖卡，第 3 張"
+              },
+              "caption": "三大選舉資訊管道｜第 3 張"
+            },
+            {
+              "image": {
+                "src": "/images/reliable-election-information-channels-portrait-4.png",
+                "alt": "三大選舉資訊管道圖卡，第 4 張"
+              },
+              "caption": "三大選舉資訊管道｜第 4 張"
+            },
+            {
+              "image": {
+                "src": "/images/reliable-election-information-channels-portrait-5.png",
+                "alt": "三大選舉資訊管道圖卡，第 5 張"
+              },
+              "caption": "三大選舉資訊管道｜第 5 張"
+            },
+            {
+              "image": {
+                "src": "/images/reliable-election-information-channels-portrait-6.png",
+                "alt": "三大選舉資訊管道圖卡，第 6 張"
+              },
+              "caption": "三大選舉資訊管道｜第 6 張"
+            },
+            {
+              "image": {
+                "src": "/images/reliable-election-information-channels-portrait-7.png",
+                "alt": "三大選舉資訊管道圖卡，第 7 張"
+              },
+              "caption": "三大選舉資訊管道｜第 7 張"
+            }
+          ]
+        },
+        {
+          "slug": "referendum-essential-knowledge",
+          "title": "公投必備知識",
+          "description": "公投必備知識圖卡，共 7 張。",
+          "cards": [
+            {
+              "image": {
+                "src": "/images/referendum-essential-knowledge-1.png",
+                "alt": "公投必備知識圖卡，第 1 張"
+              },
+              "caption": "公投必備知識｜第 1 張"
+            },
+            {
+              "image": {
+                "src": "/images/referendum-essential-knowledge-2.png",
+                "alt": "公投必備知識圖卡，第 2 張"
+              },
+              "caption": "公投必備知識｜第 2 張"
+            },
+            {
+              "image": {
+                "src": "/images/referendum-essential-knowledge-3.png",
+                "alt": "公投必備知識圖卡，第 3 張"
+              },
+              "caption": "公投必備知識｜第 3 張"
+            },
+            {
+              "image": {
+                "src": "/images/referendum-essential-knowledge-4.png",
+                "alt": "公投必備知識圖卡，第 4 張"
+              },
+              "caption": "公投必備知識｜第 4 張"
+            },
+            {
+              "image": {
+                "src": "/images/referendum-essential-knowledge-5.png",
+                "alt": "公投必備知識圖卡，第 5 張"
+              },
+              "caption": "公投必備知識｜第 5 張"
+            },
+            {
+              "image": {
+                "src": "/images/referendum-essential-knowledge-6.png",
+                "alt": "公投必備知識圖卡，第 6 張"
+              },
+              "caption": "公投必備知識｜第 6 張"
+            },
+            {
+              "image": {
+                "src": "/images/referendum-essential-knowledge-7.png",
+                "alt": "公投必備知識圖卡，第 7 張"
+              },
+              "caption": "公投必備知識｜第 7 張"
+            }
+          ]
+        },
         {
           "slug": "ten-ng-voting-behaviors-part-1",
           "title": "十大NG投票行為（上）",

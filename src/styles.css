@@ -463,10 +463,10 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 /* Infographics */
 .infographics-section { border-bottom: 1px solid var(--ink-10); }
 .infographic-card { position: relative; flex: 0 0 270px; min-width: 0; scroll-snap-align: start; color: var(--brand-dark); }
-.infographic-open { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; border: 1px solid var(--ink-05); border-radius: var(--radius-lg); background: var(--brand-white); box-shadow: var(--shadow-card); color: inherit; text-align: left; cursor: zoom-in; }
-.infographic-open .illustration { aspect-ratio: 1; background: #fff; }
+.infographic-open { position: relative; display: block; width: 100%; padding: 0; overflow: hidden; border: 1px solid var(--ink-05); border-radius: var(--radius-lg); background: #f6f6e9; box-shadow: var(--shadow-card); color: inherit; text-align: left; cursor: zoom-in; }
+.infographic-open .illustration { aspect-ratio: 1; background: #f6f6e9; }
 .infographic-open .illustration img { width: 100%; height: 100%; object-fit: contain; transition: transform .5s; }
-.infographic-open:hover .illustration img { transform: scale(1.05); }
+.infographic-open:hover .illustration img { transform: none; }
 .infographic-count { position: absolute; top: 16px; right: 16px; display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: var(--radius-pill); background: rgba(0, 0, 0, .45); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); color: #fff; font-size: 12px; font-weight: 700; pointer-events: none; }
 .infographic-hover { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(35, 24, 21, 0); transition: background-color .2s; pointer-events: none; }
 .infographic-hover > span { padding: 6px 12px; border-radius: var(--radius-pill); background: rgba(255, 255, 255, .95); color: var(--brand-dark); font-size: 12px; font-weight: 700; opacity: 0; transition: opacity .2s; }
