@@ -51,14 +51,15 @@ test('all listing references resolve to unique, matching report files and local 
 
 test('latest reports are ordered by source publication date and existing editorial content remains ready', () => {
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
-  assert.deepEqual(data.sections.reports.items.slice(0, 4).map(item => item.slug), [
+  assert.deepEqual(data.sections.reports.items.slice(0, 5).map(item => item.slug), [
     'feitsui-reservoir-solar-power-policy-and-regulatory-dispute',
     'threads-meta-ai-misinformation',
     'pingtan-strait-bridge-does-not-connect-to-taiwan',
+    'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading',
     'drug-driving-penalties-death-penalty-legal-reform',
   ]);
-  assert.deepEqual(data.sections.reports.items.slice(0, 4).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
-    '2026-11-21', '2026-11-20', '2026-11-13', '2026-11-10',
+  assert.deepEqual(data.sections.reports.items.slice(0, 5).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
+    '2026-11-21', '2026-11-20', '2026-11-13', '2026-11-13', '2026-11-10',
   ]);
   const threadsSlug = 'threads-meta-ai-misinformation';
   const threadsArticle = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${threadsSlug}.json`), 'utf8')));

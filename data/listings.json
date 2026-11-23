@@ -203,20 +203,6 @@
       "verdict": "錯誤"
     },
     {
-      "slug": "drug-driving-penalties-death-penalty-legal-reform",
-      "kind": "analysis",
-      "category": "地方選舉",
-      "title": "曾酒駕、再毒駕致死也可能判死刑？毒駕加重刑責修法爭議一次看",
-      "description": "立法院10月30日三讀通過《刑法》第185條之3修正案，加重毒駕致死再犯可處死刑，引起社群不同立場的廣泛討論，也成為10月31日台北市長辯論會的議題之一。",
-      "date": "2026-11-10",
-      "image": {
-        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/156444_4.jpg",
-        "alt": "曾酒駕、再毒駕致死也可能判死刑？毒駕加重刑責修法爭議一次看"
-      },
-      "tag": "議題觀察室",
-      "tone": "cyan"
-    },
-    {
       "slug": "chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading",
       "kind": "report",
       "category": "地方選舉",
@@ -230,6 +216,20 @@
       "tag": "政治與政策",
       "tone": "cyan",
       "verdict": "錯誤"
+    },
+    {
+      "slug": "drug-driving-penalties-death-penalty-legal-reform",
+      "kind": "analysis",
+      "category": "地方選舉",
+      "title": "曾酒駕、再毒駕致死也可能判死刑？毒駕加重刑責修法爭議一次看",
+      "description": "立法院10月30日三讀通過《刑法》第185條之3修正案，加重毒駕致死再犯可處死刑，引起社群不同立場的廣泛討論，也成為10月31日台北市長辯論會的議題之一。",
+      "date": "2026-11-10",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/156444_4.jpg",
+        "alt": "曾酒駕、再毒駕致死也可能判死刑？毒駕加重刑責修法爭議一次看"
+      },
+      "tag": "議題觀察室",
+      "tone": "cyan"
     },
     {
       "slug": "referendum-approval-threshold-valid-votes",
@@ -955,10 +955,10 @@
           "slug": "pingtan-strait-bridge-does-not-connect-to-taiwan"
         },
         {
-          "slug": "drug-driving-penalties-death-penalty-legal-reform"
+          "slug": "chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading"
         },
         {
-          "slug": "chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading"
+          "slug": "drug-driving-penalties-death-penalty-legal-reform"
         },
         {
           "slug": "referendum-approval-threshold-valid-votes"
