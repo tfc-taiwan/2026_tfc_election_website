@@ -196,8 +196,8 @@
       "description": "網傳照片顯示蔣萬安、沈伯洋文宣品塞滿公用垃圾桶。查核結果顯示，照片高機率由AI生成。",
       "date": "2026-11-23",
       "image": {
-        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408-1.jpg",
-        "alt": "網傳蔣萬安、沈伯洋文宣品塞滿公用垃圾桶的照片"
+        "src": "/images/covers/chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check.jpg",
+        "alt": "網傳蔣萬安、沈伯洋文宣塞滿公用垃圾桶的AI生成照片"
       },
       "tag": "謠言風向球",
       "tone": "cyan",
