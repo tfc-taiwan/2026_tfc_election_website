@@ -285,7 +285,7 @@ function InfographicGallery({ data, heading }: { data: Listings; heading: ReactN
           <span className="infographic-count"><Icon name="copy" size={13} /> {item.cards.length}</span>
           <span className="infographic-hover" aria-hidden="true"><span>點擊查看大圖</span></span>
         </button>
-        <span className="infographic-copy"><small>{story?.tag ?? '圖卡懶人包'}</small><strong>{item.title}</strong>{story && story.slug !== 'reliable-taiwan-election-information-channels-explained' && <Link to={`/reports/${story.slug}`}>閱讀完整內容 ↗</Link>}</span>
+        <span className="infographic-copy"><small>{story?.tag ?? '圖卡懶人包'}</small><strong>{item.title}</strong>{story && item.title !== '三大選舉資訊管道' && <Link to={`/reports/${story.slug}`}>閱讀完整內容 ↗</Link>}</span>
       </div>;
     })}</div>
     <dialog ref={dialog} className="infographic-lightbox" aria-label="圖卡大圖瀏覽" onClose={close} onClick={event => { if (event.target === event.currentTarget) close(); }} onKeyDown={event => { if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); } if (event.key === 'ArrowRight') { event.preventDefault(); move(1); } }}>
