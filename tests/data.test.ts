@@ -49,13 +49,19 @@ test('all listing references resolve to unique, matching report files and local 
   for (const story of data.stories.filter(story => story.kind === 'report')) assert.ok(data.sections.reports.categories.includes(story.category!));
 });
 
-test('new referendum report, corrected lunch report, pinned short, activities, and debate card heights are ready', () => {
+test('latest reports are ordered by source publication date and existing editorial content remains ready', () => {
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
   assert.deepEqual(data.sections.reports.items.slice(0, 3).map(item => item.slug), [
-    'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading',
-    'referendum-approval-threshold-valid-votes',
-    'taiwan-2024-presidential-election-vote-counting-marking-error-corrected',
+    'feitsui-reservoir-solar-power-policy-and-regulatory-dispute',
+    'pingtan-strait-bridge-does-not-connect-to-taiwan',
+    'drug-driving-penalties-death-penalty-legal-reform',
   ]);
+  assert.deepEqual(data.sections.reports.items.slice(0, 3).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
+    '2026-11-21', '2026-11-13', '2026-11-10',
+  ]);
+  assert.equal(data.stories.find(story => story.slug === 'pingtan-strait-bridge-does-not-connect-to-taiwan')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4395＿5.jpg');
+  assert.equal(data.stories.find(story => story.slug === 'drug-driving-penalties-death-penalty-legal-reform')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/156444_4.jpg');
+  assert.equal(data.stories.find(story => story.slug === 'feitsui-reservoir-solar-power-policy-and-regulatory-dispute')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/1121-0.jpg');
   assert.equal(data.stories.find(story => story.slug === 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-0.jpg');
   const chiangSlug = 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading';
   const chiang = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${chiangSlug}.json`), 'utf8')));
@@ -116,7 +122,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 49);
+  assert.equal(data.stories.length, 52);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 24);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');

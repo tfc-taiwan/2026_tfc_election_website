@@ -160,6 +160,49 @@
   },
   "stories": [
     {
+      "slug": "feitsui-reservoir-solar-power-policy-and-regulatory-dispute",
+      "kind": "analysis",
+      "category": "地方選舉",
+      "title": "翡翠水庫光電爭議：中央連3年發函要求設置？回顧政策脈絡、釐清法規限制",
+      "description": "「翡翠水庫能否設置光電」成了近期台北選戰焦點，也帶動飲用水安全的討論。查核中心先回顧水庫光電此一政策，還原當時背景，包括如何挑選水庫場址等關鍵議題，再探討翡翠水庫事件核心，檢視法規限制，釐清中央與台北市府的爭執。",
+      "date": "2026-11-21",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/1121-0.jpg",
+        "alt": "翡翠水庫光電爭議：中央連3年發函要求設置？回顧政策脈絡、釐清法規限制"
+      },
+      "tag": "議題觀察室",
+      "tone": "cyan"
+    },
+    {
+      "slug": "pingtan-strait-bridge-does-not-connect-to-taiwan",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳影片「平潭海峽大橋即將通往台灣，30分鐘可抵達」？",
+      "description": "網傳影片聲稱，中國建造的「平潭海峽大橋」即將通往台灣，透過高鐵只要30分鐘就可抵達。經查證，中國片面宣稱有連接台灣規劃，但未有實質進展，陸委會也否認稱兩岸未就此議題討論，檢視近期平潭島靠台灣一側的衛星圖也未見到橋體結構或工程。",
+      "date": "2026-11-13",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4395＿5.jpg",
+        "alt": "網路流傳中國宣傳影片，誇大宣稱平潭海峽大橋將直通台灣"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "drug-driving-penalties-death-penalty-legal-reform",
+      "kind": "analysis",
+      "category": "地方選舉",
+      "title": "曾酒駕、再毒駕致死也可能判死刑？毒駕加重刑責修法爭議一次看",
+      "description": "立法院10月30日三讀通過《刑法》第185條之3修正案，加重毒駕致死再犯可處死刑，引起社群不同立場的廣泛討論，也成為10月31日台北市長辯論會的議題之一。",
+      "date": "2026-11-10",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/156444_4.jpg",
+        "alt": "曾酒駕、再毒駕致死也可能判死刑？毒駕加重刑責修法爭議一次看"
+      },
+      "tag": "議題觀察室",
+      "tone": "cyan"
+    },
+    {
       "slug": "chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading",
       "kind": "report",
       "category": "地方選舉",
@@ -888,6 +931,15 @@
         "辯論會查核"
       ],
       "items": [
+        {
+          "slug": "feitsui-reservoir-solar-power-policy-and-regulatory-dispute"
+        },
+        {
+          "slug": "pingtan-strait-bridge-does-not-connect-to-taiwan"
+        },
+        {
+          "slug": "drug-driving-penalties-death-penalty-legal-reform"
+        },
         {
           "slug": "chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading"
         },
