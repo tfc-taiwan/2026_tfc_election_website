@@ -916,6 +916,34 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
   .pledge-embedded .pledge-description-embedded { max-width: none; white-space: nowrap; font-size: clamp(12px, .9vw, 14px); line-height: 1.5; }
 }
 
+/* Keep the homepage pledge introduction independent and on one desktop line;
+   tighten the principles card so its visual weight matches the reasons column. */
+@media (min-width: 1181px) {
+  .pledge-embedded > .section-heading { display: block; }
+  .pledge-embedded > .section-heading > div { width: 100%; }
+  .pledge-embedded .section-heading .pledge-description-embedded,
+  .pledge-embedded .section-heading .pledge-description-embedded p {
+    width: 100%;
+    max-width: none;
+    white-space: nowrap;
+    font-size: clamp(12px, .8vw, 14px);
+    line-height: 1.45;
+  }
+  .pledge-embedded .pledge-paper { display: flex; flex-direction: column; }
+  .pledge-embedded .pledge-paper > :is(h2, h3) { padding-bottom: 16px; margin-bottom: 22px; }
+  .pledge-embedded .pledge-group + .pledge-group { margin-top: 22px; }
+  .pledge-embedded .pledge-group h3 { margin-bottom: 10px; }
+  .pledge-embedded .pledge-group ul { line-height: 1.65; }
+  .pledge-embedded .pledge-group li + li { margin-top: 12px; }
+  .pledge-embedded .pledge-paper .pledge-principles-note {
+    margin-top: 18px;
+    padding-top: 14px;
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+  .pledge-embedded .pledge-fulltext { margin-top: 22px; }
+}
+
 /* Mobile preview: keep infographic groups as a native, swipeable rail and let
    the rotating case text grow naturally instead of clipping inside the card. */
 .infographic-grid { -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y; }
