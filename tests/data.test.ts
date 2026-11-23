@@ -90,8 +90,23 @@ test('latest reports are ordered by source publication date and existing editori
     assert.ok(!section.blocks?.some(block => block.type === 'heading' && block.level === 3 && block.content.map(part => part.text).join('') === section.title));
   }
   const referendum = data.stories.find(story => story.slug === referendumSlug)!;
-  assert.equal(referendum.title, '網傳「11月28日有5項公投案要表決」？');
+  assert.equal(referendum.title, '2026年11月28日僅有一項公投案要表決，並非網傳五案');
   assert.equal(referendum.verdict, '錯誤');
+  const directTitles = {
+    "outdated-vote-counting-flaw-videos-mislead-fraud": "2024年總統大選開票劃記錯誤已當場更正，並非作票",
+    "campaign-merchandise-dm-scam": "網傳免費贈送台北安可選舉小物的訊息是假冒詐騙",
+    "pingtan-strait-bridge-does-not-connect-to-taiwan": "平潭海峽大橋目前沒有連通台灣，網傳30分鐘可抵達的說法不實",
+    "referendum-approval-threshold-valid-votes": "公投通過門檻依有效票數計算，不領票不會提高門檻",
+    "taiwan-2024-presidential-election-vote-counting-marking-error-corrected": "彰化縣第418投票所開票劃記錯誤已即時更正，票數核對無誤",
+    "1128-referendum-fake-news-nuclear-free-policy": "2026年11月28日僅有一項公投案要表決，並非網傳五案",
+    "puma-campaign-giveaway-scam": "網傳免費贈送台北市長候選人洋流選舉小物的訊息是假冒詐騙"
+};
+  for (const [slug, title] of Object.entries(directTitles)) {
+    assert.equal(data.stories.find(story => story.slug === slug)?.title, title);
+    const directTitleReport = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${slug}.json`), 'utf8')));
+    assert.equal(directTitleReport.title, title);
+    assert.equal(directTitleReport.seo.title, `${title}｜2026 選舉工具箱`);
+  }
   const referendumReport = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${referendumSlug}.json`), 'utf8')));
   assert.equal(referendumReport.reportId, '4380');
   assert.ok(referendumReport.supplementarySections?.some(section => section.title === '補充資料'));
