@@ -921,6 +921,7 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 @media (min-width: 1181px) {
   .pledge-embedded > .section-heading { display: block; }
   .pledge-embedded > .section-heading > div { width: 100%; }
+  .pledge-embedded .pledge-columns { grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); }
   .pledge-embedded .section-heading .pledge-description-embedded,
   .pledge-embedded .section-heading .pledge-description-embedded p {
     width: 100%;
