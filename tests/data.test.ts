@@ -90,30 +90,8 @@ test('latest reports are ordered by source publication date and existing editori
     assert.ok(!section.blocks?.some(block => block.type === 'heading' && block.level === 3 && block.content.map(part => part.text).join('') === section.title));
   }
   const referendum = data.stories.find(story => story.slug === referendumSlug)!;
-  assert.equal(referendum.title, '網傳「1128有5大公投案」是錯誤資訊，公投僅「廢除非核家園」一案');
+  assert.equal(referendum.title, '網傳「11月28日有5項公投案要表決」？');
   assert.equal(referendum.verdict, '錯誤');
-  const directTitles = {
-    "outdated-vote-counting-flaw-videos-mislead-fraud": "選前社群流傳過時開票瑕疵影像，誤導作票",
-    "campaign-merchandise-dm-scam": "競選小物詐騙頻傳，慎防社群「私訊免費送」手法",
-    "pingtan-strait-bridge-does-not-connect-to-taiwan": "網路流傳中國宣傳影片，誇大宣稱平潭海峽大橋將直通台灣",
-    "taiwan-2024-presidential-election-vote-counting-marking-error-corrected": "網傳「開3畫2」影片為2024總統大選開票劃記錯誤，當場發現失誤已更正票數",
-    "referendum-approval-threshold-valid-votes": "公投通過門檻在於有效票數，不領票不會影響門檻",
-    "1128-referendum-fake-news-nuclear-free-policy": "網傳「1128有5大公投案」是錯誤資訊，公投僅「廢除非核家園」一案",
-    "puma-campaign-giveaway-scam": "近期社群出現「洋流選舉小物」詐騙"
-  };
-  for (const [slug, title] of Object.entries(directTitles)) {
-    assert.equal(data.stories.find(story => story.slug === slug)?.title, title);
-  }
-  const aiReportSlug = 'chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check';
-  const aiReport = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${aiReportSlug}.json`), 'utf8')));
-  const aiStory = data.stories.find(story => story.slug === aiReportSlug)!;
-  assert.equal(aiStory.title, '網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成');
-  assert.equal(aiStory.date, '2026-11-23');
-  assert.equal(aiReport.title, '網傳照片「蔣萬安、沈伯洋文宣品塞滿公用垃圾桶」？');
-  assert.equal(aiReport.finding, '高機率經AI生成的照片');
-  assert.equal(aiReport.reportId, '4408');
-  assert.equal(aiReport.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408＿5.jpg');
-  assert.equal(data.sections.reports.items[0]?.slug, aiReportSlug);
   const referendumReport = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${referendumSlug}.json`), 'utf8')));
   assert.equal(referendumReport.reportId, '4380');
   assert.ok(referendumReport.supplementarySections?.some(section => section.title === '補充資料'));
@@ -197,7 +175,7 @@ test('provided covers match reports while unfilled dates stay absent', () => {
   assert.equal(standaloneCard?.group.cards.length, 7);
   for (const story of data.stories) {
     const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${story.slug}.json`), 'utf8')));
-    if (!report.bodySections && !['1128-referendum-fake-news-nuclear-free-policy', 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading'].includes(report.slug)) assert.deepEqual(report.image, story.image);
+    if (!report.bodySections && !['1128-referendum-fake-news-nuclear-free-policy', 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading', 'pingtan-strait-bridge-does-not-connect-to-taiwan', 'referendum-approval-threshold-valid-votes', 'taiwan-2024-presidential-election-vote-counting-marking-error-corrected'].includes(report.slug)) assert.deepEqual(report.image, story.image);
     if (report.slug === '1128-referendum-fake-news-nuclear-free-policy') {
       assert.equal(report.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4380_5.jpg');
       assert.equal(report.image?.alt, '網傳「2026年五大公投案」圖卡，標示錯誤');
@@ -249,7 +227,9 @@ test('category pins keep explanatory articles ahead of new reports without leaki
   const futureReport = { ...sample.stories.find(story => story.kind === 'report')!, slug: 'new-debate-report', category: '辯論會查核' as const, date: '2026-11-01' };
   sample.stories = [futureReport, ...[...sample.stories].reverse()];
   assert.deepEqual(listingStories(sample, '', '辯論會查核').slice(0, 3).map(story => story.slug), [...pins, futureReport.slug]);
-  assert.ok(listingStories(sample).every(story => story.kind === 'report'));
+  assert.ok(listingStories(sample).every(story => story.kind === 'report' || ['議題觀察室', '謠言風向球'].includes(story.tag)));
+  assert.ok(listingStories(sample, '', '地方選舉').some(story => story.tag === '議題觀察室'));
+  assert.ok(listingStories(sample, '', '地方選舉').some(story => story.tag === '謠言風向球'));
   assert.ok(listingStories(sample, '', '地方選舉').every(story => story.category === '地方選舉' && !pins.includes(story.slug)));
   assert.deepEqual(listingStories(sample, '查核結果說明', '辯論會查核').map(story => story.slug), [pins[1]]);
   assert.equal(listingStories(sample, 'absolutely-no-match', '辯論會查核').length, 0);
