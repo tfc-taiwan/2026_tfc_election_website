@@ -49,13 +49,28 @@ test('all listing references resolve to unique, matching report files and local 
   for (const story of data.stories.filter(story => story.kind === 'report')) assert.ok(data.sections.reports.categories.includes(story.category!));
 });
 
-test('new referendum report, corrected lunch report, pinned short, activities, and debate card heights are ready', () => {
+test('latest reports are ordered by source publication date and existing editorial content remains ready', () => {
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
-  assert.deepEqual(data.sections.reports.items.slice(0, 3).map(item => item.slug), [
-    'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading',
-    'referendum-approval-threshold-valid-votes',
-    'taiwan-2024-presidential-election-vote-counting-marking-error-corrected',
+  assert.deepEqual(data.sections.reports.items.slice(0, 4).map(item => item.slug), [
+    'feitsui-reservoir-solar-power-policy-and-regulatory-dispute',
+    'threads-meta-ai-misinformation',
+    'pingtan-strait-bridge-does-not-connect-to-taiwan',
+    'drug-driving-penalties-death-penalty-legal-reform',
   ]);
+  assert.deepEqual(data.sections.reports.items.slice(0, 4).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
+    '2026-11-21', '2026-11-20', '2026-11-13', '2026-11-10',
+  ]);
+  const threadsSlug = 'threads-meta-ai-misinformation';
+  const threadsArticle = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${threadsSlug}.json`), 'utf8')));
+  assert.equal(threadsArticle.tags[0], '謠言風向球');
+  assert.equal(threadsArticle.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/202611204.jpg');
+  assert.equal(threadsArticle.presentation?.showContentsNavigation, false);
+  assert.equal(threadsArticle.introParagraphs?.length, 2);
+  assert.equal(threadsArticle.bodySections?.length, 4);
+  assert.ok(threadsArticle.bodySections?.every(section => section.blocks?.length));
+  assert.equal(data.stories.find(story => story.slug === 'pingtan-strait-bridge-does-not-connect-to-taiwan')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4395＿5.jpg');
+  assert.equal(data.stories.find(story => story.slug === 'drug-driving-penalties-death-penalty-legal-reform')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/156444_4.jpg');
+  assert.equal(data.stories.find(story => story.slug === 'feitsui-reservoir-solar-power-policy-and-regulatory-dispute')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/1121-0.jpg');
   assert.equal(data.stories.find(story => story.slug === 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-0.jpg');
   const chiangSlug = 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading';
   const chiang = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${chiangSlug}.json`), 'utf8')));
@@ -64,6 +79,11 @@ test('new referendum report, corrected lunch report, pinned short, activities, a
   assert.equal(chiang.bodySections, undefined);
   assert.equal(chiang.summaryBlocks?.length, chiang.summaryPoints.length);
   assert.equal(chiang.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-0.jpg');
+  for (const slug of ['feitsui-reservoir-solar-power-policy-and-regulatory-dispute', 'drug-driving-penalties-death-penalty-legal-reform']) {
+    const article = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${slug}.json`), 'utf8')));
+    assert.equal(article.presentation?.showContentsNavigation, false);
+    assert.ok(article.bodySections?.length);
+  }
   assert.equal(chiang.background.blocks?.find(block => block.type === 'image')?.image.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-2.jpg');
   for (const section of chiang.checkSections) {
     assert.ok(!section.blocks?.some(block => block.type === 'heading' && block.level === 3 && block.content.map(part => part.text).join('') === section.title));
@@ -116,7 +136,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 49);
+  assert.equal(data.stories.length, 53);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 24);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
@@ -130,6 +150,12 @@ test('provided covers match reports while unfilled dates stay absent', () => {
     'avoid-candidate-masks-when-voting',
     'four-types-election-rigging-rumors-debunked-facts',
   ]);
+  const informationChannels = data.sections.infographics?.items?.[0];
+  assert.equal(informationChannels?.title, '三大選舉資訊管道');
+  assert.deepEqual(informationChannels?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/reliable-election-information-channels-portrait-${index + 1}.png`));
+  const referendumKnowledge = data.sections.infographics?.items?.[1];
+  assert.equal(referendumKnowledge?.title, '公投必備知識');
+  assert.deepEqual(referendumKnowledge?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/referendum-essential-knowledge-${index + 1}.png`));
   const upper = data.sections.infographics?.items?.find(item => item.slug === 'ten-ng-voting-behaviors-part-1');
   assert.equal(upper?.cards.length, 7);
   assert.deepEqual(upper?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/ten-ng-voting-behaviors-part-1-${index + 1}.jpg`));
