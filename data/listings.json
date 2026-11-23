@@ -174,6 +174,20 @@
       "tone": "cyan"
     },
     {
+      "slug": "threads-meta-ai-misinformation",
+      "kind": "analysis",
+      "category": "地方選舉",
+      "title": "用Meta AI查證反被誤導？Threads AI屢次答錯，連選舉謠言也當真",
+      "description": "社群平台Threads內建Meta AI後，不少網友標記AI協助查證，但Meta AI多次錯把AI生成影像判定為真，混淆農藥名稱與標準，甚至把選舉老謠言當成正解。",
+      "date": "2026-11-20",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/202611204.jpg",
+        "alt": "用Meta AI查證反被誤導？Threads AI屢次答錯，連選舉謠言也當真"
+      },
+      "tag": "謠言風向球",
+      "tone": "cyan"
+    },
+    {
       "slug": "pingtan-strait-bridge-does-not-connect-to-taiwan",
       "kind": "report",
       "category": "地方選舉",
@@ -933,6 +947,9 @@
       "items": [
         {
           "slug": "feitsui-reservoir-solar-power-policy-and-regulatory-dispute"
+        },
+        {
+          "slug": "threads-meta-ai-misinformation"
         },
         {
           "slug": "pingtan-strait-bridge-does-not-connect-to-taiwan"

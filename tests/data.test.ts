@@ -51,14 +51,23 @@ test('all listing references resolve to unique, matching report files and local 
 
 test('latest reports are ordered by source publication date and existing editorial content remains ready', () => {
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
-  assert.deepEqual(data.sections.reports.items.slice(0, 3).map(item => item.slug), [
+  assert.deepEqual(data.sections.reports.items.slice(0, 4).map(item => item.slug), [
     'feitsui-reservoir-solar-power-policy-and-regulatory-dispute',
+    'threads-meta-ai-misinformation',
     'pingtan-strait-bridge-does-not-connect-to-taiwan',
     'drug-driving-penalties-death-penalty-legal-reform',
   ]);
-  assert.deepEqual(data.sections.reports.items.slice(0, 3).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
-    '2026-11-21', '2026-11-13', '2026-11-10',
+  assert.deepEqual(data.sections.reports.items.slice(0, 4).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
+    '2026-11-21', '2026-11-20', '2026-11-13', '2026-11-10',
   ]);
+  const threadsSlug = 'threads-meta-ai-misinformation';
+  const threadsArticle = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${threadsSlug}.json`), 'utf8')));
+  assert.equal(threadsArticle.tags[0], '謠言風向球');
+  assert.equal(threadsArticle.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/202611204.jpg');
+  assert.equal(threadsArticle.presentation?.showContentsNavigation, false);
+  assert.equal(threadsArticle.introParagraphs?.length, 2);
+  assert.equal(threadsArticle.bodySections?.length, 4);
+  assert.ok(threadsArticle.bodySections?.every(section => section.blocks?.length));
   assert.equal(data.stories.find(story => story.slug === 'pingtan-strait-bridge-does-not-connect-to-taiwan')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4395＿5.jpg');
   assert.equal(data.stories.find(story => story.slug === 'drug-driving-penalties-death-penalty-legal-reform')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/156444_4.jpg');
   assert.equal(data.stories.find(story => story.slug === 'feitsui-reservoir-solar-power-policy-and-regulatory-dispute')?.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/1121-0.jpg');
@@ -127,7 +136,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 52);
+  assert.equal(data.stories.length, 53);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 24);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
