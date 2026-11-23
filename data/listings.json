@@ -160,6 +160,36 @@
   },
   "stories": [
     {
+      "slug": "campaign-merchandise-dm-scam",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「台北安可選舉小物免費送，只要私訊、利用賣貨便下單，只需付運費」？",
+      "description": "市長選戰倒數，近期網路持續出現「競選小物贈送」的貼文，聲稱民眾只要私訊、填寫資料並負擔運費，就可以領到免費的小熊、飄帶、鑰匙圈。小心！對方如果要求「實名認證」，就可能是詐騙，如果按照詐團指示操作，民眾帳戶內的款項可能會被轉出。",
+      "date": "2026-11-23",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4405-1.jpg",
+        "alt": "網傳免費贈送台北安可選舉小物的訊息是假冒詐騙"
+      },
+      "tag": "科技資安",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "outdated-vote-counting-flaw-videos-mislead-fraud",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳影片「唱票柯文哲卻劃記賴清德得票，原來外面流傳做票是真的」？",
+      "description": "近期網路流傳2024年總統大選開票影像，宣稱「唱票柯文哲卻畫記賴清德得票」，認為是作票證據；原始影片攝於桃園一處開票所，當天記票員確實曾劃記錯誤，但經現場指正，隨即修正錯誤才繼續開票，並非作票。",
+      "date": "2026-11-23",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4406-1.jpg",
+        "alt": "2024年總統大選開票劃記錯誤已當場更正，並非作票"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
       "slug": "feitsui-reservoir-solar-power-policy-and-regulatory-dispute",
       "kind": "analysis",
       "category": "地方選舉",
@@ -945,6 +975,12 @@
         "辯論會查核"
       ],
       "items": [
+        {
+          "slug": "campaign-merchandise-dm-scam"
+        },
+        {
+          "slug": "outdated-vote-counting-flaw-videos-mislead-fraud"
+        },
         {
           "slug": "feitsui-reservoir-solar-power-policy-and-regulatory-dispute"
         },
