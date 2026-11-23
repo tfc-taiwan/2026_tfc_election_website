@@ -38,7 +38,8 @@
   "summaryClose": "",
   "presentation": {
     "showReportMetadata": false,
-    "showSummary": false
+    "showSummary": false,
+    "showContentsNavigation": false
   },
   "background": {
     "id": "background",

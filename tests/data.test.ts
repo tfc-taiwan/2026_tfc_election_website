@@ -70,6 +70,11 @@ test('latest reports are ordered by source publication date and existing editori
   assert.equal(chiang.bodySections, undefined);
   assert.equal(chiang.summaryBlocks?.length, chiang.summaryPoints.length);
   assert.equal(chiang.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-0.jpg');
+  for (const slug of ['feitsui-reservoir-solar-power-policy-and-regulatory-dispute', 'drug-driving-penalties-death-penalty-legal-reform']) {
+    const article = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${slug}.json`), 'utf8')));
+    assert.equal(article.presentation?.showContentsNavigation, false);
+    assert.ok(article.bodySections?.length);
+  }
   assert.equal(chiang.background.blocks?.find(block => block.type === 'image')?.image.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4396-2.jpg');
   for (const section of chiang.checkSections) {
     assert.ok(!section.blocks?.some(block => block.type === 'heading' && block.level === 3 && block.content.map(part => part.text).join('') === section.title));
