@@ -90,16 +90,16 @@ test('latest reports are ordered by source publication date and existing editori
     assert.ok(!section.blocks?.some(block => block.type === 'heading' && block.level === 3 && block.content.map(part => part.text).join('') === section.title));
   }
   const referendum = data.stories.find(story => story.slug === referendumSlug)!;
-  assert.equal(referendum.title, '2026年11月28日僅有一項公投案要表決，並非網傳五案');
+  assert.equal(referendum.title, '網傳「11月28日有5項公投案要投票」？');
   assert.equal(referendum.verdict, '錯誤');
   const directTitles = {
-    "outdated-vote-counting-flaw-videos-mislead-fraud": "2024年總統大選開票劃記錯誤已當場更正，並非作票",
-    "campaign-merchandise-dm-scam": "網傳免費贈送台北安可選舉小物的訊息是假冒詐騙",
-    "pingtan-strait-bridge-does-not-connect-to-taiwan": "平潭海峽大橋目前沒有連通台灣，網傳30分鐘可抵達的說法不實",
-    "referendum-approval-threshold-valid-votes": "公投通過門檻依有效票數計算，不領票不會提高門檻",
-    "taiwan-2024-presidential-election-vote-counting-marking-error-corrected": "彰化縣第418投票所開票劃記錯誤已即時更正，票數核對無誤",
-    "1128-referendum-fake-news-nuclear-free-policy": "2026年11月28日僅有一項公投案要表決，並非網傳五案",
-    "puma-campaign-giveaway-scam": "網傳免費贈送台北市長候選人洋流選舉小物的訊息是假冒詐騙"
+  "outdated-vote-counting-flaw-videos-mislead-fraud": "網傳影片「唱票柯文哲卻劃記賴清德得票，原來外面流傳做票是真的」？",
+  "campaign-merchandise-dm-scam": "網傳「台北安可選舉小物免費送，只要私訊、利用賣貨便下單，只需付運費」？",
+  "pingtan-strait-bridge-does-not-connect-to-taiwan": "網傳影片「平潭海峽大橋即將通往台灣，30分鐘可抵達」？",
+  "referendum-approval-threshold-valid-votes": "網傳「公投不領票，通過門檻會變高」",
+  "taiwan-2024-presidential-election-vote-counting-marking-error-corrected": "網傳「開票『開3畫2』，選務人員遭收買」？",
+  "1128-referendum-fake-news-nuclear-free-policy": "網傳「11月28日有5項公投案要投票」？",
+  "puma-campaign-giveaway-scam": "網傳「台北市長洋流小物贈送，只要私訊、利用賣貨便網路下單即可取得」？"
 };
   for (const [slug, title] of Object.entries(directTitles)) {
     assert.equal(data.stories.find(story => story.slug === slug)?.title, title);
