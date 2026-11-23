@@ -1,0 +1,213 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check",
+  "seo": {
+    "title": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成｜2026 選舉工具箱",
+    "description": "網路近期流傳兩張照片，分別是公共垃圾桶塞滿台北市長候選人蔣萬安、沈伯洋的文宣品。經查證，兩張照片高機率為AI生成，且對比照片背景、內容並不符合現狀。",
+    "image": {
+      "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408＿5.jpg",
+      "alt": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成",
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
+    },
+    "noindex": false,
+    "authorType": "Person"
+  },
+  "kind": "report",
+  "category": "地方選舉",
+  "title": "網傳照片「蔣萬安、沈伯洋文宣品塞滿公用垃圾桶」？",
+  "finding": "高機率經AI生成的照片",
+  "verdict": "錯誤",
+  "tags": [
+    "錯誤",
+    "政治與政策"
+  ],
+  "published": "2026-11-23",
+  "updated": "2026-11-23",
+  "reportId": "4408",
+  "reporter": "蔡雯如",
+  "editor": "何蕙安",
+  "image": {
+    "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408＿5.jpg",
+    "alt": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成"
+  },
+  "imageCaption": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」照片",
+  "summaryPoints": [
+    "網路近期流傳兩張照片，分別是公共垃圾桶塞滿台北市長候選人蔣萬安、沈伯洋的文宣品。經查證，兩張照片高機率為AI生成，且對比照片背景、內容並不符合現狀。",
+    "一、兩張照片分別透過Hive moderation、Google SynthID檢測，在Hive moderation獲得99.3%、98.6%機率為AI合成，並分別被Google SynthID判定為Open AI、Google AI生成或編輯。",
+    "二、查核記者檢視兩張照片，有關沈伯洋文宣的照片，其背景中出現公車路線300號、台中銀行與西屯區的標示，但實際上該公車不會經過台中銀行西屯分行；且台中銀行招牌也非網傳照片樣式。至於蔣萬安文宣照片疑似使用媒體報導照片合成，且照片中出現的文宣是蔣萬安2022年參選市長的文宣品，與現狀不符。",
+    "網傳照片並非真實資訊，高機率經AI合成，為錯誤資訊。"
+  ],
+  "summaryClose": "",
+  "summaryBlocks": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "網路近期流傳兩張照片，分別是公共垃圾桶塞滿台北市長候選人蔣萬安、沈伯洋的文宣品。經查證，兩張照片高機率為AI生成，且對比照片背景、內容並不符合現狀。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "一、兩張照片分別透過Hive moderation、Google SynthID檢測，在Hive moderation獲得99.3%、98.6%機率為AI合成，並分別被Google SynthID判定為Open AI、Google AI生成或編輯。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "二、查核記者檢視兩張照片，有關沈伯洋文宣的照片，其背景中出現公車路線300號、台中銀行與西屯區的標示，但實際上該公車不會經過台中銀行西屯分行；且台中銀行招牌也非網傳照片樣式。至於蔣萬安文宣照片疑似使用媒體報導照片合成，且照片中出現的文宣是蔣萬安2022年參選市長的文宣品，與現狀不符。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "網傳照片並非真實資訊，高機率經AI合成，為錯誤資訊。"
+        }
+      ]
+    }
+  ],
+  "presentation": {
+    "showReportMetadata": true,
+    "showSummary": true
+  },
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "paragraphs": [
+      "網路近期流傳台北市長侯選人蔣萬安、沈伯洋遊行活動結束後、公共垃圾桶分別塞滿兩人文宣品的照片，引起個別支持者轉載討論。"
+    ],
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "網路近期流傳台北市長侯選人蔣萬安、沈伯洋遊行活動結束後、公共垃圾桶分別塞滿兩人文宣品的照片，引起個別支持者轉載討論。"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "image": {
+          "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408-2.jpg",
+          "alt": "網傳訊息擷圖"
+        },
+        "caption": "網傳訊息擷圖"
+      }
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "查核",
+      "paragraphs": [
+        "查核記者將沈伯洋文宣和蔣萬安文宣塞滿垃圾桶的兩張照片，分別透過AI內容偵測工具Hive moderation、Google SynthID檢測。在Hive moderation方面，沈伯洋文宣、蔣萬安文宣照片分別被判定99.3%、98.6%機率為AI合成；Google SynthID則判定兩照片為Open AI、Google AI生成或編輯。",
+        "查核記者檢視沈伯洋文宣塞滿垃圾桶的照片，可見電線桿上寫著台中市西屯區，後方有一個300號往台中火車站的公車，以及標示為台中銀行的建築物。然而檢視300號公車的路線表，車輛經西屯區時僅行經台灣大道，不過西屯區的台中銀行並不在台灣大道上，且台中銀行、包括西屯分行的招牌為紅底白字，與網傳照片不符。",
+        "另檢視蔣萬安文宣塞滿垃圾桶的照片，記者透過以圖搜圖尋找到一篇信傳媒有關台北市街頭垃圾桶的報導，報導使用的垃圾桶照片無論是擺放角度、污漬痕跡皆與網傳照片一致，但照片內的垃圾桶沒有垃圾，網傳圖片應是以該圖變造。另網傳照片垃圾桶內擺放的文宣，為蔣萬安2022年參選台北市長發放的文宣品，與現狀不符。"
+      ],
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 3,
+          "content": [
+            {
+              "text": "查核點ㄧ：兩張照片是否為真？",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "content": [
+            {
+              "text": "兩張照片高機率為AI合成",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "查核記者將沈伯洋文宣和蔣萬安文宣塞滿垃圾桶的兩張照片，分別透過AI內容偵測工具"
+            },
+            {
+              "text": "Hive moderation",
+              "href": "https://hivemoderation.com/ai-generated-content-detection"
+            },
+            {
+              "text": "、"
+            },
+            {
+              "text": "Google SynthID",
+              "href": "https://synthid.com/image-detection"
+            },
+            {
+              "text": "檢測。在Hive moderation方面，沈伯洋文宣、蔣萬安文宣照片分別被判定99.3%、98.6%機率為AI合成；Google SynthID則判定兩照片為Open AI、Google AI生成或編輯。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408-3.jpg",
+            "alt": "沈伯洋文宣照片的AI生成內容偵測結果"
+          },
+          "caption": "沈伯洋文宣照片的AI生成內容偵測結果"
+        },
+        {
+          "type": "image",
+          "image": {
+            "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408-4.jpg",
+            "alt": "蔣萬安文宣照片的AI生成內容偵測結果"
+          },
+          "caption": "蔣萬安文宣照片的AI生成內容偵測結果"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "content": [
+            {
+              "text": "照片背景不符現實",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "查核記者檢視沈伯洋文宣塞滿垃圾桶的照片，可見電線桿上寫著台中市西屯區，後方有一個300號往台中火車站的公車，以及標示為台中銀行的建築物。然而檢視300號公車的"
+            },
+            {
+              "text": "路線表",
+              "href": "https://www.tcbus.com.tw/image/lineimage.php?imagetest=300"
+            },
+            {
+              "text": "，車輛經西屯區時僅行經台灣大道，不過西屯區的台中銀行並不在台灣大道上，且台中銀行、包括西屯分行的招牌為紅底白字，與網傳照片不符。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "另檢視蔣萬安文宣塞滿垃圾桶的照片，記者透過以圖搜圖尋找到一篇信傳媒有關台北市街頭垃圾桶的報導，報導使用的垃圾桶照片無論是擺放角度、污漬痕跡皆與網傳照片一致，但照片內的垃圾桶沒有垃圾，網傳圖片應是以該圖變造。另網傳照片垃圾桶內擺放的文宣，為蔣萬安2022年參選台北市長發放的文宣品，與現狀不符。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [],
+  "relatedSlugs": []
+}
