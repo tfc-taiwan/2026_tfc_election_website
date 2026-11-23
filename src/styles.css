@@ -921,7 +921,7 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 @media (min-width: 1181px) {
   .pledge-embedded > .section-heading { display: block; }
   .pledge-embedded > .section-heading > div { width: 100%; }
-  .pledge-embedded .pledge-columns { grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); }
+  .pledge-embedded .pledge-columns { grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); }
   .pledge-embedded .section-heading .pledge-description-embedded,
   .pledge-embedded .section-heading .pledge-description-embedded p {
     width: 100%;
@@ -937,9 +937,11 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
   .pledge-embedded .pledge-group ul { line-height: 1.65; }
   .pledge-embedded .pledge-group li + li { margin-top: 12px; }
   .pledge-embedded .pledge-paper .pledge-principles-note {
+    max-width: none;
+    width: 100%;
     margin-top: 18px;
     padding-top: 14px;
-    font-size: 12px;
+    font-size: 12.5px;
     line-height: 1.55;
   }
   .pledge-embedded .pledge-fulltext { margin-top: 22px; }

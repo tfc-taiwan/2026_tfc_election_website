@@ -39,7 +39,7 @@ try {
     });
     assert.equal(result.text, expected.principlesNote);
     const desktop = width >= 1181;
-    assert.ok(result.fontSize === (desktop ? '12px' : '14px') && result.below && result.contained && !result.overflow, JSON.stringify({ width, ...result }));
+    assert.ok(result.fontSize === (desktop ? '12.5px' : '14px') && result.below && result.contained && !result.overflow, JSON.stringify({ width, ...result }));
     if (desktop) assert.ok(result.leadWhiteSpace === 'nowrap' && result.leadLines === 1 && result.noteLines === 2 && result.columnsEqual, JSON.stringify({ width, ...result }));
     console.log(`Verified initiative at ${width}px: text contained, columns aligned, and desktop copy uses the requested compact layout.`);
     await page.close();
