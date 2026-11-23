@@ -198,6 +198,8 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 .story-card:hover { color: var(--brand-dark); text-decoration: none; transform: translateY(-4px); box-shadow: var(--shadow-card-hover); }
 .story-card:active { transform: translateY(-1px); }
 .story-card .illustration { aspect-ratio: 1; flex-shrink: 0; }
+.reports-section .story-card .illustration, .analysis-section .story-card .illustration { aspect-ratio: 4 / 3; background: var(--brand-paper); }
+.reports-section .story-card .illustration img, .analysis-section .story-card .illustration img { object-fit: cover; }
 /* Keep editorial cover labels visible, including square source artwork. */
 .story-card .illustration img, .article-cover .illustration img { object-fit: contain; }
 .story-card-body { display: flex; flex-direction: column; flex: 1; padding: 24px; }
@@ -532,16 +534,16 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 
 /* Activities */
 .activities-section { background: var(--brand-white); border-bottom: 1px solid var(--ink-10); }
-.activities-inner { max-width: 896px; margin: 0 auto; }
-.activities-inner > h2 { margin-bottom: 48px; padding-bottom: 16px; border-bottom: 2px solid var(--ink-10); }
-.activity-list { display: flex; flex-direction: column; gap: 24px; }
-.activity { display: flex; align-items: center; gap: 32px; padding: 24px; border: 1px solid var(--ink-10); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); transition: background-color .2s; }
+.activities-inner { width: 100%; max-width: none; margin: 0; }
+.activities-inner > h2 { margin-bottom: 32px; padding-bottom: 12px; border-bottom: 2px solid var(--ink-10); }
+.activity-list { display: flex; flex-direction: column; gap: 16px; }
+.activity { display: flex; align-items: center; gap: 24px; padding: 18px 20px; border: 1px solid var(--ink-10); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); transition: background-color .2s; }
 .activity:hover { background: var(--brand-paper); }
 .activity-date { flex: 0 0 128px; color: var(--ink-30); font-family: var(--font-serif); font-size: 30px; font-weight: 900; line-height: 1.2; overflow-wrap: anywhere; transition: color .2s; }
 .activity:hover .activity-date { color: var(--brand-gold); }
 .activity-content { flex: 1; min-width: 0; }
-.activity-content .tag { margin-bottom: 12px; }
-.activity-content h3 { margin-bottom: 8px; font-size: 20px; line-height: 1.4; }
+.activity-content .tag { margin-bottom: 8px; }
+.activity-content h3 { margin-bottom: 6px; font-size: 20px; line-height: 1.4; }
 .activity-content p { color: var(--ink-60); font-size: 14px; }
 .activity .button { flex-shrink: 0; padding-inline: 32px; }
 
@@ -784,6 +786,10 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 .pledge-ticker>:is(h2,h3)>span{width:9px;height:9px;border-radius:50%;background:#e24444}
 .pledge-embedded{max-width:none;padding:0}
 .pledge-embedded .pledge-columns{grid-template-columns:minmax(0,.98fr) minmax(0,1.02fr);gap:clamp(32px,4vw,64px)}
+.pledge-embedded .pledge-columns{align-items:stretch}
+.pledge-embedded .pledge-intro{display:flex;flex-direction:column;height:100%}
+.pledge-embedded .pledge-paper{height:100%;box-sizing:border-box}
+.pledge-embedded .pledge-reasons{flex:1;justify-content:space-between;gap:16px}
 .pledge-embedded p{margin-top:0}
 .pledge-embedded .pledge-title{line-height:1.45}
 .pledge-embedded .pledge-reasons p,.pledge-embedded .pledge-group ul{font-size:16px;line-height:1.85}
@@ -906,6 +912,9 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 .activity-date { width: 148px; min-width: max-content; flex: 0 0 148px; white-space: nowrap; overflow-wrap: normal; word-break: keep-all; font-size: clamp(24px, 2.4vw, 30px); }
 @media (max-width: 700px) { .activity-date { width: max-content; max-width: 100%; flex: 0 0 auto; align-self: flex-start; } }
 .pledge-lead, .pledge-embedded .section-heading p { white-space: pre-line; }
+@media (min-width: 1181px) {
+  .pledge-embedded .pledge-description-embedded { max-width: none; white-space: nowrap; font-size: clamp(12px, .9vw, 14px); line-height: 1.5; }
+}
 
 /* Mobile preview: keep infographic groups as a native, swipeable rail and let
    the rotating case text grow naturally instead of clipping inside the card. */
