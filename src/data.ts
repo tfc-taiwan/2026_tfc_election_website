@@ -175,7 +175,7 @@ export function listingStories(data: Listings, query = '', categoryFilter = '全
   const pinned = (data.sections.reports.pinnedSlugs ?? []).filter(slug =>
     data.stories.some(story => story.slug === slug && story.category === categoryFilter));
   const ranks = new Map(pinned.map((slug, index) => [slug, index]));
-  const candidates = data.stories.filter(story => query.trim() || story.kind === 'report' || ranks.has(story.slug));
+  const candidates = data.stories.filter(story => query.trim() || story.kind === 'report' || ['議題觀察室', '謠言風向球'].includes(story.tag) || ranks.has(story.slug));
   return searchStories(candidates, query, categoryFilter).sort((a, b) =>
     (ranks.get(a.slug) ?? pinned.length) - (ranks.get(b.slug) ?? pinned.length));
 }

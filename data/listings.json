@@ -160,17 +160,17 @@
   },
   "stories": [
     {
-      "slug": "chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check",
+      "slug": "campaign-merchandise-dm-scam",
       "kind": "report",
       "category": "地方選舉",
-      "title": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成",
-      "description": "網路近期流傳兩張照片，分別是公共垃圾桶塞滿台北市長候選人蔣萬安、沈伯洋的文宣品。經查證，兩張照片高機率為AI生成，且對比照片背景、內容並不符合現狀。",
+      "title": "網傳「台北安可選舉小物免費送，只要私訊、利用賣貨便下單，只需付運費」？",
+      "description": "市長選戰倒數，近期網路持續出現「競選小物贈送」的貼文，聲稱民眾只要私訊、填寫資料並負擔運費，就可以領到免費的小熊、飄帶、鑰匙圈。小心！對方如果要求「實名認證」，就可能是詐騙，如果按照詐團指示操作，民眾帳戶內的款項可能會被轉出。",
       "date": "2026-11-23",
       "image": {
-        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408＿5.jpg",
-        "alt": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成"
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4405-1.jpg",
+        "alt": "網傳免費贈送台北安可選舉小物的訊息是假冒詐騙"
       },
-      "tag": "政治與政策",
+      "tag": "科技資安",
       "tone": "cyan",
       "verdict": "錯誤"
     },
@@ -178,31 +178,31 @@
       "slug": "outdated-vote-counting-flaw-videos-mislead-fraud",
       "kind": "report",
       "category": "地方選舉",
-      "title": "選前社群流傳過時開票瑕疵影像，誤導作票",
+      "title": "網傳影片「唱票柯文哲卻劃記賴清德得票，原來外面流傳做票是真的」？",
       "description": "近期網路流傳2024年總統大選開票影像，宣稱「唱票柯文哲卻畫記賴清德得票」，認為是作票證據；原始影片攝於桃園一處開票所，當天記票員確實曾劃記錯誤，但經現場指正，隨即修正錯誤才繼續開票，並非作票。",
       "date": "2026-11-23",
       "image": {
         "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4406-1.jpg",
-        "alt": "網傳影片「唱票柯文哲卻劃記賴清德得票，原來外面流傳做票是真的」？"
+        "alt": "2024年總統大選開票劃記錯誤已當場更正，並非作票"
       },
       "tag": "政治與政策",
       "tone": "cyan",
       "verdict": "錯誤"
     },
     {
-      "slug": "campaign-merchandise-dm-scam",
+      "slug": "chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check",
       "kind": "report",
       "category": "地方選舉",
-      "title": "競選小物詐騙頻傳，慎防社群「私訊免費送」手法",
-      "description": "市長選戰倒數，近期網路持續出現「競選小物贈送」的貼文，聲稱民眾只要私訊、填寫資料並負擔運費，就可以領到免費的小熊、飄帶、鑰匙圈。小心！對方如果要求「實名認證」，就可能是詐騙，如果按照詐團指示操作，民眾帳戶內的款項可能會被轉出。",
+      "description": "網傳照片顯示蔣萬安、沈伯洋文宣品塞滿公用垃圾桶。查核結果顯示，照片高機率由AI生成。",
       "date": "2026-11-23",
       "image": {
-        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4405-1.jpg",
-        "alt": "網傳「台北安可選舉小物免費送，只要私訊、利用賣貨便下單，只需付運費」？"
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408-1.jpg",
+        "alt": "網傳蔣萬安、沈伯洋文宣品塞滿公用垃圾桶的照片"
       },
-      "tag": "科技資安",
+      "tag": "謠言風向球",
       "tone": "cyan",
-      "verdict": "錯誤"
+      "verdict": "錯誤",
+      "title": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成"
     },
     {
       "slug": "feitsui-reservoir-solar-power-policy-and-regulatory-dispute",
@@ -236,7 +236,7 @@
       "slug": "pingtan-strait-bridge-does-not-connect-to-taiwan",
       "kind": "report",
       "category": "地方選舉",
-      "title": "網路流傳中國宣傳影片，誇大宣稱平潭海峽大橋將直通台灣",
+      "title": "網傳影片「平潭海峽大橋即將通往台灣，30分鐘可抵達」？",
       "description": "網傳影片聲稱，中國建造的「平潭海峽大橋」即將通往台灣，透過高鐵只要30分鐘就可抵達。經查證，中國片面宣稱有連接台灣規劃，但未有實質進展，陸委會也否認稱兩岸未就此議題討論，檢視近期平潭島靠台灣一側的衛星圖也未見到橋體結構或工程。",
       "date": "2026-11-13",
       "image": {
@@ -280,7 +280,7 @@
       "slug": "referendum-approval-threshold-valid-votes",
       "kind": "report",
       "category": "地方選舉",
-      "title": "公投通過門檻在於有效票數，不領票不會影響門檻",
+      "title": "網傳「公投不領票，通過門檻會變高」？",
       "description": "公投通過門檻在於有效票，不領票不會提高門檻。",
       "date": "2026-11-06",
       "image": {
@@ -295,7 +295,7 @@
       "slug": "taiwan-2024-presidential-election-vote-counting-marking-error-corrected",
       "kind": "report",
       "category": "地方選舉",
-      "title": "網傳「開3畫2」影片為2024總統大選開票劃記錯誤，當場發現失誤已更正票數",
+      "title": "網傳「開票『開3畫2』，選務人員遭收買」？",
       "description": "彰化縣第418投票所發生劃記錯誤，經現場民眾提醒後立即更正，最後票數核對無誤。",
       "date": "2026-11-06",
       "image": {
@@ -310,7 +310,7 @@
       "slug": "1128-referendum-fake-news-nuclear-free-policy",
       "kind": "report",
       "category": "地方選舉",
-      "title": "網傳「1128有5大公投案」是錯誤資訊，公投僅「廢除非核家園」一案",
+      "title": "網傳「11月28日有5項公投案要表決」？",
       "description": "九合一選舉將至，網傳11月28日投票日有5項公投；經查，今年成立公投案僅有「廢除非核家園」一案。",
       "date": "2026-11-03",
       "image": {
@@ -672,21 +672,6 @@
       "verdict": "錯誤"
     },
     {
-      "slug": "puma-campaign-giveaway-scam",
-      "kind": "report",
-      "category": "地方選舉",
-      "title": "近期社群出現「洋流選舉小物」詐騙",
-      "description": "台北市長選戰白熱化，近期網路出現宣稱「免費贈送競選小物」的貼文，聲稱民眾只要私訊並填寫寄送資料，就能免費領取。小心！這可能是詐騙陷阱。對方傳送的是仿冒的「店到店網址」，還會宣稱訂單遭到鎖定，要求透過網路銀行轉帳進行認證，導致民眾帳戶款項遭轉出。",
-      "date": "2026-10-13",
-      "image": {
-        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4354-1.jpg",
-        "alt": "網傳「台北市長洋流小物贈送，只要私訊、利用賣貨便網路下單即可取得」？"
-      },
-      "tag": "科技資安",
-      "tone": "cyan",
-      "verdict": "錯誤"
-    },
-    {
       "slug": "taiwan-2026-election-voting-notice-ballots-guide",
       "kind": "guide",
       "category": "選舉工具箱",
@@ -699,6 +684,21 @@
       },
       "tag": "選舉工具箱",
       "tone": "cyan"
+    },
+    {
+      "slug": "puma-campaign-giveaway-scam",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "近期社群出現「洋流選舉小物」詐騙",
+      "description": "近期社群出現「洋流選舉小物」詐騙，假借免費贈送競選小物誘導民眾私訊、填寫寄送資料，並以實名認證等話術騙取帳戶款項。",
+      "date": "2026-10-13",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/10/4354-1.jpg",
+        "alt": "網傳免費贈送台北市長候選人洋流選舉小物的訊息是假冒詐騙"
+      },
+      "tag": "科技資安",
+      "tone": "cyan",
+      "verdict": "錯誤"
     },
     {
       "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover",
@@ -1006,13 +1006,16 @@
       ],
       "items": [
         {
-          "slug": "chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check"
+          "slug": "chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check",
+          "title": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成"
         },
         {
-          "slug": "outdated-vote-counting-flaw-videos-mislead-fraud"
+          "slug": "outdated-vote-counting-flaw-videos-mislead-fraud",
+          "title": "選前社群流傳過時開票瑕疵影像，誤導作票"
         },
         {
-          "slug": "campaign-merchandise-dm-scam"
+          "slug": "campaign-merchandise-dm-scam",
+          "title": "競選小物詐騙頻傳，慎防社群「私訊免費送」手法"
         },
         {
           "slug": "feitsui-reservoir-solar-power-policy-and-regulatory-dispute"
@@ -1021,7 +1024,8 @@
           "slug": "threads-meta-ai-misinformation"
         },
         {
-          "slug": "pingtan-strait-bridge-does-not-connect-to-taiwan"
+          "slug": "pingtan-strait-bridge-does-not-connect-to-taiwan",
+          "title": "網路流傳中國宣傳影片，誇大宣稱平潭海峽大橋將直通台灣"
         },
         {
           "slug": "chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading"
@@ -1030,13 +1034,16 @@
           "slug": "drug-driving-penalties-death-penalty-legal-reform"
         },
         {
-          "slug": "referendum-approval-threshold-valid-votes"
+          "slug": "referendum-approval-threshold-valid-votes",
+          "title": "公投通過門檻在於有效票數，不領票不會影響門檻"
         },
         {
-          "slug": "taiwan-2024-presidential-election-vote-counting-marking-error-corrected"
+          "slug": "taiwan-2024-presidential-election-vote-counting-marking-error-corrected",
+          "title": "網傳「開3畫2」影片為2024總統大選開票劃記錯誤，當場發現失誤已更正票數"
         },
         {
-          "slug": "1128-referendum-fake-news-nuclear-free-policy"
+          "slug": "1128-referendum-fake-news-nuclear-free-policy",
+          "title": "網傳「1128有5大公投案」是錯誤資訊，公投僅「廢除非核家園」一案"
         },
         {
           "slug": "black-bear-academy-subsidies-before-shen-po-yang-became-legislator"
@@ -1060,7 +1067,8 @@
           "slug": "lai-hui-yuan-manipulated-video-sparks-confrontation-facts"
         },
         {
-          "slug": "puma-campaign-giveaway-scam"
+          "slug": "puma-campaign-giveaway-scam",
+          "title": "近期社群出現「洋流選舉小物」詐騙"
         },
         {
           "slug": "ai-edited-image-of-yangliu-on-time-magazine-cover"
