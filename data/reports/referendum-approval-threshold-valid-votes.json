@@ -7,7 +7,7 @@
     "description": "公投通過門檻在於有效票，不領票不會提高門檻。",
     "image": {
       "src": "/images/imported/a72f2a963011bbbb13f1b24af799048dd85bd80dc73d987e47131b44a0b77de4.jpg",
-      "alt": "網傳「公投可以不領票，否則會提高通過門檻」的訊息圖卡",
+      "alt": "公投通過門檻依有效票數計算，不領票不會提高門檻",
       "width": 1040,
       "height": 1040,
       "type": "image/jpeg"
@@ -31,7 +31,7 @@
   "editor": "陳偉婷",
   "image": {
     "src": "/images/imported/a72f2a963011bbbb13f1b24af799048dd85bd80dc73d987e47131b44a0b77de4.jpg",
-    "alt": "網傳「公投可以不領票，否則會提高通過門檻」的訊息圖卡"
+    "alt": "公投通過門檻依有效票數計算，不領票不會提高門檻"
   },
   "imageCaption": "網傳「公投可以不領票，否則會提高通過門檻」的訊息圖卡",
   "summaryPoints": [

@@ -6,10 +6,10 @@
     "title": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成｜2026 選舉工具箱",
     "description": "網路流傳蔣萬安、沈伯洋文宣品塞滿公用垃圾桶的照片，查核結果顯示照片高機率由AI生成。",
     "image": {
-      "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408-1.jpg",
-      "alt": "網傳蔣萬安、沈伯洋文宣品塞滿公用垃圾桶的照片",
-      "width": 1200,
-      "height": 1200,
+      "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408%EF%BC%BF5-1024x1024.jpg",
+      "alt": "蔣萬安、沈伯洋文宣品塞滿公用垃圾桶的網傳照片",
+      "width": 1024,
+      "height": 1024,
       "type": "image/jpeg"
     },
     "noindex": false,
@@ -17,27 +17,26 @@
   },
   "kind": "report",
   "category": "地方選舉",
-  "title": "網傳照片「蔣萬安、沈伯洋文宣品塞滿公用垃圾桶」？",
+  "title": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成",
   "finding": "高機率經AI生成的照片",
   "verdict": "錯誤",
   "tags": [
-    "政治與政策",
-    "AI生成"
+    "政治與政策"
   ],
   "published": "2026-11-23",
   "updated": "2026-11-23",
   "reportId": "4408",
-  "reporter": "台灣事實查核中心",
-  "editor": "台灣事實查核中心",
+  "reporter": "蔡雯如",
+  "editor": "何蕙安",
   "image": {
-    "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408-1.jpg",
-    "alt": "網傳蔣萬安、沈伯洋文宣品塞滿公用垃圾桶的照片"
+    "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408%EF%BC%BF5-1024x1024.jpg",
+    "alt": "蔣萬安、沈伯洋文宣品塞滿公用垃圾桶的網傳照片"
   },
-  "imageCaption": "網傳蔣萬安、沈伯洋文宣品塞滿公用垃圾桶的照片",
+  "imageCaption": "網傳照片「蔣萬安、沈伯洋文宣品塞滿公用垃圾桶」？",
   "summaryPoints": [
-    "網傳蔣萬安、沈伯洋文宣品塞滿公用垃圾桶的照片，經查核高機率由AI生成。",
-    "查核中心以AI影像偵測工具檢視，結果顯示影像具有AI生成特徵。",
-    "照片經AI生成的機率高，網傳內容不宜視為真實場景。"
+    "網路近期流傳兩張照片，分別是公共垃圾桶塞滿蔣萬安、沈伯洋文宣品。經查證，照片高機率為AI生成，且背景、內容不符合現狀。",
+    "兩張照片經Hive moderation檢測，分別獲得99.3%、98.6%機率為AI合成；Google SynthID也判定為AI生成或編輯。",
+    "網傳照片高機率經AI合成，為錯誤資訊。"
   ],
   "summaryClose": "",
   "presentation": {
@@ -48,7 +47,7 @@
     "id": "background",
     "title": "背景",
     "paragraphs": [
-      "網路流傳照片，宣稱蔣萬安、沈伯洋競選文宣品塞滿公用垃圾桶。"
+      "網路近期流傳兩張照片，分別是公共垃圾桶塞滿台北市長候選人蔣萬安、沈伯洋的文宣品。"
     ],
     "blocks": [
       {
@@ -62,8 +61,8 @@
       {
         "type": "image",
         "image": {
-          "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408-1.jpg",
-          "alt": "網傳蔣萬安、沈伯洋文宣品塞滿公用垃圾桶的照片"
+          "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4408%EF%BC%BF5-1024x1024.jpg",
+          "alt": "蔣萬安、沈伯洋文宣品塞滿公用垃圾桶的網傳照片"
         },
         "caption": "網傳照片"
       }
@@ -74,8 +73,9 @@
       "id": "check-1",
       "title": "查核",
       "paragraphs": [
-        "查核中心透過AI影像偵測工具檢視網傳照片，結果顯示照片高機率經AI生成。",
-        "因此，網傳照片不宜視為真實場景，相關宣稱缺乏可信影像佐證。"
+        "兩張照片分別透過Hive moderation、Google SynthID檢測。在Hive moderation獲得99.3%、98.6%機率為AI合成，並分別被Google SynthID判定為OpenAI、Google AI生成或編輯。",
+        "檢視沈伯洋文宣照片，其背景中出現公車路線300號、台中銀行與西屯區標示，但該公車不會經過台中銀行西屯分行；蔣萬安文宣照片則疑似以媒體報導照片合成，且文宣是其2022年參選市長時使用的文宣品。",
+        "網傳照片高機率經AI合成，與實際情況不符。"
       ]
     }
   ],
