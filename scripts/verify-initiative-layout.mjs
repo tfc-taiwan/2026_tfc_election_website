@@ -28,11 +28,20 @@ try {
       const note = paper.querySelector('.pledge-principles-note');
       const secondGroup = paper.querySelector('.pledge-group-1');
       const bounds = note.getBoundingClientRect(), container = paper.getBoundingClientRect();
-      return { text: note.textContent, small: getComputedStyle(note).fontSize === '14px', below: bounds.top >= secondGroup.getBoundingClientRect().bottom, contained: bounds.left >= container.left && bounds.right <= container.right + 1, overflow: document.documentElement.scrollWidth > innerWidth };
+      const range = document.createRange();
+      range.selectNodeContents(note);
+      const noteLines = new Set([...range.getClientRects()].map(rect => Math.round(rect.top))).size;
+      const leftColumn = document.querySelector('#initiative .pledge-intro').getBoundingClientRect();
+      const rightColumn = paper.getBoundingClientRect();
+      const lead = document.querySelector('#initiative .pledge-description-embedded');
+      const leadLines = new Set([...(() => { const r = document.createRange(); r.selectNodeContents(lead); return r.getClientRects(); })()].map(rect => Math.round(rect.top))).size;
+      return { text: note.textContent, fontSize: getComputedStyle(note).fontSize, noteLines, leadWhiteSpace: getComputedStyle(lead.querySelector('p')).whiteSpace, leadLines, columnsEqual: Math.abs(leftColumn.height - rightColumn.height) < 1, below: bounds.top >= secondGroup.getBoundingClientRect().bottom, contained: bounds.left >= container.left && bounds.right <= container.right + 1, overflow: document.documentElement.scrollWidth > innerWidth };
     });
     assert.equal(result.text, expected.principlesNote);
-    assert.ok(result.small && result.below && result.contained && !result.overflow, JSON.stringify({ width, ...result }));
-    console.log(`Verified initiative at ${width}px: 14px note below both promises, contained text and no horizontal overflow.`);
+    const desktop = width >= 1181;
+    assert.ok(result.fontSize === (desktop ? '12.5px' : '14px') && result.below && result.contained && !result.overflow, JSON.stringify({ width, ...result }));
+    if (desktop) assert.ok(result.leadWhiteSpace === 'nowrap' && result.leadLines === 1 && result.noteLines === 2 && result.columnsEqual, JSON.stringify({ width, ...result }));
+    console.log(`Verified initiative at ${width}px: text contained, columns aligned, and desktop copy uses the requested compact layout.`);
     await page.close();
   }
 } finally {
