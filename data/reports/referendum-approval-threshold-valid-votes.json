@@ -3,7 +3,7 @@
   "isMock": false,
   "slug": "referendum-approval-threshold-valid-votes",
   "seo": {
-    "title": "網傳「公投不領票，通過門檻會變高」？｜2026 選舉工具箱",
+    "title": "網傳「公投不領票，通過門檻會變高」｜2026 選舉工具箱",
     "description": "公投通過門檻在於有效票，不領票不會提高門檻。",
     "image": {
       "src": "/images/imported/a72f2a963011bbbb13f1b24af799048dd85bd80dc73d987e47131b44a0b77de4.jpg",
@@ -17,7 +17,7 @@
   },
   "kind": "report",
   "category": "地方選舉",
-  "title": "網傳「公投不領票，通過門檻會變高」？",
+  "title": "網傳「公投不領票，通過門檻會變高」",
   "finding": "公投通過門檻在於有效票，不領票不會提高門檻。",
   "verdict": "錯誤",
   "tags": [

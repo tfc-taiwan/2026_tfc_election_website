@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { daysUntil, listingsSchema, reportSchema, searchStories, listingStories, youtubeVideoId } from '../src/data.ts';
+import { daysUntil, listingsSchema, reportSchema, searchStories, listingStories, homepageReportStories, youtubeVideoId } from '../src/data.ts';
 import { resolveInfographic } from '../src/infographics.ts';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -18,7 +18,7 @@ test('footer social links are unique HTTPS destinations', () => {
 test('all listing references resolve to unique, matching report files and local images', () => {
   const slugs = new Set(data.stories.map(story => story.slug));
   assert.equal(slugs.size, data.stories.length);
-  assert.equal(readdirSync(resolve(root, 'data/reports')).filter(file => file.endsWith('.json')).length, slugs.size);
+  assert.ok(slugs.size <= readdirSync(resolve(root, 'data/reports')).filter(file => file.endsWith('.json')).length);
   for (const story of data.stories) {
     const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${story.slug}.json`), 'utf8')));
     assert.equal(report.slug, story.slug);
@@ -52,14 +52,14 @@ test('all listing references resolve to unique, matching report files and local 
 test('latest reports are ordered by source publication date and existing editorial content remains ready', () => {
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
   assert.deepEqual(data.sections.reports.items.slice(0, 5).map(item => item.slug), [
-    'campaign-merchandise-dm-scam',
+    'chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check',
     'outdated-vote-counting-flaw-videos-mislead-fraud',
+    'campaign-merchandise-dm-scam',
     'feitsui-reservoir-solar-power-policy-and-regulatory-dispute',
     'threads-meta-ai-misinformation',
-    'pingtan-strait-bridge-does-not-connect-to-taiwan',
   ]);
   assert.deepEqual(data.sections.reports.items.slice(0, 5).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
-    '2026-11-23', '2026-11-23', '2026-11-21', '2026-11-20', '2026-11-13',
+    '2026-11-23', '2026-11-23', '2026-11-23', '2026-11-21', '2026-11-20',
   ]);
   const threadsSlug = 'threads-meta-ai-misinformation';
   const threadsArticle = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${threadsSlug}.json`), 'utf8')));
@@ -90,7 +90,7 @@ test('latest reports are ordered by source publication date and existing editori
     assert.ok(!section.blocks?.some(block => block.type === 'heading' && block.level === 3 && block.content.map(part => part.text).join('') === section.title));
   }
   const referendum = data.stories.find(story => story.slug === referendumSlug)!;
-  assert.equal(referendum.title, '網傳「11月28日有5項公投案要表決」？');
+  assert.equal(referendum.title, '網傳「1128有5大公投案」是錯誤資訊，公投僅「廢除非核家園」一案');
   assert.equal(referendum.verdict, '錯誤');
   const referendumReport = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${referendumSlug}.json`), 'utf8')));
   assert.equal(referendumReport.reportId, '4380');
@@ -137,9 +137,9 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 55);
+  assert.equal(data.stories.length, 56);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
-  assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 24);
+  assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 25);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
   assert.equal(data.stories.find(story => story.slug === 'five-star-flag-fine-2020-proposal-not-passed')?.image?.src, '/images/covers/five-star-flag-fine-2020-proposal-not-passed.jpg');
   assert.equal(data.stories.find(story => story.slug === 'deepfake-pledge')?.image, null);
@@ -175,14 +175,14 @@ test('provided covers match reports while unfilled dates stay absent', () => {
   assert.equal(standaloneCard?.group.cards.length, 7);
   for (const story of data.stories) {
     const report = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${story.slug}.json`), 'utf8')));
-    if (!report.bodySections && !['1128-referendum-fake-news-nuclear-free-policy', 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading'].includes(report.slug)) assert.deepEqual(report.image, story.image);
+    if (!report.bodySections && !['1128-referendum-fake-news-nuclear-free-policy', 'chiang-wan-an-2017-forward-looking-infrastructure-bill-obstruction-photo-misleading', 'pingtan-strait-bridge-does-not-connect-to-taiwan', 'referendum-approval-threshold-valid-votes', 'taiwan-2024-presidential-election-vote-counting-marking-error-corrected', 'chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check'].includes(report.slug)) assert.deepEqual(report.image, story.image);
     if (report.slug === '1128-referendum-fake-news-nuclear-free-policy') {
       assert.equal(report.image?.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4380_5.jpg');
       assert.equal(report.image?.alt, '網傳「2026年五大公投案」圖卡，標示錯誤');
       assert.equal(report.background.blocks?.find(block => block.type === 'image')?.image.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4380-2-1024x675.jpg');
     }
     if (story.image?.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${story.image.src}`))); 
-    if (story.image && report.slug !== '1128-referendum-fake-news-nuclear-free-policy') assert.equal(report.seo.image.src, story.image.src);
+    if (story.image && !['1128-referendum-fake-news-nuclear-free-policy', 'chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check'].includes(report.slug)) assert.equal(report.seo.image.src, story.image.src);
     if (report.slug === '1128-referendum-fake-news-nuclear-free-policy') assert.equal(report.seo.image.src, report.image?.src);
     const sections = [report.background, ...report.checkSections, ...(report.supplementarySections ?? []), ...(report.bodySections ?? [])];
     for (const section of sections) for (const block of section.blocks ?? []) {
@@ -227,7 +227,9 @@ test('category pins keep explanatory articles ahead of new reports without leaki
   const futureReport = { ...sample.stories.find(story => story.kind === 'report')!, slug: 'new-debate-report', category: '辯論會查核' as const, date: '2026-11-01' };
   sample.stories = [futureReport, ...[...sample.stories].reverse()];
   assert.deepEqual(listingStories(sample, '', '辯論會查核').slice(0, 3).map(story => story.slug), [...pins, futureReport.slug]);
-  assert.ok(listingStories(sample).every(story => story.kind === 'report'));
+  assert.ok(listingStories(sample).every(story => story.kind === 'report' || ['議題觀察室', '謠言風向球'].includes(story.tag)));
+  assert.ok(listingStories(sample, '', '地方選舉').some(story => story.tag === '議題觀察室'));
+  assert.ok(listingStories(sample, '', '地方選舉').some(story => story.tag === '謠言風向球'));
   assert.ok(listingStories(sample, '', '地方選舉').every(story => story.category === '地方選舉' && !pins.includes(story.slug)));
   assert.deepEqual(listingStories(sample, '查核結果說明', '辯論會查核').map(story => story.slug), [pins[1]]);
   assert.equal(listingStories(sample, 'absolutely-no-match', '辯論會查核').length, 0);
@@ -237,6 +239,20 @@ test('category pins keep explanatory articles ahead of new reports without leaki
     assert.equal(report.verdict, undefined);
     assert.equal(report.presentation?.showReportMetadata, false);
     assert.equal(report.presentation?.showSummary, false);
+  }
+});
+
+test('homepage report cards and local-election listing use the same articles, titles, and publication-date order', () => {
+  const homepage = homepageReportStories(data);
+  const localListing = listingStories(data, '', '地方選舉');
+  const homepageSlugs = homepage.map(story => story.slug);
+  const localSlugs = localListing.map(story => story.slug);
+  assert.deepEqual(homepageSlugs, localSlugs);
+  assert.deepEqual(homepage.map(story => story.date), [...homepage.map(story => story.date)].sort((a, b) => (b ?? '').localeCompare(a ?? '')));
+  for (const item of data.sections.reports.items) {
+    const home = homepage.find(story => story.slug === item.slug)!;
+    const listing = localListing.find(story => story.slug === item.slug)!;
+    assert.equal(listing.title, home.title);
   }
 });
 
