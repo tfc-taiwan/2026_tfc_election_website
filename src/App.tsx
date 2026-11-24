@@ -1,7 +1,7 @@
 import { reportAliases } from './report-aliases';
 import React, { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, NavLink, Navigate, Route, Routes, useLocation, useParams, useSearchParams } from 'react-router-dom';
-import { DataError, daysUntil, getListings, getReport, listingStories, youtubeVideoId, type ContentBlock, type Info, type Listings, type Report, type Story } from './data';
+import { DataError, daysUntil, getListings, getReport, listingStories, homepageReportStories, youtubeVideoId, type ContentBlock, type Info, type Listings, type Report, type Story } from './data';
 import { buildSeo, siteRootFor, syncSeoHead, type PageStatus } from './seo';
 import { publicPath } from './paths';
 import { infographicPath, resolveInfographic } from './infographics';
@@ -328,10 +328,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
   const [today, setToday] = useState(() => new Date(now));
   useEffect(() => { setToday(new Date()); const timer = window.setInterval(() => setToday(new Date()), 60_000); return () => clearInterval(timer); }, []);
   const pick = (slugs: string[]) => slugs.flatMap(slug => stories.find(story => story.slug === slug) ?? []);
-  const homeReports = sections.reports.items.flatMap(item => {
-    const story = stories.find(value => value.slug === item.slug);
-    return story ? [{ ...story, title: item.title ?? story.title }] : [];
-  });
+  const homeReports = homepageReportStories(data);
   const debateStories = listingStories(data, '', '辯論會查核');
 
   return <>

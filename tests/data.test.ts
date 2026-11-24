@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { daysUntil, listingsSchema, reportSchema, searchStories, listingStories, youtubeVideoId } from '../src/data.ts';
+import { daysUntil, listingsSchema, reportSchema, searchStories, listingStories, homepageReportStories, youtubeVideoId } from '../src/data.ts';
 import { resolveInfographic } from '../src/infographics.ts';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -239,6 +239,20 @@ test('category pins keep explanatory articles ahead of new reports without leaki
     assert.equal(report.verdict, undefined);
     assert.equal(report.presentation?.showReportMetadata, false);
     assert.equal(report.presentation?.showSummary, false);
+  }
+});
+
+test('homepage report cards and local-election listing use the same articles, titles, and publication-date order', () => {
+  const homepage = homepageReportStories(data);
+  const localListing = listingStories(data, '', '地方選舉');
+  const homepageSlugs = homepage.map(story => story.slug);
+  const localSlugs = localListing.map(story => story.slug);
+  assert.deepEqual(homepageSlugs, localSlugs);
+  assert.deepEqual(homepage.map(story => story.date), [...homepage.map(story => story.date)].sort((a, b) => (b ?? '').localeCompare(a ?? '')));
+  for (const item of data.sections.reports.items) {
+    const home = homepage.find(story => story.slug === item.slug)!;
+    const listing = localListing.find(story => story.slug === item.slug)!;
+    assert.equal(listing.title, home.title);
   }
 });
 

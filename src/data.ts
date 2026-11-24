@@ -170,12 +170,32 @@ export function searchStories(stories: Story[], query: string, categoryFilter = 
     terms.every(term => `${story.title} ${story.description} ${story.tag} ${story.category ?? ''}`.normalize('NFKC').toLocaleLowerCase().includes(term)));
 }
 
+/** The homepage and local-election listing share the same publication-date order. */
+export function homepageReportStories(data: Listings): Story[] {
+  const ranks = new Map(data.sections.reports.items.map((item, index) => [item.slug, index]));
+  return data.sections.reports.items.flatMap(item => {
+    const story = data.stories.find(value => value.slug === item.slug);
+    return story ? [{ ...story, title: item.title ?? story.title }] : [];
+  }).sort((a, b) => (b.date ?? '').localeCompare(a.date ?? '') ||
+    (ranks.get(a.slug) ?? Number.MAX_SAFE_INTEGER) - (ranks.get(b.slug) ?? Number.MAX_SAFE_INTEGER));
+}
+
 /** Editorial pins appear only in their category; search still filters every result. */
 export function listingStories(data: Listings, query = '', categoryFilter = '全部'): Story[] {
   const pinned = (data.sections.reports.pinnedSlugs ?? []).filter(slug =>
     data.stories.some(story => story.slug === slug && story.category === categoryFilter));
-  const ranks = new Map(pinned.map((slug, index) => [slug, index]));
-  const candidates = data.stories.filter(story => query.trim() || story.kind === 'report' || ['議題觀察室', '謠言風向球'].includes(story.tag) || ranks.has(story.slug));
-  return searchStories(candidates, query, categoryFilter).sort((a, b) =>
-    (ranks.get(a.slug) ?? pinned.length) - (ranks.get(b.slug) ?? pinned.length));
+  const pinnedRanks = new Map(pinned.map((slug, index) => [slug, index]));
+  const homeRanks = new Map(data.sections.reports.items.map((item, index) => [item.slug, index]));
+  const homeTitles = new Map(data.sections.reports.items.filter(item => item.title).map(item => [item.slug, item.title!]));
+  const candidates = data.stories.filter(story => query.trim() || story.kind === 'report' || ['議題觀察室', '謠言風向球'].includes(story.tag) || pinnedRanks.has(story.slug));
+  return searchStories(candidates.map(story => homeTitles.has(story.slug) ? { ...story, title: homeTitles.get(story.slug)! } : story), query, categoryFilter).sort((a, b) => {
+    const aPinned = pinnedRanks.get(a.slug), bPinned = pinnedRanks.get(b.slug);
+    if (aPinned !== undefined || bPinned !== undefined) {
+      if (aPinned === undefined) return 1;
+      if (bPinned === undefined) return -1;
+      return aPinned - bPinned;
+    }
+    return (b.date ?? '').localeCompare(a.date ?? '') ||
+      (homeRanks.get(a.slug) ?? Number.MAX_SAFE_INTEGER) - (homeRanks.get(b.slug) ?? Number.MAX_SAFE_INTEGER);
+  });
 }
