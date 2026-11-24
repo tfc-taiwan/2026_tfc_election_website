@@ -205,6 +205,20 @@
       "title": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成"
     },
     {
+      "slug": "reservoir-solar-power-environmental-impact-assessment-debate",
+      "kind": "analysis",
+      "category": "地方選舉",
+      "title": "水庫設光電，誰說要環評？藍綠攻防爭議釐清",
+      "description": "網路流傳台北市長蔣萬安阻擋翡翠水庫設置光電板等言論，引發水面型光電是否須環評、修法誰贊成誰反對等討論。查核中心整理環評標準沿革與2025年修法爭議；目前設有水面型光電板的6座水庫中，烏山頭與阿公店水庫達到新法環評門檻。",
+      "date": "2026-11-23",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/156806＿7.jpg",
+        "alt": "水庫設光電，誰說要環評？藍綠攻防爭議釐清"
+      },
+      "tag": "議題觀察室",
+      "tone": "cyan"
+    },
+    {
       "slug": "feitsui-reservoir-solar-power-policy-and-regulatory-dispute",
       "kind": "analysis",
       "category": "地方選舉",
@@ -1001,6 +1015,10 @@
         {
           "slug": "campaign-merchandise-dm-scam",
           "title": "競選小物詐騙頻傳，慎防社群「私訊免費送」手法"
+        },
+        {
+          "slug": "reservoir-solar-power-environmental-impact-assessment-debate",
+          "title": "水庫設光電，誰說要環評？藍綠攻防爭議釐清"
         },
         {
           "slug": "feitsui-reservoir-solar-power-policy-and-regulatory-dispute"
