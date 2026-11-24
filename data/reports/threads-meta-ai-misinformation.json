@@ -24,21 +24,18 @@
   ],
   "published": "2026-11-20",
   "updated": "2026-11-20",
-  "reportId": "—",
+  "reportId": "",
   "reporter": "曾慧雯",
   "editor": "陳偉婷",
-  "image": {
-    "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/202611204.jpg",
-    "alt": "用Meta AI查證反被誤導？Threads AI屢次答錯，連選舉謠言也當真"
-  },
-  "imageCaption": "用Meta AI查證反被誤導？Threads AI屢次答錯，連選舉謠言也當真（原文封面）",
+  "image": null,
+  "imageCaption": "",
   "summaryPoints": [
     "社群平台Threads於2026年5月底，開始在台灣等部分國家測試內建的Meta AI功能，使用者只要在貼文或留言中標記官方AI帳號@meta.ai，並提出問題，就能獲得公開回覆。Meta於同年9月3日宣布，這項功能正式全面上線，讓AI聊天機器人進一步融入社群平台的日常互動。",
     "從Threads平台的Meta AI功能啟用至今，查核中心觀察到，有不少網友喜歡標記Meta AI協助查證網路熱傳或敏感爭議話題。然而，Meta AI多次「已讀亂回」，非但對釐清事實毫無幫助，反而還對謠言的散播起了推波助瀾的作用。"
   ],
   "summaryClose": "",
   "presentation": {
-    "showReportMetadata": false,
+    "showReportMetadata": true,
     "showSummary": false,
     "showContentsNavigation": false
   },
