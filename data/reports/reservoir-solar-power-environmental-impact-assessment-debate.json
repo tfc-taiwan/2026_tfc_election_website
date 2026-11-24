@@ -24,14 +24,11 @@
   ],
   "published": "2026-11-23",
   "updated": "2026-11-23",
-  "reportId": "—",
+  "reportId": "",
   "reporter": "蔡雯如、許雲凱",
   "editor": "陳偉婷",
-  "image": {
-    "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/156806＿7.jpg",
-    "alt": "水庫設光電，誰說要環評？藍綠攻防爭議釐清"
-  },
-  "imageCaption": "水庫設光電，誰說要環評？藍綠攻防爭議釐清",
+  "image": null,
+  "imageCaption": "",
   "summaryPoints": [
     "目前台灣有6座水庫設有水面型光電板，設置時均未辦理環評；2025年修法後，水庫光電容量達1萬瓩或面積達5公頃，須經環評。",
     "依現有設置規模，烏山頭水庫與阿公店水庫達到新法環評門檻。",
@@ -45,7 +42,7 @@
   "presentation": {
     "showReportMetadata": true,
     "showSummary": true,
-    "showContentsNavigation": true
+    "showContentsNavigation": false
   },
   "background": {
     "id": "background",
