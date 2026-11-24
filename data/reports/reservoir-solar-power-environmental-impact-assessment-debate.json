@@ -28,10 +28,10 @@
   "reporter": "蔡雯如、許雲凱",
   "editor": "陳偉婷",
   "image": {
-    "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/156806＿7.jpg",
-    "alt": "水庫設光電，誰說要環評？藍綠攻防爭議釐清"
+    "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/156806＿1-scaled.jpg",
+    "alt": "烏山頭水庫浮動式光電板示意圖。（截自星能股份有限公司）"
   },
-  "imageCaption": "水庫設光電，誰說要環評？藍綠攻防爭議釐清",
+  "imageCaption": "烏山頭水庫浮動式光電板示意圖。（截自星能股份有限公司）",
   "summaryPoints": [
     "目前台灣有6座水庫設有水面型光電板，設置時均未辦理環評；2025年修法後，水庫光電容量達1萬瓩或面積達5公頃，須經環評。",
     "依現有設置規模，烏山頭水庫與阿公店水庫達到新法環評門檻。",
@@ -46,7 +46,7 @@
     "showReportMetadata": true,
     "showSummary": true,
     "showContentsNavigation": false,
-    "showCoverImage": false
+    "showCoverImage": true
   },
   "background": {
     "id": "background",
@@ -104,21 +104,6 @@
         "第三階段就是目前光電設施的環評標準，未來水庫光電只要「設置或累積設置裝置容量1萬瓩以上，或設置或累積設置面積5公頃以上」必須環評。"
       ],
       "blocks": [
-        {
-          "type": "image",
-          "image": {
-            "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/156806＿1-scaled.jpg",
-            "alt": "烏山頭水庫浮動式光電板示意圖。（截自星能股份有限公司）"
-          },
-          "caption": "烏山頭水庫浮動式光電板示意圖。（截自星能股份有限公司）"
-        },
-        {
-          "type": "image",
-          "image": {
-            "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/image.jpg",
-            "alt": "水庫設光電，誰說要環評？藍綠攻防爭議釐清"
-          }
-        },
         {
           "type": "paragraph",
           "content": [
@@ -599,5 +584,14 @@
   ],
   "relatedSlugs": [
     "feitsui-reservoir-solar-power-policy-and-regulatory-dispute"
+  ],
+  "introBlocks": [
+    {
+      "type": "image",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/image.jpg",
+        "alt": ""
+      }
+    }
   ]
 }
