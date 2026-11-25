@@ -151,6 +151,18 @@
   },
   "stories": [
     {
+      "slug": "nvidia-taipei-headquarters-songnan-site-rumor-fact-check",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「輝達總部確定不來 松南基地開發變了」？",
+      "description": "網傳連結文章出自內容農場，且引用今年4月22日舊新聞，當時已確認輝達總部落址北士科，松南營區變更用途並非受輝達近況影響。",
+      "date": "2026-11-24",
+      "image": null,
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
       "slug": "fake-infographic-26-chinese-spouses-running-for-chief",
       "kind": "report",
       "category": "地方選舉",
@@ -327,6 +339,9 @@
         "辯論會查核"
       ],
       "items": [
+        {
+          "slug": "nvidia-taipei-headquarters-songnan-site-rumor-fact-check"
+        },
         {
           "slug": "fake-infographic-26-chinese-spouses-running-for-chief"
         },
