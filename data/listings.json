@@ -157,7 +157,10 @@
       "title": "網傳「輝達總部確定不來 松南基地開發變了」？",
       "description": "網傳連結文章出自內容農場，且引用今年4月22日舊新聞，當時已確認輝達總部落址北士科，松南營區變更用途並非受輝達近況影響。",
       "date": "2026-11-24",
-      "image": null,
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4409_5.jpg",
+        "alt": "查核報告封面"
+      },
       "tag": "政治與政策",
       "tone": "cyan",
       "verdict": "錯誤"
