@@ -160,6 +160,21 @@
   },
   "stories": [
     {
+      "slug": "nvidia-taipei-headquarters-songnan-site-rumor-fact-check",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「輝達總部確定不來 松南基地開發變了」？",
+      "description": "網傳連結文章出自內容農場，引用今年4月22日舊新聞；輝達總部落腳北士科目前履約正常，松南營區開發與輝達選址是不同事件。",
+      "date": "2026-11-24",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4409_5.jpg",
+        "alt": "查核報告封面"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
       "slug": "campaign-merchandise-dm-scam",
       "kind": "report",
       "category": "地方選舉",
@@ -1005,6 +1020,10 @@
       ],
       "items": [
         {
+          "slug": "nvidia-taipei-headquarters-songnan-site-rumor-fact-check",
+          "title": "網傳「輝達總部確定不來 松南基地開發變了」？"
+        },
+        {
           "slug": "reservoir-solar-power-environmental-impact-assessment-debate",
           "title": "水庫設光電，誰說要環評？藍綠攻防爭議釐清"
         },
@@ -1145,6 +1164,10 @@
         {
           "title": "AI混淆選民認知？民間發起「自律公約」",
           "url": "https://youtube.com/shorts/vwcqSl8G5gQ?si=MeJDLyYWtxgM1AFX"
+        },
+        {
+          "title": "投票日常見假訊息提前破解",
+          "url": "https://www.youtube.com/shorts/DtnT2FtL8sM"
         },
         {
           "title": "「開3畫2」選務人員遭收買？老謠言！當場發現有誤並更正票數",
