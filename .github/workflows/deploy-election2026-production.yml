@@ -59,12 +59,36 @@ jobs:
       - name: Verify existing production route
         run: node scripts/verify-production-route.mjs
       - name: Upload production Worker version and static assets
-        run: npx --no-install wrangler versions upload --config wrangler.jsonc --tag "release-${{ github.sha }}"
+        id: upload
+        run: |
+          npx --no-install wrangler versions upload --config wrangler.jsonc --tag "release-${{ github.sha }}" | tee "$RUNNER_TEMP/worker-upload.log"
+          version_id="$(sed -n 's/^Worker Version ID: //p' "$RUNNER_TEMP/worker-upload.log" | tail -n 1 | tr -d '\r')"
+          test -n "$version_id"
+          echo "version_id=$version_id" >> "$GITHUB_OUTPUT"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: a1bad46d553cafed5f25a324dbc854d7
+      - name: Wait for uploaded version to become deployable
+        run: |
+          version_id="${{ steps.upload.outputs.version_id }}"
+          for attempt in 1 2 3 4 5 6; do
+            npx --no-install wrangler versions list --config wrangler.jsonc --json > "$RUNNER_TEMP/worker-versions.json"
+            if grep -q "$version_id" "$RUNNER_TEMP/worker-versions.json"; then
+              echo "Uploaded version is visible to Cloudflare."
+              break
+            fi
+            if [ "$attempt" -eq 6 ]; then
+              cat "$RUNNER_TEMP/worker-versions.json"
+              echo "Uploaded version did not appear in the deployable versions list."
+              exit 1
+            fi
+            sleep 5
+          done
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: a1bad46d553cafed5f25a324dbc854d7
       - name: Publish version on existing production routes
-        run: npx --no-install wrangler versions deploy --config wrangler.jsonc --version-tag "release-${{ github.sha }}" --percentage 100 --yes
+        run: npx --no-install wrangler versions deploy --config wrangler.jsonc --version-id "${{ steps.upload.outputs.version_id }}" --percentage 100 --yes
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: a1bad46d553cafed5f25a324dbc854d7
