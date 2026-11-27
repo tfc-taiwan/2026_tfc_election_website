@@ -160,6 +160,21 @@
   },
   "stories": [
     {
+      "slug": "uv-light-invisible-ink-voting-rumor",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「記得帶UV燈去投票，可以檢查選票隱形墨水」？",
+      "description": "投票日前流傳「選票有隱形墨水」及特定時段投票可避免作票等說法。查核發現，這些是歷年選務舊謠言；選票與圈選工具均依規定製備，民眾無須自備印泥或UV燈。",
+      "date": "2026-11-27",
+      "image": {
+        "src": "https://docs.google.com/docs-images-rt/AIpPl2CMOoFImzgIW94Xwr_kaPjMs4vmBmSy6nRRPo07YBag5UH5HI8NzbzH1jHBsiSpyNkSecUFqD5BqUbs9MKCbV0ceBQx7vEMQr6RRaEwf8udWPmX8r7EH3_9qTD9FjqPACSLGFPFgcR0wwSq5qh80q7rLG7DnzXm1jdcIzn1xOT1U0tD=s2048?key=2x1PU8r2DJC__-vxerRt3A",
+        "alt": "投票日前網傳UV燈檢查選票隱形墨水的訊息"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
       "slug": "nvidia-taipei-headquarters-songnan-site-rumor-fact-check",
       "kind": "report",
       "category": "地方選舉",
@@ -1019,6 +1034,10 @@
         "辯論會查核"
       ],
       "items": [
+        {
+          "slug": "uv-light-invisible-ink-voting-rumor",
+          "title": "網傳「記得帶UV燈去投票，可以檢查選票隱形墨水」？"
+        },
         {
           "slug": "nvidia-taipei-headquarters-songnan-site-rumor-fact-check",
           "title": "網傳「輝達總部確定不來 松南基地開發變了」？"
