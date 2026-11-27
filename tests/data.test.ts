@@ -52,15 +52,15 @@ test('all listing references resolve to unique, matching report files and local 
 test('latest reports are ordered by source publication date and existing editorial content remains ready', () => {
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
   assert.deepEqual(data.sections.reports.items.slice(0, 6).map(item => item.slug), [
+    'uv-light-invisible-ink-voting-rumor',
     'nvidia-taipei-headquarters-songnan-site-rumor-fact-check',
     'reservoir-solar-power-environmental-impact-assessment-debate',
     'chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check',
     'outdated-vote-counting-flaw-videos-mislead-fraud',
     'campaign-merchandise-dm-scam',
-    'feitsui-reservoir-solar-power-policy-and-regulatory-dispute',
   ]);
   assert.deepEqual(data.sections.reports.items.slice(0, 6).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
-    '2026-11-24', '2026-11-23', '2026-11-23', '2026-11-23', '2026-11-23', '2026-11-21',
+    '2026-11-27', '2026-11-24', '2026-11-23', '2026-11-23', '2026-11-23', '2026-11-23',
   ]);
   const reservoirSlug = 'reservoir-solar-power-environmental-impact-assessment-debate';
   const reservoir = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${reservoirSlug}.json`), 'utf8')));
@@ -145,7 +145,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 58);
+  assert.equal(data.stories.length, 59);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 25);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
@@ -190,7 +190,7 @@ test('provided covers match reports while unfilled dates stay absent', () => {
       assert.equal(report.background.blocks?.find(block => block.type === 'image')?.image.src, 'https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4380-2-1024x675.jpg');
     }
     if (story.image?.src.startsWith('/')) assert.ok(existsSync(resolve(root, `public${story.image.src}`))); 
-    if (story.image && !['1128-referendum-fake-news-nuclear-free-policy', 'chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check'].includes(report.slug)) assert.equal(report.seo.image.src, story.image.src);
+    if (story.image && !['1128-referendum-fake-news-nuclear-free-policy', 'chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check', 'uv-light-invisible-ink-voting-rumor'].includes(report.slug)) assert.equal(report.seo.image.src, story.image.src);
     if (report.slug === '1128-referendum-fake-news-nuclear-free-policy') assert.equal(report.seo.image.src, report.image?.src);
     const sections = [report.background, ...report.checkSections, ...(report.supplementarySections ?? []), ...(report.bodySections ?? [])];
     for (const section of sections) for (const block of section.blocks ?? []) {
