@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "taiwan-election-counting-system-security-manual-vote-counting",
+  "seo": {
+    "title": "網傳「中共駭客入侵計票系統後能改變選舉結果」？｜2026 選舉工具箱",
+    "description": "中選會計票系統採封閉網路，且經資安測試模擬，計票統計也會全程直播，供民眾公開檢視。",
+    "image": {
+      "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4414-7.jpg",
+      "alt": "網傳「中共駭客入侵計票系統後能改變選舉結果」？",
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
+    },
+    "noindex": false,
+    "authorType": "Person"
+  },
+  "kind": "report",
+  "category": "地方選舉",
+  "title": "網傳「中共駭客入侵計票系統後能改變選舉結果」？",
+  "finding": "網傳手法缺乏具體證據支持，也與開票實務相距甚遠，是引人誤解的錯誤訊息。",
+  "verdict": "錯誤",
+  "tags": [
+    "政治與政策"
+  ],
+  "published": "2026-11-27",
+  "updated": "2026-11-27",
+  "reportId": "4414",
+  "reporter": "蔡雯如",
+  "editor": "陳偉婷",
+  "image": {
+    "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4414-7.jpg",
+    "alt": "網傳「中共駭客入侵計票系統後能改變選舉結果」？"
+  },
+  "imageCaption": "網傳「中共駭客入侵計票系統後能改變選舉結果」？",
+  "summaryPoints": [
+    "網路近期流傳，中共駭客可能會竄改中選會選票系統的數字。經查證，中選會計票程序是封閉網路，且內部電腦均禁止連線至外網，降低駭客透過網際網路入侵及植入後門程式的風險。台灣選舉採人工計票，過程全程公開，且票數需多次統計核對，民眾均可驗證。",
+    "一、中選會電腦計票系統採封閉網路，與外部網路實體隔離，計票主機、個人電腦及印表機均禁止連線至網際網路，並有24小時資安監控及選前模擬測試。",
+    "二、台灣採人工開票，投開票報告表須多次核對，並公開張貼、即時登錄，民眾可以比對。"
+  ],
+  "summaryClose": "網傳手法缺乏具體證據支持，也與開票實務相距甚遠，是引人誤解的錯誤訊息。",
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "paragraphs": [
+      "網路近期流傳，中共駭客會竄改中選會選票系統的數字，間接導致特定候選人當選，屆時難以改變選舉結果。"
+    ],
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "網路近期流傳，中共駭客會竄改中選會選票系統的數字，間接導致特定候選人當選，屆時難以改變選舉結果。"
+          }
+        ]
+      }
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "查核重點",
+      "paragraphs": [
+        "中選會電腦計票系統採封閉網路，與外部網路實體隔離。為防止駭客植入後門，內部計票主機、個人電腦、印表機禁止連線外網，並全天候資安監控、進行選前資安測試模擬。",
+        "台灣採人工開票，記票人員相互核對候選人得票、無效票及發出票數等數據。三份內容一致的投開票所報告表分別張貼於現場、登錄系統及送選務中心存查，民眾可核對公開資料。"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "中選會電腦計票系統採封閉網路，與外部網路實體隔離。為防止駭客植入後門，內部計票主機、個人電腦、印表機禁止連線外網，並全天候資安監控、進行選前資安測試模擬。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "台灣採人工開票，記票人員相互核對候選人得票、無效票及發出票數等數據。三份內容一致的投開票所報告表分別張貼於現場、登錄系統及送選務中心存查，民眾可核對公開資料。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "supplementarySections": [],
+  "sources": [
+    {
+      "label": "台灣事實查核中心原始查核報告",
+      "note": "原始報告編號4414。",
+      "href": "https://tfc-taiwan.org.tw/fact-check-reports/taiwan-election-counting-system-security-manual-vote-counting/"
+    }
+  ],
+  "relatedSlugs": [],
+  "summaryBlocks": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "網路近期流傳，中共駭客可能會竄改中選會選票系統的數字。經查證，中選會計票程序是封閉網路，且內部電腦均禁止連線至外網，降低駭客透過網際網路入侵及植入後門程式的風險。台灣選舉採人工計票，過程全程公開，且票數需多次統計核對，民眾均可驗證。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "一、中選會電腦計票系統採封閉網路，與外部網路實體隔離，計票主機、個人電腦及印表機均禁止連線至網際網路，並有24小時資安監控及選前模擬測試。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "二、台灣採人工開票，投開票報告表須多次核對，並公開張貼、即時登錄，民眾可以比對。"
+        }
+      ]
+    }
+  ],
+  "presentation": {
+    "showReportMetadata": true,
+    "showSummary": true,
+    "showCoverImage": false
+  }
+}
