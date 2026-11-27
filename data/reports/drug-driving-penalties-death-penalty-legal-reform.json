@@ -40,7 +40,7 @@
   "summaryClose": "",
   "presentation": {
     "showReportMetadata": true,
-    "showSummary": false,
+    "showSummary": true,
     "showContentsNavigation": false,
     "showCoverImage": false
   },
