@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "isMock": false,
+  "slug": "chiang-you-ching-not-voting-comment",
+  "seo": {
+    "title": "網傳「蔣家第四代蔣友青，表態拒投蔣萬安」？｜2026 選舉工具箱",
+    "description": "蔣友青曾表示不會投票，並沒有明確表達支持意向。",
+    "image": {
+      "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4415-1.jpg",
+      "alt": "網傳「蔣家第四代蔣友青，表態拒投蔣萬安」？",
+      "width": 1040,
+      "height": 1040,
+      "type": "image/jpeg"
+    },
+    "noindex": false,
+    "authorType": "Person"
+  },
+  "kind": "report",
+  "category": "地方選舉",
+  "title": "網傳「蔣家第四代蔣友青，表態拒投蔣萬安」？",
+  "finding": "網傳訊息將蔣友青留言回答的「不會投票」，延伸為拒投特定候選人，為易生誤解訊息。",
+  "verdict": "錯誤",
+  "tags": [
+    "政治與政策"
+  ],
+  "published": "2026-11-27",
+  "updated": "2026-11-27",
+  "reportId": "4415",
+  "reporter": "宋思彤",
+  "editor": "陳偉婷",
+  "image": {
+    "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4415-1.jpg",
+    "alt": "蔣友青社群留言稱「不投票」，被延伸解讀拒投特定人"
+  },
+  "imageCaption": "網傳「蔣家第四代蔣友青，表態拒投蔣萬安」？",
+  "summaryPoints": [
+    "九合一大選陷入激戰，近期網傳蔣友青表態「拒投蔣萬安」。這應是擷取蔣友青日前的社群回應，當時他表示「不會投票」，並沒有明確表達支持誰、拒投誰。",
+    "一、蔣友青今年10月底曾在社群回應網友「是否會回台投票」時表示「我不投票」，但沒有表達支持意向。",
+    "二、蔣友青針對本次選舉並未明確表態，也沒有提到支持誰。"
+  ],
+  "summaryClose": "網傳訊息將蔣友青留言回答的「不會投票」，延伸為拒投特定候選人，為易生誤解訊息。",
+  "background": {
+    "id": "background",
+    "title": "背景",
+    "paragraphs": [
+      "台北市長選舉將在11月28日投票，近期社群媒體流傳蔣友青日前正式表態「拒投蔣萬安」。"
+    ],
+    "blocks": [
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "台北市長選舉將在11月28日投票，近期社群媒體流傳蔣友青日前正式表態「拒投蔣萬安」。"
+          }
+        ]
+      }
+    ]
+  },
+  "checkSections": [
+    {
+      "id": "check-1",
+      "title": "查核重點",
+      "paragraphs": [
+        "媒體報導指出，蔣友青在中國抖音回應網友「會回台灣投票嗎」時，簡短表示「我不投票」，並未表達支持或拒投特定候選人的意向。",
+        "查核中心檢視其社群留言與相關報導，發現他談及蔣萬安時表示「不熟」，並沒有針對此次選舉表態。"
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "媒體報導指出，蔣友青在中國抖音回應網友「會回台灣投票嗎」時，簡短表示「我不投票」，並未表達支持或拒投特定候選人的意向。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "text": "查核中心檢視其社群留言與相關報導，發現他談及蔣萬安時表示「不熟」，並沒有針對此次選舉表態。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "supplementarySections": [],
+  "sources": [
+    {
+      "label": "台灣事實查核中心原始查核報告",
+      "note": "原始報告編號4415。",
+      "href": "https://tfc-taiwan.org.tw/fact-check-reports/chiang-you-ching-not-voting-comment/"
+    }
+  ],
+  "relatedSlugs": [],
+  "summaryBlocks": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "九合一大選陷入激戰，近期網傳蔣友青表態「拒投蔣萬安」。這應是擷取蔣友青日前的社群回應，當時他表示「不會投票」，並沒有明確表達支持誰、拒投誰。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "一、蔣友青今年10月底曾在社群回應網友「是否會回台投票」時表示「我不投票」，但沒有表達支持意向。"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "text": "二、蔣友青針對本次選舉並未明確表態，也沒有提到支持誰。"
+        }
+      ]
+    }
+  ],
+  "presentation": {
+    "showReportMetadata": true,
+    "showSummary": true,
+    "showCoverImage": false
+  }
+}
