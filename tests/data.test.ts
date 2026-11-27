@@ -53,14 +53,14 @@ test('latest reports are ordered by source publication date and existing editori
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
   assert.deepEqual(data.sections.reports.items.slice(0, 6).map(item => item.slug), [
     'uv-light-invisible-ink-voting-rumor',
-    'nvidia-taipei-headquarters-songnan-site-rumor-fact-check',
-    'reservoir-solar-power-environmental-impact-assessment-debate',
-    'chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check',
-    'outdated-vote-counting-flaw-videos-mislead-fraud',
-    'campaign-merchandise-dm-scam',
+    'chiang-you-ching-not-voting-comment',
+    'taiwan-election-counting-system-security-manual-vote-counting',
+    'golden-horse-awards-2026-funding',
+    'tax-surplus-over-1-trillion-calculation-error-20000-cash-debt',
+    'us-midterm-election-ballot-marking-rumor',
   ]);
   assert.deepEqual(data.sections.reports.items.slice(0, 6).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
-    '2026-11-27', '2026-11-24', '2026-11-23', '2026-11-23', '2026-11-23', '2026-11-23',
+    '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-26', '2026-11-25',
   ]);
   const reservoirSlug = 'reservoir-solar-power-environmental-impact-assessment-debate';
   const reservoir = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${reservoirSlug}.json`), 'utf8')));
