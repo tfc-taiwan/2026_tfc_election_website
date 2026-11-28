@@ -45,7 +45,11 @@ for (let attempt = 0; attempt < 6; attempt++) {
       if (story.kind === 'report') {
         assert.ok(!html.includes('id="sources"') && !html.includes('href="#sources"'), `Report still shows source section: ${story.slug}`);
         const summary = html.match(/<section class="article-summary"[\s\S]*?<\/section>/)?.[0];
-        if (expectedArticle.bodySections) assert.ok(!summary && html.includes('class="article-section source-body"'), `Missing original body layout: ${story.slug}`);
+        if (expectedArticle.bodySections) {
+          if (expectedArticle.summaryBlocks?.length && expectedArticle.presentation?.showSummary !== false) assert.ok(summary, `Missing source summary: ${story.slug}`);
+          else assert.ok(!summary, `Unexpected summary: ${story.slug}`);
+          assert.ok(html.includes('class="article-section source-body"'), `Missing original body layout: ${story.slug}`);
+        }
         else assert.ok(summary, `Missing report summary: ${story.slug}`);
         for (const paragraph of (summary ?? '').matchAll(/<p>([\s\S]*?)<\/p>/g)) {
           const text = paragraph[1].replace(/<[^>]*>/g, '');
