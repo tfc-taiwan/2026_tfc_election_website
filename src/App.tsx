@@ -335,7 +335,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
     <PageSeo data={data} />
     {(data.isMock || context.isPreview) && <p className="review-notice page-padding" role="note">{data.site.notice}</p>}
     <section className="hero section-padding grid-texture" id="about" aria-labelledby="hero-title">
-      <div className="hero-intro"><div className="hero-kicker"><span>{hero.kicker}</span><small>2026 ELECTIONS</small></div><h1 id="hero-title">{hero.title.map(line => <span key={line}>{line}</span>)}</h1><p>{hero.description}</p><div className="countdown"><span>投票日 {hero.electionDate.replaceAll('-', '.')}</span></div></div>
+      <div className="hero-intro"><div className="hero-kicker"><span>{hero.kicker}</span><small>2026 ELECTIONS</small></div><h1 id="hero-title">{hero.title.map(line => <span key={line}>{line}</span>)}</h1><p>{hero.description}</p><div className="countdown"><span>投票日 {hero.electionDate.replaceAll('-', '.')}</span><a href="https://vote.cec.gov.tw/home/zh-TW/" target="_blank" rel="noopener noreferrer">開票結果<span className="sr-only">（開啟新視窗）</span></a></div></div>
       <div className="election-facts"><h2>{hero.factsTitle}</h2><ol>{hero.facts.map((fact, index) => <li key={fact.title}><span className="fact-number">{index + 1}</span><div><h3>{fact.title}</h3><p>{fact.description}</p></div></li>)}</ol></div>
     </section>
     {!!homeReports.length && <section className="reports-section section-padding" id="latest" aria-labelledby="latest-title">
