@@ -189,6 +189,21 @@
       "verdict": "錯誤"
     },
     {
+      "slug": "pingtung-ligang-referendum-voting-guidance-rumor",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「屏東里港選務人員教導民眾公投投同意」，但里港投開票所沒有相關通報",
+      "description": "網路流傳屏東里港投票所，有男性工作人員向民眾建議「不知道怎麼投，公投可以投同意」，並稱已向屏東選委會通報。屏東選委會指出，今日確實也接獲民眾通報，但發生地點不在里港，而是屏東市，且情境也跟網傳內容不太一致。",
+      "date": "2026-11-28",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4418-1.jpg",
+        "alt": "網傳「屏東里港選務人員教導民眾公投投同意」，但里港投開票所沒有相關通報"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "事實釐清"
+    },
+    {
       "slug": "uv-light-invisible-ink-voting-rumor",
       "kind": "report",
       "category": "地方選舉",
@@ -1145,6 +1160,10 @@
         {
           "slug": "fuhe-school-voting-opened-on-time-facts",
           "title": "新北市福和國中大門關閉是因校方誤會開放投票時間點，經告知後如期開放民眾入內，未耽誤投票流程，也有公開讓民眾看票匭"
+        },
+        {
+          "slug": "pingtung-ligang-referendum-voting-guidance-rumor",
+          "title": "網傳「屏東里港選務人員教導民眾公投投同意」，但里港投開票所沒有相關通報"
         },
         {
           "slug": "uv-light-invisible-ink-voting-rumor",
