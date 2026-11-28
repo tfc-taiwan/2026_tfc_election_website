@@ -983,3 +983,31 @@ section[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 .source-body .article-content li { white-space: pre-line; }
 .source-body .article-content p { white-space: pre-line; }
 figure:has(> img[src*="97a17ec0339782393700965479cfe688467854aecb380147db21aee5e473b984.jpg"]) { max-width: 420px; }
+
+
+/* Homepage spacing: reduce scroll length while keeping comfortable breathing room. */
+main > section.section-padding:not(.hero) {
+  padding-block: clamp(28px, 3.2vw, 40px);
+}
+main > section.section-padding:not(.hero) .section-heading {
+  margin-bottom: 32px;
+}
+.hero {
+  padding-block: 64px;
+}
+
+@media (max-width: 767px) {
+  .hero {
+    gap: 40px;
+    padding-block: 48px;
+  }
+  main > section.section-padding:not(.hero) {
+    padding-block: 32px;
+  }
+  main > section.section-padding:not(.hero) .section-heading {
+    margin-bottom: 24px;
+  }
+  .rumors-section > h2 {
+    margin-bottom: 32px;
+  }
+}
