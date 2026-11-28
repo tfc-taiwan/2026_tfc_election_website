@@ -335,7 +335,7 @@ function HomePage({ data, onInfo }: { data: Listings; onInfo: (info: Info) => vo
     <PageSeo data={data} />
     {(data.isMock || context.isPreview) && <p className="review-notice page-padding" role="note">{data.site.notice}</p>}
     <section className="hero section-padding grid-texture" id="about" aria-labelledby="hero-title">
-      <div className="hero-intro"><div className="hero-kicker"><span>{hero.kicker}</span><small>2026 ELECTIONS</small></div><h1 id="hero-title">{hero.title.map(line => <span key={line}>{line}</span>)}</h1><p>{hero.description}</p><div className="countdown"><span>投票日 {hero.electionDate.replaceAll('-', '.')}</span></div></div>
+      <div className="hero-intro"><div className="hero-kicker"><span>{hero.kicker}</span><small>2026 ELECTIONS</small></div><h1 id="hero-title">{hero.title.map(line => <span key={line}>{line}</span>)}</h1><p>{hero.description}</p><div className="countdown"><span>投票日 {hero.electionDate.replaceAll('-', '.')}</span><a href="https://vote.cec.gov.tw/home/zh-TW/" target="_blank" rel="noreferrer">開票結果<span className="sr-only">（開啟新視窗）</span></a></div></div>
       <div className="election-facts"><h2>{hero.factsTitle}</h2><ol>{hero.facts.map((fact, index) => <li key={fact.title}><span className="fact-number">{index + 1}</span><div><h3>{fact.title}</h3><p>{fact.description}</p></div></li>)}</ol></div>
     </section>
     {!!homeReports.length && <section className="reports-section section-padding" id="latest" aria-labelledby="latest-title">
@@ -387,7 +387,7 @@ function ListingsPage({ data }: { data: Listings }) {
     <span className="eyebrow">THE FACTCHECK INDEX</span>
     <h1>{query ? '尋找資訊的真實脈絡' : '選舉查核報告'}</h1>
     <p className="listing-intro">彙整台灣事實查核中心針對 2026 地方選舉與公投議題發布的查核報告，隨最新查證進度持續更新。</p>
-    <div className="listing-filters"><div className="segmented" role="group" aria-label="篩選報告分類">{['全部', ...data.sections.reports.categories].map(value => <button key={value} aria-pressed={category === value} onClick={() => update('category', value)}>{value === '公投議題' ? '公投' : value}</button>)}</div><p role="status">{query && <>「{query}」・</>}{stories.length} 篇內容</p></div>
+    <div className="listing-filters"><div className="segmented" role="group" aria-label="篩選報告分類">{['全部', ...data.sections.reports.categories].map(value => <button key={value} aria-pressed={category === value} onClick={() => update('category', value)}>{value === '地方選舉' ? '地方選舉＆公投' : value === '公投議題' ? '公投' : value}</button>)}</div><p role="status">{query && <>「{query}」・</>}{stories.length} 篇內容</p></div>
     {stories.length ? <>
       <div className="listing-grid">{stories.map((story, index) => <StoryCard story={story} key={story.slug} hidden={index >= visible} />)}</div>
       {stories.length > visible && <div className="listing-more"><button className="pill-button" type="button" onClick={() => setVisible(count => count + LISTING_PAGE_SIZE)}>載入更多報告<span className="sr-only">（尚有 {stories.length - visible} 篇）</span></button></div>}

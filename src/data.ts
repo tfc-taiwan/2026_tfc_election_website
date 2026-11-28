@@ -166,7 +166,8 @@ export function daysUntil(electionDate: string, now = new Date()): number {
 
 export function searchStories(stories: Story[], query: string, categoryFilter = '全部'): Story[] {
   const terms = query.trim().normalize('NFKC').toLocaleLowerCase().split(/\s+/).filter(Boolean);
-  return stories.filter(story => (categoryFilter === '全部' || story.category === categoryFilter) &&
+  return stories.filter(story => (categoryFilter === '全部' || story.category === categoryFilter ||
+      (categoryFilter === '地方選舉' && story.category === '公投議題')) &&
     terms.every(term => `${story.title} ${story.description} ${story.tag} ${story.category ?? ''}`.normalize('NFKC').toLocaleLowerCase().includes(term)));
 }
 

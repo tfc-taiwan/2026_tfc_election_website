@@ -141,6 +141,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
   assert.deepEqual(searchStories(data.stories, 'ＡＩ'), searchStories(data.stories, 'ai'));
   assert.ok(searchStories(data.stories, '樹木 水泥').some(story => story.slug === 'tree-brown-root-rot-treatment-no-concrete-needed'));
   assert.ok(searchStories(data.stories, '', '公投議題').every(story => story.category === '公投議題'));
+  assert.ok(searchStories(data.stories, '', '地方選舉').some(story => story.slug === 'referendum-ballot-election-voting-procedure-fact-check'));
   assert.equal(searchStories(data.stories, 'absolutely-no-match').length, 0);
 });
 
@@ -270,9 +271,7 @@ test('homepage report cards and local-election listing use the same articles, ti
   const localListing = listingStories(data, '', '地方選舉');
   const homepageSlugs = homepage.map(story => story.slug);
   const localSlugs = localListing.map(story => story.slug);
-  assert.equal(homepageSlugs[0], 'referendum-ballot-election-voting-procedure-fact-check');
-  assert.deepEqual(homepageSlugs.slice(1), localSlugs);
-  assert.deepEqual(homepageSlugs.filter(slug => !localSlugs.includes(slug)), ['referendum-ballot-election-voting-procedure-fact-check']);
+  assert.deepEqual(homepageSlugs, localSlugs);
   assert.deepEqual(homepage.map(story => story.date), [...homepage.map(story => story.date)].sort((a, b) => (b ?? '').localeCompare(a ?? '')));
   for (const item of data.sections.reports.items) {
     const home = homepage.find(story => story.slug === item.slug)!;
