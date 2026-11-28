@@ -52,15 +52,15 @@ test('all listing references resolve to unique, matching report files and local 
 test('latest reports are ordered by source publication date and existing editorial content remains ready', () => {
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
   assert.deepEqual(data.sections.reports.items.slice(0, 6).map(item => item.slug), [
+    'referendum-ballot-election-voting-procedure-fact-check',
     'fuhe-school-voting-opened-on-time-facts',
     'uv-light-invisible-ink-voting-rumor',
     'chiang-you-ching-not-voting-comment',
     'taiwan-election-counting-system-security-manual-vote-counting',
     'golden-horse-awards-2026-funding',
-    'tax-surplus-over-1-trillion-calculation-error-20000-cash-debt',
   ]);
   assert.deepEqual(data.sections.reports.items.slice(0, 6).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
-    '2026-11-28', '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-26',
+    '2026-11-28', '2026-11-28', '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-27',
   ]);
   const reservoirSlug = 'reservoir-solar-power-environmental-impact-assessment-debate';
   const reservoir = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${reservoirSlug}.json`), 'utf8')));
@@ -270,7 +270,8 @@ test('homepage report cards and local-election listing use the same articles, ti
   const localListing = listingStories(data, '', '地方選舉');
   const homepageSlugs = homepage.map(story => story.slug);
   const localSlugs = localListing.map(story => story.slug);
-  assert.deepEqual(homepageSlugs, localSlugs);
+  assert.equal(homepageSlugs[0], 'referendum-ballot-election-voting-procedure-fact-check');
+  assert.deepEqual(homepageSlugs.slice(1), localSlugs);
   assert.deepEqual(homepage.map(story => story.date), [...homepage.map(story => story.date)].sort((a, b) => (b ?? '').localeCompare(a ?? '')));
   for (const item of data.sections.reports.items) {
     const home = homepage.find(story => story.slug === item.slug)!;
