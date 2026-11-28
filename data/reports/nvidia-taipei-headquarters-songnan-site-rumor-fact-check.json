@@ -211,7 +211,8 @@
   ],
   "presentation": {
     "showReportMetadata": true,
-    "showSummary": true
+    "showSummary": true,
+    "showFinding": true
   },
   "bodySections": [
     {

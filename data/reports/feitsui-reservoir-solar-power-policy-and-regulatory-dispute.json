@@ -40,7 +40,8 @@
     "showReportMetadata": true,
     "showSummary": true,
     "showContentsNavigation": false,
-    "showCoverImage": true
+    "showCoverImage": true,
+    "showFinding": true
   },
   "background": {
     "id": "background",

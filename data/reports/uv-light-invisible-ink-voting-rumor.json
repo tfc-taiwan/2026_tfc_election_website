@@ -294,7 +294,8 @@
   "presentation": {
     "showReportMetadata": false,
     "showSummary": true,
-    "showCoverImage": true
+    "showCoverImage": true,
+    "showFinding": true
   },
   "bodySections": [
     {
