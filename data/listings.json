@@ -1607,6 +1607,9 @@
     },
     "infographics": {
       "slugs": [
+        "debunk-election-fraud-rumor-scripts",
+        "voting-ng-behaviors-compilation",
+        "election-common-eight-qa",
         "reliable-taiwan-election-information-channels-explained",
         "referendum-essential-knowledge",
         "ten-ng-voting-behaviors-part-1",
@@ -1615,6 +1618,202 @@
         "four-types-election-rigging-rumors-debunked-facts"
       ],
       "items": [
+        {
+          "slug": "debunk-election-fraud-rumor-scripts",
+          "title": "破解作票謠言劇本",
+          "description": "破解作票謠言劇本圖卡，共 8 張。",
+          "cards": [
+            {
+              "image": {
+                "src": "/images/debunk-election-fraud-rumor-scripts-1.png",
+                "alt": "破解作票謠言劇本圖卡，第 1 張"
+              },
+              "caption": "破解作票謠言劇本｜第 1 張"
+            },
+            {
+              "image": {
+                "src": "/images/debunk-election-fraud-rumor-scripts-2.png",
+                "alt": "破解作票謠言劇本圖卡，第 2 張"
+              },
+              "caption": "破解作票謠言劇本｜第 2 張"
+            },
+            {
+              "image": {
+                "src": "/images/debunk-election-fraud-rumor-scripts-3.png",
+                "alt": "破解作票謠言劇本圖卡，第 3 張"
+              },
+              "caption": "破解作票謠言劇本｜第 3 張"
+            },
+            {
+              "image": {
+                "src": "/images/debunk-election-fraud-rumor-scripts-4.png",
+                "alt": "破解作票謠言劇本圖卡，第 4 張"
+              },
+              "caption": "破解作票謠言劇本｜第 4 張"
+            },
+            {
+              "image": {
+                "src": "/images/debunk-election-fraud-rumor-scripts-5.png",
+                "alt": "破解作票謠言劇本圖卡，第 5 張"
+              },
+              "caption": "破解作票謠言劇本｜第 5 張"
+            },
+            {
+              "image": {
+                "src": "/images/debunk-election-fraud-rumor-scripts-6.png",
+                "alt": "破解作票謠言劇本圖卡，第 6 張"
+              },
+              "caption": "破解作票謠言劇本｜第 6 張"
+            },
+            {
+              "image": {
+                "src": "/images/debunk-election-fraud-rumor-scripts-7.png",
+                "alt": "破解作票謠言劇本圖卡，第 7 張"
+              },
+              "caption": "破解作票謠言劇本｜第 7 張"
+            },
+            {
+              "image": {
+                "src": "/images/debunk-election-fraud-rumor-scripts-8.png",
+                "alt": "破解作票謠言劇本圖卡，第 8 張"
+              },
+              "caption": "破解作票謠言劇本｜第 8 張"
+            }
+          ]
+        },
+        {
+          "slug": "voting-ng-behaviors-compilation",
+          "title": "投票NG行為大整理",
+          "description": "投票NG行為大整理圖卡，共 8 張。",
+          "cards": [
+            {
+              "image": {
+                "src": "/images/voting-ng-behaviors-compilation-1.png",
+                "alt": "投票NG行為大整理圖卡，第 1 張"
+              },
+              "caption": "投票NG行為大整理｜第 1 張"
+            },
+            {
+              "image": {
+                "src": "/images/voting-ng-behaviors-compilation-2.png",
+                "alt": "投票NG行為大整理圖卡，第 2 張"
+              },
+              "caption": "投票NG行為大整理｜第 2 張"
+            },
+            {
+              "image": {
+                "src": "/images/voting-ng-behaviors-compilation-3.png",
+                "alt": "投票NG行為大整理圖卡，第 3 張"
+              },
+              "caption": "投票NG行為大整理｜第 3 張"
+            },
+            {
+              "image": {
+                "src": "/images/voting-ng-behaviors-compilation-4.png",
+                "alt": "投票NG行為大整理圖卡，第 4 張"
+              },
+              "caption": "投票NG行為大整理｜第 4 張"
+            },
+            {
+              "image": {
+                "src": "/images/voting-ng-behaviors-compilation-5.png",
+                "alt": "投票NG行為大整理圖卡，第 5 張"
+              },
+              "caption": "投票NG行為大整理｜第 5 張"
+            },
+            {
+              "image": {
+                "src": "/images/voting-ng-behaviors-compilation-6.png",
+                "alt": "投票NG行為大整理圖卡，第 6 張"
+              },
+              "caption": "投票NG行為大整理｜第 6 張"
+            },
+            {
+              "image": {
+                "src": "/images/voting-ng-behaviors-compilation-7.png",
+                "alt": "投票NG行為大整理圖卡，第 7 張"
+              },
+              "caption": "投票NG行為大整理｜第 7 張"
+            },
+            {
+              "image": {
+                "src": "/images/voting-ng-behaviors-compilation-8.png",
+                "alt": "投票NG行為大整理圖卡，第 8 張"
+              },
+              "caption": "投票NG行為大整理｜第 8 張"
+            }
+          ]
+        },
+        {
+          "slug": "election-common-eight-qa",
+          "title": "選舉常見八大Q&A",
+          "description": "選舉常見八大Q&A圖卡，共 9 張。",
+          "cards": [
+            {
+              "image": {
+                "src": "/images/election-common-eight-qa-1.png",
+                "alt": "選舉常見八大Q&A圖卡，第 1 張"
+              },
+              "caption": "選舉常見八大Q&A｜第 1 張"
+            },
+            {
+              "image": {
+                "src": "/images/election-common-eight-qa-2.png",
+                "alt": "選舉常見八大Q&A圖卡，第 2 張"
+              },
+              "caption": "選舉常見八大Q&A｜第 2 張"
+            },
+            {
+              "image": {
+                "src": "/images/election-common-eight-qa-3.png",
+                "alt": "選舉常見八大Q&A圖卡，第 3 張"
+              },
+              "caption": "選舉常見八大Q&A｜第 3 張"
+            },
+            {
+              "image": {
+                "src": "/images/election-common-eight-qa-4.png",
+                "alt": "選舉常見八大Q&A圖卡，第 4 張"
+              },
+              "caption": "選舉常見八大Q&A｜第 4 張"
+            },
+            {
+              "image": {
+                "src": "/images/election-common-eight-qa-5.png",
+                "alt": "選舉常見八大Q&A圖卡，第 5 張"
+              },
+              "caption": "選舉常見八大Q&A｜第 5 張"
+            },
+            {
+              "image": {
+                "src": "/images/election-common-eight-qa-6.png",
+                "alt": "選舉常見八大Q&A圖卡，第 6 張"
+              },
+              "caption": "選舉常見八大Q&A｜第 6 張"
+            },
+            {
+              "image": {
+                "src": "/images/election-common-eight-qa-7.png",
+                "alt": "選舉常見八大Q&A圖卡，第 7 張"
+              },
+              "caption": "選舉常見八大Q&A｜第 7 張"
+            },
+            {
+              "image": {
+                "src": "/images/election-common-eight-qa-8.png",
+                "alt": "選舉常見八大Q&A圖卡，第 8 張"
+              },
+              "caption": "選舉常見八大Q&A｜第 8 張"
+            },
+            {
+              "image": {
+                "src": "/images/election-common-eight-qa-9.png",
+                "alt": "選舉常見八大Q&A圖卡，第 9 張"
+              },
+              "caption": "選舉常見八大Q&A｜第 9 張"
+            }
+          ]
+        },
         {
           "slug": "reliable-taiwan-election-information-channels-explained",
           "title": "三大選舉資訊管道",
