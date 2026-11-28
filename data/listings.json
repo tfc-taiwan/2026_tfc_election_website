@@ -160,6 +160,21 @@
   },
   "stories": [
     {
+      "slug": "pingtung-ligang-referendum-voting-guidance-rumor",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「屏東里港選務人員教導民眾公投投同意」，但里港投開票所沒有相關通報",
+      "description": "網路流傳屏東里港投票所，有男性工作人員向民眾建議「不知道怎麼投，公投可以投同意」，並稱已向屏東選委會通報。屏東選委會指出，今日確實也接獲民眾通報，但發生地點不在里港，而是屏東市，且情境也跟網傳內容不太一致。",
+      "date": "2026-11-28",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4418-1.jpg",
+        "alt": "網傳「屏東里港選務人員教導民眾公投投同意」，但里港投開票所沒有相關通報"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "事實釐清"
+    },
+    {
       "slug": "referendum-ballot-election-voting-procedure-fact-check",
       "kind": "analysis",
       "category": "公投議題",
@@ -1139,6 +1154,10 @@
         "辯論會查核"
       ],
       "items": [
+        {
+          "slug": "pingtung-ligang-referendum-voting-guidance-rumor",
+          "title": "網傳「屏東里港選務人員教導民眾公投投同意」，但里港投開票所沒有相關通報"
+        },
         {
           "slug": "referendum-ballot-election-voting-procedure-fact-check",
           "title": "【聚焦選務爭議】公投票要自己開口才有？ 公投票和選舉票應一次發給，選務人員無須主動問"
