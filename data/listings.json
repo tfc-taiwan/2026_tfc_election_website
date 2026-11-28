@@ -160,6 +160,21 @@
   },
   "stories": [
     {
+      "slug": "fuhe-school-voting-opened-on-time-facts",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "新北市福和國中大門關閉是因校方誤會開放投票時間點，經告知後如期開放民眾入內，未耽誤投票流程，也有公開讓民眾看票匭",
+      "description": "今日是九合一選舉投票日，Threads一早流傳，新北市福和國中7時55分仍大門緊閉，不讓民眾入內投票。經查證，校方總務主任誤會開放時間，投票所與區公所即時協調，7點55分後開放民眾入內。",
+      "date": "2026-11-28",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4417-1.jpg",
+        "alt": "新北市福和國中大門關閉是因校方誤會開放投票時間點，經告知後如期開放民眾入內，未耽誤投票流程，也有公開讓民眾看票匭"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
       "slug": "uv-light-invisible-ink-voting-rumor",
       "kind": "report",
       "category": "地方選舉",
@@ -1109,6 +1124,10 @@
         "辯論會查核"
       ],
       "items": [
+        {
+          "slug": "fuhe-school-voting-opened-on-time-facts",
+          "title": "新北市福和國中大門關閉是因校方誤會開放投票時間點，經告知後如期開放民眾入內，未耽誤投票流程，也有公開讓民眾看票匭"
+        },
         {
           "slug": "uv-light-invisible-ink-voting-rumor",
           "title": "投票日前，網路流傳「選票有隱形墨水」老謠言。中選會建議：無須自備印泥或UV燈投票，以免污染選票。"

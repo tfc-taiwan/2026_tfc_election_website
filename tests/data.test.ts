@@ -52,15 +52,15 @@ test('all listing references resolve to unique, matching report files and local 
 test('latest reports are ordered by source publication date and existing editorial content remains ready', () => {
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
   assert.deepEqual(data.sections.reports.items.slice(0, 6).map(item => item.slug), [
+    'fuhe-school-voting-opened-on-time-facts',
     'uv-light-invisible-ink-voting-rumor',
     'chiang-you-ching-not-voting-comment',
     'taiwan-election-counting-system-security-manual-vote-counting',
     'golden-horse-awards-2026-funding',
     'tax-surplus-over-1-trillion-calculation-error-20000-cash-debt',
-    'us-midterm-election-ballot-marking-rumor',
   ]);
   assert.deepEqual(data.sections.reports.items.slice(0, 6).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
-    '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-26', '2026-11-25',
+    '2026-11-28', '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-26',
   ]);
   const reservoirSlug = 'reservoir-solar-power-environmental-impact-assessment-debate';
   const reservoir = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${reservoirSlug}.json`), 'utf8')));
@@ -145,7 +145,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 64);
+  assert.equal(data.stories.length, 65);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 25);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
