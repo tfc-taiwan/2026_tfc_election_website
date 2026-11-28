@@ -160,6 +160,20 @@
   },
   "stories": [
     {
+      "slug": "referendum-ballot-election-voting-procedure-fact-check",
+      "kind": "analysis",
+      "category": "公投議題",
+      "title": "【聚焦選務爭議】公投票要自己開口才有？ 公投票和選舉票應一次發給，選務人員無須主動問",
+      "description": "11月28日九合一選舉投票日，除了要投縣市長、縣市議員、里長等選舉票外，還有一張公投票。根據查核中心監測，28日一早，多個縣市民眾陸續在Threads、Facebook等平台，宣稱領公投票時，選務人員沒有主動詢問是否要領公投票，導致民眾錯過公投票投票；也有人反映選務人員主動詢問要不要領公投票，質疑本來就應該發、為何還要問？",
+      "date": "2026-11-28",
+      "image": {
+        "src": "/images/covers/156989-7-1-768x768.jpg",
+        "alt": "【聚焦選務爭議】公投票要自己開口才有？ 公投票和選舉票應一次發給，選務人員無須主動問"
+      },
+      "tag": "謠言風向球",
+      "tone": "cyan"
+    },
+    {
       "slug": "fuhe-school-voting-opened-on-time-facts",
       "kind": "report",
       "category": "地方選舉",
@@ -1124,6 +1138,10 @@
         "辯論會查核"
       ],
       "items": [
+        {
+          "slug": "referendum-ballot-election-voting-procedure-fact-check",
+          "title": "【聚焦選務爭議】公投票要自己開口才有？ 公投票和選舉票應一次發給，選務人員無須主動問"
+        },
         {
           "slug": "fuhe-school-voting-opened-on-time-facts",
           "title": "新北市福和國中大門關閉是因校方誤會開放投票時間點，經告知後如期開放民眾入內，未耽誤投票流程，也有公開讓民眾看票匭"
