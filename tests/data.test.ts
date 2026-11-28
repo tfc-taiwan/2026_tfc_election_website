@@ -272,11 +272,14 @@ test('homepage report cards and local-election listing use the same articles, ti
   const localSlugs = localListing.map(story => story.slug);
   assert.equal(homepageSlugs[0], 'referendum-ballot-election-voting-procedure-fact-check');
   assert.deepEqual(homepageSlugs.slice(1), localSlugs);
+  assert.deepEqual(homepageSlugs.filter(slug => !localSlugs.includes(slug)), ['referendum-ballot-election-voting-procedure-fact-check']);
   assert.deepEqual(homepage.map(story => story.date), [...homepage.map(story => story.date)].sort((a, b) => (b ?? '').localeCompare(a ?? '')));
   for (const item of data.sections.reports.items) {
     const home = homepage.find(story => story.slug === item.slug)!;
-    const listing = localListing.find(story => story.slug === item.slug)!;
-    assert.equal(listing.title, home.title);
+    assert.ok(home);
+    const listing = localListing.find(story => story.slug === item.slug);
+    if (listing) assert.equal(listing.title, home.title);
+    else assert.equal(item.slug, 'referendum-ballot-election-voting-procedure-fact-check');
   }
 });
 
