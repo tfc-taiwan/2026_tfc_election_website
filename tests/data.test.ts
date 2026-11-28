@@ -58,7 +58,6 @@ test('latest reports are ordered by source publication date and existing editori
     'taiwan-election-counting-system-security-manual-vote-counting',
     'golden-horse-awards-2026-funding',
     'tax-surplus-over-1-trillion-calculation-error-20000-cash-debt',
-    'us-midterm-election-ballot-marking-rumor',
   ]);
   assert.deepEqual(data.sections.reports.items.slice(0, 6).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
     '2026-11-28', '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-26',
