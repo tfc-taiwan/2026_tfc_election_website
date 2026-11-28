@@ -54,13 +54,13 @@ test('latest reports are ordered by source publication date and existing editori
   assert.deepEqual(data.sections.reports.items.slice(0, 6).map(item => item.slug), [
     'referendum-ballot-election-voting-procedure-fact-check',
     'fuhe-school-voting-opened-on-time-facts',
+    'pingtung-ligang-referendum-voting-guidance-rumor',
     'uv-light-invisible-ink-voting-rumor',
     'chiang-you-ching-not-voting-comment',
     'taiwan-election-counting-system-security-manual-vote-counting',
-    'golden-horse-awards-2026-funding',
   ]);
   assert.deepEqual(data.sections.reports.items.slice(0, 6).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
-    '2026-11-28', '2026-11-28', '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-27',
+    '2026-11-28', '2026-11-28', '2026-11-28', '2026-11-27', '2026-11-27', '2026-11-27',
   ]);
   const reservoirSlug = 'reservoir-solar-power-environmental-impact-assessment-debate';
   const reservoir = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${reservoirSlug}.json`), 'utf8')));
@@ -145,7 +145,7 @@ test('search supports Chinese, normalization, multiple terms, category, and no r
 });
 
 test('provided covers match reports while unfilled dates stay absent', () => {
-  assert.equal(data.stories.length, 66);
+  assert.equal(data.stories.length, 67);
   assert.equal(data.stories.filter(story => story.date === null).length, 1);
   assert.equal(data.stories.filter(story => story.image?.src.startsWith('/images/covers/')).length, 26);
   assert.equal(data.stories.find(story => story.slug === 'ai-edited-image-of-yangliu-on-time-magazine-cover')?.image?.src, '/images/covers/ai-edited-image-of-yangliu-on-time-magazine-cover.jpg');
