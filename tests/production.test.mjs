@@ -49,7 +49,9 @@ test('built static pages contain body content and unique head metadata', async (
       assert.ok(!html.includes('資料來源與說明'), path);
       const summary = html.match(/<section class="article-summary"[\s\S]*?<\/section>/)?.[0];
       if (sourceArticle.bodySections) {
-        assert.ok(!summary && html.includes('class="article-section source-body"'), path);
+        if (sourceArticle.summaryBlocks?.length && sourceArticle.presentation?.showSummary !== false) assert.ok(summary, path);
+        else assert.ok(!summary, path);
+        assert.ok(html.includes('class="article-section source-body"'), path);
         assert.deepEqual([...html.matchAll(/<section class="guide-section"[^>]*><h2>([^<]+)<\/h2>/g)].map(match => match[1]), sourceArticle.bodySections.map(section => section.title));
       } else assert.ok(summary, path);
       for (const paragraph of (summary ?? '').matchAll(/<p>([\s\S]*?)<\/p>/g)) {
