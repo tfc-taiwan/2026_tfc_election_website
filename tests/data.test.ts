@@ -254,7 +254,7 @@ test('category pins keep explanatory articles ahead of new reports without leaki
   assert.ok(listingStories(sample).every(story => story.kind === 'report' || ['議題觀察室', '謠言風向球'].includes(story.tag)));
   assert.ok(listingStories(sample, '', '地方選舉').some(story => story.tag === '議題觀察室'));
   assert.ok(listingStories(sample, '', '地方選舉').some(story => story.tag === '謠言風向球'));
-  assert.ok(listingStories(sample, '', '地方選舉').every(story => story.category === '地方選舉' && !pins.includes(story.slug)));
+  assert.ok(listingStories(sample, '', '地方選舉').every(story => ['地方選舉', '公投議題'].includes(story.category!) && !pins.includes(story.slug)));
   assert.deepEqual(listingStories(sample, '查核結果說明', '辯論會查核').map(story => story.slug), [pins[1]]);
   assert.equal(listingStories(sample, 'absolutely-no-match', '辯論會查核').length, 0);
   for (const slug of pins) {
