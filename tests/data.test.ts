@@ -265,17 +265,23 @@ test('category pins keep explanatory articles ahead of new reports without leaki
   }
 });
 
-test('homepage report cards and local-election listing use the same articles, titles, and publication-date order', () => {
+test('homepage report cards and category listings preserve their titles and publication-date order', () => {
   const homepage = homepageReportStories(data);
   const localListing = listingStories(data, '', '地方選舉');
   const homepageSlugs = homepage.map(story => story.slug);
-  const localSlugs = localListing.map(story => story.slug);
-  assert.deepEqual(homepageSlugs, localSlugs);
+  assert.deepEqual(homepageSlugs, data.sections.reports.items.map(item => item.slug));
   assert.deepEqual(homepage.map(story => story.date), [...homepage.map(story => story.date)].sort((a, b) => (b ?? '').localeCompare(a ?? '')));
+  assert.ok(localListing.every(story => story.category === '地方選舉'));
+  assert.deepEqual(localListing.map(story => story.date), [...localListing.map(story => story.date)].sort((a, b) => (b ?? '').localeCompare(a ?? '')));
   for (const item of data.sections.reports.items) {
     const home = homepage.find(story => story.slug === item.slug)!;
-    const listing = localListing.find(story => story.slug === item.slug)!;
-    assert.equal(listing.title, home.title);
+    const source = data.stories.find(story => story.slug === item.slug)!;
+    assert.equal(home.title, item.title ?? source.title);
+    if (home.category === '地方選舉') {
+      assert.equal(localListing.find(story => story.slug === item.slug)?.title, home.title);
+    } else {
+      assert.equal(localListing.some(story => story.slug === item.slug), false);
+    }
   }
 });
 
