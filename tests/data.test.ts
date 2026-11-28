@@ -52,6 +52,7 @@ test('all listing references resolve to unique, matching report files and local 
 test('latest reports are ordered by source publication date and existing editorial content remains ready', () => {
   const referendumSlug = '1128-referendum-fake-news-nuclear-free-policy';
   assert.deepEqual(data.sections.reports.items.slice(0, 6).map(item => item.slug), [
+    'fuhe-school-voting-opened-on-time-facts',
     'uv-light-invisible-ink-voting-rumor',
     'chiang-you-ching-not-voting-comment',
     'taiwan-election-counting-system-security-manual-vote-counting',
@@ -60,7 +61,7 @@ test('latest reports are ordered by source publication date and existing editori
     'us-midterm-election-ballot-marking-rumor',
   ]);
   assert.deepEqual(data.sections.reports.items.slice(0, 6).map(item => data.stories.find(story => story.slug === item.slug)?.date), [
-    '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-26', '2026-11-25',
+    '2026-11-28', '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-27', '2026-11-26',
   ]);
   const reservoirSlug = 'reservoir-solar-power-environmental-impact-assessment-debate';
   const reservoir = reportSchema.parse(JSON.parse(readFileSync(resolve(root, `data/reports/${reservoirSlug}.json`), 'utf8')));
