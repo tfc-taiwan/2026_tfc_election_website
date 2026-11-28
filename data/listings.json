@@ -160,6 +160,111 @@
   },
   "stories": [
     {
+      "slug": "uv-light-invisible-ink-voting-rumor",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "投票日前，網路流傳「選票有隱形墨水」老謠言。中選會建議：無須自備印泥或UV燈投票，以免污染選票。",
+      "description": "投票日前，網路流傳影片宣稱「投票要記得帶UV燈，以檢查選票」，後續又有傳言提醒民眾應於特定時段投票，以免選票有隱形墨水、會作票。經查，傳言引用多個舊謠言誤導作票。選票用紙及圈選工具均有法定規格，並由各地選委會統一製備，網傳隱形墨水手法不切實際，攜入UV燈投開票可能影響選務。",
+      "date": "2026-11-27",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4416-1.jpg",
+        "alt": "投票日前，網路流傳「選票有隱形墨水」老謠言"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "chiang-you-ching-not-voting-comment",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "蔣友青社群留言稱「不投票」，被延伸解讀拒投特定人",
+      "description": "九合一大選陷入激戰，近期網傳蔣友青表態「拒投蔣萬安」。這應是擷取蔣友青日前的社群回應，當時他表示「不會投票」，並沒有明確表達支持誰、拒投誰。",
+      "date": "2026-11-27",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4415-1.jpg",
+        "alt": "蔣友青社群留言稱「不投票」，被延伸解讀拒投特定人"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "taiwan-election-counting-system-security-manual-vote-counting",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "中選會計票系統採封閉網路、內部電腦禁連外網，且採人工計票，民眾可公開檢視",
+      "description": "網路近期流傳，中共駭客可能會竄改中選會選票系統的數字。經查證，中選會計票程序是封閉網路，且內部電腦均禁止連線至外網，降低駭客透過網際網路入侵及植入後門程式的風險。台灣選舉採人工計票，過程全程公開，且票數需多次統計核對，民眾均可驗證。",
+      "date": "2026-11-27",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4414-7.jpg",
+        "alt": "中選會計票系統採封閉網路、內部電腦禁連外網，且採人工計票，民眾可公開檢視"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "golden-horse-awards-2026-funding",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "金馬獎宣傳與舉辦由電影基金會負責，近年經費未顯著縮減",
+      "description": "第63屆金馬獎甫落幕。網路流傳訊息宣稱，今年典禮聲量不如以往，是因立法院刪減文化部媒宣費。經查證，金馬獎自1990年起已改由中華民國電影事業發展基金會籌辦，負責頒獎典禮及系列活動，亦包含宣傳工作，金馬籌辦費用也沒有大幅縮減。",
+      "date": "2026-11-27",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4413-1.jpg",
+        "alt": "金馬獎宣傳與舉辦由電影基金會負責，近年經費未顯著縮減"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "tax-surplus-over-1-trillion-calculation-error-20000-cash-debt",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「超徵破兆」源自錯誤算法，普發現金2萬仍須舉債",
+      "description": "國民黨提出普發現金2萬法案且11月20日三讀通過，行政院認為須舉債3857億，但國民黨主張今年稅收預估破兆，普發現金不用舉債，相關說法在網路普遍流傳。查證發現，「超徵破兆」算法有誤，要普發現金仍須舉債。",
+      "date": "2026-11-26",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4412-0.jpg",
+        "alt": "網傳「超徵破兆」源自錯誤算法，普發現金2萬仍須舉債"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "us-midterm-election-ballot-marking-rumor",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「確保選務人員沒有在選票上寫字」是美國期中選舉謠言，與台灣九合一選舉無關",
+      "description": "近期網路流傳訊息，聲稱投票時要注意選票有無被工作人員劃記，否則可能變廢票。經查證，傳言挪用自美國期中選舉期間流傳的不實訊息，與台灣即將進行的九合一選舉無關。針對「選務人員作票」相關傳言，中選會強調，選務人員主要由公教人員、警察、跨政黨監察員組成，過程公開透明可受監督。",
+      "date": "2026-11-25",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4411-1.jpg",
+        "alt": "網傳「確保選務人員沒有在選票上寫字」是美國期中選舉謠言，與台灣九合一選舉無關"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
+      "slug": "nvidia-taipei-headquarters-songnan-site-rumor-fact-check",
+      "kind": "report",
+      "category": "地方選舉",
+      "title": "網傳「輝達總部確定不來 松南基地開發變了」為混淆事件脈絡的錯誤資訊",
+      "description": "網路近期流傳「輝達總部確定不來 松南基地開發變了」的圖卡，貼文附上的文章引用台北市議員許淑華質詢北市產發局的內容，指稱「松南基地」將轉作AI產業聚落。經查證，網傳連結文章出自內容農場，且引用今年4月22日舊新聞，當時已確認輝達總部落址北士科，松南營區變更用途並非受輝達近況影響。",
+      "date": "2026-11-24",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/4409_5.jpg",
+        "alt": "查核報告封面"
+      },
+      "tag": "政治與政策",
+      "tone": "cyan",
+      "verdict": "錯誤"
+    },
+    {
       "slug": "campaign-merchandise-dm-scam",
       "kind": "report",
       "category": "地方選舉",
@@ -203,6 +308,20 @@
       "tone": "cyan",
       "verdict": "錯誤",
       "title": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成"
+    },
+    {
+      "slug": "reservoir-solar-power-environmental-impact-assessment-debate",
+      "kind": "analysis",
+      "category": "地方選舉",
+      "title": "水庫設光電，誰說要環評？藍綠攻防爭議釐清",
+      "description": "網路流傳台北市長蔣萬安阻擋翡翠水庫設置光電板等言論，引發水面型光電是否須環評、修法誰贊成誰反對等討論。查核中心整理環評標準沿革與2025年修法爭議；目前設有水面型光電板的6座水庫中，烏山頭與阿公店水庫達到新法環評門檻。",
+      "date": "2026-11-23",
+      "image": {
+        "src": "https://tfc-taiwan.org.tw/wp-content/uploads/2026/11/156806＿7.jpg",
+        "alt": "水庫設光電，誰說要環評？藍綠攻防爭議釐清"
+      },
+      "tag": "議題觀察室",
+      "tone": "cyan"
     },
     {
       "slug": "feitsui-reservoir-solar-power-policy-and-regulatory-dispute",
@@ -991,16 +1110,48 @@
       ],
       "items": [
         {
-          "slug": "chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check",
-          "title": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成"
+          "slug": "uv-light-invisible-ink-voting-rumor",
+          "title": "投票日前，網路流傳「選票有隱形墨水」老謠言。中選會建議：無須自備印泥或UV燈投票，以免污染選票。"
+        },
+        {
+          "slug": "chiang-you-ching-not-voting-comment",
+          "title": "蔣友青社群留言稱「不投票」，被延伸解讀拒投特定人"
+        },
+        {
+          "slug": "taiwan-election-counting-system-security-manual-vote-counting",
+          "title": "中選會計票系統採封閉網路、內部電腦禁連外網，且採人工計票，民眾可公開檢視"
+        },
+        {
+          "slug": "golden-horse-awards-2026-funding",
+          "title": "金馬獎宣傳與舉辦由電影基金會負責，近年經費未顯著縮減"
+        },
+        {
+          "slug": "tax-surplus-over-1-trillion-calculation-error-20000-cash-debt",
+          "title": "網傳「超徵破兆」源自錯誤算法，普發現金2萬仍須舉債"
+        },
+        {
+          "slug": "us-midterm-election-ballot-marking-rumor",
+          "title": "網傳「確保選務人員沒有在選票上寫字」是美國期中選舉謠言，與台灣九合一選舉無關"
+        },
+        {
+          "slug": "nvidia-taipei-headquarters-songnan-site-rumor-fact-check",
+          "title": "網傳「輝達總部確定不來 松南基地開發變了」為混淆事件脈絡的錯誤資訊"
+        },
+        {
+          "slug": "campaign-merchandise-dm-scam",
+          "title": "競選小物詐騙頻傳，慎防社群「私訊免費送」手法"
         },
         {
           "slug": "outdated-vote-counting-flaw-videos-mislead-fraud",
           "title": "選前社群流傳過時開票瑕疵影像，誤導作票"
         },
         {
-          "slug": "campaign-merchandise-dm-scam",
-          "title": "競選小物詐騙頻傳，慎防社群「私訊免費送」手法"
+          "slug": "chiang-wan-an-shen-po-yang-ai-generated-photo-fact-check",
+          "title": "網傳「蔣萬安、沈伯洋文宣塞滿公用垃圾桶」的照片高機率經AI生成"
+        },
+        {
+          "slug": "reservoir-solar-power-environmental-impact-assessment-debate",
+          "title": "水庫設光電，誰說要環評？藍綠攻防爭議釐清"
         },
         {
           "slug": "feitsui-reservoir-solar-power-policy-and-regulatory-dispute"
@@ -1127,6 +1278,10 @@
         {
           "title": "AI混淆選民認知？民間發起「自律公約」",
           "url": "https://youtube.com/shorts/vwcqSl8G5gQ?si=MeJDLyYWtxgM1AFX"
+        },
+        {
+          "title": "投票日常見假訊息提前破解",
+          "url": "https://www.youtube.com/shorts/DtnT2FtL8sM"
         },
         {
           "title": "「開3畫2」選務人員遭收買？老謠言！當場發現有誤並更正票數",

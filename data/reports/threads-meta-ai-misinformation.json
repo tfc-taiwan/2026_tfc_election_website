@@ -38,9 +38,10 @@
   ],
   "summaryClose": "",
   "presentation": {
-    "showReportMetadata": false,
+    "showReportMetadata": true,
     "showSummary": false,
-    "showContentsNavigation": false
+    "showContentsNavigation": false,
+    "showCoverImage": false
   },
   "background": {
     "id": "background",
