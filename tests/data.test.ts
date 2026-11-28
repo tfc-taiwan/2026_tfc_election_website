@@ -154,6 +154,7 @@ test('provided covers match reports while unfilled dates stay absent', () => {
   assert.deepEqual(data.sections.infographics?.slugs, [
     'debunk-election-fraud-rumor-scripts',
     'voting-ng-behaviors-compilation',
+    'election-common-eight-qa',
     'reliable-taiwan-election-information-channels-explained',
     'referendum-essential-knowledge',
     'ten-ng-voting-behaviors-part-1',
@@ -169,10 +170,14 @@ test('provided covers match reports while unfilled dates stay absent', () => {
   assert.equal(votingNgBehaviors?.title, '投票NG行為大整理');
   assert.equal(votingNgBehaviors?.cards.length, 8);
   assert.deepEqual(votingNgBehaviors?.cards.map(card => card.image.src), Array.from({ length: 8 }, (_, index) => `/images/voting-ng-behaviors-compilation-${index + 1}.png`));
-  const informationChannels = data.sections.infographics?.items?.[2];
+  const electionQa = data.sections.infographics?.items?.[2];
+  assert.equal(electionQa?.title, '選舉常見八大Q&A');
+  assert.equal(electionQa?.cards.length, 9);
+  assert.deepEqual(electionQa?.cards.map(card => card.image.src), Array.from({ length: 9 }, (_, index) => `/images/election-common-eight-qa-${index + 1}.png`));
+  const informationChannels = data.sections.infographics?.items?.[3];
   assert.equal(informationChannels?.title, '三大選舉資訊管道');
   assert.deepEqual(informationChannels?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/reliable-election-information-channels-portrait-${index + 1}.png`));
-  const referendumKnowledge = data.sections.infographics?.items?.[3];
+  const referendumKnowledge = data.sections.infographics?.items?.[4];
   assert.equal(referendumKnowledge?.title, '公投必備知識');
   assert.deepEqual(referendumKnowledge?.cards.map(card => card.image.src), Array.from({ length: 7 }, (_, index) => `/images/referendum-essential-knowledge-${index + 1}.png`));
   const upper = data.sections.infographics?.items?.find(item => item.slug === 'ten-ng-voting-behaviors-part-1');
